@@ -1,4 +1,18 @@
 .output {
   width: 33%;
-  border: 2px solid goldenrod;
+  display: flex;
+  flex-direction: column;
+}
+
+.iframe {
+  border: none;
+}
+
+.iframe-output {
+  flex-grow: 1;
+}
+
+.console-output {
+  height: 100px;
+  background-color: lightgoldenrodyellow;
 }

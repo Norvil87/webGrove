@@ -6,15 +6,26 @@ import "./Editor.scss";
 import { useDispatch } from "react-redux";
 import { setEditorValue } from "../../store/actions";
 
-const Editor = () => {
-  const dispatch = useDispatch();
-  const options = {};
+interface IEditor {
+  initValues: any;
+}
 
-  const initialValue = "<h1>Hello</h1>";
+const Editor: React.FC<IEditor> = ({ initValues }) => {
+  const { html, css, js } = initValues;
+  const dispatch = useDispatch();
+  const options = {
+    minimap: { enabled: false },
+    overviewRulerBorder: false,
+    overviewRulerLanes: 0,
+  };
+
+  const initialValue = `<html>\n <head>\n${css}\n</head>\n <body>\n  ${html}\n </body>\n</html>`;
 
   const handleValueChange = (ev: any, value: string) => {
+    console.log(value)
     dispatch(setEditorValue(value));
   };
+
   const onEditorMount = () => {
     dispatch(setEditorValue(initialValue));
   };

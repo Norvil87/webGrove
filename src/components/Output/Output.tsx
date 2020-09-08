@@ -6,6 +6,9 @@ import { IRootState } from "../../store/types";
 
 const Output = () => {
   const editorValue = useSelector((state: IRootState) => state.editorValue);
+  console.log(editorValue)
+  const passed = false
+  const resultMessage = 'Тест не пройден'
 
   const getGeneratedPageURL = ({ html, css }: any) => {
     const getBlobURL = (code: any, type: any) => {
@@ -14,11 +17,10 @@ const Output = () => {
     };
 
     const cssURL = getBlobURL(css, "text/css");
-    console.log(css)
     const source = `
       <html>
         <head>
-          ${css ? `<link rel="stylesheet" type="text/css" href="${cssURL}" />` : ''}
+          ${css ? `<link rel="stylesheet" type="text/css" href="${cssURL}" />` : ""}
         </head>
         <body>
           ${html || ""}
@@ -31,12 +33,15 @@ const Output = () => {
 
   const url = getGeneratedPageURL({
     html: editorValue,
-    //css: "p { color: red; }",
+    css: "h1 { color: red; }",
   });
 
   return (
     <div className="output">
-      <Iframe url={url} />
+      <div className="iframe-output">
+        <Iframe title="iframe-output" width="100%" height="100%" className="iframe" url={url} />
+      </div>
+  <div className="console-output" >{resultMessage ? resultMessage : 'Тесты не проведены'}</div>
     </div>
   );
 };

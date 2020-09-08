@@ -6,8 +6,9 @@ import "../styles/common.scss";
 import { createStore } from "redux";
 import { reducer } from "../store/reducers";
 import { Provider } from "react-redux";
+import { HtmlCourse } from "../data/HtmlCourse";
 
-const store = createStore(reducer);
+export const store = createStore(reducer);
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
         <div className="container">
           <div className="page__wrapper">
             <Header />
-            <Simulator />
+            <Simulator data={HtmlCourse} />
           </div>
           <Footer />
         </div>
