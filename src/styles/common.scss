@@ -6,6 +6,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   width: 100%;
+  background-color: #f1f1f1;
 }
 
 .container {
@@ -14,7 +15,20 @@ body {
   height: 100vh;
   max-width: 2000px;
   margin: 0 auto;
-  padding: 0 10px
+  padding: 0 10px;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.3;
+}
+
+a:active {
+  opacity: 0.6;
 }
 
 button {
@@ -38,10 +52,9 @@ p {
 ul {
   margin: 0;
   padding: 0;
-  
+
   list-style: none;
 }
-
 
 .page__wrapper {
   flex-grow: 1;

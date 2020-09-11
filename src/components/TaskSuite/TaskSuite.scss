@@ -1,3 +1,11 @@
 .tasks li {
   background-color: lightgray;
 }
+
+.task_passed {
+  color: green;
+}
+
+.task_failed {
+  color: red;
+}

@@ -3,24 +3,27 @@ import "./Output.scss";
 import Iframe from "react-iframe";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../store/types";
+import { IInitEditorValues } from "../../types";
 
 const Output = () => {
-  const editorValue = useSelector((state: IRootState) => state.editorValue);
-  console.log(editorValue)
-  const passed = false
-  const resultMessage = 'Тест не пройден'
+  const { html, css, js } = useSelector((state: IRootState) => state.editorValues);
+  const { id, passed, message } = useSelector((state: IRootState) => state.currentExercise);
 
-  const getGeneratedPageURL = ({ html, css }: any) => {
-    const getBlobURL = (code: any, type: any) => {
+  const getGeneratedPageURL = ({ html, css, js }: IInitEditorValues) => {
+    const getBlobURL = (code: string, type: string) => {
+      console.log(code, type);
       const blob = new Blob([code], { type });
       return URL.createObjectURL(blob);
     };
 
     const cssURL = getBlobURL(css, "text/css");
+    const jsURL = getBlobURL(css, "text/javscript");
+
     const source = `
       <html>
         <head>
           ${css ? `<link rel="stylesheet" type="text/css" href="${cssURL}" />` : ""}
+          ${js ? `<script type="text/javascript" src="${jsURL}" />` : ""}
         </head>
         <body>
           ${html || ""}
@@ -32,16 +35,34 @@ const Output = () => {
   };
 
   const url = getGeneratedPageURL({
-    html: editorValue,
-    css: "h1 { color: red; }",
+    html: html,
+    css: css,
+    js: js,
   });
+
+  const renderMessage = () => {
+    let array: JSX.Element[] = [];
+    if (passed !== undefined) {
+      message.map((string, i) => {
+        array.push(
+          <p key={i} className={passed ? "task_passed" : "task_failed"}>
+            {string}
+          </p>
+        );
+      });
+    } else {
+      array.push(<p key={"initMessage"}>Тесты не запущены</p>);
+    }
+
+    return array;
+  };
 
   return (
     <div className="output">
       <div className="iframe-output">
         <Iframe title="iframe-output" width="100%" height="100%" className="iframe" url={url} />
       </div>
-  <div className="console-output" >{resultMessage ? resultMessage : 'Тесты не проведены'}</div>
+      <div className="console-output">{renderMessage()}</div>
     </div>
   );
 };

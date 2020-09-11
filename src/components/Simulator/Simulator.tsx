@@ -3,16 +3,17 @@ import Challenge from "../Challenge/Challenge";
 import Editor from "../Editor/Editor";
 import Output from "../Output/Output";
 import "./Simulator.scss";
+import { IExcercise } from "../../types";
 
 interface ISimulatorProps {
-  data: any;
+  excercise: IExcercise;
 }
 
-const Simulator: React.FC<ISimulatorProps> = ({ data }) => {
+const Simulator: React.FC<ISimulatorProps> = ({ excercise }) => {
   return (
     <div className="content__wrapper">
-      <Challenge header={data[0].header} theory={data[0].theory} tasks={data[0].tasks} goal={data[0].goal} />
-      <Editor initValues={data[0].initValues} />
+      <Challenge {...excercise} />
+      <Editor initValues={excercise.initValues} />
       <Output />
     </div>
   );

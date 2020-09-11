@@ -1,16 +1,27 @@
-import { IRootState } from "./types";
-
-import { ReducerAction } from "react";
-import { ActionFromReducer } from "redux";
+import { IRootState, IActionType } from "./types";
 
 const initialState: IRootState = {
-  editorValue: "",
+  editorValues: {
+    html: "",
+    css: "",
+    js: "",
+  },
+  currentExercise: {
+    id: null,
+    passed: undefined,
+    message: ["Тесты не запущены"],
+  },
+  currentTasks: [],
 };
 
-export const reducer = (state: IRootState = initialState, action: any) => {
+export const reducer = (state: IRootState = initialState, action: IActionType) => {
   switch (action.type) {
     case "SET_EDITOR_VALUE":
-      return { ...state, editorValue: action.payload.value };
+      return { ...state, editorValues: { ...action.payload.values } };
+    case "SET_CURRENT_EXERCISE":
+      return { ...state, currentExercise: action.payload.excercise };
+    case "SET_CURRENT_TASKS":
+      return { ...state, currentTasks: action.payload.tasks };
     default:
       return state;
   }

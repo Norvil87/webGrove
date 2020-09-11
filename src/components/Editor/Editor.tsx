@@ -1,13 +1,13 @@
 import React from "react";
 import { ControlledEditor } from "@monaco-editor/react";
-import IModelContentChangedEvent from "@monaco-editor/react/lib";
-
+import * as monacoEditor from "monaco-editor/esm/vs/editor/editor.api";
 import "./Editor.scss";
 import { useDispatch } from "react-redux";
 import { setEditorValue } from "../../store/actions";
+import { IInitEditorValues } from "../../types";
 
 interface IEditor {
-  initValues: any;
+  initValues: IInitEditorValues;
 }
 
 const Editor: React.FC<IEditor> = ({ initValues }) => {
@@ -21,13 +21,21 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
 
   const initialValue = `<html>\n <head>\n${css}\n</head>\n <body>\n  ${html}\n </body>\n</html>`;
 
-  const handleValueChange = (ev: any, value: string) => {
-    console.log(value)
-    dispatch(setEditorValue(value));
+  const parseString = (string: string) => {
+    const html = string.substring(string.indexOf("<body>"), string.indexOf("</body"));
+    const css = string.substring(string.indexOf("<style>"), string.indexOf("</style"));
+    const js = string.substring(string.indexOf("<script>"), string.indexOf("</script"));
+
+    return { html, css, js };
+  };
+
+  const handleValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, value: string) => {
+    const parsedValue = parseString(value);
+    dispatch(setEditorValue(parsedValue));
   };
 
   const onEditorMount = () => {
-    dispatch(setEditorValue(initialValue));
+    dispatch(setEditorValue(initValues));
   };
 
   return (
