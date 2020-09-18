@@ -1,5 +1,10 @@
 export type id = number | string;
 
+export enum ResultMessage {
+  SUCCESS = "Поздравляем! Все тесты пройдены",
+  FAIL = "Некоторые тесты не пройдены. Внимательно просмотрите код",
+}
+
 export interface IInitEditorValues {
   html: string;
   css: string;
@@ -8,15 +13,16 @@ export interface IInitEditorValues {
 
 export interface ITask {
   id: id;
-  label: JSX.Element;
-  //passed?: boolean
+  label: string;
+  failMsg: string;
+  test: (iframe: HTMLElement) => boolean;
 }
 
 export interface IExcercise {
   id: id;
   header: string;
-  theory: JSX.Element;
-  goal: JSX.Element;
+  theory: string;
+  goal: string;
   tasks: ITask[];
   initValues: IInitEditorValues;
 }

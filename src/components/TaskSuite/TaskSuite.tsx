@@ -34,12 +34,7 @@ const TaskSuite: React.FC<ITaskSuiteProps> = ({ tasks }) => {
       } else if (task.passed === false) {
         taskClassName = "task_failed";
       }
-      console.log(taskClassName);
-      elems.push(
-        <li className={taskClassName} key={task.id}>
-          {task.label}
-        </li>
-      );
+      elems.push(<li className={taskClassName} key={task.id} dangerouslySetInnerHTML={{ __html: task.label }}></li>);
     });
 
     return elems;

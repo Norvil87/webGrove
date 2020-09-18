@@ -27,6 +27,13 @@ module.exports = {
         loader: "awesome-typescript-loader",
       },
       {
+        test: /\.(woff|woff2|eot|ttf)$/,
+        loader: "file-loader",
+        options: {
+          outputPath: "fonts",
+        },
+      },
+      {
         test: /\.(css|scss)$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },

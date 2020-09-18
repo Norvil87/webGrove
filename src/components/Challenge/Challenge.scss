@@ -1,11 +1,17 @@
+@import "../../styles/variables.scss";
+
 code {
-  background-color: gray;
-  color: white;
+  background-color: $secondaryColor;
+  padding: 0 5px;
+  border-radius: 3px;
+  font-style: italic;
+}
+
+code a {
+  text-decoration: underline;
 }
 
 .goal {
-  border-top: 2px solid orchid;
-  border-bottom: 2px solid orchid;
   margin-bottom: 30px;
   width: 100%;
 }
@@ -15,16 +21,18 @@ code {
 }
 
 .runCode-button {
-  background-color: green;
-  color: white;
+  border: 1px solid $primaryColor;
+  //color: white;
   width: 50%;
 }
 
 .resetCode-button {
-  background-color: khaki;
-  width: 50%;
+  //background-color: $primaryColor;
+  //color: #fff;
+    width: 50%;
 }
 
 .challenge {
   width: 33%;
+  padding: 0 10px;
 }

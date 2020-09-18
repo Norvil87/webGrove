@@ -1,7 +1,17 @@
+@import "../../styles/variables.scss";
+
 .output {
   width: 33%;
   display: flex;
   flex-direction: column;
+
+  .task_passed {
+    color: rgb(72, 189, 72);
+  }
+
+  .task_failed {
+    color: #ff5722; // оставить?
+  }
 }
 
 .iframe {
@@ -14,14 +24,15 @@
 
 .console-output {
   height: 100px;
-  background-color: lightgoldenrodyellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  padding: 10px;
+  background-color: $secondaryColor;
 }
 
-.task_passed {
-  color: green;
+.console-output p {
+  width: 100%;
 }
-
-.task_failed {
-  color: red;
-}
-

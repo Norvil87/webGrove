@@ -12,14 +12,15 @@ import { IRootState } from "../store/types";
 
 const App = () => {
   const exerciseId = useSelector((state: IRootState) => state.currentExercise.id);
-
+  // (exerciseId as number) - 1
   return (
     <Router>
-      <div className="container">
-        <div className="page__wrapper">
+      <div className="page__wrapper">
+        <div className="page__top-wrapper">
           <Header />
+
           <Switch>
-            <Route path="/Simulator" render={() => <Simulator excercise={HtmlCourse.excercises[0]} />} />
+            <Route path="/Simulator" render={() => <Simulator excercise={HtmlCourse.excercises[1]} />} />
             <Route path="/" exact render={() => <CoursePage course={HtmlCourse} />} />
           </Switch>
         </div>

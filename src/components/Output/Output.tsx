@@ -11,7 +11,6 @@ const Output = () => {
 
   const getGeneratedPageURL = ({ html, css, js }: IInitEditorValues) => {
     const getBlobURL = (code: string, type: string) => {
-      console.log(code, type);
       const blob = new Blob([code], { type });
       return URL.createObjectURL(blob);
     };

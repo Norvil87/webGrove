@@ -1,5 +1,37 @@
+@import "../../styles/variables.scss";
+
 footer {
-  height: 100px;
-  font-size: 50px;
-  text-align: center;
+  font-family: "Raleway", serif;
+  font-weight: 700;
+  min-height: 50px;
+  background-color: #f1f1f1;
+}
+
+footer ul {
+  display: flex;
+}
+
+footer ul a {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+footer li {
+  margin-right: 10px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.login-button {
+  margin-right: 10px;
+}
+
+.registration-button {
+  background-color: $primaryColor;
+  color: #fff;
 }
