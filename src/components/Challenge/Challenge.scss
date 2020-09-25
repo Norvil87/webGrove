@@ -1,10 +1,25 @@
 @import "../../styles/variables.scss";
 
+pre {
+  border: 1px dotted $primaryColor;
+  padding: 10px;
+  border-radius: 3px;
+}
+
 code {
   background-color: $secondaryColor;
-  padding: 0 5px;
   border-radius: 3px;
   font-style: italic;
+
+  .tag {
+    color: #905;
+  }
+}
+
+pre code {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 code a {
@@ -18,18 +33,26 @@ code a {
 
 .buttonContainer {
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .runCode-button {
-  border: 1px solid $primaryColor;
-  //color: white;
-  width: 50%;
+  border: none;
+  border-radius: 26px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  width: 100%;
+  background: #fad485;
+  box-shadow: 0 3px 0 0 #ebb16f, 0 4px 0 0 #d99a59, 0 4px 8px 0 rgba(102, 55, 0, 0.4);
+}
+
+.runCode-button:hover {
+  opacity: 1;
+  background: #ebb16f;
 }
 
 .resetCode-button {
-  //background-color: $primaryColor;
-  //color: #fff;
-    width: 50%;
+  width: 50%;
 }
 
 .challenge {

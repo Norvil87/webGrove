@@ -1,5 +1,15 @@
+@import "../../styles/variables.scss";
+
 .course {
   max-width: 900px;
   margin: 0 auto;
-  border: 1px solid grey;
+}
+
+.course__lessonItem {
+  margin-bottom: 10px;
+}
+
+.course__lessonItem a:hover {
+  color: $primaryColor;
+  opacity: 1;
 }

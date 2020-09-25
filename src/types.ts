@@ -2,7 +2,7 @@ export type id = number | string;
 
 export enum ResultMessage {
   SUCCESS = "Поздравляем! Все тесты пройдены",
-  FAIL = "Некоторые тесты не пройдены. Внимательно просмотрите код",
+  FAIL = `Без паники! Внимательно просмотрите код и попробуйте еще раз`,
 }
 
 export interface IInitEditorValues {
@@ -25,6 +25,7 @@ export interface IExcercise {
   goal: string;
   tasks: ITask[];
   initValues: IInitEditorValues;
+  solution?: string;
 }
 
 export interface ICourse {

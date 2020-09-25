@@ -13,20 +13,25 @@ interface IEditor {
 const Editor: React.FC<IEditor> = ({ initValues }) => {
   const { html, css, js } = initValues;
   const dispatch = useDispatch();
+  const verticalScrollbarVisibility: "hidden" | "auto" | "visible" = "hidden"; // wtf
+  const lineHighlight: "none" | "line" | "gutter" | "all" = "gutter"; // wtf
   const options = {
     minimap: { enabled: false },
     overviewRulerBorder: false,
     overviewRulerLanes: 0,
+    renderLineHighlight: lineHighlight,
+    scrollbar: { vertical: verticalScrollbarVisibility },
   };
 
-  const initialValue = `<html>\n <head>\n${css}\n</head>\n <body>\n  ${html}\n </body>\n</html>`;
+  //const initialValue = `<html>\n <head>\n${css}\n </head>\n <body>\n  ${html}\n </body>\n</html>`;
 
   const parseString = (string: string) => {
-    const html = string.substring(string.indexOf("<body>"), string.indexOf("</body"));
-    const css = string.substring(string.indexOf("<style>"), string.indexOf("</style"));
-    const js = string.substring(string.indexOf("<script>"), string.indexOf("</script"));
+    //const html = string.substring(string.indexOf("<body>"), string.indexOf("</body"));
+    //const css = string.substring(string.indexOf("<style>"), string.indexOf("</style"));
+    //const js = string.substring(string.indexOf("<script>"), string.indexOf("</script"));
 
-    return { html, css, js };
+    //return { html, css, js };
+    return {html: string, css: '', js: ''}
   };
 
   const handleValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, value: string) => {
@@ -45,7 +50,7 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
         onChange={handleValueChange}
         editorDidMount={onEditorMount}
         language="html"
-        value={initialValue}
+        value={html}
       />
     </div>
   );
