@@ -19,7 +19,7 @@ const App = () => {
         <div className="page__top-wrapper">
           <Header />
           <Switch>
-            <Route path="/Simulator" render={() => <Simulator excercise={HtmlCourse.excercises[5]} />} />
+            <Route path="/Simulator" render={() => <Simulator excercise={HtmlCourse.excercises[11]} />} />
             <Route path="/" exact render={() => <CoursePage course={HtmlCourse} />} />
           </Switch>
         </div>
