@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./Challenge.scss";
-import TaskSuite from "../TaskSuite/TaskSuite";
+import TaskSuite from "../TaskSuite";
 import { IRootState } from "../../store/types";
 import { setCurrentTasks, setCurrentExercise } from "../../store/actions";
 import { ITask, ResultMessage } from "../../types";
@@ -16,14 +16,14 @@ interface IChallengeProps {
 
 const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks }) => {
   const currentTasks = useSelector((state: IRootState) => state.currentTasks);
-  const { id } = useSelector((state: IRootState) => state.currentExercise);
+  const { excersiceId, excersiceUrl, blockUrl } = useSelector((state: IRootState) => state.currentExercise);
 
   const dispatch = useDispatch();
 
   const handleClick = () => {
     let excercisePassed = true;
     let excerciseMessage = [];
-    const iframe = document.body.querySelector("iframe").contentDocument.body;
+    const iframe = document.body.querySelector("iframe");
 
     currentTasks.map((task: ICurrentTask) => {
       if (task.test(iframe)) {
@@ -38,7 +38,9 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks }) =
     excerciseMessage.push(excercisePassed ? ResultMessage.SUCCESS : ResultMessage.FAIL);
 
     dispatch(setCurrentTasks(currentTasks));
-    dispatch(setCurrentExercise({ id, passed: excercisePassed, message: excerciseMessage }));
+    dispatch(
+      setCurrentExercise({ excersiceId, excersiceUrl, blockUrl, passed: excercisePassed, message: excerciseMessage })
+    );
   };
 
   return (

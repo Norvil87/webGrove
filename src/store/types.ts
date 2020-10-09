@@ -11,7 +11,9 @@ export interface ICurrentTask extends ITask {
 }
 
 export interface ICurrentExercise {
-  id: id;
+  excersiceUrl: string;
+  excersiceId: number;
+  blockUrl: string;
   passed: boolean;
   message: string[];
 }

@@ -1,6 +1,37 @@
+@import "../../styles/variables.scss";
+
 .content__wrapper {
-  display: flex;
   height: calc(100% - 85px);
   background-color: #fff;
   padding: 0 10px;
+}
+
+.reflex-container.vertical {
+  flex-direction: row;
+  min-width: 1px;
+}
+
+.reflex-container {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.reflex-container > .reflex-element {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.reflex-container.vertical > .reflex-splitter {
+  border-right: 1px solid $primaryColor;
+  border-left: 1px solid $primaryColor;
+  cursor: col-resize;
+  height: 100%;
+  width: 1px;
 }

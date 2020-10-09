@@ -1,6 +1,5 @@
 import React from "react";
 import CourseList from "../components/CourseList/CourseList";
-import { RouteProps } from "react-router-dom";
 import { ICourse } from "../types";
 
 interface ICourcePage {

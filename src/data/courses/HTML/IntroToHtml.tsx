@@ -1,12 +1,14 @@
-import React from "react";
+import { IExcercise, ICourseBlock } from "../../../types";
 
-export const HtmlCourse = {
+export const introToHtml: ICourseBlock = {
   id: 1,
   title: "Язык разметки HTML",
+  url: "intro-to-html",
   excercises: [
     {
       id: 1,
       header: "HTML - язык гипертекстовой разметки",
+      url: "html-hypertext",
       theory: ` <p>Добро пожаловать в Ваше первое испытание. Шаг за шагом мы вместе пройдем непростой, но интересный путь вэб-разработки. И начнем мы с изучения языка разметки вэб-страниц -  <b>HTML</b>.</p>
           <p> В ходе испытаний редактируйте код прямо во встроенном редакторе кода справа от Вас. Сейчас редактор путой, но скоро мы это изменим.</p>
           <p>Зачем нам нужен HTML? HTML - скелет вэб-страниц, он придает структуру контенту, который вы видите, открывая сайт в Интернете. Изучение HTML может быть полезно не только начинающим разработчикам, но и SEO специалистам, маркетологам, дизайнерам и многим другим. С HTML начинается разработка сайта, вэб-приложения, новостной Интернет рассылки и т.д.</p>
@@ -24,8 +26,8 @@ export const HtmlCourse = {
           id: 1,
           label:
             'Элемент <code><span><</span>p></code> должен содержать текст: "Завтра начну изучать вэб-разработку!".',
-          test: (iframe: HTMLElement) => {
-            const p = iframe.querySelector("p");
+          test: (iframe: HTMLIFrameElement) => {
+            const p = iframe.contentDocument.body.querySelector("p");
             return p && p.textContent === "Завтра начну изучать вэб-разработку!";
           },
           failMsg: '"Убедитесь, что элемент <p> содержит текст "Завтра начну изучать вэб-разработку!"',
@@ -36,6 +38,7 @@ export const HtmlCourse = {
     {
       id: 2,
       header: "Поздороваемся с HTML элементами",
+      url: "html-elements",
       theory: `<p>В прошлом испытании мы вставили в редактор строку <pre><code><span class="tag"><<span>p</span>></span>Завтра начну изучать вэб-разработку!<span class="tag"><<span>/p</span>></span></code></pre></p>
          <p>Это ваш первый HTML элемент. HTML элементы Вы можете узнать по открывающим и закрывающим тэгам.</p>
          <p>Вот так выглядит открывающий тэг: <code><span><</span>p></code></p>
@@ -54,22 +57,24 @@ export const HtmlCourse = {
         {
           id: 1,
           label: "На странице должно быть 2 параграфа <code>p</code>",
-          test: (iframe: HTMLElement) => iframe.querySelectorAll("p").length === 2,
+          test: (iframe: HTMLIFrameElement) => iframe.contentDocument.body.querySelectorAll("p").length === 2,
           failMsg: "Убедитесь, что на странице 2 параграфа",
         },
         {
           id: 2,
           label: 'В первом параграфе должен быть текст: "Пожалуй, начну изучать вэб-разработку сегодня!"',
-          test: (iframe: HTMLElement) =>
-            iframe.querySelectorAll("p")[0] &&
-            iframe.querySelectorAll("p")[0].textContent === "Пожалуй, начну изучать вэб-разработку сегодня!",
+          test: (iframe: HTMLIFrameElement) =>
+            iframe.contentDocument.body.querySelectorAll("p")[0] &&
+            iframe.contentDocument.body.querySelectorAll("p")[0].textContent ===
+              "Пожалуй, начну изучать вэб-разработку сегодня!",
           failMsg: 'Убедитесь, что текст внутри первого параграфа - "Пожалуй, начну изучать вэб-разработку сегодня!"',
         },
         {
           id: 3,
           label: 'Во втором параграфе должен быть текст: "Начну с основ HTML"',
-          test: (iframe: HTMLElement) =>
-            iframe.querySelectorAll("p")[1] && iframe.querySelectorAll("p")[1].textContent === "Начну с основ HTML",
+          test: (iframe: HTMLIFrameElement) =>
+            iframe.contentDocument.body.querySelectorAll("p")[1] &&
+            iframe.contentDocument.body.querySelectorAll("p")[1].textContent === "Начну с основ HTML",
           failMsg: 'Убедитесь, что текст внутри второго параграфа - "Начну с основ HTML"',
         },
       ],
@@ -79,6 +84,7 @@ export const HtmlCourse = {
     {
       id: 3,
       header: "Вложенность тэгов",
+      url: "nesting",
       theory: `<p>HTML представляет собой древовидную структуру. Это значит, что одни элементы могут быть вложены в другие. В качестве примера рассмотрим эту простую разметку:</p>
          <pre><code><span class="tag"><<span>main</span>></span>\n  <span class="tag"><<span>p</span>></span>Этот параграф является потомком элемента main<span class="tag"><<span>/p</span>></span>\n<span class="tag"><<span>/main</span>></span></code></pre>
          <p>В этом примере тэг <code>main</code> является родителем тэга <code>p</code>, а тэг <code>p</code> в свою очередь - потомком <code>main</code>. Визуально потомок имеет отступ в 2 пробельных символа от своего родителя</p>
@@ -97,14 +103,14 @@ export const HtmlCourse = {
         {
           id: 1,
           label: "На странице должно быть 2 элемента <code>div</code>",
-          test: (iframe: HTMLElement) => iframe.querySelectorAll("div").length === 2,
+          test: (iframe: HTMLIFrameElement) => iframe.contentDocument.body.querySelectorAll("div").length === 2,
           failMsg: "Убедитесь, что на странице 2 элемента div",
         },
         {
           id: 2,
           label: "У второго элемента <code>div</code> должно быть 2 элемента-потомка <code>p</code>",
-          test: (iframe: HTMLElement) => {
-            const secondDiv = iframe.querySelectorAll("div")[1];
+          test: (iframe: HTMLIFrameElement) => {
+            const secondDiv = iframe.contentDocument.body.querySelectorAll("div")[1];
             return (
               secondDiv &&
               secondDiv.children.length === 2 &&
@@ -121,6 +127,7 @@ export const HtmlCourse = {
     {
       id: 4,
       header: "Заголовки - тэги h1-h6",
+      url: "headers",
       theory: `<p>Заголовки в HTML служат той же цели, что и заголовки в любых других средствах массовой информации - привлечь внимание читателя и кратко описать контент. Заголовки, как привило, выделяются большим размером шрифта, чем основной контент, и жирным начертанием</p>
          <p>В HTML 6 уровней заголовков: <code>h1, h2, h3, h4, h5, h6</code>. <code>h</code> - это ни что иное, как <em>header</em> - заголовок.</p>
          <p><code>h1</code> - заголовок первого уровня, он главный на странице. Заголовок первого уровня должен быть один, так как он описывает содержание страницы целиком. Остальные заголовки описывают более мелкие структурные части страницы, их может быть любое количество.</p>
@@ -137,15 +144,16 @@ export const HtmlCourse = {
         {
           id: 1,
           label: `Добавьте заголовок второго уровня <code>h2</code> с текстом "Отдых"`,
-          test: (iframe: HTMLElement) =>
-            iframe.querySelectorAll("h2").length === 2 && iframe.querySelectorAll("h2")[1].textContent === "Отдых",
+          test: (iframe: HTMLIFrameElement) =>
+            iframe.contentDocument.body.querySelectorAll("h2").length === 2 &&
+            iframe.contentDocument.body.querySelectorAll("h2")[1].textContent === "Отдых",
           failMsg: `Убедитесь, что внутри второго заголовка h2 содержится текст "Отдых"`,
         },
         {
           id: 2,
           label: `Ниже добавьте заголовок третьего уровня <code>h3</code> с текстом "Парки"`,
-          test: (iframe: HTMLElement) => {
-            const secondH2 = iframe.querySelectorAll("h2")[1];
+          test: (iframe: HTMLIFrameElement) => {
+            const secondH2 = iframe.contentDocument.body.querySelectorAll("h2")[1];
             return (
               secondH2 &&
               secondH2.nextElementSibling &&
@@ -158,8 +166,10 @@ export const HtmlCourse = {
         {
           id: 3,
           label: `Ниже добавьте еще один заголовок третьего уровня с текстом "Кинотеатры"`,
-          test: (iframe: HTMLElement) => {
-            const h3 = Array.from(iframe.querySelectorAll("h3")).find(header => header.textContent === "Парки");
+          test: (iframe: HTMLIFrameElement) => {
+            const h3 = Array.from(iframe.contentDocument.body.querySelectorAll("h3")).find(
+              header => header.textContent === "Парки"
+            );
             return (
               h3 &&
               h3.nextElementSibling &&
@@ -176,6 +186,7 @@ export const HtmlCourse = {
     {
       id: 5,
       header: "Универсальный контейнер - тэг div",
+      url: "divs",
       theory: `<p>Элемент <code>div</code> является универсальным контейнером HTML страницы, он нужен для группировки элементов. Мы уже встречались с этим элементом в упражнении на вложенность тэгов. Вот пример разметки с использованием <code>div</code>:</p>
         <pre><code><span class="tag"><<span>main</span>></span>\n  <span class="tag"><<span>div</span>></span>\n    <span class="tag"><<span>p</span>></span>Любые элементы можно группировать<span class="tag"><<span>/p</span>></span>\n    <span class="tag"><<span>span</span>></span>с помощью элемента div<span class="tag"><<span>/span</span>></span>\n  <span class="tag"><<span>/div</span>></span>\n<span class="tag"><<span>/main</span>></span></code></pre>
         <p>Элемент <code>div</code> никак визуально не отображается на странице. Он участвует в передаче пользовательских стилей дочерним элементам, а также создает раскладку блоков на странице. Все это будет наглядно показано в курсе по CSS.</p>
@@ -190,8 +201,8 @@ export const HtmlCourse = {
         {
           id: 1,
           label: `Группа заголовков <b>'Культура'</b>, <b>'Музеи'</b>, <b>'Театры'</b> должна быть обернута в <code>div</code>`,
-          test: (iframe: HTMLElement) => {
-            const firstDiv = iframe.querySelectorAll("div")[0];
+          test: (iframe: HTMLIFrameElement) => {
+            const firstDiv = iframe.contentDocument.body.querySelectorAll("div")[0];
             return (
               firstDiv &&
               firstDiv.children.length === 3 &&
@@ -205,8 +216,8 @@ export const HtmlCourse = {
         {
           id: 2,
           label: `Группа заголовков <b>'Отдых'</b>, <b>'Парки'</b>, <b>'Кинотеатры'</b> должна быть обернута в <code>div</code>`,
-          test: (iframe: HTMLElement) => {
-            const secondDiv = iframe.querySelectorAll("div")[1];
+          test: (iframe: HTMLIFrameElement) => {
+            const secondDiv = iframe.contentDocument.body.querySelectorAll("div")[1];
             return (
               secondDiv &&
               secondDiv.children.length === 3 &&
@@ -224,6 +235,7 @@ export const HtmlCourse = {
     {
       id: 6,
       header: "Отображение текста - тэги p и span",
+      url: "text-display",
       theory: `<p>Текст на странице составляет большую часть контента (да простят меня вотографии котиков). Для его отображения используются тэги <code>p</code> и <code>span</code>.</p>
         <p>С параграфами <code>p</code> мы уже поработали, они служат для выделения блока текста.</p>
         <p>С помощью <code>span</code> выделяют отдельные текстовые элементы - слова и фразы, которые находятся на той же строке, что и остальной текст. Вот пример разметки, где эти элементы используются совместно:</p>
@@ -240,8 +252,8 @@ export const HtmlCourse = {
         {
           id: 1,
           label: `Под заголовком <b>Музеи</b> добавьте параграф <code>p</code> с текстом <em>"В Москве огромное количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить хотя бы один раз в жизни."</em>`,
-          test: (iframe: HTMLElement) => {
-            const museumH3 = iframe.querySelectorAll("h3")[0];
+          test: (iframe: HTMLIFrameElement) => {
+            const museumH3 = iframe.contentDocument.body.querySelectorAll("h3")[0];
             return (
               museumH3 &&
               museumH3.textContent === "Музеи" &&
@@ -256,8 +268,8 @@ export const HtmlCourse = {
         {
           id: 2,
           label: `Под заголовком <b>Театры</b> добавьте параграф <code>p</code> с текстом <em>"Москва славится своими театрами не только на всю Россию, но и на весь мир. На сценах московских театров, которых насчитывается великое множество, проходят и классические и современные постановки. И в Москву часто приезжают театралы со всего мира."</em>`,
-          test: (iframe: HTMLElement) => {
-            const theaterH3 = iframe.querySelectorAll("h3")[1];
+          test: (iframe: HTMLIFrameElement) => {
+            const theaterH3 = iframe.contentDocument.body.querySelectorAll("h3")[1];
             return (
               theaterH3 &&
               theaterH3.textContent === "Театры" &&
@@ -272,8 +284,8 @@ export const HtmlCourse = {
         {
           id: 3,
           label: `В параграфе текста про театры оберните фразу <em>не только на всю Россию, но и на весь мир.</em> в тэг <code>span</code>`,
-          test: (iframe: HTMLElement) => {
-            const span = iframe.querySelector("span");
+          test: (iframe: HTMLIFrameElement) => {
+            const span = iframe.contentDocument.body.querySelector("span");
             return span && span.textContent === "не только на всю Россию, но и на весь мир.";
           },
           failMsg: `Убедитесь, что на странице есть элемент span с текстом "не только на всю Россию, но и на весь мир."`,
@@ -285,6 +297,7 @@ export const HtmlCourse = {
     {
       id: 7,
       header: "Выделение текста - тэги em и strong",
+      url: "html-highlight",
       theory: `<p>Хотя для внешней стилизации текста используется CSS, существуют способы смыслового выделения текста с помощью HTML тэгов. Мы рассмотрим 2 из них - тэги <code>em</code> и <code>strong</code>.</p>
         <p>Элемент <code>em</code> отмечает акцентируемый текст. Он может быть вложенным и каждый уровень вложенности показывает болушую степень акцента. Применяйте этот элемент для слов и выражений, которые имеют подчеркнутый акцент по сравлению с окружающим текстом. По умолчанию браузеры выделяют текст внутри этого элемента <em>курсивом</em>.</p>
         <p>Элемент <code>strong</code> показывает, что данное слово или выражение имеет большую срочность, серьезность или значение, чем окружающий текст.  Им можно выделять, например, предупреждения. Браузеры обычно выделяют текст внутри этого элемента <strong>жирным</strong> шрифтом.</p>
@@ -302,8 +315,8 @@ export const HtmlCourse = {
         {
           id: 1,
           label: `В параграфе про театры Москвы подчеркните, что театров в Москве много, сделав акцент на фразе "великое множество".`,
-          test: (iframe: HTMLElement) => {
-            const em = iframe.querySelectorAll("em")[1];
+          test: (iframe: HTMLIFrameElement) => {
+            const em = iframe.contentDocument.body.querySelectorAll("em")[1];
             return em && em.textContent === "великое множество";
           },
           failMsg: `Убедитесь, что фраза "великое множество" обернута в элемент em.`,
@@ -311,8 +324,8 @@ export const HtmlCourse = {
         {
           id: 2,
           label: `В этом же параграфе укажите важность разнообразия постановок, выделив фразу "и классические и современные постановки.".`,
-          test: (iframe: HTMLElement) => {
-            const strong = iframe.querySelectorAll("strong")[1];
+          test: (iframe: HTMLIFrameElement) => {
+            const strong = iframe.contentDocument.body.querySelectorAll("strong")[1];
             return strong && strong.textContent === "и классические и современные постановки.";
           },
           failMsg: `Убедитесь, что фраза "и классические и современные постановки." обернута в элемент strong.`,
@@ -324,6 +337,7 @@ export const HtmlCourse = {
     {
       id: 8,
       header: "Разделение блоков текста - тэги br и hr",
+      url: "text-splitting",
       theory: `<p>Если в вашем HTML коде вы поставите пробелы в тексте, они никак не отобразятся на странице, текст никуда не сдвинется (попробуйте). Существует несколько способов перенести текст на странице и один из них - использвание элемента <code><br></code></p>
         <p><code><br></code> - это символ переноса строки (возврата каретки), поставьте его в том месте, где необходимо перенести текст на новую строку. Этот элемент удобно применять, например, для отображения стихотворений или адреса, там, где важно разбить текст на строки.</p>
         <p>Элемент <code>hr</code> служит для тематического разделения абзацев. Браузер отрисует горизонтальную линию, которая визуально отделит один обзац от другого.</p>
@@ -341,8 +355,8 @@ export const HtmlCourse = {
         {
           id: 1,
           label: `В параграфе про театры Москвы второе предложение ("На сценах...") перенесите на следующую строку.`,
-          test: (iframe: HTMLElement) => {
-            const br = iframe.querySelector("br");
+          test: (iframe: HTMLIFrameElement) => {
+            const br = iframe.contentDocument.body.querySelector("br");
             return (
               br &&
               br.nextSibling.textContent === " На сценах московских театров, которых насчитывается " &&
@@ -354,8 +368,8 @@ export const HtmlCourse = {
         {
           id: 2,
           label: `Отчеркните параграф про театры Москвы с помощью горизонтальной черты.`,
-          test: (iframe: HTMLElement) => {
-            const hr = iframe.querySelector("hr");
+          test: (iframe: HTMLIFrameElement) => {
+            const hr = iframe.contentDocument.body.querySelector("hr");
             return (
               hr &&
               hr.previousSibling.textContent ===
@@ -371,6 +385,7 @@ export const HtmlCourse = {
     {
       id: 9,
       header: "Отображение списков - тэги ul и li",
+      url: "unordered-lists",
       theory: `<p>Есть много информации, которую удобно отображать в виде списка (например, список покупок). Рассмотрим, как отображить список с помощью элемента <code>ul</code>.</p>
         <p><code>ul</code> отобразит <i>неупорядоченный</i> список элементов, каждый из них по умолчанию будет помечен круглым маркером. Однако нельзя просто так вставить текст в <code>ul</code>. Каждый элемент списка должен быть обернут в элемент <code>li</code>. Например, вот так:</p>
         <pre><code><span class="tag"><<span>ul</span>></span>\n <span class="tag"><<span>li</span>></span>Газеты<span class="tag"><<span>/li</span>></span>\n <span class="tag"><<span>li</span>></span>Журналы<span class="tag"><<span>/li</span>></span>\n <span class="tag"><<span>li</span>></span>Буклеты<span class="tag"><<span>/li</span>></span>\n<span class="tag"><<span>/ul</span>></span></code></pre>
@@ -388,8 +403,8 @@ export const HtmlCourse = {
         {
           id: 1,
           label: `Ниже параграфа с текстом "Среди самых красивых парков Москвы:" добавьте неупорядоченный список.`,
-          test: (iframe: HTMLElement) => {
-            const ul = iframe.querySelector("ul");
+          test: (iframe: HTMLIFrameElement) => {
+            const ul = iframe.contentDocument.body.querySelector("ul");
             return ul !== null;
           },
           failMsg: `Убедитесь, что после текста "Среди самых красивых парков Москвы:" добавлен неупорядоченный список ul`,
@@ -397,8 +412,8 @@ export const HtmlCourse = {
         {
           id: 2,
           label: `Добавьте элемент списка с текстом "Парк Горького".`,
-          test: (iframe: HTMLElement) => {
-            const ul = iframe.querySelector("ul");
+          test: (iframe: HTMLIFrameElement) => {
+            const ul = iframe.contentDocument.body.querySelector("ul");
             return (
               ul && ul.children[0] && ul.children[0].tagName === "LI" && ul.children[0].textContent === "Парк Горького"
             );
@@ -408,8 +423,8 @@ export const HtmlCourse = {
         {
           id: 3,
           label: `Добавьте второй элемент списка с текстом "Нескучный сад".`,
-          test: (iframe: HTMLElement) => {
-            const ul = iframe.querySelector("ul");
+          test: (iframe: HTMLIFrameElement) => {
+            const ul = iframe.contentDocument.body.querySelector("ul");
             return (
               ul && ul.children[1] && ul.children[1].tagName === "LI" && ul.children[1].textContent === "Нескучный сад"
             );
@@ -419,8 +434,8 @@ export const HtmlCourse = {
         {
           id: 4,
           label: `Добавьте третий элемент списка с текстом "Парк Победы".`,
-          test: (iframe: HTMLElement) => {
-            const ul = iframe.querySelector("ul");
+          test: (iframe: HTMLIFrameElement) => {
+            const ul = iframe.contentDocument.body.querySelector("ul");
             return (
               ul && ul.children[2] && ul.children[2].tagName === "LI" && ul.children[2].textContent === "Парк Победы"
             );
@@ -434,6 +449,7 @@ export const HtmlCourse = {
     {
       id: 10,
       header: "Отображение списков - тэг ol",
+      url: "ordered-lists",
       theory: `<p>Иногда вам нужно отобразить список элементов, в котором важна последовательность их расположения. Для этого служит <i>упорядоченный список</i> - <code>ol</code>.</p>
         <p>Единственное его отличие от <code>ul</code>, что каждый элемент списка отобразится под собственным номером. В качестве вложенных элементов используются уже знакомые вам тэги <code>li</code>. Вот как это выглядит в разметке:</p>
         <pre><code><span class="tag"><<span>h3</span>></span>Самые длинные реки в мире:<span class="tag"><<span>/h3</span>></span>\n<span class="tag"><<span>ol</span>></span>\n <span class="tag"><<span>li</span>></span>Нил<span class="tag"><<span>/li</span>></span>\n <span class="tag"><<span>li</span>></span>Амазонка<span class="tag"><<span>/li</span>></span>\n <span class="tag"><<span>li</span>></span>Янцзы<span class="tag"><<span>/li</span>></span>\n<span class="tag"><<span>/ol</span>></span></code></pre>
@@ -450,8 +466,8 @@ export const HtmlCourse = {
         {
           id: 1,
           label: `Ниже параграфа с текстом "К любимым кинотеатрам москвичей относятся:" добавьте упорядоченный список.`,
-          test: (iframe: HTMLElement) => {
-            const ol = iframe.querySelector("ol");
+          test: (iframe: HTMLIFrameElement) => {
+            const ol = iframe.contentDocument.body.querySelector("ol");
             return !!ol;
           },
           failMsg: `Убедитесь, что после текста "К любимым кинотеатрам москвичей относятся:" добавлен упорядоченный список ol`,
@@ -459,8 +475,8 @@ export const HtmlCourse = {
         {
           id: 2,
           label: `В упорядоченный список добавьте <b>не менее трех</b> кинотеатров, которые относятся к вашим любимым.`,
-          test: (iframe: HTMLElement) => {
-            const ol = iframe.querySelector("ol");
+          test: (iframe: HTMLIFrameElement) => {
+            const ol = iframe.contentDocument.body.querySelector("ol");
             return (
               ol &&
               ol.children &&
@@ -482,6 +498,7 @@ export const HtmlCourse = {
     {
       id: 11,
       header: "Аттрибуты элементов",
+      url: "attributes",
       theory: `<p>Если нам требуется не только отобразить элемент на странице, но и придать ему дополнительные свойства, мы даем элементу <em>аттрибуты</em>. Аттрибут - это дополнительный контент элемента, который записывается в открывающем тэге. Например так:</p>
         <pre><code><span class="tag"><<span>div </span><span class="attr-name">id=</span><span class="attr-value">"culture"</span>></span><span class="tag"><<span>/div</span>></span></code></pre>
         <p>В данном случае элементу <code>div</code> был присвоен аттрибут с именем <code>id</code> и значением <code>culture</code>. Аттрибут id используется для уникальной идентификации элемента. Элемент с определенным значением <code>id</code> может быть только один на странице.</p>
@@ -489,7 +506,7 @@ export const HtmlCourse = {
         <pre><code><span class="tag"><<span>h3 </span><span class="attr-name">class=</span><span class="attr-value">"small-header"</span>></span>Музеи<span class="tag"><<span>/h3</span>></span></code></pre>
         <p>Аттрибут <code>class</code> используется для передачи CSS свойств группе одинаковых элементов. Например, если на странице есть несполько элементов с классом "small-header", мы можем найти их из CSS и придать им необходимые свойста, например, покрасить в другой цвет или изменить размер шрифта. Этим аттрибутом мы будем активно пользоваться в курсе по CSS.</p>
         <p>А вот аттрибут, который меняет внешний вид элемента прямо из HTML:</p>
-        <pre><code><span class="tag"><<span>span </span><span class="attr-name">style=</span><span class="attr-value">"color: orange"</span>>не только на всю Россию, но и на весь мир.</span><span class="tag"><<span>/span</span>></span></code></pre>
+        <pre><code><span class="tag"><<span>span </span><span class="attr-name">style=</span><span class="attr-value">"color: orange"</span>>не только на всю Россию,\n но и на весь мир.</span><span class="tag"><<span>/span</span>></span></code></pre>
         <p>Аттрибут <code>style</code> задает стили элементам. В данном случае он покрасит текст, отображаемый элементом <code>span</code> в оранжевый цвет. Это один из трех способов изменять стили элементов, с остальными мы познакомимся позже.</p>`,
       goal: `Добавьте элементам аттрибуты`,
       initValues: {
@@ -501,8 +518,8 @@ export const HtmlCourse = {
         {
           id: 1,
           label: `Второму элементу <code>div</code> задайте id со значением "leisure"`,
-          test: (iframe: HTMLElement) => {
-            const leisureElem = iframe.querySelector("#leisure");
+          test: (iframe: HTMLIFrameElement) => {
+            const leisureElem = iframe.contentDocument.body.querySelector("#leisure");
             return (
               leisureElem &&
               leisureElem.tagName === "DIV" &&
@@ -515,8 +532,8 @@ export const HtmlCourse = {
         {
           id: 2,
           label: `Заголовку <code>h2</code> с текстом "Отдых" задайте класс "big-header"`,
-          test: (iframe: HTMLElement) => {
-            const bigHeader = iframe.querySelector(".big-header");
+          test: (iframe: HTMLIFrameElement) => {
+            const bigHeader = iframe.contentDocument.body.querySelector(".big-header");
             return (
               bigHeader &&
               bigHeader.tagName === "H2" &&
@@ -529,8 +546,8 @@ export const HtmlCourse = {
         {
           id: 3,
           label: `Неупорядоченному списку <code>li</code> с помощью <code>style</code> задайте цвет текста "darkorchid". Обратите внимание, что цвет изменится у всех элементов списка`,
-          test: (iframe: HTMLElement) => {
-            const ul = iframe.querySelector("ul");
+          test: (iframe: HTMLIFrameElement) => {
+            const ul = iframe.contentDocument.body.querySelector("ul");
             console.log(ul.style, ul.style.color);
             return ul && ul.style.color === "darkorchid";
           },
@@ -539,8 +556,8 @@ export const HtmlCourse = {
         {
           id: 4,
           label: `Упорядоченному списку <code>ol</code> с помощью <code>style</code> задайте цвет фона "burlywood" (значение <code>style</code> установите "background-color: burlywood").`,
-          test: (iframe: HTMLElement) => {
-            const ol = iframe.querySelector("ol");
+          test: (iframe: HTMLIFrameElement) => {
+            const ol = iframe.contentDocument.body.querySelector("ol");
             return ol && ol.style.backgroundColor === "burlywood";
           },
           failMsg: `Убедитесь, что упорядоченному списку ol задан аттрибут style со значением "background-color: burlywood"`,
@@ -552,6 +569,7 @@ export const HtmlCourse = {
     {
       id: 12,
       header: "Изображения - тэг img",
+      url: "images",
       theory: `<p>На нашей странице мы уже отобразили достаточно много текстовых элементов. Но что же насчет картинок? Ведь без картинок котиков и Интернета бы не было.</p>
        <p>Для вывода на страницу изображений служит элемент <code>img</code>. Вот как он выглядит в разметке:</p>
         <pre><code><span class="tag"><<span>img </span><span class="attr-name">src=</span><span class="attr-value">"путь_к_картинке.jpg"</span> <span class="attr-name">alt=</span><span class="attr-value">"текстовое описание"</span> /></span></code></pre>
@@ -570,8 +588,8 @@ export const HtmlCourse = {
         {
           id: 1,
           label: `После параграфа с текстом "Вот как выглядит Парк Горького:" добавьте изображение.`,
-          test: (iframe: HTMLElement) => {
-            const secondImg = iframe.querySelectorAll("img")[1];
+          test: (iframe: HTMLIFrameElement) => {
+            const secondImg = iframe.contentDocument.body.querySelectorAll("img")[1];
             return (
               secondImg &&
               secondImg.previousElementSibling &&
@@ -584,15 +602,16 @@ export const HtmlCourse = {
         {
           id: 2,
           label: `Задайте изображению источник "http://uploads.gazeta-moy-rayon-donskoy.ru/2020/07/парк-горького-москва-панорама-вк-пг.jpg".`,
-          test: (iframe: HTMLElement) => {
-            const secondImg = iframe.querySelectorAll("img")[1];
+          test: (iframe: HTMLIFrameElement) => {
+            const secondImg = iframe.contentDocument.body.querySelectorAll("img")[1];
             return (
               secondImg &&
               secondImg.previousElementSibling &&
               secondImg.previousElementSibling.tagName === "P" &&
               secondImg.previousElementSibling.textContent === "Вот как выглядит Парк Горького:" &&
               secondImg.src &&
-              secondImg.src === "http://uploads.gazeta-moy-rayon-donskoy.ru/2020/07/%D0%BF%D0%B0%D1%80%D0%BA-%D0%B3%D0%BE%D1%80%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE-%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0-%D0%BF%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0-%D0%B2%D0%BA-%D0%BF%D0%B3.jpg"
+              secondImg.src ===
+                "http://uploads.gazeta-moy-rayon-donskoy.ru/2020/07/%D0%BF%D0%B0%D1%80%D0%BA-%D0%B3%D0%BE%D1%80%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE-%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0-%D0%BF%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0-%D0%B2%D0%BA-%D0%BF%D0%B3.jpg"
             );
           },
           failMsg: `Убедитесь, что изображению задан аттрибут src со значением "http://uploads.gazeta-moy-rayon-donskoy.ru/2020/07/парк-горького-москва-панорама-вк-пг.jpg"`,
@@ -600,8 +619,8 @@ export const HtmlCourse = {
         {
           id: 3,
           label: `Задайте изображению альтернативный текст "Парк Горького".`,
-          test: (iframe: HTMLElement) => {
-            const secondImg = iframe.querySelectorAll("img")[1];
+          test: (iframe: HTMLIFrameElement) => {
+            const secondImg = iframe.contentDocument.body.querySelectorAll("img")[1];
             return (
               secondImg &&
               secondImg.previousElementSibling &&
@@ -616,33 +635,5 @@ export const HtmlCourse = {
       ],
       solution: `<main>\n  <h1>Москва</h1>\n  <div id="culture">\n    <h2>Культура</h2>\n    <h3 class="small-header">Музеи</h3>\n    <p>В Москве <strong>огромное</strong> количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить <em>хотя бы один раз в жизни</em>.</p>\n    <h3 class="small-header">Театры</h3>\n    <p>Москва славится своими театрами <span style="color: orange">не только на всю Россию, но и на весь мир.</span><br> На сценах московских театров, которых насчитывается <em>великое множество</em>, проходят <strong>и классические и современные постановки.</strong> И в Москву часто приезжают театралы со всего мира.</p>\n    <p>Самым узнаваемым театром столицы безусловно является Большой театр.</p>\n    <img src="https://adindex.ru/files2/news/2018_12/230066_4567.jpg" alt="Большой театр" /><hr>\n  </div>\n  <div id="leisure">\n    <h2 class="big-header">Отдых</h2>\n    <h3>Парки</h3>\n    <p>Среди самых красивых парков Москвы:</p>\n    <ul style="color: darkorchid">\n      <li>Парк Горького</li>\n      <li>Нескучный сад</li>\n      <li>Парк Победы</li>\n    </ul>\n    <p>Вот как выглядит Парк Горького:</p>\n    <img src="http://uploads.gazeta-moy-rayon-donskoy.ru/2020/07/парк-горького-москва-панорама-вк-пг.jpg" alt="Парк Горького" />\n    <h3>Кинотеатры</h3>\n    <p>К любимым кинотеатрам москвичей относятся:</p>\n    <ol style="background-color: burlywood">\n      <li>Москва</li>\n      <li>Атриум</li>\n      <li>Родина</li>\n    </ol>\n  </div>\n</main>`,
     },
-    /* {
-      id: 5,
-      header: "Ссылки на внешние страницы",
-      theory:
-        '<p>Ссылки - кровь Интернета. По ним вы переходите на любые интересующие вас ресурсы.</p><p>В HTML для перехода на какую-либо внешнюю страницу используется тэг <code>a</code> (англ. "anchor" - якорь)</p><p>У ссылки есть обязательный аттрибут <code>href</code>, который содержит адрес нужного ресурса. И конечно ссылка выводит текст, по которому нужно кликнуть мышкой</p><p>К примеру, ссылка на страницу, на которой вы сейчас находитесь, выглядит так: </p><p><code><a href="https://webgrove.org">Ссылка на сайт webgrove.org</a></code></p><p>Ваш браузер выведет на экран текст "Ссылка на сайт webgrove.org", при клике на который вы перейдете поадресу <a href="https://freecodecamp.org">webgrove.org</a></p><p>Кликните, не стесняйтесь!</p>',
-      goal: 'Создайте ссылку на сайт "https://apexcharts.com"',
-      initValues: {
-        html: "<!--Разместите ссылку ниже этой линии-->\n",
-        css: "",
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label: '- Внутри тэга <code><а></code> должен быть размещен текст "Ссылка на apexcharts.com".',
-          test: (iframe: HTMLElement) =>
-            iframe.querySelector("a") && iframe.querySelector("a").textContent === "Ссылка на apexcharts.com",
-          failMsg: "Внутри тэга <a> должен быть текст 'Ссылка на apexcharts.com'",
-        },
-        {
-          id: 2,
-          label: "- Ссылка <code><а></code> должна вести на сайт https://apexcharts.com/.",
-          test: (iframe: HTMLElement) =>
-            iframe.querySelector("a") && iframe.querySelector("a").href === "https://apexcharts.com/",
-          failMsg: 'Тэг <a> должен иметь аттрибут href со значением "https://apexcharts.com/"',
-        },
-      ],
-    }, */
   ],
 };

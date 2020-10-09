@@ -13,14 +13,20 @@ interface IEditor {
 const Editor: React.FC<IEditor> = ({ initValues }) => {
   const { html, css, js } = initValues;
   const dispatch = useDispatch();
-  const verticalScrollbarVisibility: "hidden" | "auto" | "visible" = "hidden"; // wtf
-  const lineHighlight: "none" | "line" | "gutter" | "all" = "gutter"; // wtf
-  const options = {
+
+  const options: monacoEditor.editor.IEditorOptions = {
     minimap: { enabled: false },
     overviewRulerBorder: false,
     overviewRulerLanes: 0,
-    renderLineHighlight: lineHighlight,
-    scrollbar: { vertical: verticalScrollbarVisibility },
+    renderLineHighlight: "gutter",
+    scrollbar: { vertical: "hidden" },
+    wordWrap: "bounded",
+    quickSuggestions: {
+      other: false,
+      comments: false,
+      strings: false,
+    },
+    suggestOnTriggerCharacters: false,
   };
 
   //const initialValue = `<html>\n <head>\n${css}\n </head>\n <body>\n  ${html}\n </body>\n</html>`;
@@ -31,7 +37,7 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
     //const js = string.substring(string.indexOf("<script>"), string.indexOf("</script"));
 
     //return { html, css, js };
-    return {html: string, css: '', js: ''}
+    return { html: string, css: "", js: "" };
   };
 
   const handleValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, value: string) => {

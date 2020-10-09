@@ -7,7 +7,7 @@ import { IInitEditorValues } from "../../types";
 
 const Output = () => {
   const { html, css, js } = useSelector((state: IRootState) => state.editorValues);
-  const { id, passed, message } = useSelector((state: IRootState) => state.currentExercise);
+  const { passed, message } = useSelector((state: IRootState) => state.currentExercise);
 
   const getGeneratedPageURL = ({ html, css, js }: IInitEditorValues) => {
     const getBlobURL = (code: string, type: string) => {
@@ -16,9 +16,10 @@ const Output = () => {
     };
 
     const cssURL = getBlobURL(css, "text/css");
-    const jsURL = getBlobURL(css, "text/javscript");
+    const jsURL = getBlobURL(js, "text/javscript");
 
     const source = `
+      <!DOCTYPE html>
       <html>
         <head>
           ${css ? `<link rel="stylesheet" type="text/css" href="${cssURL}" />` : ""}

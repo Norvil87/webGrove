@@ -16,11 +16,11 @@ code {
   }
 
   .attr-name {
-    color: #690
+    color: #690;
   }
 
   .attr-value {
-    color: #07a
+    color: #07a;
   }
 }
 
@@ -28,6 +28,7 @@ pre code {
   display: block;
   width: 100%;
   height: 100%;
+  overflow: auto;
 }
 
 code a {
@@ -64,6 +65,5 @@ code a {
 }
 
 .challenge {
-  width: 33%;
   padding: 0 10px;
 }

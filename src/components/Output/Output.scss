@@ -1,10 +1,9 @@
 @import "../../styles/variables.scss";
 
 .output {
-  width: 33%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  
 
   .task_passed {
     color: $successColor;
@@ -19,16 +18,12 @@
   border: none;
 }
 
-/* .iframe img {
-  max-width: 100%;
-}
- */
 .iframe-output {
   flex-grow: 1;
 }
 
 .console-output {
-  height: 100px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
