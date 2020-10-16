@@ -29,6 +29,7 @@ pre code {
   width: 100%;
   height: 100%;
   overflow: auto;
+  padding: 5px;
 }
 
 code a {
@@ -66,4 +67,12 @@ code a {
 
 .challenge {
   padding: 0 10px;
+  height: calc(100vh - 144px);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.theory {
+  overflow: auto;
 }

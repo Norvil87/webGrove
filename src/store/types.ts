@@ -1,4 +1,4 @@
-import { ITask, id } from "../types";
+import { ITask } from "../types";
 
 export interface IEditorValues {
   html: string;

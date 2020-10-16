@@ -25,6 +25,7 @@ const TaskSuite: React.FC<ITaskSuiteProps> = ({ tasks }) => {
   };
 
   useEffect(() => setTasks(), []);
+
   let taskClassName: string;
   const renderTasks = () => {
     let elems: JSX.Element[] = [];

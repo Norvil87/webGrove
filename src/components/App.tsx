@@ -19,8 +19,8 @@ const App = () => {
       exerciseId: state.currentExercise.excersiceId,
     };
   });
-  // path={`/courses/html/${blockUrl}/${exerciseUrl}`}
-// Html.blocks[blockUrl].excercises[0]
+// Html.blocks[blockUrl].excercises[exerciseId - 1]
+// `/courses/html/${blockUrl}/${exerciseUrl}`
   return (
     <Router>
       <div className="page__wrapper">
@@ -28,8 +28,8 @@ const App = () => {
           <Header />
           <Switch>
             <Route
-              path={`/courses/html/${'html-document'}/${'html-external-links'}`}
-              render={() => <Simulator excercise={Html.blocks['html-document'].excercises[5]} />}
+              path={`/courses/html/${blockUrl}/${exerciseUrl}`}
+              render={() => <Simulator excercise={Html.blocks[blockUrl].excercises[exerciseId - 1]} />}
             />
             <Route path="/courses/html" render={() => <CoursePage course={Html} />} />
             <Route path="/" exact render={() => <MainPage />} />

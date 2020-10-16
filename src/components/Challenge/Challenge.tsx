@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./Challenge.scss";
 import TaskSuite from "../TaskSuite";
+import LessonNavigator from "../LessonNavigator";
 import { IRootState } from "../../store/types";
 import { setCurrentTasks, setCurrentExercise } from "../../store/actions";
 import { ITask, ResultMessage } from "../../types";
@@ -58,6 +59,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks }) =
         </button>
       </div>
       <TaskSuite tasks={tasks} />
+      <LessonNavigator />
     </section>
   );
 };

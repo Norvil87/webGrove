@@ -29,20 +29,8 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
     suggestOnTriggerCharacters: false,
   };
 
-  //const initialValue = `<html>\n <head>\n${css}\n </head>\n <body>\n  ${html}\n </body>\n</html>`;
-
-  const parseString = (string: string) => {
-    //const html = string.substring(string.indexOf("<body>"), string.indexOf("</body"));
-    //const css = string.substring(string.indexOf("<style>"), string.indexOf("</style"));
-    //const js = string.substring(string.indexOf("<script>"), string.indexOf("</script"));
-
-    //return { html, css, js };
-    return { html: string, css: "", js: "" };
-  };
-
   const handleValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, value: string) => {
-    const parsedValue = parseString(value);
-    dispatch(setEditorValue(parsedValue));
+     dispatch(setEditorValue({ html: value, css: css, js: "" }));
   };
 
   const onEditorMount = () => {

@@ -1,0 +1,31 @@
+@import "../../styles/variables.scss";
+
+.block-nav {
+  margin-top: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.block-nav_forwards {
+  border: none;
+  border-radius: 26px;
+  font-weight: 700;
+  background: $primaryColor;
+  width: 120px;
+  color: #ffffff;
+}
+
+.block-nav_forwards:hover {
+  opacity: 1;
+  background: #ebb16f;
+}
+
+.block-nav_backwards--disabled {
+  opacity: 0.2;
+}
+
+.block-nav_backwards--disabled:hover {
+  opacity: 0.2;
+}

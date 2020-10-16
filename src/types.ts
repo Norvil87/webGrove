@@ -1,4 +1,4 @@
-export type id = number | string;
+//export type id = number | string;
 
 export enum ResultMessage {
   SUCCESS = "Поздравляем! Все тесты пройдены",
@@ -12,14 +12,14 @@ export interface IInitEditorValues {
 }
 
 export interface ITask {
-  id: id;
+  id: number;
   label: string;
   failMsg: string;
   test: (iframe: HTMLElement) => boolean;
 }
 
 export interface IExcercise {
-  id: id;
+  id: number;
   header: string;
   url: string;
   theory: string;
@@ -30,20 +30,18 @@ export interface IExcercise {
 }
 
 export interface ICourseBlock {
-  id: id;
+  id: number;
   title: string;
   url: string;
   excercises: IExcercise[];
 }
-
-
 
 export interface ICourseBlocks {
   [name: string]: ICourseBlock
 }
 
 export interface ICourse {
-  id: id;
+  id: number;
   title: string;
   blocks: ICourseBlocks;
 }

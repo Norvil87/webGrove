@@ -26,7 +26,7 @@ const CourseList: React.FC<ICourseListProps> = ({ course }) => {
               dispatch(
                 setCurrentExercise({
                   blockUrl: blockUrl,
-                  excersiceId: i,
+                  excersiceId: excercise.id,
                   excersiceUrl: excercise.url,
                   passed: undefined,
                   message: [],
