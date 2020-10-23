@@ -26,17 +26,17 @@ export interface IRootState {
 
 interface ISetEditorValues {
   type: string;
-  payload: any;
+  payload: { values: IEditorValues };
 }
 
 interface ISetCurrentEcsercise {
   type: string;
-  payload: any;
+  payload: { excercise: ICurrentExercise };
 }
 
 interface ISetCurrentTasks {
   type: string;
-  payload: any;
+  payload: { tasks: ICurrentTask[] };
 }
 
 export type IActionType = ISetEditorValues | ISetCurrentEcsercise | ISetCurrentTasks;

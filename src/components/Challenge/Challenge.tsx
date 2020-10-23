@@ -59,7 +59,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks }) =
         </button>
       </div>
       <TaskSuite tasks={tasks} />
-      <LessonNavigator />
+      {/* <LessonNavigator /> */}
     </section>
   );
 };

@@ -18,7 +18,7 @@ export const setCurrentExercise = (excercise: ICurrentExercise): IActionType => 
   };
 };
 
-export const setCurrentTasks = (tasks: ICurrentTask[]): IActionType => {
+ export const setCurrentTasks = (tasks: ICurrentTask[]): IActionType => {
   return {
     type: "SET_CURRENT_TASKS",
     payload: {
@@ -26,3 +26,4 @@ export const setCurrentTasks = (tasks: ICurrentTask[]): IActionType => {
     },
   };
 };
+ 

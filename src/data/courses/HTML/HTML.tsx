@@ -4,6 +4,7 @@ import { ICourse } from "../../../types";
 import { introToHtml } from "./IntroToHtml";
 import { HtmlDocument } from "./HtmlDocument";
 import { HtmlTable } from "./HTMLTable";
+import { HtmlForm } from "./HTMLForm";
 
 export const Html: ICourse = {
   id: 1,
@@ -12,5 +13,6 @@ export const Html: ICourse = {
     "intro-to-html": introToHtml,
     "html-document": HtmlDocument,
     "html-table": HtmlTable,
+    'html-forms': HtmlForm
   },
 };

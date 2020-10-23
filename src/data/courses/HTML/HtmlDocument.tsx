@@ -533,10 +533,15 @@ export const HtmlDocument = {
           label:
             "Сразу под неупорядоченным списком парков добавьте ссылку на страницу <b>parks.html</b> с текстом 'Узнать больше о парках'. Файл расположен в той же папке, что и <b>index.html</b>.",
           test: (iframe: HTMLIFrameElement) => {
-            const a = Array.from(iframe.contentDocument.body.querySelectorAll("a")).find(
+            const anchor = Array.from(iframe.contentDocument.body.querySelectorAll("a")).find(
               anchor => anchor.textContent === "Узнать больше о парках"
             );
-            return a && a.previousElementSibling && a.previousElementSibling.tagName === "UL" && a.href === "";
+            return (
+              anchor &&
+              anchor.previousElementSibling &&
+              anchor.previousElementSibling.tagName === "UL" &&
+              anchor.href === ""
+            );
           },
           failMsg:
             "Убедитесь, что после списка ul добавлен элемент a с текстом 'Узнать больше о парках' и адресом './parks.html'",
@@ -546,10 +551,15 @@ export const HtmlDocument = {
           label:
             "Сразу под упорядоченным списком кинотеатров добавьте ссылку на страницу <b>cinemas.html</b> с текстом 'Полный список кинотеатров'. Файл расположен в той же папке, что и остальные 2 файла.",
           test: (iframe: HTMLIFrameElement) => {
-            const a = Array.from(iframe.contentDocument.body.querySelectorAll("a")).find(
+            const anchor = Array.from(iframe.contentDocument.body.querySelectorAll("a")).find(
               anchor => anchor.textContent === "Полный список кинотеатров"
             );
-            return a && a.previousElementSibling && a.previousElementSibling.tagName === "OL" && a.href === "";
+            return (
+              anchor &&
+              anchor.previousElementSibling &&
+              anchor.previousElementSibling.tagName === "OL" &&
+              anchor.href === ""
+            );
           },
           failMsg:
             "Убедитесь, что после списка ol добавлен элемент a с текстом 'Полный список кинотеатров' и адресом './cinemas.html'",

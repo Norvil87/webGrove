@@ -5,16 +5,15 @@ export const HtmlTable = {
   excercises: [
     {
       id: 1,
-      header: "Объявление HTML таблицы - тэг table",
-      url: "html-table-declaration",
+      header: "Создание HTML таблицы - тэг table",
+      url: "html-table-creation",
       theory: `<p>Существует большое количество разнообразных данных, которые удобно отображать в виде последовательности строк и столбцов, т. е. таблиц. В HTML существует группа элементов, предназначенных для отображения табличных данных.</p>
-      <p> HTML таблица создается с помощью элемента <code>table</code>: </p>
+      <p> HTML таблица создается с помощью элемента <code>table</code>:</p>
       
-      <pre><code><span class="tag"><<span>table</span>></span>
+<pre><code><span class="tag"><<span>table</span>></span>
       
-      <span class="tag"><<span>/table</span>></span>
-      </code></pre>`,
-      goal: `Создайте таблицу.`,
+<span class="tag"><<span>/table</span>></span></code></pre>`,
+      goal: `Создайте пустую таблицу.`,
       initValues: {
         html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
 <p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>`,
@@ -48,7 +47,7 @@ export const HtmlTable = {
       url: "html-table-rows",
       theory: `<p>Создавить структуру таблицы мы начнем со строк. Строки задаются с помощью элемента <code>tr</code> (<i>table row</i>), вот так:</p>
   
-  <pre><code><span class="tag"><<span>table</span>></span>  
+<pre><code><span class="tag"><<span>table</span>></span>  
   <span class="tag"><<span>tr</span>></span>
   
   <span class="tag"><<span>/tr</span>></span>
@@ -166,7 +165,7 @@ th, td {
         {
           id: 1,
           label:
-            "Добавьте во вторую строку таблицы ячейки с данными: <ul> <li style='background: none'>XR-1 PRO</li> <li style='background: none'>пластик</li> <li style='background: none'>60</li> <li style='background: none'>7000</li></ul>",
+            "Добавьте во вторую строку таблицы ячейки с данными: <ul><li>XR-1 PRO</li><li>пластик</li><li>60</li><li>7000</li></ul>",
           test: (iframe: HTMLIFrameElement) => {
             const secondRow = iframe.contentDocument.body.querySelectorAll("tr")[1];
             if (!secondRow) {
@@ -186,7 +185,7 @@ th, td {
         {
           id: 2,
           label:
-            "Добавьте в третью строку таблицы ячейки с данными: <ul> <li style='background: none'>XT-8</li> <li style='background: none'>алюминий</li> <li style='background: none'>45</li> <li style='background: none'>6000</li></ul>",
+            "Добавьте в третью строку таблицы ячейки с данными: <ul><li>XT-8</li><li>алюминий</li><li>45</li><li>6000</li></ul>",
           test: (iframe: HTMLIFrameElement) => {
             const thirdRow = iframe.contentDocument.body.querySelectorAll("tr")[2];
             if (!thirdRow) {
@@ -206,7 +205,7 @@ th, td {
         {
           id: 3,
           label:
-            "Добавьте в четвертую строку таблицы ячейки с данными: <ul> <li style='background: none'>XT-8 ULTRA</li> </ul> Остальные ячейки оставьте пустыми.",
+            "Добавьте в четвертую строку таблицы ячейки с данными: <ul><li>XT-8 ULTRA</li></ul> Остальные ячейки оставьте пустыми.",
           test: (iframe: HTMLIFrameElement) => {
             const fourthRow = iframe.contentDocument.body.querySelectorAll("tr")[3];
             if (!fourthRow) {
@@ -347,7 +346,7 @@ th, td {
         {
           id: 1,
           label:
-            "Добавьте в первую строку таблицы заголовки с данными: <ul> <li style='background: none'>Модель</li> <li style='background: none'>Корпус</li> <li style='background: none'>Кол-во языков</li> <li style='background: none'>Стоимость, руб.</li></ul>",
+            "Добавьте в первую строку таблицы заголовки с данными: <ul><li>Модель</li><li>Корпус</li><li>Кол-во языков</li><li>Стоимость, руб.</li></ul>",
           test: (iframe: HTMLIFrameElement) => {
             const firstRow = iframe.contentDocument.body.querySelectorAll("tr")[0];
             if (!firstRow) {

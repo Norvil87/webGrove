@@ -16,7 +16,7 @@ const initialState: IRootState = {
   currentTasks: [],
 };
 
-export const reducer = (state: IRootState = initialState, action: IActionType) => {
+export const reducer = (state: IRootState = initialState, action: any) => {
   switch (action.type) {
     case "SET_EDITOR_VALUE":
       return { ...state, editorValues: { ...action.payload.values } };
