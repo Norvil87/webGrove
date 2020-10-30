@@ -8,7 +8,7 @@ import { IInitEditorValues } from "../../types";
 const Output = () => {
   const { html, css, js } = useSelector((state: IRootState) => state.editorValues);
   const { passed, message } = useSelector((state: IRootState) => state.currentExercise);
-
+//console.log(html, css)
   const getGeneratedPageURL = ({ html, css, js }: IInitEditorValues) => {
     const getBlobURL = (code: string, type: string) => {
       const blob = new Blob([code], { type });

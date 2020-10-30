@@ -1,0 +1,32 @@
+@import "../../../styles/variables.scss";
+
+.resetConfirmModal-content {
+  width: auto;
+  padding: 1rem;
+}
+
+.resetConfirmModal-content h2 {
+  text-align: center;
+}
+
+.resetConfirmModal-content p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.resetConfirmModal__buttonCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resetConfirmModal__confirmBtn {
+  color: $failColor;
+  border-color: $failColor;
+  margin-right: 10px;
+}
+
+.resetConfirmModal__confirmBtn:hover {
+  color: $successColor;
+  border-color: $successColor;
+}

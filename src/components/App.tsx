@@ -19,8 +19,10 @@ const App = () => {
       exerciseId: state.currentExercise.excersiceId,
     };
   });
+  // `/courses/html/html-forms`
   // Html.blocks[blockUrl].excercises[exerciseId - 1]
   // `/courses/html/${blockUrl}/${exerciseUrl}`
+  // Html.blocks["html-forms"].excercises[0]
   return (
     <Router>
       <div className="page__wrapper">
@@ -28,8 +30,8 @@ const App = () => {
           <Header />
           <Switch>
             <Route
-              path={`/courses/html/html-forms`}
-              render={() => <Simulator excercise={Html.blocks["html-forms"].excercises[0]} />}
+              path={`/courses/html/html-semantic/html-footer-main`}
+              render={() => <Simulator excercise={Html.blocks["html-semantic"].excercises[1]} />}
             />
             <Route path="/courses/html" render={() => <CoursePage course={Html} />} />
             <Route path="/" exact render={() => <MainPage />} />

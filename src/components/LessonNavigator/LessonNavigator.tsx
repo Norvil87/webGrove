@@ -5,6 +5,7 @@ import { IRootState } from "../../store/types";
 import { ICourseBlock } from "../../types";
 import { setCurrentExercise, setEditorValue } from "../../store/actions";
 import "./LessonNavigator.scss";
+import { Link } from "react-router-dom";
 
 const LessonNavigator: React.FC = ({}) => {
   const { blockUrl, excersiceId, excersiceUrl } = useSelector((state: IRootState) => state.currentExercise);
@@ -29,9 +30,7 @@ const LessonNavigator: React.FC = ({}) => {
   };
 
   const handleForwardsButtonClick = () => {
-    if (excersiceId === numExcercises) {
-      // код завершения блока
-    } else {
+    if (excersiceId < numExcercises) {
       const excercise = block.excercises[excersiceId];
 
       dispatch(setEditorValue({ html: excercise.initValues.html, css: excercise.initValues.css, js: "" }));
@@ -58,7 +57,13 @@ const LessonNavigator: React.FC = ({}) => {
       </button>
       <div className="block-nav_position">{`Упражнение ${excersiceId} из ${numExcercises}`} </div>
       <button className="block-nav_forwards" type="button" onClick={handleForwardsButtonClick}>
-        {`${excersiceId === numExcercises ? "Завершить урок" : "Вперед"}`}
+        {excersiceId === numExcercises ? (
+          <Link to="courses/html" className="block-nav__linkToCoursePage">
+            Завершить урок
+          </Link>
+        ) : (
+          "Вперед"
+        )}
       </button>
     </div>
   );

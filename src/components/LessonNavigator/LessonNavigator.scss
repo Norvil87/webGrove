@@ -15,6 +15,7 @@
   background: $primaryColor;
   width: 120px;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .block-nav_forwards:hover {
@@ -22,10 +23,18 @@
   background: #ebb16f;
 }
 
-.block-nav_backwards--disabled {
+.block-nav_backwards--disabled, .block-nav_backwards--disabled:hover {
   opacity: 0.2;
 }
 
-.block-nav_backwards--disabled:hover {
-  opacity: 0.2;
+
+.block-nav__linkToCoursePage {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+}
+
+.block-nav__linkToCoursePage:hover {
+  color: #fff;
 }

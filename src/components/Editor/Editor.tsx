@@ -2,16 +2,18 @@ import React from "react";
 import { ControlledEditor } from "@monaco-editor/react";
 import * as monacoEditor from "monaco-editor/esm/vs/editor/editor.api";
 import "./Editor.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setEditorValue } from "../../store/actions";
 import { IInitEditorValues } from "../../types";
+import { IRootState } from "../../store/types";
 
 interface IEditor {
   initValues: IInitEditorValues;
 }
 
 const Editor: React.FC<IEditor> = ({ initValues }) => {
-  const { html, css, js } = initValues;
+  const { html, css, js } = useSelector((state: IRootState) => state.editorValues);
+
   const dispatch = useDispatch();
 
   const options: monacoEditor.editor.IEditorOptions = {
@@ -30,7 +32,7 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
   };
 
   const handleValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, value: string) => {
-     dispatch(setEditorValue({ html: value, css: css, js: "" }));
+    dispatch(setEditorValue({ html: value, css: initValues.css, js: "" }));
   };
 
   const onEditorMount = () => {
