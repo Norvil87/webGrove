@@ -30,8 +30,8 @@ const App = () => {
           <Header />
           <Switch>
             <Route
-              path={`/courses/html/html-semantic/html-footer-main`}
-              render={() => <Simulator excercise={Html.blocks["html-semantic"].excercises[1]} />}
+              path={`/courses/html/html-semantic/html-iframe`}
+              render={() => <Simulator excercise={Html.blocks["html-semantic"].excercises[5]} />}
             />
             <Route path="/courses/html" render={() => <CoursePage course={Html} />} />
             <Route path="/" exact render={() => <MainPage />} />

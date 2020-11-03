@@ -42,7 +42,7 @@ export const HtmlSemantic = {
         <ul>
           <li><a href="#music">Музыка</a></li>
           <li><a href="#flamenco">Фламенко</a></li>
-          <li><a href="#cousine">Кухня</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
         </ul>
       </div>
       <button type="button">Войти</button>
@@ -59,9 +59,9 @@ export const HtmlSemantic = {
           <h2>Фламенко</h2>
           <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
         </div>
-        <div id="cousine">
-          <h2>Кухня</h2>
-          <p>Андалусская кухня — это история региона в цвете, аромате и вкусе. А поскольку средиземноморская диета сегодня в моде, то свежие фрукты, овощи, рыба и оливковое масло Андалусии стали местной достопримечательностью.</p>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
         </div>
       </div>  
       <div>
@@ -160,7 +160,7 @@ ul a {
         <ul>
           <li><a href="#music">Музыка</a></li>
           <li><a href="#flamenco">Фламенко</a></li>
-          <li><a href="#cousine">Кухня</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
         </ul>
       </nav>
       <button type="button">Войти</button>
@@ -177,9 +177,9 @@ ul a {
           <h2>Фламенко</h2>
           <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
         </div>
-        <div id="cousine">
-          <h2>Кухня</h2>
-          <p>Андалусская кухня — это история региона в цвете, аромате и вкусе. А поскольку средиземноморская диета сегодня в моде, то свежие фрукты, овощи, рыба и оливковое масло Андалусии стали местной достопримечательностью.</p>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
         </div>
       </div>  
       <div>
@@ -257,7 +257,7 @@ ul a {
         <ul>
           <li><a href="#music">Музыка</a></li>
           <li><a href="#flamenco">Фламенко</a></li>
-          <li><a href="#cousine">Кухня</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
         </ul>
       </nav>
       <button type="button">Войти</button>
@@ -274,9 +274,9 @@ ul a {
           <h2>Фламенко</h2>
           <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
         </div>
-        <div id="cousine">
-          <h2>Кухня</h2>
-          <p>Андалусская кухня — это история региона в цвете, аромате и вкусе. А поскольку средиземноморская диета сегодня в моде, то свежие фрукты, овощи, рыба и оливковое масло Андалусии стали местной достопримечательностью.</p>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
         </div>
       </div>  
       <div>
@@ -381,7 +381,7 @@ ul a {
         <ul>
           <li><a href="#music">Музыка</a></li>
           <li><a href="#flamenco">Фламенко</a></li>
-          <li><a href="#cousine">Кухня</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
         </ul>
       </nav>
       <button type="button">Войти</button>
@@ -398,9 +398,9 @@ ul a {
           <h2>Фламенко</h2>
           <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
         </div>
-        <div id="cousine">
-          <h2>Кухня</h2>
-          <p>Андалусская кухня — это история региона в цвете, аромате и вкусе. А поскольку средиземноморская диета сегодня в моде, то свежие фрукты, овощи, рыба и оливковое масло Андалусии стали местной достопримечательностью.</p>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
         </div>
       </div>  
       <div>
@@ -421,35 +421,76 @@ ul a {
   </body>
 </html>`,
     },
-  ],
-};
 
-/* 
+    {
+      id: 3,
+      header: "Блоки основного контента - тэги article и section",
+      url: "html-article-section",
+      theory: `<p>Основное содержание страницы также можно разбить на смысловые блоки. К примеру с помощью элемента <code>article</code> можно выделить контент страницы, который имеет смысл сам по себе, в отрыве от остального контента. Это прежде всего статьи, заметки, комментарии, записи в блоге и т. д.</p>
+
+<pre><code><span class="tag"><<span>main</span>></span>
+  <span class="tag"><<span>article</span>></span>
+    <span><</span>!--Статья, заметка и т. д.<span>--></span>
+  <span class="tag"><<span>/article</span>></span>
+<span class="tag"><<span>/main</span>></span></code></pre>
+
+<p>Когда использовать элемент <code>article</code> в разметке? Главное правило такое: если вы можете содержимое элемента <code>article</code> вставить на другой сайт, и оно не потеряет при этом свой смысл, значит элемент <code>article</code> использован верно.</p>
+<p>Еще один семантический блок на странице сайта - элемент <code>section</code>. Элемент <code>section</code> объединяет контент с общей темой.</p>
+
+<pre><code><span class="tag"><<span>main</span>></span>
+  <span class="tag"><<span>article</span>></span>
+    <span class="tag"><<span>h1</span>></span>Заголовок статьи<span class="tag"><<span>/h1</span>></span>
+    <span class="tag"><<span>section</span>></span>
+      <span class="tag"><<span>h2</span>></span>Заголовок первого раздела<span class="tag"><<span>/h2</span>></span>
+      <span><</span>!--Контент первого раздела<span>--></span>
+    <span class="tag"><<span>/section</span>></span>
+    <span class="tag"><<span>section</span>></span>
+      <span class="tag"><<span>h2</span>></span>Заголовок второго раздела<span class="tag"><<span>/h2</span>></span>
+      <span><</span>!--Контент второго раздела<span>--></span>
+    <span class="tag"><<span>/section</span>></span>
+  <span class="tag"><<span>/article</span>></span>
+<span class="tag"><<span>/main</span>></span></code></pre>
+
+<p>Придерживайтесь следующего правила. Если контенту можно дать заголовок (любого уровня), подумайте над тем, чтобы обернуть этот контент в <code>section</code>.</p>
+<p>В примере выше элемент <code>article</code> содержит в себе несколько <code>section</code>. Но вы можете структурировать контент по-другому - выделить несколько <code>article</code> в пределах <code>section</code>, либо вообще не использовать <code>article</code>, если считаете, что контент не имеет смысла за пределами данной страницы. Семантический подход позволяет подходить к вопросу структурирования HTML творчески, пользуйтесь этим.</p>
+`,
+      goal: `Разбейте основной контент на блоки семантически.`,
+      initValues: {
+        html: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Культура Андалусии</title>
+  </head>
+  <body>
+    <header>
+      <div>ЛОГОТИП</div>
+      <nav>
+        <ul>
+          <li><a href="#music">Музыка</a></li>
+          <li><a href="#flamenco">Фламенко</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
+        </ul>
+      </nav>
+      <button type="button">Войти</button>
+    </header>
     
-      <article>
+    <main>
+      <div>
       <h1>Традиционная Андалусия</h1>
-        <section id="music">
+        <div id="music">
           <h2>Музыка</h2>
-          <p>в профессиональной и народной ее формах представляет собой наследие богатой культуры, истоки которой ведут в 6 в. до н. э. В те времена музыкальное искусство древних обитателей той местности – иберов смешалось с кельтской музыкой.</p>
-          <p>Послушайте отрывок традиционного болеро.</p>
-          <audio controls>
-            <source src="#" type="audio/mp3">
-          </audio> 
-        </section>
-        <section id="flamenco">
+          <p>В профессиональной и народной ее формах представляет собой наследие богатой культуры, истоки которой ведут в 6 в. до н. э. В те времена музыкальное искусство древних обитателей той местности – иберов смешалось с кельтской музыкой.</p>
+        </div>
+        <div id="flamenco">
           <h2>Фламенко</h2>
-          <p>вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
-          <p>Вот как выглядит этот танец.</p>
-          <embed src="#"/>
-        </section>
-        <section id="cousine">
-          <h2>Кухня</h2>
-          <p>Андалусская кухня — это история региона в цвете, аромате и вкусе. А поскольку средиземноморская диета сегодня в моде, то свежие фрукты, овощи, рыба и оливковое масло Андалусии стали местной достопримечательностью.</p>
-          <p>Посмотрите процесс приготовления традиционного гаспачо.</p>
-          <video src="#" controls></video>
-        </section>
-      </article>  
-      <aside>
+          <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
+        </div>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
+        </div>
+      </div>  
+      <div>
         <h4>Погода в Андалусии</h4>
         <ul>
           <li>18.03: +22</li>
@@ -457,11 +498,220 @@ ul a {
           <li>20.03: +24</li>
         </ul>
         <a href="#">Погода подробнее</a>
-      </aside> */
+      </div>
+    </main>
+    
+    <footer>
+      <div>ЛОГОТИП</div>
+      <p>Наш телефон: +79901002323</p>
+    </footer>          
+  </body>
+</html>
+`,
+        css: `
+a:hover {
+  opacity: 0.6
+}
 
-/* 
-main {
+button {
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center
+}
+
+header, footer {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: Ivory;
+  height: 50px;
+  padding: 0 10px;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin-right: 10px;
+}
+
+ul a {
+  color: MediumSlateBlue;
+  text-decoration: none;
+}
+`,
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "Замените семантическим элементом <code>div</code>, соответствующий блоку независимого контента.",
+          test: (iframe: HTMLIFrameElement) => {
+            const article = iframe.contentDocument.body.querySelector("article");
+            return (
+              article &&
+              article.parentElement &&
+              article.parentElement.tagName === "MAIN" &&
+              article.children[0] &&
+              article.children[0].tagName === "H1"
+            );
+          },
+          failMsg: "Убедитесь, что вы заменили div элементом article",
+        },
+        {
+          id: 2,
+          label:
+            "Замените семантическим элементом <code>div</code>, соответствующие отдельным разделам блока независимого контента.",
+          test: (iframe: HTMLIFrameElement) => {
+            const sections = iframe.contentDocument.body.querySelectorAll("section");
+            return (
+              sections &&
+              sections.length === 3 &&
+              sections[0].id === "music" &&
+              sections[1].id === "flamenco" &&
+              sections[2].id === "cousine"
+            );
+          },
+          failMsg: "Убедитесь, что вы заменили div элементами section",
+        },
+      ],
+      solution: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Культура Андалусии</title>
+  </head>
+  <body>
+    <header>
+      <div>ЛОГОТИП</div>
+      <nav>
+        <ul>
+          <li><a href="#music">Музыка</a></li>
+          <li><a href="#flamenco">Фламенко</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
+        </ul>
+      </nav>
+      <button type="button">Войти</button>
+    </header>
+    
+    <main>
+      <article>
+      <h1>Традиционная Андалусия</h1>
+        <section id="music">
+          <h2>Музыка</h2>
+          <p>В профессиональной и народной ее формах представляет собой наследие богатой культуры, истоки которой ведут в 6 в. до н. э. В те времена музыкальное искусство древних обитателей той местности – иберов смешалось с кельтской музыкой.</p>
+        </section>
+        <section id="flamenco">
+          <h2>Фламенко</h2>
+          <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
+        </section>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
+        </section>
+      </article>  
+      <div>
+        <h4>Погода в Андалусии</h4>
+        <ul>
+          <li>18.03: +22</li>
+          <li>19.03: +25</li>
+          <li>20.03: +24</li>
+        </ul>
+        <a href="#">Погода подробнее</a>
+      </div>
+    </main>
+    
+    <footer>
+      <div>ЛОГОТИП</div>
+      <p>Наш телефон: +79901002323</p>
+    </footer>          
+  </body>
+</html>`,
+    },
+
+    {
+      id: 4,
+      header: "Блок второстепенного контента - тэг aside",
+      url: "html-aside",
+      theory: `<p>Мы разметили семантически блоки основного контента. На странице также может быть дополнительный контент, который не сваязан напрямую с основным. Такой контент следует выделить с помощью элемента <code>aside</code>.</p>
+
+<pre><code><span class="tag"><<span>main</span>></span>
+  <span class="tag"><<span>article</span>></span>
+    <span><</span>!--Здесь находится основной контент страницы<span>--></span>
+  <span class="tag"><<span>/article</span>></span>
+  <span class="tag"><<span>aside</span>></span>
+    <span><</span>!--Здесь находится второстепенная информация<span>--></span>
+  <span class="tag"><<span>/aside</span>></span>
+<span class="tag"><<span>/main</span>></span></code></pre>
+
+<p>К второстепенному контенту можно отнести, например, такой:</p>
+<p><ul><li>Примечания</li><li>Заметки на полях</li><li>Комментарии</li><li>Редакторские колонки</li><li>Место, зарезервированное под рекламные блоки</li></ul> и т. д.</p>
+<p>Пользуйтесь элементом <code>aside</code>, если его удаление никак не повлияет на содержание основного контента страницы.</p>
+`,
+      goal: `Выделите блок второстепенной информации.`,
+      initValues: {
+        html: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Культура Андалусии</title>
+  </head>
+  <body>
+    <header>
+      <div>ЛОГОТИП</div>
+      <nav>
+        <ul>
+          <li><a href="#music">Музыка</a></li>
+          <li><a href="#flamenco">Фламенко</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
+        </ul>
+      </nav>
+      <button type="button">Войти</button>
+    </header>
+    
+    <main>
+      <article>
+      <h1>Традиционная Андалусия</h1>
+        <section id="music">
+          <h2>Музыка</h2>
+          <p>В профессиональной и народной ее формах представляет собой наследие богатой культуры, истоки которой ведут в 6 в. до н. э. В те времена музыкальное искусство древних обитателей той местности – иберов смешалось с кельтской музыкой.</p>
+        </section>
+        <section id="flamenco">
+          <h2>Фламенко</h2>
+          <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
+        </section>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
+        </section>
+      </article>  
+      <div>
+        <h4>Погода в Андалусии</h4>
+        <ul>
+          <li>18.03: +22</li>
+          <li>19.03: +25</li>
+          <li>20.03: +24</li>
+        </ul>
+        <a href="#">Погода подробнее</a>
+      </div>
+    </main>
+    
+    <footer>
+      <div>ЛОГОТИП</div>
+      <p>Наш телефон: +79901002323</p>
+    </footer>          
+  </body>
+</html>
+`,
+        css: `
+a:hover {
+  opacity: 0.6
 }
 
 aside {
@@ -483,4 +733,613 @@ aside ul li {
 
 aside a {
   color: MediumSlateBlue
-} */
+}
+
+button {
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center
+}
+
+header, footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: Ivory;
+  height: 50px;
+  padding: 0 10px;
+}
+
+main {
+  display: flex;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin-right: 10px;
+}
+
+ul a {
+  color: MediumSlateBlue;
+  text-decoration: none;
+}
+`,
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "Замените семантическим элементом <code>div</code>, соответствующий блоку второстепенной информации.",
+          test: (iframe: HTMLIFrameElement) => {
+            const aside = iframe.contentDocument.body.querySelector("aside");
+            return (
+              aside &&
+              aside.parentElement &&
+              aside.parentElement.tagName === "MAIN" &&
+              aside.previousElementSibling &&
+              aside.previousElementSibling.tagName === "ARTICLE"
+            );
+          },
+          failMsg: "Убедитесь, что вы заменили div элементом aside",
+        },
+      ],
+      solution: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Культура Андалусии</title>
+  </head>
+  <body>
+    <header>
+      <div>ЛОГОТИП</div>
+      <nav>
+        <ul>
+          <li><a href="#music">Музыка</a></li>
+          <li><a href="#flamenco">Фламенко</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
+        </ul>
+      </nav>
+      <button type="button">Войти</button>
+    </header>
+    
+    <main>
+      <article>
+      <h1>Традиционная Андалусия</h1>
+        <section id="music">
+          <h2>Музыка</h2>
+          <p>В профессиональной и народной ее формах представляет собой наследие богатой культуры, истоки которой ведут в 6 в. до н. э. В те времена музыкальное искусство древних обитателей той местности – иберов смешалось с кельтской музыкой.</p>
+        </section>
+        <section id="flamenco">
+          <h2>Фламенко</h2>
+          <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
+        </section>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
+        </section>
+      </article>  
+      <aside>
+        <h4>Погода в Андалусии</h4>
+        <ul>
+          <li>18.03: +22</li>
+          <li>19.03: +25</li>
+          <li>20.03: +24</li>
+        </ul>
+        <a href="#">Погода подробнее</a>
+      </aside>
+    </main>
+    
+    <footer>
+      <div>ЛОГОТИП</div>
+      <p>Наш телефон: +79901002323</p>
+    </footer>          
+  </body>
+</html>`,
+    },
+
+    {
+      id: 5,
+      header: "Медиаконтент - тэги video и audio",
+      url: "html-media",
+      theory: `<p>С помощью элемента <code>video</code> мы можем легко добавить видеоизображение на наш сайт.</p>
+
+<pre><code><span class="tag"><<span>video</span> <span class="attr-name">src=</span><span class="attr-value">"cats_dancing.mpeg"</span> <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>Видеоизображение не найдено<span class="tag"><<span>/video</span>></span></code></pre>
+
+<p>В разметке выше мы указали следующие аттрибуты:</p>
+<p>
+  <ul>
+    <li><code>src</code> - путь к вашему видеофайлу. В примере выше файл называется "cats_dancing.mpeg"</li>
+    <li><code>controls</code> - в видеоплейере появляется кнопка пуск/пауза для управления видео</li>
+    <li><code>autoplay</code> - видео запускается автоматически после загрузки страницы (осторожно, это раздражает многих пользователей, включая автора этого текста:)</li>
+  </ul>
+</p>
+<p>Текст, заключенный между открывающим и закрывающим тэгом <code>video</code> отобразится только если видеоизображение не будет найдено.</p>
+<p>Давайте теперь добавим на страницы аудиоконтент с помощью элемента <code>audio</code>. Попробуем применить другой подход к разметке:</p>
+
+<pre><code><span class="tag"><<span>audio</span>  <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>
+  <span class="tag"><<span>source</span> <span class="attr-name">src=</span><span class="attr-value">"anthem.mp3"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/mp3"</span>></span>
+  <span class="tag"><<span>source</span> <span class="attr-name">src=</span><span class="attr-value">"anthem.ogg"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/ogg"</span>></span>
+<span class="tag"><<span>/audio</span>></span></code></pre>
+
+<p>Здесь у элемента <code>audio</code> вы видите уже знакомые аттрибуты <code>controls</code>, отвечающий за кнопку управления аудиозаписью и <code>autoplay</code>, отвечающий за немедленное начало воспроизведения аудиофайла после загрузки страницы.</p>
+<p>В этот раз внутри находятся 2 элемента <code>source</code>, которые указывают источники аудиофайлов. У нас указаны 2 источника аудиофайлов в разных форматах. Сначала браузер попробует найти файл "anthem.mp3". Если такой файл отсутствует или не поддерживается вашим браузером, он попробует найти файл "anthem.ogg".</p>
+<p>Тип аудиофайла каждого источника указан в аттрибуте <code>type</code> элемента <code>source</code>. Данный аттрибут не является обязательным, но желательно его указывать, чтобы облегчить браузеру определение типа файла.</p>
+`,
+      goal: `Добавьте на страницу медиконтент.`,
+      initValues: {
+        html: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Культура Андалусии</title>
+  </head>
+  <body>
+    <header>
+      <div>ЛОГОТИП</div>
+      <nav>
+        <ul>
+          <li><a href="#music">Музыка</a></li>
+          <li><a href="#flamenco">Фламенко</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
+        </ul>
+      </nav>
+      <button type="button">Войти</button>
+    </header>
+    
+    <main>
+      <article>
+      <h1>Традиционная Андалусия</h1>
+        <section id="music">
+          <h2>Музыка</h2>
+          <p>В профессиональной и народной ее формах представляет собой наследие богатой культуры, истоки которой ведут в 6 в. до н. э. В те времена музыкальное искусство древних обитателей той местности – иберов смешалось с кельтской музыкой.</p>
+          <p>Прослушайте фрагмент традиционного болеро за авторством Мориса Равеля:</p>
+  
+        </section>
+        <section id="flamenco">
+          <h2>Фламенко</h2>
+          <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
+          <p>Посмотрети как танцуют Фламенко на улицах Гранады:</p>
+  
+        </section>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>     
+          </section>
+      </article>  
+      <aside>
+        <h4>Погода в Андалусии</h4>
+        <ul>
+          <li>18.03: +22</li>
+          <li>19.03: +25</li>
+          <li>20.03: +24</li>
+        </ul>
+        <a href="#">Погода подробнее</a>
+      </aside>
+    </main>
+    
+    <footer>
+      <div>ЛОГОТИП</div>
+      <p>Наш телефон: +79901002323</p>
+    </footer>          
+  </body>
+</html>
+`,
+        css: `
+a:hover {
+  opacity: 0.6
+}
+
+aside {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 5px;
+  background-color: Linen;
+}
+
+aside ul {
+  flex-direction: column;
+}
+
+aside ul li {
+  margin-bottom: 10px;
+  margin-right: 0;
+}
+
+aside a {
+  color: MediumSlateBlue
+}
+
+button {
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center
+}
+
+header, footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: Ivory;
+  height: 50px;
+  padding: 0 10px;
+}
+
+main {
+  display: flex;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin-right: 10px;
+}
+
+ul a {
+  color: MediumSlateBlue;
+  text-decoration: none;
+}
+`,
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "В секции с описанием музыки добавьте аудиоэлемент c аттрибутом controls.",
+          test: (iframe: HTMLIFrameElement) => {
+            const audio = iframe.contentDocument.body.querySelector("audio");
+            return audio && audio.controls;
+          },
+          failMsg: "Убедитесь, что вы добавили элемент audio с правильным аттрибутом",
+        },
+        {
+          id: 2,
+          label:
+            "В качестве источника аудио укажите файл с адресом 'http://www.openculture.ru/wp-content/uploads/2011/11/Ravel_Bolero.mp3' и типом 'audio/mp3'.",
+          test: (iframe: HTMLIFrameElement) => {
+            const audio = iframe.contentDocument.body.querySelector("audio");
+            if (!audio) {
+              return false;
+            }
+            const source = audio.querySelector("source");
+            return (
+              source &&
+              source.src === "http://www.openculture.ru/wp-content/uploads/2011/11/Ravel_Bolero.mp3" &&
+              source.type === "audio/mp3"
+            );
+          },
+          failMsg: "Убедитесь, что вы добавили элемент source с правильными аттрибутами",
+        },
+        {
+          id: 3,
+          label:
+            "В секции с описанием фламенко добавьте видеоэлемент c аттрибутом controls и текстом 'Видео не доступно'. В качестве источника видео укажите файл с адресом 'https://www.youtube.com/watch?v=VdAkQjfUqJU' .",
+          test: (iframe: HTMLIFrameElement) => {
+            const video = iframe.contentDocument.body.querySelector("video");
+            return (
+              video &&
+              video.src === "https://www.youtube.com/watch?v=VdAkQjfUqJU" &&
+              video.textContent === "Видео не доступно" &&
+              video.controls
+            );
+          },
+          failMsg: "Убедитесь, что вы добавили элемент video с правильными аттрибутами",
+        },
+      ],
+      solution: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Культура Андалусии</title>
+  </head>
+  <body>
+    <header>
+      <div>ЛОГОТИП</div>
+      <nav>
+        <ul>
+          <li><a href="#music">Музыка</a></li>
+          <li><a href="#flamenco">Фламенко</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
+        </ul>
+      </nav>
+      <button type="button">Войти</button>
+    </header>
+    
+    <main>
+      <article>
+      <h1>Традиционная Андалусия</h1>
+        <section id="music">
+          <h2>Музыка</h2>
+          <p>В профессиональной и народной ее формах представляет собой наследие богатой культуры, истоки которой ведут в 6 в. до н. э. В те времена музыкальное искусство древних обитателей той местности – иберов смешалось с кельтской музыкой.</p>
+          <p>Прослушайте фрагмент традиционного болеро за авторством Мориса Равеля:</p>
+          <audio controls>
+            <source src="http://www.openculture.ru/wp-content/uploads/2011/11/Ravel_Bolero.mp3" type="audio/mp3">
+          </audio>
+        </section>
+        <section id="flamenco">
+          <h2>Фламенко</h2>
+          <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
+          <p>Посмотрети как танцуют Фламенко на улицах Гранады:</p>
+          <video src='https://www.youtube.com/watch?v=VdAkQjfUqJU' controls>Видео не доступно</video>
+        </section>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
+        </section>
+      </article>  
+      <aside>
+        <h4>Погода в Андалусии</h4>
+        <ul>
+          <li>18.03: +22</li>
+          <li>19.03: +25</li>
+          <li>20.03: +24</li>
+        </ul>
+        <a href="#">Погода подробнее</a>
+      </aside>
+    </main>
+    
+    <footer>
+      <div>ЛОГОТИП</div>
+      <p>Наш телефон: +79901002323</p>
+    </footer>          
+  </body>
+</html>`,
+    },
+
+    {
+      id: 6,
+      header: "Встроенный контент - тэг iframe",
+      url: "html-iframe",
+      theory: `<p>Есть также способ добавить на вашу страницу любой медиаэлемент и даже содержание другой HTML страницы, а в нее - содержание другой HTML страницы... Все это называется встроенным контентом, элементы <code>audio</code> и <code>video</code>, с которыми мы работали в прошлом упражнении, являются частными случаями встроенного контента.</p>
+      <p>Познакомимся с элементом <code>iframe</code>. Результат вашей верстки, отображаемый в этом упражнении справа, встроен на страницу именно с помощью этого элемента.</p>
+
+<pre><code><span class="tag"><<span>iframe</span> <span class="attr-name">src=</span><span class="attr-value">"some_content.gif"</span> <span class="attr-name">title=</span><span class="attr-value">"content_title"</span> <span class="attr-name">width=</span><span class="attr-value">"200"</span> <span class="attr-name">height=</span><span class="attr-value">"150"</span>></span><span class="tag"><<span>/iframe></span></code></pre>
+
+<p>В разметке выше мы указали следующие аттрибуты:</p>
+<p>
+  <ul>
+    <li><code>src</code> - путь к вашему контенту. В данном случае к изображению в формате ".gif"</li>
+    <li><code>title</code> - заголовок встроенного контента. Полезно указывать данный аттрибут для улучшения доступности встроенного контента</li>
+    <li><code>width</code>, <code>height</code> - начальные ширина и высота окна встроенного контента</li>
+  </ul>
+</p>
+`,
+      goal: `Добавьте на страницу встроенный контент.`,
+      initValues: {
+        html: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Культура Андалусии</title>
+  </head>
+  <body>
+    <header>
+      <div>ЛОГОТИП</div>
+      <nav>
+        <ul>
+          <li><a href="#music">Музыка</a></li>
+          <li><a href="#flamenco">Фламенко</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
+        </ul>
+      </nav>
+      <button type="button">Войти</button>
+    </header>
+    
+    <main>
+      <article>
+      <h1>Традиционная Андалусия</h1>
+        <section id="music">
+          <h2>Музыка</h2>
+          <p>В профессиональной и народной ее формах представляет собой наследие богатой культуры, истоки которой ведут в 6 в. до н. э. В те времена музыкальное искусство древних обитателей той местности – иберов смешалось с кельтской музыкой.</p>
+          <p>Прослушайте фрагмент традиционного болеро за авторством Мориса Равеля:</p>
+          <audio controls>
+            <source src="http://www.openculture.ru/wp-content/uploads/2011/11/Ravel_Bolero.mp3" type="audio/mp3">
+          </audio>
+        </section>
+        <section id="flamenco">
+          <h2>Фламенко</h2>
+          <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
+          <p>Посмотрети как танцуют Фламенко на улицах Гранады:</p>
+          <video src='https://www.youtube.com/watch?v=VdAkQjfUqJU' controls>Видео не доступно</video>
+        </section>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
+          <p>Поэтому иногда все заканчивается так:</p>
+
+        </section>
+      </article>  
+      <aside>
+        <h4>Погода в Андалусии</h4>
+        <ul>
+          <li>18.03: +22</li>
+          <li>19.03: +25</li>
+          <li>20.03: +24</li>
+        </ul>
+        <a href="#">Погода подробнее</a>
+      </aside>
+    </main>
+    
+    <footer>
+      <div>ЛОГОТИП</div>
+      <p>Наш телефон: +79901002323</p>
+    </footer>          
+  </body>
+</html>
+`,
+        css: `
+a:hover {
+  opacity: 0.6
+}
+
+aside {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 5px;
+  background-color: Linen;
+}
+
+aside ul {
+  flex-direction: column;
+}
+
+aside ul li {
+  margin-bottom: 10px;
+  margin-right: 0;
+}
+
+aside a {
+  color: MediumSlateBlue
+}
+
+button {
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center
+}
+
+header, footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: Ivory;
+  height: 50px;
+  padding: 0 10px;
+}
+
+main {
+  display: flex;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin-right: 10px;
+}
+
+ul a {
+  color: MediumSlateBlue;
+  text-decoration: none;
+}
+`,
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label:
+            "В секции с описанием корриды добавьте встроенный контент, укажите адрес файла 'https://gifer.com/embed/7PZg'.",
+          test: (iframe: HTMLIFrameElement) => {
+            const embedIframe = iframe.contentDocument.body.querySelector("iframe");
+            return (
+              embedIframe &&
+              embedIframe.parentElement &&
+              embedIframe.parentElement.id === "bullfight" &&
+              embedIframe.src === "https://gifer.com/embed/7PZg"
+            );
+          },
+          failMsg: "Убедитесь, что вы добавили элемент iframe с правильным источником данных",
+        },
+        {
+          id: 2,
+          label:
+            "Добавьте заголовок контента 'Коррида в Андалусии', ширину элемента 300, высоту - 200.",
+          test: (iframe: HTMLIFrameElement) => {
+            const embedIframe = iframe.contentDocument.body.querySelector("iframe");       
+            return (
+              embedIframe &&
+              embedIframe.title === "Коррида в Андалусии" &&
+              embedIframe.width === '300' &&
+              embedIframe.height === '200'
+            );
+          },
+          failMsg: "Убедитесь, что вы указали правильные аттрибуты",
+        },
+      ],
+      solution: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Культура Андалусии</title>
+  </head>
+  <body>
+    <header>
+      <div>ЛОГОТИП</div>
+      <nav>
+        <ul>
+          <li><a href="#music">Музыка</a></li>
+          <li><a href="#flamenco">Фламенко</a></li>
+          <li><a href="#bullfight">Коррида</a></li>
+        </ul>
+      </nav>
+      <button type="button">Войти</button>
+    </header>
+    
+    <main>
+      <article>
+      <h1>Традиционная Андалусия</h1>
+        <section id="music">
+          <h2>Музыка</h2>
+          <p>В профессиональной и народной ее формах представляет собой наследие богатой культуры, истоки которой ведут в 6 в. до н. э. В те времена музыкальное искусство древних обитателей той местности – иберов смешалось с кельтской музыкой.</p>
+          <p>Прослушайте фрагмент традиционного болеро за авторством Мориса Равеля:</p>
+          <audio controls>
+            <source src="http://www.openculture.ru/wp-content/uploads/2011/11/Ravel_Bolero.mp3" type="audio/mp3">
+          </audio>
+        </section>
+        <section id="flamenco">
+          <h2>Фламенко</h2>
+          <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
+          <p>Посмотрети как танцуют Фламенко на улицах Гранады:</p>
+          <video src='https://www.youtube.com/watch?v=VdAkQjfUqJU' controls>Видео не доступно</video>
+        </section>
+        <section id="bullfight">
+          <h2>Коррида</h2>
+          <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
+          <p>Поэтому иногда все заканчивается так:</p>
+          <iframe src="https://gifer.com/embed/7PZg" title="Коррида в Андалусии" width="300" height="200"></iframe>
+        </section>
+      </article>  
+      <aside>
+        <h4>Погода в Андалусии</h4>
+        <ul>
+          <li>18.03: +22</li>
+          <li>19.03: +25</li>
+          <li>20.03: +24</li>
+        </ul>
+        <a href="#">Погода подробнее</a>
+      </aside>
+    </main>
+    
+    <footer>
+      <div>ЛОГОТИП</div>
+      <p>Наш телефон: +79901002323</p>
+    </footer>          
+  </body>
+</html>`,
+    },
+  ],
+};
