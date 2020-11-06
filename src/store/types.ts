@@ -13,7 +13,7 @@ export interface ICurrentTask extends ITask {
 export interface ICurrentExercise {
   excersiceUrl: string;
   excersiceId: number;
-  blockUrl: string;
+  lessonUrl: string;
   passed: boolean;
   message: string[];
 }

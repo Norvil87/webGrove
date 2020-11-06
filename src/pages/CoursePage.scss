@@ -1,0 +1,35 @@
+@import "../styles/variables.scss";
+
+.course__header {
+  background-color: $primaryColor;
+  min-height: 10rem;
+  padding: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.course__header h2 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+
+.course__info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.course__info-item {
+  width: 50%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.course__info-item span {
+  font-size: 1.4rem;
+  color: wheat;
+}
+
+.course__info-item p {
+  color: white;
+}

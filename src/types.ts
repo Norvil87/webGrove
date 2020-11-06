@@ -29,19 +29,27 @@ export interface IExcercise {
   solution?: string;
 }
 
-export interface ICourseBlock {
+export interface ICourseLesson {
   id: number;
   title: string;
   url: string;
   excercises: IExcercise[];
 }
 
-export interface ICourseBlocks {
-  [name: string]: ICourseBlock
+export interface ICourseLessons {
+  [name: string]: ICourseLesson;
+}
+
+export interface ICourseInfo {
+  goal?: string;
+  result?: string;
+  prerequisite?: string;
+  followup?: string;
 }
 
 export interface ICourse {
   id: number;
   title: string;
-  blocks: ICourseBlocks;
+  info: ICourseInfo;
+  lessons: ICourseLessons;
 }

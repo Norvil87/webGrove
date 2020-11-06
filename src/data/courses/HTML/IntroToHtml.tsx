@@ -1,6 +1,6 @@
-import { ICourseBlock } from "../../../types";
+import { ICourseLesson } from "../../../types";
 
-export const introToHtml: ICourseBlock = {
+export const introToHtml: ICourseLesson = {
   id: 1,
   title: "Язык разметки HTML",
   url: "intro-to-html",

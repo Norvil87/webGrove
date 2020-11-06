@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.block-nav {
+.lesson-nav {
   margin-top: auto;
   padding: 1rem;
   display: flex;
@@ -8,7 +8,21 @@
   align-items: center;
 }
 
-.block-nav_forwards {
+.lesson-nav_forwards,
+.lesson-nav_backwards {
+  min-width: 100px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lesson-nav_backwards {
+  border: 1px solid #a87b62;
+}
+
+.lesson-nav_forwards {
   border: none;
   border-radius: 26px;
   font-weight: 700;
@@ -18,23 +32,15 @@
   cursor: pointer;
 }
 
-.block-nav_forwards:hover {
+.lesson-nav_forwards:hover {
   opacity: 1;
   background: #ebb16f;
+  color: #fff;
 }
 
-.block-nav_backwards--disabled, .block-nav_backwards--disabled:hover {
+.lesson-nav_backwards--disabled,
+.lesson-nav_backwards--disabled:hover {
   opacity: 0.2;
-}
-
-
-.block-nav__linkToCoursePage {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  color: #fff;
-}
-
-.block-nav__linkToCoursePage:hover {
-  color: #fff;
+  color: #000;
+  cursor: auto;
 }

@@ -7,7 +7,7 @@ const initialState: IRootState = {
     js: "",
   },
   currentExercise: {
-    blockUrl: null,
+    lessonUrl: null,
     excersiceId: null,
     excersiceUrl: null,
     passed: undefined,

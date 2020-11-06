@@ -36,7 +36,6 @@ code a {
   text-decoration: underline;
 }
 
-
 .challenge {
   padding: 0 10px;
   height: calc(100vh - 144px);
@@ -84,6 +83,7 @@ code a {
   background-position: left center;
   background-repeat: no-repeat;
   padding-left: 20px;
+  margin-bottom: 1rem;
 }
 
 .challenge__linkToCourse:hover {

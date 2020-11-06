@@ -20,7 +20,7 @@ interface IChallengeProps {
 
 const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, initValues }) => {
   const currentTasks = useSelector((state: IRootState) => state.currentTasks);
-  const { excersiceId, excersiceUrl, blockUrl } = useSelector((state: IRootState) => state.currentExercise);
+  const { excersiceId, excersiceUrl, lessonUrl } = useSelector((state: IRootState) => state.currentExercise);
   const { html, css, js } = initValues;
 
   const [resetModalVisible, setResetModalVisible] = useState(false);
@@ -46,7 +46,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, ini
 
     dispatch(setCurrentTasks(currentTasks));
     dispatch(
-      setCurrentExercise({ excersiceId, excersiceUrl, blockUrl, passed: excercisePassed, message: excerciseMessage })
+      setCurrentExercise({ excersiceId, excersiceUrl, lessonUrl, passed: excercisePassed, message: excerciseMessage })
     );
   };
 
@@ -81,7 +81,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, ini
         </button>
       </div>
       <TaskSuite tasks={tasks} />
-      {/* <LessonNavigator /> */}
+      <LessonNavigator />
       <ResetConfirmModal
         open={resetModalVisible}
         onModalCancelClick={handleModalCancelClick}

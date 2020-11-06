@@ -1,5 +1,7 @@
-export const HtmlSemantic = {
-  id: 4,
+import { ICourseLesson } from "../../../types";
+
+export const HtmlSemantic: ICourseLesson = {
+  id: 5,
   title: "Семантический HTML",
   url: "html-semantic",
   excercises: [
@@ -1267,15 +1269,14 @@ ul a {
         },
         {
           id: 2,
-          label:
-            "Добавьте заголовок контента 'Коррида в Андалусии', ширину элемента 300, высоту - 200.",
+          label: "Добавьте заголовок контента 'Коррида в Андалусии', ширину элемента 300, высоту - 200.",
           test: (iframe: HTMLIFrameElement) => {
-            const embedIframe = iframe.contentDocument.body.querySelector("iframe");       
+            const embedIframe = iframe.contentDocument.body.querySelector("iframe");
             return (
               embedIframe &&
               embedIframe.title === "Коррида в Андалусии" &&
-              embedIframe.width === '300' &&
-              embedIframe.height === '200'
+              embedIframe.width === "300" &&
+              embedIframe.height === "200"
             );
           },
           failMsg: "Убедитесь, что вы указали правильные аттрибуты",
