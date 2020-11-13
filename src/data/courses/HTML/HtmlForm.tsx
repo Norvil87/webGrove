@@ -5,18 +5,18 @@ export const HtmlForm = {
   excercises: [
     {
       id: 1,
-      header: "Создание HTML формы - тэг form",
+      header: "Создание HTML формы - элемент form",
       url: "html-form-creation",
       theory: `<p>Как и формы в реальной жизни, HTML формы необходимы, чтобы собрать информацию от пользователя и передать ее на дальнейшую обработку (в случае HTML это вэб-сервер). Формы регистрации и входа на сайт, сервисы заказов и бронирования, форм в Интернете очень много. Например, поисковая строка Google - это тоже часть формы, поскольку она принимает информацию от пользователя (текстовый поисковый запрос) и передает ее на дальнейшую обработку (на сервера Google).</p>
 <p>Форма создается с помощью элемента <code>form</code> и имеет несколько обязательных аттрибутов. Приведем пример формы в разметке:</p>
       
-<pre><code><span class="tag"><<span>form</span> <span class="attr-name">action=<span><span class="attr-value">"./destination.html"<span> <span class="attr-name">method=<span><span class="attr-value">"POST"<span>></span>
+<pre><code><span class="tag"><<span>form</span> <span class="attr-name">action=<span><span class="attr-value">"http://destination"<span> <span class="attr-name">method=<span><span class="attr-value">"POST"<span>></span>
       
 <span class="tag"><<span>/form</span>></span></code></pre>
 <p>Аттрибут <code>action</code> определяет адрес отправки данных формы. Это то, <em>куда</em> отправляются данные.</p>
 <p>Аттрибут <code>method</code> определяет метод отправки формы. Это то, <em>как</em> отправляются данные.</p>
-<p>Форма в примере выше отправит данные на адрес "./destination.html" методом "POST".</p>
-<p>Методы звпроса определяют как именно желаемое действие выполнится для данного ресурса, их несколько, но чаще всего можно встретиться со следующими двумя: <ul><li>GET</li><li>POST</li></ul> Подробное описание методов отправки данных выходит за рамки данного урока, более подробную информацию можно почитать, например, <a style="color: blue" href="https://developer.mozilla.org/ru/docs/Web/HTTP/Methods">в этой документации</a>.</p>
+<p>Форма в примере выше отправит данные на адрес "http://destination" методом "POST".</p>
+<p>Методы запроса - это то, как именно желаемое действие выполнится для данного ресурса, их несколько, но чаще всего используются следующие два: <ul><li>GET</li><li>POST</li></ul> Подробное описание методов отправки данных выходит за рамки данного урока, более подробную информацию можно почитать, например, <a style="color: blue" href="https://developer.mozilla.org/ru/docs/Web/HTTP/Methods">в этой документации</a>.</p>
 <p>Написание метода отправки заглавными буквами - это пример соглашения о наименовании, вариант написания строчными буквами <code>post</code> тоже будет работать.</p>
 `,
       goal: `Создайте пустую форму.`,
@@ -76,19 +76,19 @@ export const HtmlForm = {
       
 <p>Обратите внимания, что элемент <code>input</code> одиночный, он не требует закрывающего тэга. Вот как он будет выглядить на странице. Поробуйте ввести какой-нибудь текст.</p>
 <p><input type="text" name="school" placeholder="Введите название школы"></p>
-<p>На странице появилось поле, в которое вы можете ввести текст, в данном случае у нас просят ввести название школы. Давайте разберемся с аттрибутами элемента <code>input</code>:</p>
+<p>В данном случае в поле просят ввести название школы. Давайте разберемся с аттрибутами элемента <code>input</code>:</p>
 <p>
 <ul>
 <li>Аттрибут <code>type</code> со значением <code>text</code> говорит о том, что это текстовое поле. Всегда указывайте нужный тип поля. Позже мы разберем поля других типов.</li>
 <li>Аттрибут <code>name</code> со значением <code>school</code> - это имя поля. Имя поля необходимо, чтобы правильно отправить значение поля на сервер. Всегда указывайте имя поля.</li>
-<li>Аттрибут <code>placeholder</code> со значением <code>Введите название школы</code> - это текст, который проставляется в поле по умолчанию. Он дает подскажку пользователю, какую именно информацию нужно ввести в поле. Данный аттрибут не является обязательным и нужен для удобства пользователя.</li>
+<li>Аттрибут <code>placeholder</code> со значением <code>Введите название школы</code> - это текст, который отображается в поле по умолчанию. Он дает подсказку пользователю, какую именно информацию нужно ввести в поле. Данный аттрибут не является обязательным и нужен для удобства пользователя.</li>
 </ul>
-<p>Есть еще важный аттрибут <code>value</code>, в который записывается значение, введенное пользователем в поле. При отправке формы на сервер, данные из поля отправятся в виде значения <code>name="value"</code>. Например, если в поле сверху ввести текст "Гимназия №5", то при отправке формы на сервер уйдут данные <code>school="Гимназия №5"</code>, а если оставить поле пустым, то <code>school=""</code>. Значение <code>value</code> можно задать по умолчанию:</p>
+<p>Есть еще важный аттрибут <code>value</code>, в который записывается значение, введенное пользователем в поле. При отправке формы на сервер, данные из поля отправятся в виде пары значений <code>name="value"</code>. Например, если в поле сверху ввести текст "Гимназия №5", то при отправке формы на сервер уйдут данные <code>school="Гимназия №5"</code>, а если оставить поле пустым, то <code>school=""</code>. Значение <code>value</code> можно задать по умолчанию:</p>
 
 <pre><code><span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">value=</span><span class="attr-value">"Гимназия №5"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span></code></pre>
 
 <p><input type="text" name="school" value="Гимназия №5" placeholder="Введите название школы"></p>
-<p>Теперь в поле по умолчанию у нас стоит значение <code>value</code>, а не <code>placeholder</code>. Подчеркнем разницу между ними: <code>value</code> - это реальное значение поля, введенное пользователем, которое отправляется с формой и хранится на сервере, в то время как плэйсхолдер - это просто текст-заглушка, созданный для визуального удобства пользователя.</p>
+<p>Теперь в поле по умолчанию проставляется значение <code>value</code>, а не <code>placeholder</code>. Подчеркнем разницу между ними: <code>value</code> - это реальное значение поля, введенное пользователем, которое отправляется с формой и хранится на сервере, в то время как плэйсхолдер - это просто текст-заглушка, созданный для визуального удобства пользователя.</p>
 `,
       goal: `Начните заполнять форму с создания текстового поля.`,
       initValues: {
@@ -157,11 +157,12 @@ export const HtmlForm = {
 
     {
       id: 3,
-      header: "Подписи полей - тэг label",
+      header: "Подписи полей - элемент label",
       url: "html-labels",
       theory: `<p>Мы создали текстовое поле, но пока не понятно, для чего оно предназначено. Полю необходимо текстовое описание и для этого существует элемент <code>label</code>. Мы должны связать элементы <code>label</code> и <code>input</code>, чтобы понимать, какая подпись к какому полю относится. Вот один из способов это сделать:</p>
       
-<pre><code><span class="tag"><<span>label</span>></span>Название школы
+<pre><code><span class="tag"><<span>label</span>></span>
+  Название школы
   <span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span>
 <span class="tag"><<span>/label</span>></span></code></pre>
       
@@ -251,7 +252,7 @@ label {
       id: 4,
       header: "Числовое поле - input[type='number']",
       url: "html-input-number",
-      theory: `<p>Мы уже можем вводить текстовые данные. Для того, чтобы можно было вводить числа создадим <code>input</code> типа <code>number</code></p>
+      theory: `<p>Мы уже можем вводить текстовые данные. Для того, чтобы можно было вводить числа создадим <code>input</code> с типом <code>number</code>:</p>
       
 <pre><code><span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"students"</span>></span>Количество учеников<span class="tag"><<span>/label</span>></span>
 <span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"students"</span> <span class="attr-name">type=</span><span class="attr-value">"number"</span> <span class="attr-name">name=</span><span class="attr-value">"students"</span> <span class="attr-name">value=</span><span class="attr-value">"4"</span> <span class="attr-name">step=</span><span class="attr-value">"5"</span>></span></code></pre>
@@ -264,7 +265,7 @@ label {
 <li>имя поля <code>name</code> со значением <code>students</code></li>
 <li>изначальное значение <code>value</code> - <code>4</code></li>
 </ul></p>
-<p>Есть также специфичный для числового поля аттрибут <code>step</code>. Если вы установите фокус в поле, то увидите справа управляющие стрелки. При клике на стрелки они увеличат или уменьшат значение в поле на величину, указанную в <code>step</code> (в данном случае на 5). Попробуйте.</p>
+<p>Есть также специфичный для числового поля аттрибут <code>step</code>. Если вы установите фокус в числовое поле, то увидите справа управляющие стрелки. При клике на стрелки они увеличат или уменьшат значение в поле на величину, указанную в <code>step</code> (в данном случае на 5). Попробуйте.</p>
 `,
       goal: `Создайте в форме числовое поле.`,
       initValues: {
@@ -369,12 +370,12 @@ label {
       id: 5,
       header: "Поля для телефона и email - input[type='tel'], input[type='email']",
       url: "html-input-tel-email",
-      theory: `<p>Пользователям на сайтах часто предлагают ввести свой телефон и электронную почту <span style="text-decoration: line-through">чтобы заваливать их потом спамом</span>. Вводить эти данные нужно так часто, что в стандарте HTML5 предусмотрены специальные поля.</p>
+      theory: `<p>Пользователям на сайтах часто предлагают ввести свой телефон и электронную почту <span style="text-decoration: line-through">чтобы заваливать их потом спамом</span>. Вводить эти данные нужно так часто, что в стандарте HTML5 предусмотрены специальные поля для этого.</p>
       
 <code><pre><span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"tel"</span> <span class="attr-name">name=</span><span class="attr-value">"tel"</span> <span class="attr-name">maxlength=</span><span class="attr-value">"16"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"+7(906)342-43-12"</span>></span></code></pre>
       
 <p><input type="tel" name="tel" maxlength="16" placeholder="+7(906)342-43-12"></p>
-<p>Поле с типом <code>tel</code> нужно для ввода номера телефона. Помимо знакомых вам аттрибутов, здесь мы можем использовать аттрибут <code>maxlength</code>, который ограничивает количество символов, которое может ввести пользователь. Его удобно использовать, когда формат телефонного номера может быть разный. В данном случае в данное поле можно ввести не более 16 символов.</p>
+<p>Поле с типом <code>tel</code> нужно для ввода номера телефона. Помимо знакомых вам аттрибутов, здесь можно использовать аттрибут <code>maxlength</code>, который ограничивает количество символов в поле. Его удобно использовать, когда формат телефонного номера может быть разный. В данном случае в поле можно ввести не более 16 символов.</p>
 
 <code><pre><span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"email"</span> <span class="attr-name">name=</span><span class="attr-value">"email"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"example@gmail.com"</span>></span></code></pre>
       
@@ -396,10 +397,7 @@ label {
     <input type="number" id="num-guests" name="num-guests" value="4" step="1">
   </div>
   <!--Добавляйте поля ниже этой линии-->
-  <label for="tel">Телефон:</label>
-  <input type="tel" id="tel" name="tel" maxlength="18" placeholder="8(799)569-12-12">
-  <label for="email">E-mail:</label>
-  <input type="email" id="email" name="email" placeholder="example@gmail.com">
+
 </form>
 `,
         css: `
@@ -505,8 +503,8 @@ label {
 
     {
       id: 6,
-      header: "Выпадающий список - тэги select и option",
-      url: "html-select",
+      header: "Выпадающий список - элементы select и option",
+      url: "html-select-option",
       theory: `<p>Не все интерактивные элементы форм отображаются с помощью <code>input</code>. Например, мы хотим отобразить выпадающий список элементов. Для этого используем элемент <code>select</code>:</p>
       
 <pre><code><span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"color"</span>></span>Выберите цвет автомобиля:<span class="tag"><<span>/label</span>></span>
@@ -527,7 +525,7 @@ label {
   <option value="custom">Кастомный</option>
 </select></p>
 
-<p>Выпадающий список создадим с помощью элемента <code>select</code>, а каждый из вариантов выбора с помощью элемента <code>option</code>. Текст, расположенный между открывающим и закрывающим тэгом <code>option</code> отобразится в списке, но нам важнее аттрибут <code>value</code>. При отправке формы он уйдет на сервер в паре с аттрибутом <code>name</code> элемента <code>select</code>.</p>
+<p>Выпадающий список представлен элементом <code>select</code>, а каждый из вариантов выбора с помощью элемента <code>option</code>. Текст, расположенный между открывающим и закрывающим тэгами <code>option</code> отобразится в списке, но нам важнее аттрибут <code>value</code>. При отправке формы он уйдет на сервер в паре с аттрибутом <code>name</code> элемента <code>select</code>.</p>
 <p>Например, если в списке сверху выбрать черный цвет, то при отправке формы на сервер уйдет значение <code>color="black"</code>. Не забывайте давать <code>value</code> своим <code>option</code>.</p>
 `,
       goal: `Создайте в форме выпададающий список.`,
@@ -684,7 +682,7 @@ label {
       id: 7,
       header: "Чекбоксы - input[type=checkbox]",
       url: "html-checkbox",
-      theory: `<p>Элемент <code>select</code> предоставляет пользователям выбор одного варианта из множества. Если мы хотим предоставить возможность выбора нескольких вариантов используем элемент <code>input</code> с типом <code>checkbox</code>.</p>
+      theory: `<p>Элемент <code>select</code> предоставляет пользователям выбор одного варианта из множества. Если мы хотим предоставить возможность выбора нескольких вариантов, используем элемент <code>input</code> с типом <code>checkbox</code>.</p>
       
 <pre><code><span class="tag"><<span>span</span>></span>Выберите предпочитаемые цвета:<span class="tag"><<span>/span</span>></span>
 <span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag"><<span>/label</span>></span>
@@ -938,8 +936,8 @@ span {
     {
       id: 8,
       header: "Радиокнопки - input[type=radio]",
-      url: "html-radiobutton",
-      theory: `<p>Наконец, есть еще один способ предоставить пользователю выбор из нескольких вариантов - использование радиокнопок с типом <code>radio</code>. Вот пример:</p>
+      url: "html-radio",
+      theory: `<p>Наконец, есть еще один способ предоставить пользователю выбор из нескольких вариантов - использование полей с типом <code>radio</code> - радиокнопок. Вот пример:</p>
       
 <pre><code><span class="tag"><<span>span</span>></span>Выберите один любимый цвет:<span class="tag"><<span>/span</span>></span>
 <span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag"><<span>/label</span>></span>
@@ -1082,7 +1080,7 @@ span {
         },
         {
           id: 2,
-          label: `<b>После</b> первой радиокнопки создайте <code>label</code> с текстом "Популярность", свяжите чекбокс с подписью.`,
+          label: `<b>После</b> первой радиокнопки создайте <code>label</code> с текстом "Популярность", свяжите радиокнопку с подписью.`,
           test: (iframe: HTMLIFrameElement) => {
             const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] as HTMLInputElement;
             if (!firstRadio) {
@@ -1131,7 +1129,7 @@ span {
         },
         {
           id: 5,
-          label: `Создайте третью радиокнопку, укажите аттрибуты на свое усмотрение, <b>после</b> него создайте подпись и свяжите ее с радиокнопкой.`,
+          label: `Создайте третью радиокнопку, укажите аттрибуты на свое усмотрение, <b>после</b> нее создайте подпись и свяжите ее с радиокнопкой.`,
           test: (iframe: HTMLIFrameElement) => {
             const thirdRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[2] as HTMLInputElement;
             if (!thirdRadio) {
@@ -1218,7 +1216,7 @@ span {
 
     {
       id: 9,
-      header: "Многострочный текст - тэг textarea",
+      header: "Многострочный текст - элемент textarea",
       url: "html-textarea",
       theory: `<p>В элемент <code>input</code> с типом <code>text</code> можно записать только одну строку текста. Но что если нам нужно отправить многострочный текст, например текст статьи или текст обращения куда-либо? Для этой цели есть специальный элемент - <code>textarea</code>:</p>
       
@@ -1229,7 +1227,7 @@ span {
 <textarea id="details" name="details" cols="30" rows="8">Текст обращения</textarea></p>
 
 <p>На странице появилось большое текстовое поле, в которое можно ввести многострочный текст. Размер поля можно задать заранее, указывая количество столбцов с помощью аттрибута <code>col</code> (в данном случае <code>30</code>) и количество строк с помощью аттрибута <code>rows</code> (в данном случае <code>8</code>). Но вы также можете изменить размер <code>textarea</code> просто потянув мышкой за правый нижний угол элемента!</p>
-<p>У <code>textarea</code> нет аттрибута <code>value</code>. На сервер отправится текст, который вы ввели между открывающим и закрывающим тэгом элемента (в данном случае "Текст обращения"). Аттрибут <code>name</code> по прежнему необходим.</p>
+<p>У <code>textarea</code> нет аттрибута <code>value</code>. На сервер отправится текст, который вы ввели между открывающим и закрывающим тэгами элемента (в данном случае "Текст обращения"). Аттрибут <code>name</code> по прежнему необходим.</p>
 `,
       goal: `Создайте в форме поле для многострочного текста.`,
       initValues: {
@@ -1460,7 +1458,7 @@ textarea {
       id: 10,
       header: "Отправка формы - button[type='submit']",
       url: "html-submit",
-      theory: `<p>В нашей форме мы собрали уже много самой разнообразной информации и теперь всего один клик отделяет нас от отправки формы на сервер. Так, стоп, но куда кликать? Давайте используем специальный элемент для отправки данных с типом <code>submit</code>:</p>
+      theory: `<p>В нашей форме мы собрали уже много самой разнообразной информации и теперь всего один клик отделяет нас от отправки формы на сервер. Так, стоп, но куда кликать? Давайте используем специальное поле для отправки данных с типом <code>submit</code>:</p>
       
 <pre><code><span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"submit"</span> <span class="attr-name">value=</span><span class="attr-value">"submit"</span>></span></code></pre>      
 
@@ -1472,7 +1470,7 @@ textarea {
 <pre><code><span class="tag"><<span>button</span> <span class="attr-name">type=</span><span class="attr-value">"submit"</span>></span>Отправить<span class="tag"><<span>/button</span>></span></code></pre>      
 
 <p>При использовании элемента <code>button</code> в качестве аттрибута мы указываем только тип, а текст разместим между открывающим и закрывающим тэгами.</p>
-<p>Давайте потренируемся отправлять данные формы с помощью <code>button</code>, так как он более широко применяется в реальных проектах.</p>
+<p>Давайте потренируемся отправлять данные формы с помощью <code>button</code>, так как этот способ более широко применяется в реальных проектах.</p>
 `,
       goal: `Создайте в форме кнопку отправки данных.`,
       initValues: {
@@ -1601,7 +1599,7 @@ textarea {
       tasks: [
         {
           id: 1,
-          label: `Создайте кнопку отправки данных формы`,
+          label: `Создайте кнопку отправки данных формы.`,
           test: (iframe: HTMLIFrameElement) => {
             const submitButton = iframe.contentDocument.body.querySelector("button[type=submit]");
             return submitButton && submitButton.parentElement && submitButton.parentElement.tagName === "FIELDSET";

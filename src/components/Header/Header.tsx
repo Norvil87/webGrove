@@ -40,13 +40,13 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <div className="buttonCont">
-            <button type="button" className="login-button">
+          <div className="header__buttonCont">
+            <Link to="/login" className="button header__login-button">
               Войти
-            </button>
-            <button type="button" className="registration-button">
+            </Link>
+            <Link to="/register" className="button button-primary header__registration-button">
               Регистрация
-            </button>
+            </Link>
           </div>
         </div>
       </header>

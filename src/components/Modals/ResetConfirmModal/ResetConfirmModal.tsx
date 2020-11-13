@@ -14,10 +14,10 @@ const ResetConfirmModal: React.FC<IResetConfirmModalProps> = ({ open, onModalCan
     <h2>Сброс кода</h2>
     <p>Вы уверены, что хотите сбросить код? Введенные данные будут потеряны</p>
     <div className="resetConfirmModal__buttonCont">
-      <button className="resetConfirmModal__confirmBtn" type="button" onClick={onModalConfirmClick}>
+      <button className="button resetConfirmModal__confirmBtn" type="button" onClick={onModalConfirmClick}>
         Подтвердить
       </button>
-      <button className="resetConfirmModal__cancelBtn" type="button" onClick={onModalCancelClick}>
+      <button className="button resetConfirmModal__cancelBtn" type="button" onClick={onModalCancelClick}>
         Отмена
       </button>
     </div>

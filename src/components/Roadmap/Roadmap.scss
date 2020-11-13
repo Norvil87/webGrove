@@ -1,0 +1,49 @@
+@import "../../styles/variables.scss";
+
+.roadmap {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.roadmap__link {
+  height: 45px;
+  width: 205px;
+
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 2px solid black;
+  box-sizing: border-box;
+  background-color: #00ff87;
+}
+
+.roadmap__link:hover {
+  outline: 5px dotted $fancyBlue;
+  opacity: 1;
+}
+
+.roadmap__link span {
+  display: block;
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.html-link {
+  right: 44%;
+  top: 23.7%;
+}
+
+.css-link {
+  right: 44%;
+  top: 28.5%;
+}
+
+.js-link {
+  right: 44%;
+  top: 33.5%;
+}

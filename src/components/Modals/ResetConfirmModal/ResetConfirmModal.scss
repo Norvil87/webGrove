@@ -30,3 +30,7 @@
   color: $successColor;
   border-color: $successColor;
 }
+
+.resetConfirmModal__cancelBtn:hover {
+  opacity: 0.6;
+}

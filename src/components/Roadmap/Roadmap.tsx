@@ -8,10 +8,11 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import roadmap from "../../img/roadmap_ru.png";
+import "./Roadmap.scss";
 
 const Roadmap: React.FC = () => {
   return (
-    <Accordion preExpanded={["roadmap"]}>
+    <Accordion>
       <AccordionItem uuid="roadmap">
         <AccordionItemHeading>
           <AccordionItemButton> Увидеть путь</AccordionItemButton>

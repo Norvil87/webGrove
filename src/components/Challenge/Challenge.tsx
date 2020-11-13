@@ -81,7 +81,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, ini
         </button>
       </div>
       <TaskSuite tasks={tasks} />
-      <LessonNavigator />
+      {/* <LessonNavigator /> */}
       <ResetConfirmModal
         open={resetModalVisible}
         onModalCancelClick={handleModalCancelClick}

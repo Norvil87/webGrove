@@ -1,16 +1,5 @@
 @import "./variables.scss";
 
-html,
-body {
-  font-family: "Roboto", "Arial", sans-serif;
-  font-size: 14px;
-  line-height: 1.3rem;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 100%;
-}
-
 *::-webkit-scrollbar {
   height: 5px;
   width: 5px;
@@ -20,12 +9,18 @@ body {
   border-radius: 5px;
 }
 
-.page__wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  max-width: 1920px;
-  margin: 0 auto;
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 14px;
+  line-height: 1.3rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 h1,
@@ -57,27 +52,11 @@ a:active {
 
 button {
   background-color: transparent;
-  border: 1px solid $primaryColor;
-  font-family: "Raleway", serif;
-  min-width: 100px;
-  height: 32px;
-  border-radius: 10px;
-}
-
-button:hover {
-  opacity: 0.6;
-}
-
-button:active {
-  opacity: 0.3;
-}
-
-button:focus {
-  outline: none;
 }
 
 img {
-  max-width: 100%
+  max-width: 100%;
+  height: auto;
 }
 
 p {
@@ -86,6 +65,84 @@ p {
   padding: 0;
 }
 
+pre {
+  border: 1px dotted $primaryColor;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+code {
+  background-color: $secondaryColor;
+  border-radius: 3px;
+  font-style: italic;
+
+  .tag {
+    color: #905;
+  }
+
+  .attr-name {
+    color: #690;
+  }
+
+  .attr-value {
+    color: #07a;
+  }
+}
+
+pre code {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 5px;
+}
+
+code a {
+  text-decoration: underline;
+}
+
+.button {
+  font-family: "Raleway", serif;
+  min-width: 100px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button-primary {
+  background-color: $primaryColor;
+  color: #fff;
+
+  &:hover {
+    background-color: #ebb16f;
+    color: white;
+  }
+}
+
 .page__top-wrapper {
   flex-grow: 1;
+}
+
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.vertical-btnCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

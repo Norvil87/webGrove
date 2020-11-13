@@ -1,47 +1,15 @@
 @import "../../styles/variables.scss";
 
-pre {
-  border: 1px dotted $primaryColor;
-  padding: 10px;
-  border-radius: 3px;
-}
-
-code {
-  background-color: $secondaryColor;
-  border-radius: 3px;
-  font-style: italic;
-
-  .tag {
-    color: #905;
-  }
-
-  .attr-name {
-    color: #690;
-  }
-
-  .attr-value {
-    color: #07a;
-  }
-}
-
-pre code {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  padding: 5px;
-}
-
-code a {
-  text-decoration: underline;
-}
-
 .challenge {
   padding: 0 10px;
   height: calc(100vh - 144px);
 
   display: flex;
   flex-direction: column;
+}
+
+.challenge h3 {
+  margin-bottom: 10px;
 }
 
 .challenge__goal {
@@ -51,7 +19,9 @@ code a {
 
 .challenge__buttonContainer {
   margin-bottom: 30px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .challenge__runCode-button {
@@ -71,6 +41,11 @@ code a {
 
 .challenge__resetCode-button {
   width: 50%;
+  border: 1px solid $primaryColor;
+}
+
+.challenge__resetCode-button:hover {
+  opacity: 0.6;
 }
 
 .challenge__theory {

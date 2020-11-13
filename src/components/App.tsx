@@ -10,6 +10,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IRootState } from "../store/types";
 import UnderConstruction from "./UnderConstruction";
+import UserRegistration from "./Modals/UserRegistration";
+import UserLogin from "./Modals/UserLogin";
+import PasswordReminder from "./Modals/PasswordReminder";
 
 const App = () => {
   const { exerciseUrl, lessonUrl, exerciseId } = useSelector((state: IRootState) => {
@@ -20,7 +23,6 @@ const App = () => {
     };
   });
 
- 
   // `/courses/html/html-forms`
   // Html.blocks[lessonUrl].excercises[exerciseId - 1]
   // `/courses/html/${lessonUrl}/${exerciseUrl}`
@@ -32,13 +34,17 @@ const App = () => {
           <Header />
           <Switch>
             <Route
-              path={`/courses/html/${lessonUrl}/${exerciseUrl}`}
-              render={() => <Simulator excercise={Html.lessons[lessonUrl].excercises[exerciseId - 1]} />}
+              path={`/courses/html/html-semantic/html-iframe`}
+              render={() => <Simulator excercise={Html.lessons["html-semantic"].excercises[5]} />}
             />
             <Route path="/courses/html" render={() => <CoursePage course={Html} />} />
             <Route path="/courses/css" component={UnderConstruction} />
             <Route path="/courses/js" component={UnderConstruction} />
             <Route path="/" exact render={() => <MainPage />} />
+            <Route path="/register" component={UserRegistration} />
+            <Route path="/login" exact component={UserLogin} />
+            <Route path="/login/reminder" component={PasswordReminder} />
+            <Route path="/articles" component={UnderConstruction} />
           </Switch>
         </div>
         <Footer />

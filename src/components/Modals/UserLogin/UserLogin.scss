@@ -1,0 +1,24 @@
+@import "../../../styles/variables.scss";
+
+.user-login__submit {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.user-login__cancel {
+  width: 50%;
+}
+
+.user-login__reminder-link {
+  color: $fancyBlue;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.user-login__register a {
+  color: $fancyBlue;
+
+  &:hover {
+    color: $primaryColor;
+  }
+}

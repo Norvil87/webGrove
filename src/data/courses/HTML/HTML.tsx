@@ -1,7 +1,7 @@
 import React from "react";
 import { ICourse } from "../../../types";
 
-import { introToHtml } from "./IntroToHtml";
+import { HtmlIntro } from "./IntroToHtml";
 import { HtmlDocument } from "./HtmlDocument";
 import { HtmlTable } from "./HTMLTable";
 import { HtmlForm } from "./HTMLForm";
@@ -17,7 +17,7 @@ export const Html: ICourse = {
     followup: "Научитесь стилизовать страницу с помощью CSS",
   },
   lessons: {
-    "intro-to-html": introToHtml,
+    "html-intro": HtmlIntro,
     "html-document": HtmlDocument,
     "html-table": HtmlTable,
     "html-forms": HtmlForm,

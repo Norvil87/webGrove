@@ -7,9 +7,9 @@ export const HtmlSemantic: ICourseLesson = {
   excercises: [
     {
       id: 1,
-      header: "Шапка и навигация - тэги header и nav",
+      header: "Шапка и навигация - элементы header и nav",
       url: "html-header-nav",
-      theory: `<p>В предыдущих уроках мы пользовались HTML элементами в основном как <b>структурными</b> единицами страницы, то есть нас интересовало в основном их взаимное расположение, но не смысловое содержание. Например, элемент <code>div</code> представляет собой контейнер для любых других элементов, элемент <code>p</code> - контейнер для блока текста и т. д.</p>
+      theory: `<p>В предыдущих уроках мы пользовались HTML элементами в основном как <b>структурными</b> единицами страницы, то есть нас интересовало преимущественно их взаимное расположение, но не смысловое содержание. Например, элемент <code>div</code> представляет собой контейнер для любых других элементов, элемент <code>p</code> - контейнер для блока текста и т. д.</p>
 <p>В дополнение к структурному подходу стандарт HTML5 предлагает <b>семантический</b> подход, когда выбор HTML элемента основывается на том, какой вид содержимого он отображает и какой смысл вы вкладывайте в тот или иной раздел.</p>
 <p>Например, один из разделов, встречающихся почти на всех сайтах - это его "шапка" (<i>header</i>). Шапка находится сверху и отображается на всех страницах сайта. Шапка, как правило, содержит следующие элементы:</p>
 <p><ul><li>Логотип компании</li><li>Навигационные ссылки для перехода на другие страницы сайта</li><li>Кнопки для входа пользователей на сайт и регистрации новых пользователей</li><li>Форма поиска по сайту</li></ul></p>
@@ -28,7 +28,7 @@ export const HtmlSemantic: ICourseLesson = {
     <span class="tag"><<span>/nav</span>></span>
   <span class="tag"><<span>/header</span>></span>
 <span class="tag"><<span>/body</span>></span></code></pre>
-<p>Обратите внимание, что с точки зрения отображения элементов на странице нет разницы, какой именно элемент вы используете - <code>header</code> или <code>div</code>. Просто встретив элемент <code>header</code> вы сразу поймете, что в этот элемент вложены элементы шапки сайта.</p>
+<p>Обратите внимание, что с точки зрения отображения элементов на странице нет разницы, какой именно элемент вы используете - <code>header</code> или <code>div</code>. Но встретив элемент <code>header</code> вы сразу поймете, что речь идет о шапке сайта.</p>
 `,
       goal: `Сайт в этом упражнении сверстан без учета семантики. Начните создавать семантическую разметку.`,
       initValues: {
@@ -39,7 +39,7 @@ export const HtmlSemantic: ICourseLesson = {
   </head>
   <body>
     <div>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <div>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -78,7 +78,7 @@ export const HtmlSemantic: ICourseLesson = {
     </div>
     
     <div>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </div>          
   </body>
@@ -122,6 +122,15 @@ ul li {
 ul a {
   color: MediumSlateBlue;
   text-decoration: none;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg/164px-Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 `,
         js: "",
@@ -157,7 +166,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -196,7 +205,7 @@ ul a {
     </div>
     
     <div>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </div>          
   </body>
@@ -205,16 +214,16 @@ ul a {
 
     {
       id: 2,
-      header: "Подвал и основной контент - тэги footer и main",
+      header: "Подвал и основной контент - элементы footer и main",
       url: "html-footer-main",
       theory: `<p>Зачем вообще использовать семантический подход? Вот основные преимущества, которые он дает:</p>
 <p><ul>
 <li>SEO оптимизация. Поисковые движки в Интернете лучше распознают контент вашего сайта и придают ему больший вес, если он выделен соответствющими семантическими элементами.</li>
 <li>Доступность. Семантические элементы лучше обрабатываются экранными читалками и делают ваш сайт дружелюбнее к людям с ограниченными возможностями.</li>
-<li>Читаемость. Гораздо легче читать код, размеченный со смыслом, а не десятки вложенных друг в друга дивов</li></ul></p>
+<li>Читаемость. Гораздо легче читать код, размеченный со смыслом, а не десятки вложенных друг в друга <code>div</code></li></ul></p>
 <p>Продолжим структурировать нашу страницу семантически. Полной противоположностью "шапки" страницы является ее "подвал" (<i>footer</i>). Подвал расположен внизу страницы, как правило он одинаков для всех страниц сайта и может содержать такую информацию:</p>
 <p><ul>
-<li>Карту сайта</li>
+<li>Схему сайта</li>
 <li>Контактную информацию</li>
 <li>Копирайт и правила пользования сайтом</li>
 <li>Логотип сайта</li></ul></p>
@@ -245,7 +254,7 @@ ul a {
 
 <p>Обратите внимание, что <code>main</code> содержит уникальный контент страницы, поэтому он на странице может быть только один. Подвалов и шапок может быть несколько в зависимости от структуры вашей страницы.</p>
 `,
-      goal: `Добавьте странице основное содержание и подвал.`,
+      goal: `Выделите на странице основное содержание и подвал.`,
       initValues: {
         html: `<!DOCTYPE html>
 <html>
@@ -254,7 +263,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -293,7 +302,7 @@ ul a {
     </div>
     
     <div>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </div>          
   </body>
@@ -337,6 +346,15 @@ ul li {
 ul a {
   color: MediumSlateBlue;
   text-decoration: none;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg/164px-Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 `,
         js: "",
@@ -378,7 +396,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -417,7 +435,7 @@ ul a {
     </main>
     
     <footer>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </footer>          
   </body>
@@ -426,9 +444,9 @@ ul a {
 
     {
       id: 3,
-      header: "Блоки основного контента - тэги article и section",
+      header: "Блоки основного контента - элементы article и section",
       url: "html-article-section",
-      theory: `<p>Основное содержание страницы также можно разбить на смысловые блоки. К примеру с помощью элемента <code>article</code> можно выделить контент страницы, который имеет смысл сам по себе, в отрыве от остального контента. Это прежде всего статьи, заметки, комментарии, записи в блоге и т. д.</p>
+      theory: `<p>Основное содержание страницы также можно разбить на смысловые блоки. К примеру, с помощью элемента <code>article</code> можно выделить контент страницы, который имеет смысл сам по себе, в отрыве от остального контента. Это, прежде всего, статьи, заметки, комментарии, записи в блоге и т. д.</p>
 
 <pre><code><span class="tag"><<span>main</span>></span>
   <span class="tag"><<span>article</span>></span>
@@ -436,7 +454,7 @@ ul a {
   <span class="tag"><<span>/article</span>></span>
 <span class="tag"><<span>/main</span>></span></code></pre>
 
-<p>Когда использовать элемент <code>article</code> в разметке? Главное правило такое: если вы можете содержимое элемента <code>article</code> вставить на другой сайт, и оно не потеряет при этом свой смысл, значит элемент <code>article</code> использован верно.</p>
+<p>Когда использовать элемент <code>article</code> в разметке? Главное правило такое: если вы можете содержимое элемента <code>article</code> вставить на другую страницу или другой сайт, и оно не потеряет при этом свой смысл, значит элемент <code>article</code> использован верно.</p>
 <p>Еще один семантический блок на странице сайта - элемент <code>section</code>. Элемент <code>section</code> объединяет контент с общей темой.</p>
 
 <pre><code><span class="tag"><<span>main</span>></span>
@@ -456,7 +474,7 @@ ul a {
 <p>Придерживайтесь следующего правила. Если контенту можно дать заголовок (любого уровня), подумайте над тем, чтобы обернуть этот контент в <code>section</code>.</p>
 <p>В примере выше элемент <code>article</code> содержит в себе несколько <code>section</code>. Но вы можете структурировать контент по-другому - выделить несколько <code>article</code> в пределах <code>section</code>, либо вообще не использовать <code>article</code>, если считаете, что контент не имеет смысла за пределами данной страницы. Семантический подход позволяет подходить к вопросу структурирования HTML творчески, пользуйтесь этим.</p>
 `,
-      goal: `Разбейте основной контент на блоки семантически.`,
+      goal: `Разбейте основной контент на семантические блоки.`,
       initValues: {
         html: `<!DOCTYPE html>
 <html>
@@ -465,7 +483,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -487,7 +505,7 @@ ul a {
           <h2>Фламенко</h2>
           <p>Вдохновляющее испанское искусство, родиной которого является южный испанский регион Андалусия. Фламенко — это единство музыки, танца и пения, это  искусство, которое передает эмоцию момента, именно поэтому настоящие выступления фламенко включают в себя живое исполнение песен, игру на гитаре и танец. Для фламенко важна связь со зрителем, отклик и момент действа, вспышка эмоции.</p>
         </div>
-        <section id="bullfight">
+        <div id="bullfight">
           <h2>Коррида</h2>
           <p>В Испании существуют тысячи ферм, где выращивают специальных быков для коррид. Все они особых агрессивных пород, легко раздражаемых и готовых атаковать.</p>
         </div>
@@ -504,7 +522,7 @@ ul a {
     </main>
     
     <footer>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </footer>          
   </body>
@@ -549,6 +567,15 @@ ul a {
   color: MediumSlateBlue;
   text-decoration: none;
 }
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg/164px-Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
 `,
         js: "",
       },
@@ -579,7 +606,7 @@ ul a {
               sections.length === 3 &&
               sections[0].id === "music" &&
               sections[1].id === "flamenco" &&
-              sections[2].id === "cousine"
+              sections[2].id === "bullfight"
             );
           },
           failMsg: "Убедитесь, что вы заменили div элементами section",
@@ -592,7 +619,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -631,7 +658,7 @@ ul a {
     </main>
     
     <footer>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </footer>          
   </body>
@@ -640,9 +667,9 @@ ul a {
 
     {
       id: 4,
-      header: "Блок второстепенного контента - тэг aside",
+      header: "Второстепенный контент - элемент aside",
       url: "html-aside",
-      theory: `<p>Мы разметили семантически блоки основного контента. На странице также может быть дополнительный контент, который не сваязан напрямую с основным. Такой контент следует выделить с помощью элемента <code>aside</code>.</p>
+      theory: `<p>Мы разметили семантически блоки основного контента. На странице также может быть дополнительный контент, который не связан напрямую с основным. Такой контент следует семантически выделить с помощью элемента <code>aside</code>:</p>
 
 <pre><code><span class="tag"><<span>main</span>></span>
   <span class="tag"><<span>article</span>></span>
@@ -666,7 +693,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -705,7 +732,7 @@ ul a {
     </main>
     
     <footer>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </footer>          
   </body>
@@ -775,6 +802,15 @@ ul a {
   color: MediumSlateBlue;
   text-decoration: none;
 }
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg/164px-Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
 `,
         js: "",
       },
@@ -802,7 +838,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -841,7 +877,7 @@ ul a {
     </main>
     
     <footer>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </footer>          
   </body>
@@ -850,13 +886,13 @@ ul a {
 
     {
       id: 5,
-      header: "Медиаконтент - тэги video и audio",
-      url: "html-media",
-      theory: `<p>С помощью элемента <code>video</code> мы можем легко добавить видеоизображение на наш сайт.</p>
+      header: "Медиаконтент - элементы video и audio",
+      url: "html-video-audio",
+      theory: `<p>С помощью элемента <code>video</code> мы можем легко добавить видеоизображение на сайт.</p>
 
-<pre><code><span class="tag"><<span>video</span> <span class="attr-name">src=</span><span class="attr-value">"cats_dancing.mpeg"</span> <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>Видеоизображение не найдено<span class="tag"><<span>/video</span>></span></code></pre>
+<pre><code><span class="tag"><<span>video</span> <span class="attr-name">src=</span><span class="attr-value">"../video/cats_dancing.mpeg"</span> <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>Видеоизображение не найдено<span class="tag"><<span>/video</span>></span></code></pre>
 
-<p>В разметке выше мы указали следующие аттрибуты:</p>
+<p>В разметке выше указаны следующие аттрибуты:</p>
 <p>
   <ul>
     <li><code>src</code> - путь к вашему видеофайлу. В примере выше файл называется "cats_dancing.mpeg"</li>
@@ -864,19 +900,19 @@ ul a {
     <li><code>autoplay</code> - видео запускается автоматически после загрузки страницы (осторожно, это раздражает многих пользователей, включая автора этого текста:)</li>
   </ul>
 </p>
-<p>Текст, заключенный между открывающим и закрывающим тэгом <code>video</code> отобразится только если видеоизображение не будет найдено.</p>
+<p>Текст, заключенный между открывающим и закрывающим тэгами <code>video</code> отобразится только если видеоизображение не будет найдено.</p>
 <p>Давайте теперь добавим на страницы аудиоконтент с помощью элемента <code>audio</code>. Попробуем применить другой подход к разметке:</p>
 
 <pre><code><span class="tag"><<span>audio</span>  <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>
-  <span class="tag"><<span>source</span> <span class="attr-name">src=</span><span class="attr-value">"anthem.mp3"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/mp3"</span>></span>
-  <span class="tag"><<span>source</span> <span class="attr-name">src=</span><span class="attr-value">"anthem.ogg"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/ogg"</span>></span>
+  <span class="tag"><<span>source</span> <span class="attr-name">src=</span><span class="attr-value">"../audio/anthem.mp3"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/mp3"</span>></span>
+  <span class="tag"><<span>source</span> <span class="attr-name">src=</span><span class="attr-value">"../audio/anthem.ogg"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/ogg"</span>></span>
 <span class="tag"><<span>/audio</span>></span></code></pre>
 
-<p>Здесь у элемента <code>audio</code> вы видите уже знакомые аттрибуты <code>controls</code>, отвечающий за кнопку управления аудиозаписью и <code>autoplay</code>, отвечающий за немедленное начало воспроизведения аудиофайла после загрузки страницы.</p>
-<p>В этот раз внутри находятся 2 элемента <code>source</code>, которые указывают источники аудиофайлов. У нас указаны 2 источника аудиофайлов в разных форматах. Сначала браузер попробует найти файл "anthem.mp3". Если такой файл отсутствует или не поддерживается вашим браузером, он попробует найти файл "anthem.ogg".</p>
+<p>Здесь у элемента <code>audio</code> вы видите уже знакомые аттрибуты <code>controls</code>, отвечающий за кнопку управления аудиовоспроизведением и <code>autoplay</code>, отвечающий за немедленное начало воспроизведения аудиофайла после загрузки страницы.</p>
+<p>В этот раз в <code>audio</code> вложены 2 элемента <code>source</code>, которые указывают источники аудиофайлов. У нас указаны 2 источника аудиофайлов разных форматов. Сначала браузер попробует найти файл "anthem.mp3". Если такой файл отсутствует или не поддерживается вашим браузером, он попробует найти файл "anthem.ogg".</p>
 <p>Тип аудиофайла каждого источника указан в аттрибуте <code>type</code> элемента <code>source</code>. Данный аттрибут не является обязательным, но желательно его указывать, чтобы облегчить браузеру определение типа файла.</p>
 `,
-      goal: `Добавьте на страницу медиконтент.`,
+      goal: `Добавьте на страницу медиаконтент.`,
       initValues: {
         html: `<!DOCTYPE html>
 <html>
@@ -885,7 +921,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -928,7 +964,7 @@ ul a {
     </main>
     
     <footer>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </footer>          
   </body>
@@ -997,6 +1033,15 @@ ul li {
 ul a {
   color: MediumSlateBlue;
   text-decoration: none;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg/164px-Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 `,
         js: "",
@@ -1052,7 +1097,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -1097,7 +1142,7 @@ ul a {
     </main>
     
     <footer>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </footer>          
   </body>
@@ -1106,12 +1151,12 @@ ul a {
 
     {
       id: 6,
-      header: "Встроенный контент - тэг iframe",
+      header: "Встроенный контент - элемент iframe",
       url: "html-iframe",
-      theory: `<p>Есть также способ добавить на вашу страницу любой медиаэлемент и даже содержание другой HTML страницы, а в нее - содержание другой HTML страницы... Все это называется встроенным контентом, элементы <code>audio</code> и <code>video</code>, с которыми мы работали в прошлом упражнении, являются частными случаями встроенного контента.</p>
+      theory: `<p>Существует способ добавить на вашу страницу любой медиаэлемент и даже содержание другой HTML страницы, а в нее - содержание другой HTML страницы... Все это называется встроенным контентом, элементы <code>audio</code> и <code>video</code>, с которыми мы работали в прошлом упражнении, являются частными случаями встроенного контента.</p>
       <p>Познакомимся с элементом <code>iframe</code>. Результат вашей верстки, отображаемый в этом упражнении справа, встроен на страницу именно с помощью этого элемента.</p>
 
-<pre><code><span class="tag"><<span>iframe</span> <span class="attr-name">src=</span><span class="attr-value">"some_content.gif"</span> <span class="attr-name">title=</span><span class="attr-value">"content_title"</span> <span class="attr-name">width=</span><span class="attr-value">"200"</span> <span class="attr-name">height=</span><span class="attr-value">"150"</span>></span><span class="tag"><<span>/iframe></span></code></pre>
+<pre><code><span class="tag"><<span>iframe</span> <span class="attr-name">src=</span><span class="attr-value">"../resource/some_content.gif"</span> <span class="attr-name">title=</span><span class="attr-value">"content_title"</span> <span class="attr-name">width=</span><span class="attr-value">"200"</span> <span class="attr-name">height=</span><span class="attr-value">"150"</span>></span><span class="tag"><<span>/iframe></span></code></pre>
 
 <p>В разметке выше мы указали следующие аттрибуты:</p>
 <p>
@@ -1131,7 +1176,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -1178,7 +1223,7 @@ ul a {
     </main>
     
     <footer>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </footer>          
   </body>
@@ -1248,6 +1293,15 @@ ul a {
   color: MediumSlateBlue;
   text-decoration: none;
 }
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg/164px-Escudo_institucional_de_la_Junta_de_Andaluc%C3%ADa.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
 `,
         js: "",
       },
@@ -1289,7 +1343,7 @@ ul a {
   </head>
   <body>
     <header>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#music">Музыка</a></li>
@@ -1336,7 +1390,7 @@ ul a {
     </main>
     
     <footer>
-      <div>ЛОГОТИП</div>
+      <div class="logo"></div>
       <p>Наш телефон: +79901002323</p>
     </footer>          
   </body>

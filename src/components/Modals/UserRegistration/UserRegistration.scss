@@ -1,0 +1,50 @@
+@import "../../../styles/variables.scss";
+
+.user-modal-content {
+  padding: 40px;
+  width: 380px;
+}
+
+.form-input-container {
+  margin-bottom: 20px;
+}
+
+.form-input-container input {
+  min-height: 40px;
+  width: 100%;
+  padding: 0 15px;
+  border: 1px solid #333;
+
+  &:hover {
+    border-color: $primaryColor;
+  }
+
+  &:focus {
+    border: 2px dashed $primaryColor;
+    outline: none;
+  }
+}
+
+.form-input-container label {
+  font-weight: 700;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.user-registration__submit {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.user-registration__cancel {
+  width: 50%;
+}
+
+.user-registration__login a {
+  color: $fancyBlue;
+
+  &:hover {
+    color: $primaryColor;
+  }
+}

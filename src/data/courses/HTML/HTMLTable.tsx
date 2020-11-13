@@ -5,7 +5,7 @@ export const HtmlTable = {
   excercises: [
     {
       id: 1,
-      header: "Создание HTML таблицы - тэг table",
+      header: "Создание HTML таблицы - элемент table",
       url: "html-table-creation",
       theory: `<p>Существует большое количество разнообразных данных, которые удобно отображать в виде последовательности строк и столбцов, т. е. таблиц. В HTML существует группа элементов, предназначенных для отображения табличных данных.</p>
       <p> HTML таблица создается с помощью элемента <code>table</code>:</p>
@@ -43,16 +43,16 @@ export const HtmlTable = {
 
     {
       id: 2,
-      header: "Строки таблицы - тэг tr",
+      header: "Строки таблицы - элемент tr",
       url: "html-table-rows",
       theory: `<p>Создавить структуру таблицы мы начнем со строк. Строки задаются с помощью элемента <code>tr</code> (<i>table row</i>), вот так:</p>
   
 <pre><code><span class="tag"><<span>table</span>></span>  
   <span class="tag"><<span>tr</span>></span>
-  
+    <span><</span>!--Первая строка<span>--></span>
   <span class="tag"><<span>/tr</span>></span>
   <span class="tag"><<span>tr</span>></span>
-  
+    <span><</span>!--Вторая строка<span>--></span>
   <span class="tag"><<span>/tr</span>></span>
 <span class="tag"><<span>/table</span>></span>
 </code></pre>
@@ -84,7 +84,7 @@ export const HtmlTable = {
             const rows = table.querySelectorAll("tr");
             return rows.length === 4;
           },
-          failMsg: "Убедитесь, что в таблице 4 строки tr",
+          failMsg: "Убедитесь, что в таблице 4 строки",
         },
       ],
       solution: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
@@ -104,9 +104,9 @@ export const HtmlTable = {
 
     {
       id: 3,
-      header: "Данные таблицы - тэг td",
+      header: "Данные таблицы - элемент td",
       url: "html-table-data",
-      theory: `<p>Давайте начнем заполнять таблицу данными. Для этого в строки таблицы <code>tr</code> вложим ячейки, содержащие данные - элемент <code>td</code> (<i>table data</i>).</p>
+      theory: `<p>Давайте начнем заполнять таблицу данными. Для этого в строки таблицы <code>tr</code> вложим ячейки, содержащие данные - элемент <code>td</code> (<i>table data</i>):</p>
 
 <pre><code><span class="tag"><<span>table</span>></span>  
   <span class="tag"><<span>tr</span>></span>
@@ -257,9 +257,9 @@ th, td {
 
     {
       id: 4,
-      header: "Заголовки таблицы - тэг th",
-      url: "html-table-data",
-      theory: `<p>В данный момент наша таблица заполнена данными, но не понятно, что эти данные означают. Чтобы придать данным смысл, таблице необходимы заголовки. Мы создадим заголовки с помощью элемента <code>th</code> (<i>table heading</i>). Вот пример табицы с заголовками:</p>
+      header: "Заголовки таблицы - элемент th",
+      url: "html-table-header",
+      theory: `<p>В данный момент наша таблица заполнена данными, но не понятно, что эти данные означают. Чтобы придать им смысл, таблице необходимы заголовки. Мы создадим заголовки с помощью элемента <code>th</code> (<i>table header</i>). Вот пример табицы с заголовками:</p>
 
 <pre><code><span class="tag"><<span>table</span>></span>
   <span class="tag"><<span>tr</span>></span>
@@ -361,7 +361,7 @@ th, td {
               headings[3].textContent === "Стоимость, руб."
             );
           },
-          failMsg: "Убедитесь, что в первой строке tr таблицы 4 заголовка th с правильным текстовым содержанием",
+          failMsg: "Убедитесь, что в первой строке таблицы 4 заголовка th с правильным текстовым содержанием",
         },
         {
           id: 2,
@@ -417,9 +417,9 @@ th, td {
 
     {
       id: 5,
-      header: "Структура таблицы - тэги thead, tbody",
-      url: "html-table-thead-tbody",
-      theory: `<p>Наша таблица пока еще сравнительно небольшая, но по мере ее увеличения может возникнуть необходимость структурировать ее содержание. Подобно обычной HTML странице, у которой есть <code>head</code> и <code>body</code> у таблицы есть <code>thead</code> (<i>table head</i>) и <code>tbody</code> (<i>table body</i>)</p>
+      header: "Структура таблицы - элементы thead, tbody",
+      url: "html-thead-tbody",
+      theory: `<p>Наша таблица пока еще сравнительно небольшая, но по мере ее увеличения может возникнуть необходимость структурировать ее содержимое. Подобно обычной HTML странице, у которой есть <code>head</code> и <code>body</code>, у таблицы есть <code>thead</code> (<i>table head</i>) и <code>tbody</code> (<i>table body</i>):</p>
 
 <pre><code><span class="tag"><<span>table</span>></span>
   <span class="tag"><<span>thead</span>></span>
@@ -442,8 +442,8 @@ th, td {
 </code></pre>
 
       <p><table style='margin: 0 auto'><tr><th scope="col">Заголовок 1</th><th scope="col">Заголовок 2</th><tr><tr><td style='border: 1px solid grey'>Ячейка 1 строки 1</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td><tr><td style='border: 1px solid grey'>Ячейка 1 строки 2</td><td style='border: 1px solid grey'>Ячейка 2 строки 2</td></table></p>
-      <p>В <code>thead</code> помещают заголовки таблицы вместе с их <code>tr</code> элементом (только заголовки столбцов! Аттрибут <code>scope</code> со значением <code>col</code> либо без аттрибута).</p>
-      <p>В <code>tbody</code> помещают все данные таблицы вместе с их <code>tr</code> элементами.</p>
+      <p>В <code>thead</code> помещают заголовки таблицы вместе с их <code>tr</code> строкой (только заголовки столбцов! Аттрибут <code>scope</code> со значением <code>col</code> либо без аттрибута).</p>
+      <p>В <code>tbody</code> помещают все данные таблицы вместе с их <code>tr</code> строками.</p>
       <p><code>thead</code> и <code>tbody</code> никак не отображаются на странице, но вашу таблицу становится легче читать.</p>`,
       goal: `Структурируйте таблицу.`,
       initValues: {
@@ -800,7 +800,7 @@ th, td {
       <tr><td style='border: 1px solid grey'>Ячейка 1 строки 1</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td></tr>
       <tr><td colspan="2" style='border: 1px solid grey'>Объединенная ячейка</td></tr>
       </table></p>
-      <p>Для этого первой ячейке второй строки задается аттрибут <code>colspan</code> со значением <code>2</code>.</p>
+      <p>Для этого первой ячейке второй строки задается аттрибут <code>colspan</code> со значением <code>2</code>:</p>
 
 <pre><code><span class="tag"><<span>table</span>></span>
   <span class="tag"><<span>thead</span>></span>
@@ -822,7 +822,7 @@ th, td {
 <span class="tag"><<span>/table</span>></span>
 </code></pre>
 
-      <p>Аттрибут <code>colspan</code> принимает целое число в качестве значения и означает, сколько столбцов в таблице займет та или иная ячейка. Вок как выглядит наша таблица:</p>
+      <p>Аттрибут <code>colspan</code> принимает целое число в качестве значения, которое показывает, сколько столбцов в таблице займет та или иная ячейка. Вок как выглядит наша таблица:</p>
       <table style='margin: 0 auto'><tr><th scope="col">Заголовок 1</th><th scope="col">Заголовок 2</th></tr>
       <tr><td style='border: 1px solid grey'>Ячейка 1 строки 1</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td></tr>
       <tr><td colspan="2" style='border: 1px solid grey'>Объединенная ячейка</td><td style='border: 1px solid grey'>Ячейка 2 строки 2</td></tr>
@@ -941,7 +941,7 @@ th, td {
             );
           },
           failMsg:
-            "Убедитесь, что ячейке в последней строке с данными правильно задан аттрибут colspan и текстовое содержание",
+            "Убедитесь, что ячейке в последней строке правильно задан аттрибут colspan и текстовое содержание",
         },
         {
           id: 2,
