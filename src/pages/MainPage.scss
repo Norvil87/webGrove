@@ -1,1 +1,106 @@
+@import "../styles/variables.scss";
 
+.content {
+  flex-grow: 1;
+}
+
+.content__intro,
+.content__courses,
+.content__roadmap,
+.content__course-structure {
+  margin-bottom: 30px;
+}
+
+.content__courses ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.content h2 {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.course-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.course-list__course-card {
+  min-width: 250px;
+  height: 350px;
+  padding: 1.25rem;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+
+.course-list__course-card a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.course-list__course-card a:hover {
+  opacity: 1;
+  color: #000;
+}
+
+.course-list__course-card h3 {
+  font-size: 26px;
+  color: #fff;
+  text-align: center;
+}
+
+.course-list__course-card button {
+  color: #fff;
+  font-weight: 700;
+  border-color: #fff;
+}
+
+.course-list__html-card {
+  background-color: invert($color: #e34e26);
+  background-image: url("../img/html5-logo.png");
+}
+
+.course-list__html-card:hover button {
+  background-color: #e34e26;
+  border: none;
+}
+
+.course-list__html-card:hover h3 {
+  color: #e34e26;
+}
+
+.course-list__css-card {
+  background-color: invert($color: #264de4);
+  background-image: url("../img/css3-logo.png");
+}
+
+.course-list__css-card:hover button {
+  background-color: #264de4;
+  border: none;
+}
+
+.course-list__css-card:hover h3 {
+  color: #264de4;
+}
+
+.course-list__js-card {
+  background-color: invert($color: #ff922b);
+  background-image: url("../img/js-logo.png");
+}
+
+.course-list__js-card:hover button {
+  background-color: #ff922b;
+  border: none;
+}
+
+.course-list__js-card:hover h3 {
+  color: #ff922b;
+}

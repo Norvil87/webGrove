@@ -1,4 +1,6 @@
-export const HtmlTable = {
+import { ICourseLesson } from "../../../types";
+
+export const HtmlTable: ICourseLesson = {
   id: 3,
   title: "Таблицы в HTML",
   url: "html-table",
@@ -10,9 +12,9 @@ export const HtmlTable = {
       theory: `<p>Существует большое количество разнообразных данных, которые удобно отображать в виде последовательности строк и столбцов, т. е. таблиц. В HTML существует группа элементов, предназначенных для отображения табличных данных.</p>
       <p> HTML таблица создается с помощью элемента <code>table</code>:</p>
       
-<pre><code><span class="tag"><<span>table</span>></span>
+<pre><code><span class="tag">&lt;table></span>
       
-<span class="tag"><<span>/table</span>></span></code></pre>`,
+<span class="tag">&lt;/table></span></code></pre>`,
       goal: `Создайте пустую таблицу.`,
       initValues: {
         html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
@@ -47,14 +49,14 @@ export const HtmlTable = {
       url: "html-table-rows",
       theory: `<p>Создавить структуру таблицы мы начнем со строк. Строки задаются с помощью элемента <code>tr</code> (<i>table row</i>), вот так:</p>
   
-<pre><code><span class="tag"><<span>table</span>></span>  
-  <span class="tag"><<span>tr</span>></span>
-    <span><</span>!--Первая строка<span>--></span>
-  <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>tr</span>></span>
-    <span><</span>!--Вторая строка<span>--></span>
-  <span class="tag"><<span>/tr</span>></span>
-<span class="tag"><<span>/table</span>></span>
+<pre><code><span class="tag">&lt;table></span>  
+  <span class="tag">&lt;tr></span>
+    &lt;!--Первая строка<span>-->
+  <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;tr></span>
+    &lt;!--Вторая строка<span>-->
+  <span class="tag">&lt;/tr></span>
+<span class="tag">&lt;/table></span>
 </code></pre>
 
       <p>В этой таблице 2 пустые строки.</p>`,
@@ -108,16 +110,16 @@ export const HtmlTable = {
       url: "html-table-data",
       theory: `<p>Давайте начнем заполнять таблицу данными. Для этого в строки таблицы <code>tr</code> вложим ячейки, содержащие данные - элемент <code>td</code> (<i>table data</i>):</p>
 
-<pre><code><span class="tag"><<span>table</span>></span>  
-  <span class="tag"><<span>tr</span>></span>
-    <span class="tag"><<span>td</span>></span>Ячейка 1 строки 1<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>td</span>></span>Ячейка 2 строки 1<span class="tag"><<span>/td</span>></span>
-  <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>tr</span>></span>
-    <span class="tag"><<span>td</span>></span>Ячейка 1 строки 2<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>td</span>></span>Ячейка 2 строки 2<span class="tag"><<span>/td</span>></span>
-  <span class="tag"><<span>/tr</span>></span>
-<span class="tag"><<span>/table</span>></span>
+<pre><code><span class="tag">&lt;table></span>  
+  <span class="tag">&lt;tr></span>
+    <span class="tag">&lt;td></span>Ячейка 1 строки 1<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;td></span>Ячейка 2 строки 1<span class="tag">&lt;/td></span>
+  <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;tr></span>
+    <span class="tag">&lt;td></span>Ячейка 1 строки 2<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;td></span>Ячейка 2 строки 2<span class="tag">&lt;/td></span>
+  <span class="tag">&lt;/tr></span>
+<span class="tag">&lt;/table></span>
 </code></pre>
 
       <p><table style='margin: 0 auto'><tr><td style='border: 1px solid grey'>Ячейка 1 строки 1</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td><tr><td style='border: 1px solid grey'>Ячейка 1 строки 2</td><td style='border: 1px solid grey'>Ячейка 2 строки 2</td></table></p>
@@ -261,20 +263,20 @@ th, td {
       url: "html-table-header",
       theory: `<p>В данный момент наша таблица заполнена данными, но не понятно, что эти данные означают. Чтобы придать им смысл, таблице необходимы заголовки. Мы создадим заголовки с помощью элемента <code>th</code> (<i>table header</i>). Вот пример табицы с заголовками:</p>
 
-<pre><code><span class="tag"><<span>table</span>></span>
-  <span class="tag"><<span>tr</span>></span>
-    <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag"><<span>/th</span>></span>
-    <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag"><<span>/th</span>></span>
-  <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>tr</span>></span>
-    <span class="tag"><<span>td</span>></span>Ячейка 1 строки 1<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>td</span>></span>Ячейка 2 строки 1<span class="tag"><<span>/td</span>></span>
-  <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>tr</span>></span>
-    <span class="tag"><<span>td</span>></span>Ячейка 1 строки 2<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>td</span>></span>Ячейка 2 строки 2<span class="tag"><<span>/td</span>></span>
-  <span class="tag"><<span>/tr</span>></span>
-<span class="tag"><<span>/table</span>></span>
+<pre><code><span class="tag">&lt;table></span>
+  <span class="tag">&lt;tr></span>
+    <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag">&lt;/th></span>
+    <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag">&lt;/th></span>
+  <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;tr></span>
+    <span class="tag">&lt;td></span>Ячейка 1 строки 1<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;td></span>Ячейка 2 строки 1<span class="tag">&lt;/td></span>
+  <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;tr></span>
+    <span class="tag">&lt;td></span>Ячейка 1 строки 2<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;td></span>Ячейка 2 строки 2<span class="tag">&lt;/td></span>
+  <span class="tag">&lt;/tr></span>
+<span class="tag">&lt;/table></span>
 </code></pre>
 
       <p><table style='margin: 0 auto'><tr><th scope="col">Заголовок 1</th><th scope="col">Заголовок 2</th><tr><tr><td style='border: 1px solid grey'>Ячейка 1 строки 1</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td><tr><td style='border: 1px solid grey'>Ячейка 1 строки 2</td><td style='border: 1px solid grey'>Ячейка 2 строки 2</td></table></p>
@@ -421,24 +423,24 @@ th, td {
       url: "html-thead-tbody",
       theory: `<p>Наша таблица пока еще сравнительно небольшая, но по мере ее увеличения может возникнуть необходимость структурировать ее содержимое. Подобно обычной HTML странице, у которой есть <code>head</code> и <code>body</code>, у таблицы есть <code>thead</code> (<i>table head</i>) и <code>tbody</code> (<i>table body</i>):</p>
 
-<pre><code><span class="tag"><<span>table</span>></span>
-  <span class="tag"><<span>thead</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag"><<span>/th</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag"><<span>/th</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/thead</span>></span>
-  <span class="tag"><<span>tbody</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 1 строки 1<span class="tag"><<span>/td</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 2 строки 1<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 1 строки 2<span class="tag"><<span>/td</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 2 строки 2<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/tbody</span>></span>
-<span class="tag"><<span>/table</span>></span>
+<pre><code><span class="tag">&lt;table></span>
+  <span class="tag">&lt;thead></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag">&lt;/th></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag">&lt;/th></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/thead></span>
+  <span class="tag">&lt;tbody></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td></span>Ячейка 1 строки 1<span class="tag">&lt;/td></span>
+      <span class="tag">&lt;td></span>Ячейка 2 строки 1<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td></span>Ячейка 1 строки 2<span class="tag">&lt;/td></span>
+      <span class="tag">&lt;td></span>Ячейка 2 строки 2<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/tbody></span>
+<span class="tag">&lt;/table></span>
 </code></pre>
 
       <p><table style='margin: 0 auto'><tr><th scope="col">Заголовок 1</th><th scope="col">Заголовок 2</th><tr><tr><td style='border: 1px solid grey'>Ячейка 1 строки 1</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td><tr><td style='border: 1px solid grey'>Ячейка 1 строки 2</td><td style='border: 1px solid grey'>Ячейка 2 строки 2</td></table></p>
@@ -598,24 +600,24 @@ th, td {
       </table></p>
       <p>Для этого зададим первой ячейке первой строки аттрибут <code>rowspan</code> со значением <code>2</code>.</p>
 
-<pre><code><span class="tag"><<span>table</span>></span>
-  <span class="tag"><<span>thead</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag"><<span>/th</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag"><<span>/th</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/thead</span>></span>
-  <span class="tag"><<span>tbody</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span> <span class="attr-name">rowspan=</span><span class="attr-value">"2"</span>></span>></span>Ячейка 1 строки 1<span class="tag"><<span>/td</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 2 строки 1<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 1 строки 2<span class="tag"><<span>/td</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 2 строки 2<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/tbody</span>></span>
-<span class="tag"><<span>/table</span>></span>
+<pre><code><span class="tag">&lt;table></span>
+  <span class="tag">&lt;thead></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag">&lt;/th></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag">&lt;/th></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/thead></span>
+  <span class="tag">&lt;tbody></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td <span class="attr-name">rowspan=</span><span class="attr-value">"2"</span>></span>></span>Ячейка 1 строки 1<span class="tag">&lt;/td></span>
+      <span class="tag">&lt;td></span>Ячейка 2 строки 1<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td></span>Ячейка 1 строки 2<span class="tag">&lt;/td></span>
+      <span class="tag">&lt;td></span>Ячейка 2 строки 2<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/tbody></span>
+<span class="tag">&lt;/table></span>
 </code></pre>
 
       <p>Аттрибут <code>rowspan</code> принимает целое число в качестве значения и означает, сколько строк в таблице займет та или иная ячейка. В данном случае первая ячейка первой строки должна визуально занять 2 строки. Разметка выше на странице будет выглядить так:</p>
@@ -626,23 +628,23 @@ th, td {
 
       <p>Упс, что-то не то с форматированием. Действительно, первая ячейка первой строки занимает теперь в 2 раза больше места. Но ведь первая ячейка второй строки по прежнему в таблице и она тоже занимает свое место. В результате она просто вытесняется в третий столбец, что приводит к проблемам с отображением таблицы. Лишнюю ячейку нужно удалить. Вот правильная разметка:</p>
 
-<pre><code><span class="tag"><<span>table</span>></span>
-  <span class="tag"><<span>thead</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag"><<span>/th</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag"><<span>/th</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/thead</span>></span>
-  <span class="tag"><<span>tbody</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span> <span class="attr-name">rowspan=</span><span class="attr-value">"2"</span>></span>></span>Ячейка 1 строки 1<span class="tag"><<span>/td</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 2 строки 1<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 2 строки 2<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/tbody</span>></span>
-<span class="tag"><<span>/table</span>></span>
+<pre><code><span class="tag">&lt;table></span>
+  <span class="tag">&lt;thead></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag">&lt;/th></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag">&lt;/th></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/thead></span>
+  <span class="tag">&lt;tbody></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td <span class="attr-name">rowspan=</span><span class="attr-value">"2"</span>></span>></span>Ячейка 1 строки 1<span class="tag">&lt;/td></span>
+      <span class="tag">&lt;td></span>Ячейка 2 строки 1<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td></span>Ячейка 2 строки 2<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/tbody></span>
+<span class="tag">&lt;/table></span>
 </code></pre>
 
       <p>Теперь таблица выглядит как в начале упражнения. При объединении ячеек в строках всегда внимательно проверяйте поведение таблицы и удаляйте лишние ячейки.</p>`,
@@ -802,24 +804,24 @@ th, td {
       </table></p>
       <p>Для этого первой ячейке второй строки задается аттрибут <code>colspan</code> со значением <code>2</code>:</p>
 
-<pre><code><span class="tag"><<span>table</span>></span>
-  <span class="tag"><<span>thead</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag"><<span>/th</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag"><<span>/th</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/thead</span>></span>
-  <span class="tag"><<span>tbody</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span>></span>></span>Ячейка 1 строки 1<span class="tag"><<span>/td</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 2 строки 1<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span> <span class="attr-name">colspan=</span><span class="attr-value">"2"</span>></span>Ячейка 1 строки 2<span class="tag"><<span>/td</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 2 строки 2<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/tbody</span>></span>
-<span class="tag"><<span>/table</span>></span>
+<pre><code><span class="tag">&lt;table></span>
+  <span class="tag">&lt;thead></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag">&lt;/th></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag">&lt;/th></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/thead></span>
+  <span class="tag">&lt;tbody></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td></span>></span>Ячейка 1 строки 1<span class="tag">&lt;/td></span>
+      <span class="tag">&lt;td></span>Ячейка 2 строки 1<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td <span class="attr-name">colspan=</span><span class="attr-value">"2"</span>></span>Ячейка 1 строки 2<span class="tag">&lt;/td></span>
+      <span class="tag">&lt;td></span>Ячейка 2 строки 2<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/tbody></span>
+<span class="tag">&lt;/table></span>
 </code></pre>
 
       <p>Аттрибут <code>colspan</code> принимает целое число в качестве значения, которое показывает, сколько столбцов в таблице займет та или иная ячейка. Вок как выглядит наша таблица:</p>
@@ -830,23 +832,23 @@ th, td {
 
       <p>Та же проблема. Ячейка, которая теперь занимает в 2 раза больше места в таблице, сдвигает соседнюю ячейку вправо. Но мы уже знаем, как с этим бороться. Удалим соседнюю ячейку:</p>
 
-<pre><code><span class="tag"><<span>table</span>></span>
-  <span class="tag"><<span>thead</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag"><<span>/th</span>></span>
-      <span class="tag"><<span>th</span> <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag"><<span>/th</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/thead</span>></span>
-  <span class="tag"><<span>tbody</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span>></span>></span>Ячейка 1 строки 1<span class="tag"><<span>/td</span>></span>
-      <span class="tag"><<span>td</span>></span>Ячейка 2 строки 1<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-    <span class="tag"><<span>tr</span>></span>
-      <span class="tag"><<span>td</span> <span class="attr-name">colspan=</span><span class="attr-value">"2"</span>></span>Ячейка 1 строки 2<span class="tag"><<span>/td</span>></span>
-    <span class="tag"><<span>/tr</span>></span>
-  <span class="tag"><<span>/tbody</span>></span>
-<span class="tag"><<span>/table</span>></span>
+<pre><code><span class="tag">&lt;table></span>
+  <span class="tag">&lt;thead></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 1<span class="tag">&lt;/th></span>
+      <span class="tag">&lt;th <span class="attr-name">scope=</span><span class="attr-value">"col"</span>></span>Заголовок 2<span class="tag">&lt;/th></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/thead></span>
+  <span class="tag">&lt;tbody></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td></span>Ячейка 1 строки 1<span class="tag">&lt;/td></span>
+      <span class="tag">&lt;td></span>Ячейка 2 строки 1<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+    <span class="tag">&lt;tr></span>
+      <span class="tag">&lt;td <span class="attr-name">colspan=</span><span class="attr-value">"2"</span>></span>Ячейка 1 строки 2<span class="tag">&lt;/td></span>
+    <span class="tag">&lt;/tr></span>
+  <span class="tag">&lt;/tbody></span>
+<span class="tag">&lt;/table></span>
 </code></pre>
 
       <p>Теперь таблица выглядит правильно.</p>`,
@@ -940,8 +942,7 @@ th, td {
               secondCell.textContent === "Технические характеристики отсутствуют"
             );
           },
-          failMsg:
-            "Убедитесь, что ячейке в последней строке правильно задан аттрибут colspan и текстовое содержание",
+          failMsg: "Убедитесь, что ячейке в последней строке правильно задан аттрибут colspan и текстовое содержание",
         },
         {
           id: 2,

@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.roadmap {
+.roadmap__container {
   width: 1000px;
   margin: 0 auto;
   position: relative;
@@ -9,7 +9,6 @@
 .roadmap__link {
   height: 45px;
   width: 205px;
-
   position: absolute;
   display: flex;
   align-items: center;
@@ -17,12 +16,24 @@
   flex-wrap: wrap;
   border: 2px solid black;
   box-sizing: border-box;
-  background-color: #00ff87;
 }
 
 .roadmap__link:hover {
   outline: 5px dotted $fancyBlue;
   opacity: 1;
+}
+
+.roadmap__course-link {
+  background-color: #00ff87;
+}
+
+.roadmap__article-link {
+  background-color: $primaryColor;
+}
+
+.roadmap__article-link:hover {
+  outline: none;
+  background-color: #ebb16f;
 }
 
 .roadmap__link span {
@@ -31,6 +42,11 @@
   font-size: 1.5rem;
   width: 100%;
   text-align: center;
+}
+
+.roadmap__article-link span {
+  font-size: 1rem;
+  color: #fff;
 }
 
 .html-link {
@@ -46,4 +62,46 @@
 .js-link {
   right: 44%;
   top: 33.5%;
+}
+
+.dns-link {
+  right: 135px;
+  top: 50px;
+  height: 39px;
+  width: 240px;
+}
+
+.domain-link {
+  right: 135px;
+  top: 89px;
+  height: 39px;
+  width: 240px;
+}
+
+.hosting-link {
+  right: 135px;
+  top: 128px;
+  height: 39px;
+  width: 240px;
+}
+
+.internet-link {
+  left: 34px;
+  top: 52px;
+  height: 42px;
+  width: 252px;
+}
+
+.http-link {
+  left: 34px;
+  top: 94px;
+  height: 40px;
+  width: 252px;
+}
+
+.browser-link {
+  left: 34px;
+  top: 134px;
+  height: 40px;
+  width: 252px;
 }

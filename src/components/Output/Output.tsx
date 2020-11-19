@@ -3,13 +3,20 @@ import "./Output.scss";
 import Iframe from "react-iframe";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../store/types";
-import { IInitEditorValues } from "../../types";
+import { IEditorValues } from "../../types";
 
 const Output = () => {
-  const { html, css, js } = useSelector((state: IRootState) => state.editorValues);
-  const { passed, message } = useSelector((state: IRootState) => state.currentExercise);
-//console.log(html, css)
-  const getGeneratedPageURL = ({ html, css, js }: IInitEditorValues) => {
+  const { html, css, js, passed, message } = useSelector((state: IRootState) => {
+    return {
+      html: state.editorValues.html,
+      css: state.editorValues.css,
+      js: state.editorValues.js,
+      passed: state.currentExercise.passed,
+      message: state.currentExercise.message,
+    };
+  });
+
+  const getGeneratedPageURL = ({ html, css, js }: IEditorValues) => {
     const getBlobURL = (code: string, type: string) => {
       const blob = new Blob([code], { type });
       return URL.createObjectURL(blob);

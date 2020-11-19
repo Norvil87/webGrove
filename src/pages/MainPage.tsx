@@ -2,71 +2,73 @@ import React from "react";
 import Roadmap from "../components/Roadmap/Roadmap";
 import "./MainPage.scss";
 import { Link } from "react-router-dom";
+import { setCourse } from "../store/actions";
+import { useDispatch } from "react-redux";
+import { Html } from "../data/courses/HTML/HTML";
+import { Css } from "../data/courses/CSS/СSS";
+import { Js } from "../data/courses/JS/JS";
+import { ICourse } from "../types";
 
 const MainPage: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const handleCourseLinkClick = (course: ICourse) => () => {
+    dispatch(setCourse(course));
+  };
+
   return (
-    <main className="content">
-      <section className="content__intro">
+    <>
+      <section className="content__intro centrifier">
         <h2>Если ты заинтересовался вэб-разработкой, ты попал в правильное место</h2>
         <p>
-          Не знаем, случайно ли ты забрел на эту страницу или попал сюда в стремлении стать профессиональным
-          вэб-разработчиком, но ты оказался в нужном месте в нужное время.
+          Не знаем, случайно ли ты забрел на эту страницу или искал возможность стать вэб-разработчиком, но ты оказался
+          в нужном месте и в нужное время.
         </p>
         <p>
-          Здесь новичкам помогут научиться основам верстки и программирования, опытные разработчики смогут расширить
-          свой профессиональный кругозор. Профессия вэб разработчика востребована на рынке и хорошо оплачивается.
+          Если ты здесь впервые, то ниже ты увидишь путь разработчика, который последовательно познакомит тебя с
+          основами верстки и программирования. Проходи курсы по различным технологиям и читай статьи о вэб-разработке.
         </p>
-        <p>Достаточно слов. Кликни на кнопку внизу, узнай свой путь в профессии. И удачи тебе!</p>
+        <p>Достаточно слов. Смотри карту, узнай свой путь в профессии. И удачи тебе!</p>
       </section>
       <Roadmap />
-      <section className="content__courses">
+      <section id="courses" className="content__courses centrifier">
         <h2>Курсы</h2>
-        <p>Доступны следующие курсы:</p>
         <ul className="course-list">
-          <li className="course-list__course-card">
-            <Link to="/courses/html" className="course-list__html-card">
-              <h4>HTML</h4>
-              <div>html logo</div>
-              <div className="content__course-stats">
-                <p>6 уроков</p>
-                <p>43 упражнения</p>
-              </div>
-              <button type="button">Приступить</button>
+          <li className="course-list__course-card course-list__html-card">
+            <Link to="/courses/html" onClick={handleCourseLinkClick(Html)}>
+              <h3>HTML</h3>
+              <button className="button" type="button">
+                Приступить
+              </button>
             </Link>
           </li>
-          <li className="course-list__course-card">
-            <Link to="/courses/html" className="course-list__css-card">
-              <h4>CSS</h4>
-              <div>css logo</div>
-              <div className="content__course-stats">
-                <p>Статистика недоступна</p>
-              </div>
-              <button type="button">Приступить</button>
+          <li className="course-list__course-card course-list__css-card">
+            <Link to="/courses/css" onClick={handleCourseLinkClick(Css)}>
+              <h3>CSS</h3>
+              <button className="button" type="button">
+                Приступить
+              </button>
             </Link>
           </li>
-          <li className="course-list__course-card">
-            <Link to="/courses/html" className="course-list__js-card">
-              <h4>JavaScript</h4>
-              <div>js logo</div>
-              <div className="content__course-stats">
-                <p>Статистика недоступна</p>
-              </div>
-              <button type="button">Приступить</button>
+          <li className="course-list__course-card course-list__js-card">
+            <Link to="/courses/js" onClick={handleCourseLinkClick(Js)}>
+              <h3>JavaScript</h3>
+              <button className="button" type="button">
+                Приступить
+              </button>
             </Link>
           </li>
         </ul>
       </section>
-      <section className="content__articles">
+      {/* <section id="articles" className="content__articles">
         <h2>Статьи</h2>
-        <p>Изучение вэб-разработки невозможно без чтения статей и технической доментации.</p>
-        <Link to="/articles">Все статьи</Link>
-      </section>
-      <section className="content__reviews">
+        <Link to="/articles">В настоящее время статей нет</Link>
+      </section> */}
+      {/* <section className="content__reviews">
         <h2>Отзывы</h2>
-        <p>Смогли ли мы кому-то помочь?</p>
-        <p>Отзывов еще нет(</p>
-      </section>
-    </main>
+        <p>В настоящее время отзывов нет</p>
+      </section> */}
+    </>
   );
 };
 

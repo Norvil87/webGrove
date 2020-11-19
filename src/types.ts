@@ -5,10 +5,8 @@ export enum ResultMessage {
   FAIL = `Без паники! Внимательно просмотрите код и попробуйте еще раз`,
 }
 
-export interface IInitEditorValues {
-  html: string;
-  css: string;
-  js: string;
+export interface IEditorValues {
+  [key: string]: string;
 }
 
 export interface ITask {
@@ -25,7 +23,7 @@ export interface IExcercise {
   theory: string;
   goal: string;
   tasks: ITask[];
-  initValues: IInitEditorValues;
+  initValues: IEditorValues;
   solution?: string;
 }
 
@@ -50,6 +48,7 @@ export interface ICourseInfo {
 export interface ICourse {
   id: number;
   title: string;
+  url: string;
   info: ICourseInfo;
   lessons: ICourseLessons;
 }

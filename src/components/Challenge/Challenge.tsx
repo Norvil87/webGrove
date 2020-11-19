@@ -5,8 +5,8 @@ import TaskSuite from "../TaskSuite";
 import LessonNavigator from "../LessonNavigator";
 import ResetConfirmModal from "../Modals/ResetConfirmModal";
 import { IRootState } from "../../store/types";
-import { setCurrentTasks, setCurrentExercise, setEditorValue } from "../../store/actions";
-import { ITask, ResultMessage } from "../../types";
+import { setCurrentExercise, setEditorValues } from "../../store/actions";
+import { ITask, ResultMessage, IEditorValues } from "../../types";
 import { ICurrentTask } from "../../store/types";
 import { Link } from "react-router-dom";
 
@@ -15,16 +15,20 @@ interface IChallengeProps {
   theory: string;
   goal: string;
   tasks: ITask[];
-  initValues: any;
+  initValues: IEditorValues;
 }
 
-const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, initValues }) => {
-  const currentTasks = useSelector((state: IRootState) => state.currentTasks);
-  const { excersiceId, excersiceUrl, lessonUrl } = useSelector((state: IRootState) => state.currentExercise);
-  const { html, css, js } = initValues;
+const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues }) => {
+  const { tasks, courseUrl, exerciseUrl, exerciseId } = useSelector((state: IRootState) => {
+    return {
+      tasks: state.currentExercise.tasks,
+      courseUrl: state.course?.url,
+      exerciseId: state.currentExercise.exerciseId,
+      exerciseUrl: state.currentExercise.exerciseUrl
+    };
+  });
 
   const [resetModalVisible, setResetModalVisible] = useState(false);
-
   const dispatch = useDispatch();
 
   const handleRunButtonClick = () => {
@@ -32,7 +36,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, ini
     let excerciseMessage = [];
     const iframe = document.body.querySelector("iframe");
 
-    currentTasks.map((task: ICurrentTask) => {
+    tasks.map((task: ICurrentTask) => {
       if (task.test(iframe)) {
         task.passed = true;
       } else {
@@ -44,9 +48,14 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, ini
 
     excerciseMessage.push(excercisePassed ? ResultMessage.SUCCESS : ResultMessage.FAIL);
 
-    dispatch(setCurrentTasks(currentTasks));
     dispatch(
-      setCurrentExercise({ excersiceId, excersiceUrl, lessonUrl, passed: excercisePassed, message: excerciseMessage })
+      setCurrentExercise({
+        exerciseId,
+        exerciseUrl,
+        passed: excercisePassed,
+        message: excerciseMessage,
+        tasks,
+      })
     );
   };
 
@@ -55,7 +64,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, ini
   };
 
   const handleModalConfirmClick = () => {
-    dispatch(setEditorValue({ html, css, js }));
+    dispatch(setEditorValues(initValues));
     setResetModalVisible(false);
   };
 
@@ -65,7 +74,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, ini
 
   return (
     <section className="challenge">
-      <Link to="/courses/html" className="challenge__linkToCourse">
+      <Link to={`/courses/${courseUrl}`} className="challenge__linkToCourse">
         Вернуться к странице курса
       </Link>
       <h2>{header}</h2>
@@ -80,8 +89,8 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, tasks, ini
           Сбросить код
         </button>
       </div>
-      <TaskSuite tasks={tasks} />
-      {/* <LessonNavigator /> */}
+      <TaskSuite />
+      <LessonNavigator />
       <ResetConfirmModal
         open={resetModalVisible}
         onModalCancelClick={handleModalCancelClick}

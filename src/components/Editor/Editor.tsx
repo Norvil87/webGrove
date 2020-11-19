@@ -3,18 +3,27 @@ import { ControlledEditor } from "@monaco-editor/react";
 import * as monacoEditor from "monaco-editor/esm/vs/editor/editor.api";
 import "./Editor.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { setEditorValue } from "../../store/actions";
-import { IInitEditorValues } from "../../types";
+import { setEditorValue, setEditorValues } from "../../store/actions";
+import { IEditorValues } from "../../types";
 import { IRootState } from "../../store/types";
+import { ReflexContainer, ReflexElement, ReflexSplitter } from "react-reflex";
 
 interface IEditor {
-  initValues: IInitEditorValues;
+  initValues: IEditorValues;
 }
 
 const Editor: React.FC<IEditor> = ({ initValues }) => {
-  const { html, css, js } = useSelector((state: IRootState) => state.editorValues);
+  const { html, css, js, courseUrl } = useSelector((state: IRootState) => {
+    return {
+      html: state.editorValues.html,
+      css: state.editorValues.css,
+      js: state.editorValues.js,
+      courseUrl: state.course?.url,
+    };
+  });
 
   const dispatch = useDispatch();
+  const inCssMode = courseUrl === "css";
 
   const options: monacoEditor.editor.IEditorOptions = {
     minimap: { enabled: false },
@@ -31,23 +40,43 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
     suggestOnTriggerCharacters: false,
   };
 
-  const handleValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, value: string) => {
-    dispatch(setEditorValue({ html: value, css: initValues.css, js: "" }));
+  const handleHtmlValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, html: string) => {
+    dispatch(setEditorValue("html", html));
+  };
+
+  const handleCssValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, css: string) => {
+    dispatch(setEditorValue("css", css));
   };
 
   const onEditorMount = () => {
-    dispatch(setEditorValue(initValues));
+    dispatch(setEditorValues(initValues));
   };
 
   return (
     <div className="editor">
-      <ControlledEditor
-        options={options}
-        onChange={handleValueChange}
-        editorDidMount={onEditorMount}
-        language="html"
-        value={html}
-      />
+      <ReflexContainer orientation="horizontal">
+        <ReflexElement>
+          <ControlledEditor
+            options={options}
+            onChange={handleHtmlValueChange}
+            editorDidMount={onEditorMount}
+            language="html"
+            value={html}
+          />
+        </ReflexElement>
+        {inCssMode && <ReflexSplitter />}
+        {inCssMode && (
+          <ReflexElement>
+            <ControlledEditor
+              options={options}
+              onChange={handleCssValueChange}
+              editorDidMount={onEditorMount}
+              language="css"
+              value={css}
+            />
+          </ReflexElement>
+        )}
+      </ReflexContainer>
     </div>
   );
 };

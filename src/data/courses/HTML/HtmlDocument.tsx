@@ -1,4 +1,6 @@
-export const HtmlDocument = {
+import { ICourseLesson } from "../../../types";
+
+export const HtmlDocument: ICourseLesson = {
   id: 2,
   title: "HTML документ",
   url: "html-document",
@@ -17,9 +19,9 @@ export const HtmlDocument = {
       <p>Сразу под доктайпом следует добавить элемент <code>html</code>. Именно в этом элементе будет содержаться вся ваша разметка:</p>
       
 <pre><code><span><</span>!DOCTYPE html>
-<span class="tag"><<span>html</span>></span>
+<span class="tag">&lt;html></span>
       
-<span class="tag"><<span>/html</span>></span></code></pre>
+<span class="tag">&lt;/html></span></code></pre>
 
       <p>Без этого элемента браузер может некорректно интерпретировать ваш HTML код.</p>`,
       goal: `Объявите HTML документ.`,
@@ -74,19 +76,19 @@ export const HtmlDocument = {
       theory: `<p>После объявления типа документа и создания элемента <code>html</code> необходимо передать браузеру <em>метаданные</em>, то есть данные о самом документе. Эти данные не отображаются на странице, но нужны браузеру, чтобы работа с вашим документом выполнялась правильно и эффективно.</p>
       <p> Метаданные вложены в элемент <code>head</code>, "голову" вашего документа:</p>
       
-<pre><code><span class="tag"><<span>html</span>></span>
-  <span class="tag"><<span>head</span>></span>
+<pre><code><span class="tag">&lt;html></span>
+  <span class="tag">&lt;head></span>
 
-  <span class="tag"><<span>/head</span>></span>
-<span class="tag"><<span>/html</span>></code></pre>
+  <span class="tag">&lt;/head></span>
+<span class="tag">&lt;/html></code></pre>
 
       <p>Как правило, <code>head</code> является первым потомком элемента <code>html</code>. Давайте добавим в него какие-нибудь метаданные. Посмотрите на вкладки вашего браузера. На открытой сейчас вкладке написано "WebGrove", это заголовок сайта и он указывается в элементе <code>title</code>, вот так:</p>
       
-<pre><code><span class="tag"><<span>html</span>></span>
-  <span class="tag"><<span>head</span>></span>
-    <span class="tag"><<span>title</span>></span>WebGrove<span class="tag"><<span>/title</span>></span>
-  <span class="tag"><<span>/head</span>></span>
-<span class="tag"><<span>/html</span>></code></pre>
+<pre><code><span class="tag">&lt;html></span>
+  <span class="tag">&lt;head></span>
+    <span class="tag">&lt;title></span>WebGrove<span class="tag">&lt;/title></span>
+  <span class="tag">&lt;/head></span>
+<span class="tag">&lt;/html></code></pre>
 
       <p>Элемент <code>title</code> должен быть вложен в элемент <code>head</code>.</p>`,
       goal: `Добавьте заголовок в HTML документ.`,
@@ -147,14 +149,14 @@ export const HtmlDocument = {
       url: "html-body",
       theory: `<p>Итак, служебная метаинформация, не отображаемая на странице, находится в элементе <code>head</code> - "голове" документа. Напротив, вся отображаемая на странице информация находится в "теле" документа - элементе <code>body</code>:</p>
       
-<pre><code><span class="tag"><<span>html</span>></span>
-  <span class="tag"><<span>head</span>></span>
-    <span><</span>!--Метаинформация<span>--></span>
-  <span class="tag"><<span>/head</span>></span>
-  <span class="tag"><<span>body</span>></span>
-    <span><</span>!--Видимый контент<span>--></span>
-  <span class="tag"><<span>/body</span>></span>
-<span class="tag"><<span>/html</span>></code></pre>
+<pre><code><span class="tag">&lt;html></span>
+  <span class="tag">&lt;head></span>
+    &lt;!--Метаинформация<span>-->
+  <span class="tag">&lt;/head></span>
+  <span class="tag">&lt;body></span>
+    &lt;!--Видимый контент<span>-->
+  <span class="tag">&lt;/body></span>
+<span class="tag">&lt;/html></code></pre>
 
       <p>Для правильного отображения элемент <code>body</code> должен располагаться ниже <code>head</code>.</p>`,
       goal: `Добавьте тело документа.`,
@@ -206,7 +208,7 @@ export const HtmlDocument = {
       theory: `<p>Интернет не был бы Интернетом без возможности переходить на другие страницы. Для навигации между ресурсами используются <em>гиперссылки</em> или просто <em>ссылки</em>. В HTML ссылки реализованы с помощью элемента <code>a</code> (<i>anchor</i>). Текст, расположенный между открывающим и закрывающим тэгами будет отображен как текст ссылки. По клику на текст вы перейдете на другую страницу.</p>
       <p>У ссылки есть обязательный аттрибут <code>href</code>. Значением этого аттрибута является адрес страницы, на которую вы хотите перейти. Вот как выглядит оформленная ссылка:</p>
       
-<pre><code><span class="tag"><<span>a</span> <span class="attr-name">href=</span><span class="attr-value">"https://ru.wikipedia.org/"</span>></span>Перейти на Википедию<span class="tag"><<span>/a</span>></span></code></pre>
+<pre><code><span class="tag">&lt;a <span class="attr-name">href=</span><span class="attr-value">"https://ru.wikipedia.org/"</span>></span>Перейти на Википедию<span class="tag">&lt;/a></span></code></pre>
 
       <p>Вот эта ссылка в тексте:</p>
       <p><a href="https://ru.wikipedia.org/" style="color: blue; text-decoration: underline">Перейти на Википедию</a></p>
@@ -338,9 +340,9 @@ export const HtmlDocument = {
       url: "html-wrapping-links",
       theory: `<p>Ссылки бывают не только текстовые. Вероятно во время серфинга в Интернете вы переходили на другие ресурсы при клике на другой контент, например, картинки. По сути, ссылкой можно сделать практически любой элемент, достаточно обернуть его в элемент <code>a</code>. Давайте, например, сделаем ссылкой изображение:</p>
       
-<pre><code><span class="tag"><<span>a</span> <span class="attr-name">href=</span><span class="attr-value">"https://polymus.ru/ru/"</span>></span>
-  <span class="tag"><<span>img</span> <span class="attr-name">src=</span><span class="attr-value">"https://cdn-st3.rtr-vesti.ru/vh/pictures/xw/205/344/7.jpg"</span> <span class="attr-name">alt=</span><span class="attr-value">"Политехнический музей"</span> /></span>
-<span class="tag"><<span>/a</span>></span></code></pre>
+<pre><code><span class="tag">&lt;a <span class="attr-name">href=</span><span class="attr-value">"https://polymus.ru/ru/"</span>></span>
+  <span class="tag">&lt;img <span class="attr-name">src=</span><span class="attr-value">"https://cdn-st3.rtr-vesti.ru/vh/pictures/xw/205/344/7.jpg"</span> <span class="attr-name">alt=</span><span class="attr-value">"Политехнический музей"</span> /></span>
+<span class="tag">&lt;/a></span></code></pre>
 
       <p>Вот эта ссылка в тексте:</p>
       <p><a href="https://polymus.ru/ru/" style="color: blue; text-decoration: underline"><img src="https://cdn-st3.rtr-vesti.ru/vh/pictures/xw/205/344/7.jpg" alt="Политехнический музей" /></a></p>
@@ -475,7 +477,7 @@ export const HtmlDocument = {
 
       <p>Здесь в корневой папке проекта, которая называется <b>my_project</b>, находятся 3 HTML файла - <b>index.html</b>, <b>theaters.html</b> и  <b>museums.html</b>. HTML файлы, как правило, стараются разместить в одной папке. Как уже упоминалось ранее, входной точкой (главной страницей) вышего сайта является <b>index.html</b>. Тогда, чтобы перейти с главной страницы на страницу с информацией о музеях <b>museums.html</b> вам надо создать ссылку с таким адресом:</p>
       
-<pre><code><span class="tag"><<span>a</span> <span class="attr-name">href=</span><span class="attr-value">"./museums.html"</span>></span>Узнать больше о музеях<span class="tag"><<span>/a</span>></span></code></pre>
+<pre><code><span class="tag">&lt;a <span class="attr-name">href=</span><span class="attr-value">"./museums.html"</span>></span>Узнать больше о музеях<span class="tag">&lt;/a></span></code></pre>
 
       <p><a href="./museums.html" style="color: blue; text-decoration: underline">Узнать больше о музеях</a></p>
       <p>Сейчас эта ссылка работать не будет, так как в нашем проекте нет такой страницы, мы добавим ее позднее.</p>
@@ -618,16 +620,16 @@ export const HtmlDocument = {
       <p>В одном из прошлых упражнений по HTML элементам мы задавали контейнерам <code>div</code> аттрибут <code>id</code>. Пришло время им воспользоваться.</p>
       <p>Якорная ссылка имеет вид:</p>
       
-<pre><code><span class="tag"><<span>a</span> <span class="attr-name">href=</span><span class="attr-value">"#culture"</span>></span>Культура<span class="tag"><<span>/a</span>></span></code></pre>
+<pre><code><span class="tag">&lt;a <span class="attr-name">href=</span><span class="attr-value">"#culture"</span>></span>Культура<span class="tag">&lt;/a></span></code></pre>
 
       <p>Она состоит из символа <code>#</code> и id элемента, к которому должен быть выполнен переход. В данном случае при клике на ссылку вы перейдете к</p>
       
-<pre><code><span class="tag"><<span>div</span> <span class="attr-name">id=</span><span class="attr-value">"culture"</span>></span><span class="tag"><<span>/div</span>></span></code></pre>
+<pre><code><span class="tag">&lt;div <span class="attr-name">id=</span><span class="attr-value">"culture"</span>></span><span class="tag">&lt;/div></span></code></pre>
 
       <p>С помощью якорных ссылок можно создать, своего рода, "меню страницы". Удобнее всего оформлять такие ссылки в виде списка.</p>
       <p>Наконец, последний вид ссылок это <em>ссылки-заглушки</em>. Иногда на странице нужна ссылка, но прямо сейчас она не должна никуда вести, к примеру вы хотите добавить адрес ссылке позже, после разработки соответствующей страницы. Тогда вы добавляете ссылку-заглушку:</p>
       
-<pre><code><span class="tag"><<span>a</span> <span class="attr-name">href=</span><span class="attr-value">"#"</span>></span>Это ссылка-заглушка<span class="tag"><<span>/a</span>></span></code></pre>
+<pre><code><span class="tag">&lt;a <span class="attr-name">href=</span><span class="attr-value">"#"</span>></span>Это ссылка-заглушка<span class="tag">&lt;/a></span></code></pre>
 
       <p>Ее аттрибут <code>href</code> состоит только из символа <code>#</code>. При клике на нее ничего не произойдет.</p>
       <p><a href="#" style="color: blue; text-decoration: underline">Это ссылка-заглушка</a></p>`,
@@ -695,7 +697,8 @@ export const HtmlDocument = {
               ul.children[1].tagName === "LI"
             );
           },
-          failMsg: "Убедитесь, что после заголовка h1 с текстом 'Москва' добавлен неупонрядоченный список с двумя членами li",
+          failMsg:
+            "Убедитесь, что после заголовка h1 с текстом 'Москва' добавлен неупонрядоченный список с двумя членами li",
         },
         {
           id: 2,
@@ -706,12 +709,7 @@ export const HtmlDocument = {
               return false;
             }
             const anchor = firstLi.children[0] as HTMLAnchorElement;
-            return (
-              anchor &&
-              anchor.tagName === "A" &&
-              anchor.textContent === "Культура" &&
-              anchor.hash === "#culture"
-            );
+            return anchor && anchor.tagName === "A" && anchor.textContent === "Культура" && anchor.hash === "#culture";
           },
           failMsg:
             "Убедитесь, что в первом элементе списка находится ссылка a с текстом 'Культура' и аттрибутом href с правльным значением",
@@ -725,12 +723,7 @@ export const HtmlDocument = {
               return false;
             }
             const anchor = secondLi.children[0] as HTMLAnchorElement;
-            return (
-              anchor &&
-              anchor.tagName === "A" &&
-              anchor.textContent === "Отдых" &&
-              anchor.hash === "#leisure"
-            );
+            return anchor && anchor.tagName === "A" && anchor.textContent === "Отдых" && anchor.hash === "#leisure";
           },
           failMsg:
             "Убедитесь, что во втором элементе списка находится ссылка a с текстом 'Отдых' и аттрибутом href с правльным значением",

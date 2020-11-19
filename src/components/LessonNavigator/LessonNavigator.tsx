@@ -1,53 +1,64 @@
 import React from "react";
-import { Html } from "../../data/courses/HTML/HTML";
 import { useSelector, useDispatch } from "react-redux";
 import { IRootState } from "../../store/types";
 import { ICourseLesson, IExcercise } from "../../types";
-import { setCurrentExercise, setEditorValue } from "../../store/actions";
+import { setCurrentExercise, setEditorValues } from "../../store/actions";
 import "./LessonNavigator.scss";
 import { Link } from "react-router-dom";
 
 const LessonNavigator: React.FC = ({}) => {
-  const { lessonUrl, excersiceId, excersiceUrl } = useSelector((state: IRootState) => state.currentExercise);
-  const block: ICourseLesson = Html.lessons[lessonUrl];
-  const numExcercises = block.excercises.length;
-  const nextExcersice = block.excercises[excersiceId];
-  const prevExcersice = block.excercises[excersiceId - 2];
+  const { course, lessonUrl, exerciseUrl, exerciseId } = useSelector((state: IRootState) => {
+    return {
+      course: state.course,
+      exerciseId: state.currentExercise.exerciseId,
+      exerciseUrl: state.currentExercise.exerciseUrl,
+      lessonUrl: state.lessonUrl,
+    };
+  });
+
+  const courseUrl = course.url;
+  const excercises = course.lessons[lessonUrl].excercises;
+  const numExcercises = excercises.length;
+  const nextexercise = excercises[exerciseId];
+  const prevexercise = excercises[exerciseId - 2];
 
   const forwardLinkUrl =
-    excersiceId === numExcercises ? "/courses/html" : `/courses/html/${lessonUrl}/${nextExcersice.url}`;
-  const forwardLinkText = excersiceId === numExcercises ? "Завершить урок" : "Вперед";
-  const backwardsLinkUrl = excersiceId === 1 ? "#" : `/courses/html/${lessonUrl}/${prevExcersice.url}`;
+    exerciseId === numExcercises
+      ? `/courses/${courseUrl}`
+      : `/courses/${courseUrl}/lessons/${lessonUrl}/${nextexercise.url}`;
+  const forwardLinkText = exerciseId === numExcercises ? "Завершить урок" : "Вперед";
+  const backwardsLinkUrl = exerciseId === 1 ? "#" : `/courses/${courseUrl}/lessons/${lessonUrl}/${prevexercise.url}`;
   const dispatch = useDispatch();
 
-  const handleBackwardsLinkClick = (excercise: IExcercise) => () => {
-    if (excersiceId > 1) {
-      const { initValues, url, id } = excercise;
-      dispatch(setEditorValue({ html: initValues.html, css: initValues.css, js: "" }));
+  const handleBackwardsLinkClick = (exercise: IExcercise) => () => {
+    if (exerciseId > 1) {
+      const { initValues, url, id, tasks } = exercise;
+
+      dispatch(setEditorValues(initValues));
       dispatch(
         setCurrentExercise({
-          lessonUrl: lessonUrl,
-          excersiceId: id,
-          excersiceUrl: url,
+          exerciseId: id,
+          exerciseUrl: url,
           passed: undefined,
           message: [],
+          tasks,
         })
       );
     }
   };
 
-  const handleForwardLinkClick = (excercise: IExcercise) => () => {
-    if (excersiceId < numExcercises) {
-      const { initValues, url, id } = excercise;
+  const handleForwardLinkClick = (exercise: IExcercise) => () => {
+    if (exerciseId < numExcercises) {
+      const { initValues, url, id, tasks } = exercise;
 
-      dispatch(setEditorValue({ html: initValues.html, css: initValues.css, js: "" }));
+      dispatch(setEditorValues(initValues));
       dispatch(
         setCurrentExercise({
-          lessonUrl: lessonUrl,
-          excersiceId: id,
-          excersiceUrl: url,
+          exerciseId: id,
+          exerciseUrl: url,
           passed: undefined,
           message: [],
+          tasks,
         })
       );
     }
@@ -57,14 +68,15 @@ const LessonNavigator: React.FC = ({}) => {
     <div className="lesson-nav">
       <Link
         to={backwardsLinkUrl}
-        className={`lesson-nav_backwards ${excersiceId === 1 ? "lesson-nav_backwards--disabled" : ""}`}
-        onClick={handleBackwardsLinkClick(prevExcersice)}
+        className={`lesson-nav_backwards ${exerciseId === 1 ? "lesson-nav_backwards--disabled" : ""}`}
+        onClick={handleBackwardsLinkClick(prevexercise)}
       >
         Назад
       </Link>
 
-      <div className="lesson-nav_position">{`Упражнение ${excersiceId} из ${numExcercises}`} </div>
-      <Link to={forwardLinkUrl} className="lesson-nav_forwards" onClick={handleForwardLinkClick(nextExcersice)}>
+      <div className="lesson-nav_position">{`Упражнение ${exerciseId} из ${numExcercises}`}</div>
+
+      <Link to={forwardLinkUrl} className="lesson-nav_forwards" onClick={handleForwardLinkClick(nextexercise)}>
         {forwardLinkText}
       </Link>
     </div>

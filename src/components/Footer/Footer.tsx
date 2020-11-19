@@ -2,10 +2,9 @@ import React from "react";
 import "./Footer.scss";
 
 const Footer = () => {
-  
   return (
-    <footer>
-      <div className="footer-container">
+    <div className="footer-wrapper">
+      <footer className="footer centrifier">
         <div className="logo">
           <svg width="50" height="50" x="0px" y="0px" viewBox="0 0 441.302 441.302" xmlSpace="preserve">
             <g>
@@ -24,30 +23,13 @@ const Footer = () => {
             </g>
           </svg>
         </div>
-        <nav>
-          <ul>
-            <li>
-              <a href="#">Карта курсов</a>
-            </li>
-            <li>
-              <a href="#">Преподаватели</a>
-            </li>
-            <li>
-              <a href="#">Отзывы</a>
-            </li>
-          </ul>
-        </nav>
-        <div className="buttonCont">
-          <button type="button" className="login-button">
-            Войти
-          </button>
-          <button type="button" className="registration-button">
-            Регистрация
-          </button>
-        </div>
-      </div>
-    </footer>
-  )
+        <p className="footer__contacts">
+          Если у вас возникли вопросы или просто стало скучно, пишите на{" "}
+          <a href="mailto:info@webgrove.ru">info@webgrove.ru</a>
+        </p>
+      </footer>
+    </div>
+  );
 };
 
 export default Footer;

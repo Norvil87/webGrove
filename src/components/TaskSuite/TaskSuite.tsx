@@ -6,12 +6,8 @@ import { setCurrentTasks } from "../../store/actions";
 import { ITask } from "../../types";
 import { ICurrentTask } from "../../store/types";
 
-interface ITaskSuiteProps {
-  tasks: ITask[];
-}
-
-const TaskSuite: React.FC<ITaskSuiteProps> = ({ tasks }) => {
-  const currentTasks = useSelector((state: IRootState) => state.currentTasks);
+const TaskSuite: React.FC = ({}) => {
+  const tasks = useSelector((state: IRootState) => state.currentExercise.tasks);
   const dispatch = useDispatch();
 
   const setTasks = () => {
@@ -29,7 +25,7 @@ const TaskSuite: React.FC<ITaskSuiteProps> = ({ tasks }) => {
   let taskClassName: string;
   const renderTasks = () => {
     let elems: JSX.Element[] = [];
-    currentTasks.map((task: ICurrentTask) => {
+    tasks.map((task: ICurrentTask) => {
       if (task.passed === true) {
         taskClassName = "task_passed";
       } else if (task.passed === false) {

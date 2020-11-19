@@ -1,7 +1,9 @@
-export const HtmlForm = {
+import { ICourseLesson } from "../../../types";
+
+export const HtmlForm: ICourseLesson = {
   id: 4,
   title: "Формы в HTML",
-  url: "html-forms",
+  url: "html-form",
   excercises: [
     {
       id: 1,
@@ -10,9 +12,9 @@ export const HtmlForm = {
       theory: `<p>Как и формы в реальной жизни, HTML формы необходимы, чтобы собрать информацию от пользователя и передать ее на дальнейшую обработку (в случае HTML это вэб-сервер). Формы регистрации и входа на сайт, сервисы заказов и бронирования, форм в Интернете очень много. Например, поисковая строка Google - это тоже часть формы, поскольку она принимает информацию от пользователя (текстовый поисковый запрос) и передает ее на дальнейшую обработку (на сервера Google).</p>
 <p>Форма создается с помощью элемента <code>form</code> и имеет несколько обязательных аттрибутов. Приведем пример формы в разметке:</p>
       
-<pre><code><span class="tag"><<span>form</span> <span class="attr-name">action=<span><span class="attr-value">"http://destination"<span> <span class="attr-name">method=<span><span class="attr-value">"POST"<span>></span>
+<pre><code><span class="tag">&lt;form <span class="attr-name">action=<span><span class="attr-value">"http://destination"<span> <span class="attr-name">method=<span><span class="attr-value">"POST"<span>></span>
       
-<span class="tag"><<span>/form</span>></span></code></pre>
+<span class="tag">&lt;/form></span></code></pre>
 <p>Аттрибут <code>action</code> определяет адрес отправки данных формы. Это то, <em>куда</em> отправляются данные.</p>
 <p>Аттрибут <code>method</code> определяет метод отправки формы. Это то, <em>как</em> отправляются данные.</p>
 <p>Форма в примере выше отправит данные на адрес "http://destination" методом "POST".</p>
@@ -72,7 +74,7 @@ export const HtmlForm = {
       url: "html-text-input",
       theory: `<p>Формы содержат в себе интерактивные элементы <code>input</code>, в которые пользователи могут вводить данные различных типов. То, какого типа данные можно вводить а поле  <code>input</code> определяется аттрибутом <code>type</code>. Для начала рассмотрим поле для ввода текстовой информации. Вот как оно может выглядить в разметке:</p>
       
-<pre><code><span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span></code></pre>
+<pre><code><span class="tag">&lt;input <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span></code></pre>
       
 <p>Обратите внимания, что элемент <code>input</code> одиночный, он не требует закрывающего тэга. Вот как он будет выглядить на странице. Поробуйте ввести какой-нибудь текст.</p>
 <p><input type="text" name="school" placeholder="Введите название школы"></p>
@@ -85,7 +87,7 @@ export const HtmlForm = {
 </ul>
 <p>Есть еще важный аттрибут <code>value</code>, в который записывается значение, введенное пользователем в поле. При отправке формы на сервер, данные из поля отправятся в виде пары значений <code>name="value"</code>. Например, если в поле сверху ввести текст "Гимназия №5", то при отправке формы на сервер уйдут данные <code>school="Гимназия №5"</code>, а если оставить поле пустым, то <code>school=""</code>. Значение <code>value</code> можно задать по умолчанию:</p>
 
-<pre><code><span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">value=</span><span class="attr-value">"Гимназия №5"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span></code></pre>
+<pre><code><span class="tag">&lt;input <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">value=</span><span class="attr-value">"Гимназия №5"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span></code></pre>
 
 <p><input type="text" name="school" value="Гимназия №5" placeholder="Введите название школы"></p>
 <p>Теперь в поле по умолчанию проставляется значение <code>value</code>, а не <code>placeholder</code>. Подчеркнем разницу между ними: <code>value</code> - это реальное значение поля, введенное пользователем, которое отправляется с формой и хранится на сервере, в то время как плэйсхолдер - это просто текст-заглушка, созданный для визуального удобства пользователя.</p>
@@ -161,17 +163,17 @@ export const HtmlForm = {
       url: "html-labels",
       theory: `<p>Мы создали текстовое поле, но пока не понятно, для чего оно предназначено. Полю необходимо текстовое описание и для этого существует элемент <code>label</code>. Мы должны связать элементы <code>label</code> и <code>input</code>, чтобы понимать, какая подпись к какому полю относится. Вот один из способов это сделать:</p>
       
-<pre><code><span class="tag"><<span>label</span>></span>
+<pre><code><span class="tag">&lt;label></span>
   Название школы
-  <span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span>
-<span class="tag"><<span>/label</span>></span></code></pre>
+  <span class="tag">&lt;input <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span>
+<span class="tag">&lt;/label></span></code></pre>
       
 <p><label>Название школы  <input type="text" name="school" placeholder="Введите название школы"></label></p>
 <p>Наш текстовый <code>input</code> из прошлого упражнения мы просто обернули в <code>label</code> и дали ему текстовое описание "Название школы". Кстати, вот зачем еще нужен <code>label</code>: если вы кликните по этому элементу, курсор автоматически встанет в нужное поле (поле получит фокус). Попробуйте кликнуть на "Название школы".</p>
 <p>Это вполне рабочий способ, но есть вариант получше:</p>
 
-<pre><code><span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"school"</span>></span>Название школы<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"school"</span> <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span></code></pre>
+<pre><code><span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"school"</span>></span>Название школы<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"school"</span> <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span></code></pre>
 
 <p><label for="school">Название школы</label>  <input id="school" type="text" name="school" placeholder="Введите название школы"></p>
 <p>Полю <code>input</code> мы задаем аттрибут <code>id</code>, а элементу <code>label</code> аттрибут <code>for</code>  с точно таким же значением. Визуально ничего не изменится, но у такого способа есть преимущество - поле и его текстовое описание могут находится в разных частях разметки и все-равно будут связаны по <code>id</code>.</p>
@@ -254,8 +256,8 @@ label {
       url: "html-input-number",
       theory: `<p>Мы уже можем вводить текстовые данные. Для того, чтобы можно было вводить числа создадим <code>input</code> с типом <code>number</code>:</p>
       
-<pre><code><span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"students"</span>></span>Количество учеников<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"students"</span> <span class="attr-name">type=</span><span class="attr-value">"number"</span> <span class="attr-name">name=</span><span class="attr-value">"students"</span> <span class="attr-name">value=</span><span class="attr-value">"4"</span> <span class="attr-name">step=</span><span class="attr-value">"5"</span>></span></code></pre>
+<pre><code><span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"students"</span>></span>Количество учеников<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"students"</span> <span class="attr-name">type=</span><span class="attr-value">"number"</span> <span class="attr-name">name=</span><span class="attr-value">"students"</span> <span class="attr-name">value=</span><span class="attr-value">"4"</span> <span class="attr-name">step=</span><span class="attr-value">"5"</span>></span></code></pre>
       
 <p><label for="students">Количество учеников</label>  <input id="students" type="number" name="students" value="4" step="5"></p>
 <p>Мы уже знакомы с большинством аттрибутов. Мы задали: 
@@ -372,12 +374,12 @@ label {
       url: "html-input-tel-email",
       theory: `<p>Пользователям на сайтах часто предлагают ввести свой телефон и электронную почту <span style="text-decoration: line-through">чтобы заваливать их потом спамом</span>. Вводить эти данные нужно так часто, что в стандарте HTML5 предусмотрены специальные поля для этого.</p>
       
-<code><pre><span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"tel"</span> <span class="attr-name">name=</span><span class="attr-value">"tel"</span> <span class="attr-name">maxlength=</span><span class="attr-value">"16"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"+7(906)342-43-12"</span>></span></code></pre>
+<code><pre><span class="tag">&lt;input <span class="attr-name">type=</span><span class="attr-value">"tel"</span> <span class="attr-name">name=</span><span class="attr-value">"tel"</span> <span class="attr-name">maxlength=</span><span class="attr-value">"16"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"+7(906)342-43-12"</span>></span></code></pre>
       
 <p><input type="tel" name="tel" maxlength="16" placeholder="+7(906)342-43-12"></p>
 <p>Поле с типом <code>tel</code> нужно для ввода номера телефона. Помимо знакомых вам аттрибутов, здесь можно использовать аттрибут <code>maxlength</code>, который ограничивает количество символов в поле. Его удобно использовать, когда формат телефонного номера может быть разный. В данном случае в поле можно ввести не более 16 символов.</p>
 
-<code><pre><span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"email"</span> <span class="attr-name">name=</span><span class="attr-value">"email"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"example@gmail.com"</span>></span></code></pre>
+<code><pre><span class="tag">&lt;input <span class="attr-name">type=</span><span class="attr-value">"email"</span> <span class="attr-name">name=</span><span class="attr-value">"email"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"example@gmail.com"</span>></span></code></pre>
       
 <p><input type="email" name="email" placeholder="example@gmail.com"></p>
 <p>Поле с типом <code>email</code> нужно для ввода адреса электронной почты. При отправке формы браузер проверяет, чтобы в поле был валидный e-mail адрес, в частности присутствовал символ <code>@</code>.</p>
@@ -507,14 +509,14 @@ label {
       url: "html-select-option",
       theory: `<p>Не все интерактивные элементы форм отображаются с помощью <code>input</code>. Например, мы хотим отобразить выпадающий список элементов. Для этого используем элемент <code>select</code>:</p>
       
-<pre><code><span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"color"</span>></span>Выберите цвет автомобиля:<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>select</span> <span class="attr-name">id=</span><span class="attr-value">"color"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span>></span>
-  <span class="tag"><<span>option</span> <span class="attr-name">value=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag"><<span>/option</span>></span>
-  <span class="tag"><<span>option</span> <span class="attr-name">value=</span><span class="attr-value">"blue"</span>></span>Синий<span class="tag"><<span>/option</span>></span>
-  <span class="tag"><<span>option</span> <span class="attr-name">value=</span><span class="attr-value">"black"</span>></span>Черный<span class="tag"><<span>/option</span>></span>
-  <span class="tag"><<span>option</span> <span class="attr-name">value=</span><span class="attr-value">"white"</span>></span>Белый<span class="tag"><<span>/option</span>></span>
-  <span class="tag"><<span>option</span> <span class="attr-name">value=</span><span class="attr-value">"custom"</span>></span>Кастомный<span class="tag"><<span>/option</span>></span>
-<span class="tag"><<span>/select</span>></span></code></pre>      
+<pre><code><span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"color"</span>></span>Выберите цвет автомобиля:<span class="tag">&lt;/label></span>
+<span class="tag">&lt;select <span class="attr-name">id=</span><span class="attr-value">"color"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span>></span>
+  <span class="tag">&lt;option <span class="attr-name">value=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag">&lt;/option></span>
+  <span class="tag">&lt;option <span class="attr-name">value=</span><span class="attr-value">"blue"</span>></span>Синий<span class="tag">&lt;/option></span>
+  <span class="tag">&lt;option <span class="attr-name">value=</span><span class="attr-value">"black"</span>></span>Черный<span class="tag">&lt;/option></span>
+  <span class="tag">&lt;option <span class="attr-name">value=</span><span class="attr-value">"white"</span>></span>Белый<span class="tag">&lt;/option></span>
+  <span class="tag">&lt;option <span class="attr-name">value=</span><span class="attr-value">"custom"</span>></span>Кастомный<span class="tag">&lt;/option></span>
+<span class="tag">&lt;/select></span></code></pre>      
 
 <p><label for="color">Выберите цвет автомобиля:</label>
 <select id="color" name="color">
@@ -684,18 +686,18 @@ label {
       url: "html-checkbox",
       theory: `<p>Элемент <code>select</code> предоставляет пользователям выбор одного варианта из множества. Если мы хотим предоставить возможность выбора нескольких вариантов, используем элемент <code>input</code> с типом <code>checkbox</code>.</p>
       
-<pre><code><span class="tag"><<span>span</span>></span>Выберите предпочитаемые цвета:<span class="tag"><<span>/span</span>></span>
-<span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"red"</span> <span class="attr-name">type=</span><span class="attr-value">"checkbox"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"red"</span> <span class="attr-name">checked</span>></span>
+<pre><code><span class="tag">&lt;span></span>Выберите предпочитаемые цвета:<span class="tag">&lt;/span></span>
+<span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"red"</span> <span class="attr-name">type=</span><span class="attr-value">"checkbox"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"red"</span> <span class="attr-name">checked</span>></span>
 
-<span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"blue"</span>></span>Синий<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"blue"</span> <span class="attr-name">type=</span><span class="attr-value">"checkbox"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"blue"</span>></span>
+<span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"blue"</span>></span>Синий<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"blue"</span> <span class="attr-name">type=</span><span class="attr-value">"checkbox"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"blue"</span>></span>
 
-<span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"black"</span>></span>Черный<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"black"</span> <span class="attr-name">type=</span><span class="attr-value">"checkbox"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"black"</span>></span>
+<span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"black"</span>></span>Черный<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"black"</span> <span class="attr-name">type=</span><span class="attr-value">"checkbox"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"black"</span>></span>
 
-<span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"white"</span>></span>Белый<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"white"</span> <span class="attr-name">type=</span><span class="attr-value">"checkbox"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"white"</span>></span>
+<span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"white"</span>></span>Белый<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"white"</span> <span class="attr-name">type=</span><span class="attr-value">"checkbox"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"white"</span>></span>
 </code></pre>      
 
 <p><span style="display: block">Выберите предпочитаемые цвета:</span>
@@ -939,18 +941,18 @@ span {
       url: "html-radio",
       theory: `<p>Наконец, есть еще один способ предоставить пользователю выбор из нескольких вариантов - использование полей с типом <code>radio</code> - радиокнопок. Вот пример:</p>
       
-<pre><code><span class="tag"><<span>span</span>></span>Выберите один любимый цвет:<span class="tag"><<span>/span</span>></span>
-<span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"red"</span> <span class="attr-name">type=</span><span class="attr-value">"radio"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"red"</span> <span class="attr-name">checked</span>></span>
+<pre><code><span class="tag">&lt;span></span>Выберите один любимый цвет:<span class="tag">&lt;/span></span>
+<span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"red"</span> <span class="attr-name">type=</span><span class="attr-value">"radio"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"red"</span> <span class="attr-name">checked</span>></span>
 
-<span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"blue"</span>></span>Синий<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"blue"</span> <span class="attr-name">type=</span><span class="attr-value">"radio"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"blue"</span>></span>
+<span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"blue"</span>></span>Синий<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"blue"</span> <span class="attr-name">type=</span><span class="attr-value">"radio"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"blue"</span>></span>
 
-<span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"black"</span>></span>Черный<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"black"</span> <span class="attr-name">type=</span><span class="attr-value">"radio"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"black"</span>></span>
+<span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"black"</span>></span>Черный<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"black"</span> <span class="attr-name">type=</span><span class="attr-value">"radio"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"black"</span>></span>
 
-<span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"white"</span>></span>Белый<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>input</span> <span class="attr-name">id=</span><span class="attr-value">"white"</span> <span class="attr-name">type=</span><span class="attr-value">"radio"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"white"</span>></span>
+<span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"white"</span>></span>Белый<span class="tag">&lt;/label></span>
+<span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"white"</span> <span class="attr-name">type=</span><span class="attr-value">"radio"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span> <span class="attr-name">value=</span><span class="attr-value">"white"</span>></span>
 </code></pre>      
 
 <p><span style="display: block">Выберите один любимый цвет:</span>
@@ -1220,8 +1222,8 @@ span {
       url: "html-textarea",
       theory: `<p>В элемент <code>input</code> с типом <code>text</code> можно записать только одну строку текста. Но что если нам нужно отправить многострочный текст, например текст статьи или текст обращения куда-либо? Для этой цели есть специальный элемент - <code>textarea</code>:</p>
       
-<pre><code><span class="tag"><<span>label</span> <span class="attr-name">for=</span><span class="attr-value">"details"</span>></span>Укажите подробности<span class="tag"><<span>/label</span>></span>
-<span class="tag"><<span>textarea</span> <span class="attr-name">id=</span><span class="attr-value">"details"</span> <span class="attr-name">name=</span><span class="attr-value">"details"</span> <span class="attr-name">rows=</span><span class="attr-value">"8"</span> <span class="attr-name">cols=</span><span class="attr-value">"30"</span>></span>Текст обращения<span class="tag"><<span>/textarea</span>></span></code></pre>      
+<pre><code><span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"details"</span>></span>Укажите подробности<span class="tag">&lt;/label></span>
+<span class="tag">&lt;textarea <span class="attr-name">id=</span><span class="attr-value">"details"</span> <span class="attr-name">name=</span><span class="attr-value">"details"</span> <span class="attr-name">rows=</span><span class="attr-value">"8"</span> <span class="attr-name">cols=</span><span class="attr-value">"30"</span>></span>Текст обращения<span class="tag">&lt;/textarea></span></code></pre>      
 
 <p><label for="details">Укажите подробности:</label>
 <textarea id="details" name="details" cols="30" rows="8">Текст обращения</textarea></p>
@@ -1460,14 +1462,14 @@ textarea {
       url: "html-submit",
       theory: `<p>В нашей форме мы собрали уже много самой разнообразной информации и теперь всего один клик отделяет нас от отправки формы на сервер. Так, стоп, но куда кликать? Давайте используем специальное поле для отправки данных с типом <code>submit</code>:</p>
       
-<pre><code><span class="tag"><<span>input</span> <span class="attr-name">type=</span><span class="attr-value">"submit"</span> <span class="attr-name">value=</span><span class="attr-value">"submit"</span>></span></code></pre>      
+<pre><code><span class="tag">&lt;input <span class="attr-name">type=</span><span class="attr-value">"submit"</span> <span class="attr-name">value=</span><span class="attr-value">"submit"</span>></span></code></pre>      
 
 <p><input type="submit" value="submit"></p>
 
 <p>На странице появилась вот такая кнопка, при клике на которую данные формы отправятся на сервер. В данном случае аттрибут <code>value</code> имеет несколько иное значение - это просто текст, который отобразится на кнопке.</p>
 <p>Есть еще один элемент, который служит той же цели и который чаще используется в реальных проектах - это, собственно, кнопка <code>button</code>! Вот пример разметки с использованием кнопки:</p>
 
-<pre><code><span class="tag"><<span>button</span> <span class="attr-name">type=</span><span class="attr-value">"submit"</span>></span>Отправить<span class="tag"><<span>/button</span>></span></code></pre>      
+<pre><code><span class="tag">&lt;button <span class="attr-name">type=</span><span class="attr-value">"submit"</span>></span>Отправить<span class="tag">&lt;/button></span></code></pre>      
 
 <p>При использовании элемента <code>button</code> в качестве аттрибута мы указываем только тип, а текст разместим между открывающим и закрывающим тэгами.</p>
 <p>Давайте потренируемся отправлять данные формы с помощью <code>button</code>, так как этот способ более широко применяется в реальных проектах.</p>

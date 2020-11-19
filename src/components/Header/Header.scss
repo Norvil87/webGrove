@@ -1,13 +1,15 @@
 @import "../../styles/variables.scss";
 
-header {
+.header {
   font-family: "Raleway", serif;
   font-weight: 700;
-  min-height: 50px;
-  background-color: $secondaryColor;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
-header ul {
+.header ul {
   display: flex;
 
   list-style: none;
@@ -15,29 +17,22 @@ header ul {
   padding: 0;
 }
 
-header ul a {
+.header ul a {
   font-size: 1.2rem;
   text-transform: capitalize;
 }
 
-header li {
+.header li {
   margin-right: 10px;
 }
 
 .header-wrapper {
   margin-bottom: 30px;
-  background-color: #fff;
+  background-color: $secondaryColor;
 }
 
 .header__buttonCont {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.header__content-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
 }

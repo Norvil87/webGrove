@@ -4,8 +4,8 @@
   "description": "My web online platform",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "build": "webpack",
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -13,18 +13,13 @@
   "license": "ISC",
   "dependencies": {
     "@monaco-editor/react": "^3.6.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.0.2",
-    "@types/jest": "^26.0.13",
-    "jest-cli": "^26.4.2",
     "monaco-editor": "^0.20.0",
     "react": "^16.13.1",
     "react-accessible-accordion": "^3.3.3",
     "react-dom": "^16.13.1",
     "react-iframe": "^1.8.0",
     "react-reflex": "^3.1.0",
-    "reactjs-popup": "^2.0.4",
-    "ts-jest": "^26.3.0"
+    "reactjs-popup": "^2.0.4"
   },
   "devDependencies": {
     "@types/react": "^16.9.43",
@@ -36,8 +31,6 @@
     "css-loader": "^4.2.2",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
-    "jest": "^26.4.2",
-    "jest-transform-css": "^2.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "monaco-editor-webpack-plugin": "^1.9.0",
     "node-sass": "^4.14.1",

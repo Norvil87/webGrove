@@ -15,19 +15,20 @@ export const HtmlSemantic: ICourseLesson = {
 <p><ul><li>Логотип компании</li><li>Навигационные ссылки для перехода на другие страницы сайта</li><li>Кнопки для входа пользователей на сайт и регистрации новых пользователей</li><li>Форма поиска по сайту</li></ul></p>
 <p>На сайте, на котором вы сейчас находитесь, шапка имеет серый цвет и содержит все эти элементы, кроме поиска. Для создания шапки следует использовать элемент <code>header</code>:</p>
 
-<pre><code><span class="tag"><<span>body</span>></span>
-  <span class="tag"><<span>header</span>></span>
+<pre><code><span class="tag">&lt;body></span>
+  <span class="tag">&lt;header></span>
 
-  <span class="tag"><<span>/header</span>></span>
-<span class="tag"><<span>/body</span>></span></code></pre>
+  <span class="tag">&lt;/header></span>
+<span class="tag">&lt;/body></span></code></pre>
 <p>В шапке сайта почти всегда есть блок с ссылками, для навигации по внутренним страницам сайта. Для создания блока навигации используйте элемент <code>nav</code>:</p>
-<pre><code><span class="tag"><<span>body</span>></span>
-  <span class="tag"><<span>header</span>></span>
-    <span class="tag"><<span>nav</span>></span>
-      <span><</span>!--Список ссылок<span>--></span>
-    <span class="tag"><<span>/nav</span>></span>
-  <span class="tag"><<span>/header</span>></span>
-<span class="tag"><<span>/body</span>></span></code></pre>
+
+<pre><code><span class="tag">&lt;body></span>
+  <span class="tag">&lt;header></span>
+    <span class="tag">&lt;nav></span>
+      &lt;!--Список ссылок-->
+    <span class="tag">&lt;/nav></span>
+  <span class="tag">&lt;/header></span>
+<span class="tag">&lt;/body></span></code></pre>
 <p>Обратите внимание, что с точки зрения отображения элементов на странице нет разницы, какой именно элемент вы используете - <code>header</code> или <code>div</code>. Но встретив элемент <code>header</code> вы сразу поймете, что речь идет о шапке сайта.</p>
 `,
       goal: `Сайт в этом упражнении сверстан без учета семантики. Начните создавать семантическую разметку.`,
@@ -229,28 +230,28 @@ ul a {
 <li>Логотип сайта</li></ul></p>
 <p>Для создания подвала используем элемент <code>footer</code>.</p>
 
-<pre><code><span class="tag"><<span>body</span>></span>
-  <span class="tag"><<span>header</span>></span>
-    <span><</span>!--Элементы шапки<span>--></span>
-  <span class="tag"><<span>/header</span>></span>
-  <span class="tag"><<span>footer</span>></span>
-    <span><</span>!--Элементы подвала<span>--></span>
-  <span class="tag"><<span>/footer</span>></span>
-<span class="tag"><<span>/body</span>></span></code></pre>
+<pre><code><span class="tag">&lt;body></span>
+  <span class="tag">&lt;header></span>
+    &lt;!--Элементы шапки-->
+  <span class="tag">&lt;/header></span>
+  <span class="tag">&lt;footer></span>
+    &lt;!--Элементы подвала-->
+  <span class="tag"><&lt;/footer></span>
+<span class="tag">&lt;/body></span></code></pre>
 
 <p>Наконец, не сложно предположить, что основной контент страницы расположен между "шапкой" и "подвалом". Основной контент мы выделим с помощью элемента <code>main</code>:</p>
 
-<pre><code><span class="tag"><<span>body</span>></span>
-  <span class="tag"><<span>header</span>></span>
-    <span><</span>!--Элементы шапки<span>--></span>
-  <span class="tag"><<span>/header</span>></span>
-  <span class="tag"><<span>main</span>></span>
-    <span><</span>!--Уникальный контент страницы<span>--></span>
-  <span class="tag"><<span>/main</span>></span>
-  <span class="tag"><<span>footer</span>></span>
-    <span><</span>!--Элементы подвала<span>--></span>
-  <span class="tag"><<span>/footer</span>></span>
-<span class="tag"><<span>/body</span>></span></code></pre>
+<pre><code><span class="tag">&lt;body></span>
+  <span class="tag">&lt;header></span>
+    &lt;!--Элементы шапки-->
+  <span class="tag">&lt;/header></span>
+  <span class="tag">&lt;main></span>
+    &lt;!--Уникальный контент страницы-->
+  <span class="tag">&lt;/main></span>
+  <span class="tag">&lt;footer></span>
+    &lt;!--Элементы подвала-->
+  <span class="tag">&lt;/footer></span>
+<span class="tag">&lt;/body></span></code></pre>
 
 <p>Обратите внимание, что <code>main</code> содержит уникальный контент страницы, поэтому он на странице может быть только один. Подвалов и шапок может быть несколько в зависимости от структуры вашей страницы.</p>
 `,
@@ -448,28 +449,28 @@ ul a {
       url: "html-article-section",
       theory: `<p>Основное содержание страницы также можно разбить на смысловые блоки. К примеру, с помощью элемента <code>article</code> можно выделить контент страницы, который имеет смысл сам по себе, в отрыве от остального контента. Это, прежде всего, статьи, заметки, комментарии, записи в блоге и т. д.</p>
 
-<pre><code><span class="tag"><<span>main</span>></span>
-  <span class="tag"><<span>article</span>></span>
-    <span><</span>!--Статья, заметка и т. д.<span>--></span>
-  <span class="tag"><<span>/article</span>></span>
-<span class="tag"><<span>/main</span>></span></code></pre>
+<pre><code><span class="tag">&lt;main></span>
+  <span class="tag">&lt;article></span>
+    &lt;!--Статья, заметка и т. д.-->
+  <span class="tag">&lt;/article></span>
+<span class="tag">&lt;/main></span></code></pre>
 
 <p>Когда использовать элемент <code>article</code> в разметке? Главное правило такое: если вы можете содержимое элемента <code>article</code> вставить на другую страницу или другой сайт, и оно не потеряет при этом свой смысл, значит элемент <code>article</code> использован верно.</p>
 <p>Еще один семантический блок на странице сайта - элемент <code>section</code>. Элемент <code>section</code> объединяет контент с общей темой.</p>
 
-<pre><code><span class="tag"><<span>main</span>></span>
-  <span class="tag"><<span>article</span>></span>
-    <span class="tag"><<span>h1</span>></span>Заголовок статьи<span class="tag"><<span>/h1</span>></span>
-    <span class="tag"><<span>section</span>></span>
-      <span class="tag"><<span>h2</span>></span>Заголовок первого раздела<span class="tag"><<span>/h2</span>></span>
-      <span><</span>!--Контент первого раздела<span>--></span>
-    <span class="tag"><<span>/section</span>></span>
-    <span class="tag"><<span>section</span>></span>
-      <span class="tag"><<span>h2</span>></span>Заголовок второго раздела<span class="tag"><<span>/h2</span>></span>
-      <span><</span>!--Контент второго раздела<span>--></span>
-    <span class="tag"><<span>/section</span>></span>
-  <span class="tag"><<span>/article</span>></span>
-<span class="tag"><<span>/main</span>></span></code></pre>
+<pre><code><span class="tag">&lt;main></span>
+  <span class="tag">&lt;article></span>
+    <span class="tag">&lt;h1></span>Заголовок статьи<span class="tag">&lt;/h1></span>
+    <span class="tag">&lt;section></span>
+      <span class="tag">&lt;h2></span>Заголовок первого раздела<span class="tag">&lt;/h2></span>
+      &lt;!--Контент первого раздела-->
+    <span class="tag">&lt;/section></span>
+    <span class="tag">&lt;section></span>
+      <span class="tag">&lt;h2></span>Заголовок второго раздела<span class="tag">&lt;/h2></span>
+      &lt;!--Контент второго раздела-->
+    <span class="tag">&lt;/section></span>
+  <span class="tag">&lt;/article></span>
+<span class="tag">&lt;/main></span></code></pre>
 
 <p>Придерживайтесь следующего правила. Если контенту можно дать заголовок (любого уровня), подумайте над тем, чтобы обернуть этот контент в <code>section</code>.</p>
 <p>В примере выше элемент <code>article</code> содержит в себе несколько <code>section</code>. Но вы можете структурировать контент по-другому - выделить несколько <code>article</code> в пределах <code>section</code>, либо вообще не использовать <code>article</code>, если считаете, что контент не имеет смысла за пределами данной страницы. Семантический подход позволяет подходить к вопросу структурирования HTML творчески, пользуйтесь этим.</p>
@@ -671,14 +672,14 @@ ul a {
       url: "html-aside",
       theory: `<p>Мы разметили семантически блоки основного контента. На странице также может быть дополнительный контент, который не связан напрямую с основным. Такой контент следует семантически выделить с помощью элемента <code>aside</code>:</p>
 
-<pre><code><span class="tag"><<span>main</span>></span>
-  <span class="tag"><<span>article</span>></span>
-    <span><</span>!--Здесь находится основной контент страницы<span>--></span>
-  <span class="tag"><<span>/article</span>></span>
-  <span class="tag"><<span>aside</span>></span>
-    <span><</span>!--Здесь находится второстепенная информация<span>--></span>
-  <span class="tag"><<span>/aside</span>></span>
-<span class="tag"><<span>/main</span>></span></code></pre>
+<pre><code><span class="tag">&lt;main></span>
+  <span class="tag">&lt;article></span>
+    &lt;!--Здесь находится основной контент страницы-->
+  <span class="tag">&lt;/article></span>
+  <span class="tag">&lt;aside></span>
+    &lt;!--Здесь находится второстепенная информация-->
+  <span class="tag">&lt;/aside></span>
+<span class="tag">&lt;/main></span></code></pre>
 
 <p>К второстепенному контенту можно отнести, например, такой:</p>
 <p><ul><li>Примечания</li><li>Заметки на полях</li><li>Комментарии</li><li>Редакторские колонки</li><li>Место, зарезервированное под рекламные блоки</li></ul> и т. д.</p>
@@ -890,7 +891,7 @@ ul a {
       url: "html-video-audio",
       theory: `<p>С помощью элемента <code>video</code> мы можем легко добавить видеоизображение на сайт.</p>
 
-<pre><code><span class="tag"><<span>video</span> <span class="attr-name">src=</span><span class="attr-value">"../video/cats_dancing.mpeg"</span> <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>Видеоизображение не найдено<span class="tag"><<span>/video</span>></span></code></pre>
+<pre><code><span class="tag">&lt;video <span class="attr-name">src=</span><span class="attr-value">"../video/cats_dancing.mpeg"</span> <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>Видеоизображение не найдено<span class="tag">&lt;/video></span></code></pre>
 
 <p>В разметке выше указаны следующие аттрибуты:</p>
 <p>
@@ -903,10 +904,10 @@ ul a {
 <p>Текст, заключенный между открывающим и закрывающим тэгами <code>video</code> отобразится только если видеоизображение не будет найдено.</p>
 <p>Давайте теперь добавим на страницы аудиоконтент с помощью элемента <code>audio</code>. Попробуем применить другой подход к разметке:</p>
 
-<pre><code><span class="tag"><<span>audio</span>  <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>
-  <span class="tag"><<span>source</span> <span class="attr-name">src=</span><span class="attr-value">"../audio/anthem.mp3"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/mp3"</span>></span>
-  <span class="tag"><<span>source</span> <span class="attr-name">src=</span><span class="attr-value">"../audio/anthem.ogg"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/ogg"</span>></span>
-<span class="tag"><<span>/audio</span>></span></code></pre>
+<pre><code><span class="tag">&lt;audio <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>
+  <span class="tag">&lt;source <span class="attr-name">src=</span><span class="attr-value">"../audio/anthem.mp3"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/mp3"</span>/></span>
+  <span class="tag">&lt;source <span class="attr-name">src=</span><span class="attr-value">"../audio/anthem.ogg"</span> <span class="attr-name">type=</span><span class="attr-value">"audio/ogg"</span>/></span>
+<span class="tag">&lt;/audio></span></code></pre>
 
 <p>Здесь у элемента <code>audio</code> вы видите уже знакомые аттрибуты <code>controls</code>, отвечающий за кнопку управления аудиовоспроизведением и <code>autoplay</code>, отвечающий за немедленное начало воспроизведения аудиофайла после загрузки страницы.</p>
 <p>В этот раз в <code>audio</code> вложены 2 элемента <code>source</code>, которые указывают источники аудиофайлов. У нас указаны 2 источника аудиофайлов разных форматов. Сначала браузер попробует найти файл "anthem.mp3". Если такой файл отсутствует или не поддерживается вашим браузером, он попробует найти файл "anthem.ogg".</p>
@@ -1156,7 +1157,7 @@ ul a {
       theory: `<p>Существует способ добавить на вашу страницу любой медиаэлемент и даже содержание другой HTML страницы, а в нее - содержание другой HTML страницы... Все это называется встроенным контентом, элементы <code>audio</code> и <code>video</code>, с которыми мы работали в прошлом упражнении, являются частными случаями встроенного контента.</p>
       <p>Познакомимся с элементом <code>iframe</code>. Результат вашей верстки, отображаемый в этом упражнении справа, встроен на страницу именно с помощью этого элемента.</p>
 
-<pre><code><span class="tag"><<span>iframe</span> <span class="attr-name">src=</span><span class="attr-value">"../resource/some_content.gif"</span> <span class="attr-name">title=</span><span class="attr-value">"content_title"</span> <span class="attr-name">width=</span><span class="attr-value">"200"</span> <span class="attr-name">height=</span><span class="attr-value">"150"</span>></span><span class="tag"><<span>/iframe></span></code></pre>
+<pre><code><span class="tag">&lt;iframe <span class="attr-name">src=</span><span class="attr-value">"../resource/some_content.gif"</span> <span class="attr-name">title=</span><span class="attr-value">"content_title"</span> <span class="attr-name">width=</span><span class="attr-value">"200"</span> <span class="attr-name">height=</span><span class="attr-value">"150"</span>></span><span class="tag">&lt;/iframe></code></pre>
 
 <p>В разметке выше мы указали следующие аттрибуты:</p>
 <p>

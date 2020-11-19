@@ -7,23 +7,23 @@ import { IExcercise } from "../../types";
 import { ReflexContainer, ReflexElement, ReflexSplitter } from "react-reflex";
 
 interface ISimulatorProps {
-  excercise: IExcercise;
+  exercise: IExcercise;
 }
 
-const Simulator: React.FC<ISimulatorProps> = ({ excercise }) => {
+const Simulator: React.FC<ISimulatorProps> = ({ exercise }) => {
   const minPaneWidth = 300;
 
   return (
-    <div className="content__wrapper">
+    <div className="simulator__wrapper">
       <ReflexContainer orientation="vertical">
         <ReflexElement minSize={minPaneWidth}>
-          <Challenge {...excercise} />
+          <Challenge {...exercise} />
         </ReflexElement>
         <ReflexSplitter />
         <ReflexElement minSize={minPaneWidth}>
-          <Editor initValues={excercise.initValues} />
+          <Editor initValues={exercise.initValues} />
         </ReflexElement>
-        <ReflexSplitter  />
+        <ReflexSplitter />
         <ReflexElement minSize={minPaneWidth}>
           <Output />
         </ReflexElement>

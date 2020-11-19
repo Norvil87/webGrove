@@ -1,10 +1,9 @@
 import React from "react";
 import "./CourseStructure.scss";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setCurrentExercise } from "../../store/actions";
-import { ICourse, IExcercise } from "../../types";
-
+import { setCurrentExercise, setLessonUrl } from "../../store/actions";
+import { ICourse, IExcercise, ITask } from "../../types";
 import {
   Accordion,
   AccordionItem,
@@ -20,29 +19,33 @@ interface ICourseListProps {
 
 const CourseList: React.FC<ICourseListProps> = ({ course }) => {
   const dispatch = useDispatch();
+  const { url: matchedUrl } = useRouteMatch();
+
+  const onExcerciseLinkClick = (id: number, url: string, lessonUrl: string, tasks: ITask[]) => () => {
+    dispatch(
+      setCurrentExercise({
+        exerciseId: id,
+        exerciseUrl: url,
+        passed: undefined,
+        message: [],
+        tasks,
+      })
+    );
+    dispatch(setLessonUrl(lessonUrl));
+  };
 
   const renderExcersises = (excercises: IExcercise[], lessonUrl: string) => {
     const array: JSX.Element[] = [];
 
-    excercises.map((excercise: IExcercise, i: number) => {
+    excercises.map(({ id, url, header, tasks }: IExcercise, i: number) => {
       array.push(
-        <li key={excercise.id} className="course-structure__excersice">
+        <li key={id + url} className="course-structure__exercise">
           <span>{i + 1}. </span>
           <Link
-            to={`/courses/html/${lessonUrl}/${excercise.url}`}
-            onClick={() =>
-              dispatch(
-                setCurrentExercise({
-                  lessonUrl: lessonUrl,
-                  excersiceId: excercise.id,
-                  excersiceUrl: excercise.url,
-                  passed: undefined,
-                  message: [],
-                })
-              )
-            }
+            to={`${matchedUrl}/lessons/${lessonUrl}/${url}`}
+            onClick={onExcerciseLinkClick(id, url, lessonUrl, tasks)}
           >
-            {excercise.header}
+            {header}
           </Link>
         </li>
       );
@@ -52,10 +55,12 @@ const CourseList: React.FC<ICourseListProps> = ({ course }) => {
   };
 
   const renderLessons = () => {
-    const blocks: JSX.Element[] = [];
+    const lessons: JSX.Element[] = [];
+
     for (const title in course.lessons) {
       const currentBlock = course.lessons[title];
-      blocks.push(
+
+      lessons.push(
         <AccordionItem key={title + currentBlock.id} uuid={`${currentBlock.id}`}>
           <AccordionItemHeading>
             <AccordionItemButton>{`${currentBlock.title}. ${currentBlock.excercises.length} упражнений`}</AccordionItemButton>
@@ -67,7 +72,7 @@ const CourseList: React.FC<ICourseListProps> = ({ course }) => {
       );
     }
 
-    return blocks;
+    return lessons;
   };
 
   return (
