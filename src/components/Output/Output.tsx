@@ -22,14 +22,16 @@ const Output = () => {
       return URL.createObjectURL(blob);
     };
 
-    const cssURL = getBlobURL(css, "text/css");
     const jsURL = getBlobURL(js, "text/javscript");
 
     const source = `
       <!DOCTYPE html>
       <html>
         <head>
-          ${css ? `<link rel="stylesheet" type="text/css" href="${cssURL}" />` : ""}
+        <style>
+          ${css || ''}
+        </style>
+          
           ${js ? `<script type="text/javascript" src="${jsURL}" />` : ""}
         </head>
         <body>

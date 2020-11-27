@@ -68,10 +68,10 @@ const RouteNavigator = () => {
     <Switch>
       <Route path="/" exact component={MainPage} />
       <Route
-        path={`/courses/${courseUrl}/lessons/${lessonUrl}/${exerciseUrl}`}
-        /* path={`/courses/html/html-form/html-submit`} */
-        render={() => <Simulator exercise={course.lessons[lessonUrl].excercises[exerciseId - 1]} />}
-        /* render={() => <Simulator exercise={Html.lessons["html-form"].excercises[9]} />} */
+        //path={`/courses/${courseUrl}/lessons/${lessonUrl}/${exerciseUrl}`}
+        path={`/courses/css/lessons/css-selectors/css-multiple-selectors`}
+        //render={() => <Simulator exercise={course.lessons[lessonUrl].excercises[exerciseId - 1]} />}
+        render={() => <Simulator exercise={Css.lessons["css-selectors"].excercises[10]} />}
       />
       <Route path={`/courses/${courseUrl}`} exact render={() => <CoursePage course={courseNavigator[courseUrl]} />} />
       <Route path="/register" component={UserRegistration} />

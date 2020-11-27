@@ -1,5 +1,5 @@
 import { ICourse } from "../../../types";
-import { CssIntro } from "./CSSIntro";
+import { CssSelectors } from "./CSSSelector";
 
 export const Css: ICourse = {
   id: 1,
@@ -12,6 +12,6 @@ export const Css: ICourse = {
     followup: "Сделайте страницу динамичной с помощью JavaScript. Для начала научитесь программировать на JS.",
   },
   lessons: {
-    "css-intro": CssIntro,
+    "css-selectors": CssSelectors,
   },
 };
