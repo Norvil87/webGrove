@@ -24,7 +24,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
       tasks: state.currentExercise.tasks,
       courseUrl: state.course?.url,
       exerciseId: state.currentExercise.exerciseId,
-      exerciseUrl: state.currentExercise.exerciseUrl
+      exerciseUrl: state.currentExercise.exerciseUrl,
     };
   });
 
@@ -37,7 +37,15 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
     const iframe = document.body.querySelector("iframe");
 
     tasks.map((task: ICurrentTask) => {
-      if (task.test(iframe)) {
+      let taskPassed;
+      if (task.testRegExp) {
+        const textContent = iframe.contentDocument.querySelector("style").textContent;
+        taskPassed = task.testRegExp.every(regexp => regexp.test(textContent));
+      } else {
+        taskPassed = task.testFn(iframe);
+      }
+
+      if (taskPassed) {
         task.passed = true;
       } else {
         task.passed = false;

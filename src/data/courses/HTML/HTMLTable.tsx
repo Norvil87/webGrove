@@ -28,19 +28,13 @@ export const HtmlTable: ICourseLesson = {
         {
           id: 1,
           label: "Под параграфом с текстом создайте пустую таблицу.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const table = iframe.contentDocument.body.querySelector("table");
             return table && table.previousElementSibling && table.previousElementSibling.tagName === "P";
           },
           failMsg: "Убедитесь, что вы создали таблицу с помощью элемента table",
         },
       ],
-      solution: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
-<p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
-
-<table>
-
-</table>`,
     },
 
     {
@@ -78,7 +72,7 @@ export const HtmlTable: ICourseLesson = {
         {
           id: 1,
           label: "Добавьте в таблицу еще 3 пустые строки.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const table = iframe.contentDocument.body.querySelector("table");
             if (!table) {
               return false;
@@ -89,19 +83,6 @@ export const HtmlTable: ICourseLesson = {
           failMsg: "Убедитесь, что в таблице 4 строки",
         },
       ],
-      solution: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
-<p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
-
-<table>
-  <tr>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-  </tr>
-</table>`,
     },
 
     {
@@ -168,7 +149,7 @@ th, td {
           id: 1,
           label:
             "Добавьте во вторую строку таблицы ячейки с данными: <ul><li>XR-1 PRO</li><li>пластик</li><li>60</li><li>7000</li></ul>",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondRow = iframe.contentDocument.body.querySelectorAll("tr")[1];
             if (!secondRow) {
               return false;
@@ -188,7 +169,7 @@ th, td {
           id: 2,
           label:
             "Добавьте в третью строку таблицы ячейки с данными: <ul><li>XT-8</li><li>алюминий</li><li>45</li><li>6000</li></ul>",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const thirdRow = iframe.contentDocument.body.querySelectorAll("tr")[2];
             if (!thirdRow) {
               return false;
@@ -208,7 +189,7 @@ th, td {
           id: 3,
           label:
             "Добавьте в четвертую строку таблицы ячейки с данными: <ul><li>XT-8 ULTRA</li></ul> Остальные ячейки оставьте пустыми.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const fourthRow = iframe.contentDocument.body.querySelectorAll("tr")[3];
             if (!fourthRow) {
               return false;
@@ -226,35 +207,6 @@ th, td {
           failMsg: "Убедитесь, что в четвертой строке tr таблицы 4 ячейки td с правильным текстовым содержанием",
         },
       ],
-      solution: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
-<p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
-
-<table>
-  <tr>
-    <td>XR</td>
-    <td>пластик</td>
-    <td>40</td>
-    <td>4000</td>
-  </tr>
-  <tr>
-    <td>XR-1 PRO</td>
-    <td>пластик</td>
-    <td>60</td>
-    <td>7000</td>
-  </tr>
-  <tr>
-    <td>XT-8</td>
-    <td>алюминий</td>
-    <td>45</td>
-    <td>6000</td>
-  </tr>
-  <tr>
-    <td>XT-8 ULTRA</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>`,
     },
 
     {
@@ -349,7 +301,7 @@ th, td {
           id: 1,
           label:
             "Добавьте в первую строку таблицы заголовки с данными: <ul><li>Модель</li><li>Корпус</li><li>Кол-во языков</li><li>Стоимость, руб.</li></ul>",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstRow = iframe.contentDocument.body.querySelectorAll("tr")[0];
             if (!firstRow) {
               return false;
@@ -368,7 +320,7 @@ th, td {
         {
           id: 2,
           label: "Укажите, что заголовки являются заголовками столбцов.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstRow = iframe.contentDocument.body.querySelectorAll("tr")[0];
             if (!firstRow) {
               return false;
@@ -380,41 +332,6 @@ th, td {
           failMsg: "Убедитесь, что заголовкам правльно задан аттрибут scope",
         },
       ],
-      solution: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
-<p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
-
-<table>
-  <tr>
-    <th scope="col">Модель</th>
-    <th scope="col">Корпус</th>
-    <th scope="col">Кол-во языков</th>
-    <th scope="col">Стоимость, руб.</th>
-  </tr>
-  <tr>
-    <td>XR</td>
-    <td>пластик</td>
-    <td>40</td>
-    <td>4000</td>
-  </tr>
-  <tr>
-    <td>XR-1 PRO</td>
-    <td>пластик</td>
-    <td>60</td>
-    <td>7000</td>
-  </tr>
-  <tr>
-    <td>XT-8</td>
-    <td>алюминий</td>
-    <td>45</td>
-    <td>6000</td>
-  </tr>
-  <tr>
-    <td>XT-8 ULTRA</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>`,
     },
 
     {
@@ -516,7 +433,7 @@ th, td {
         {
           id: 1,
           label: "Оберните заголовки таблицы в элемент <code>thead</code>.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const thead = iframe.contentDocument.body.querySelector("thead");
 
             return (
@@ -533,7 +450,7 @@ th, td {
         {
           id: 2,
           label: "Оберните данные таблицы в элемент <code>tbody</code>.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
 
             return (
@@ -548,45 +465,6 @@ th, td {
           failMsg: "Убедитесь, что ряды таблицы с данными обернуты в tbody",
         },
       ],
-      solution: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
-<p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Модель</th>
-      <th scope="col">Корпус</th>
-      <th scope="col">Кол-во языков</th>
-      <th scope="col">Стоимость, руб.</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>XR</td>
-      <td>пластик</td>
-      <td>40</td>
-      <td>4000</td>
-    </tr>
-    <tr>
-      <td>XR-1 PRO</td>
-      <td>пластик</td>
-      <td>60</td>
-      <td>7000</td>
-    </tr>
-    <tr>
-      <td>XT-8</td>
-      <td>алюминий</td>
-      <td>45</td>
-      <td>6000</td>
-    </tr>
-    <tr>
-      <td>XT-8 ULTRA</td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>`,
     },
 
     {
@@ -721,7 +599,7 @@ th, td {
         {
           id: 1,
           label: "Корпус моделей XR и XR-1 PRO сделан из одинакового материала - пластика. Объедините эти ячейки.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
@@ -738,7 +616,7 @@ th, td {
         {
           id: 2,
           label: "Удалите лишние ячейки.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
@@ -753,44 +631,6 @@ th, td {
           failMsg: "Убедитесь, что удалена правильная ячейка",
         },
       ],
-      solution: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
-<p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Модель</th>
-      <th scope="col">Корпус</th>
-      <th scope="col">Кол-во языков</th>
-      <th scope="col">Стоимость, руб.</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>XR</td>
-      <td rowspan="2">пластик</td>
-      <td>40</td>
-      <td>4000</td>
-    </tr>
-    <tr>
-      <td>XR-1 PRO</td>
-      <td>60</td>
-      <td>7000</td>
-    </tr>
-    <tr>
-      <td>XT-8</td>
-      <td>алюминий</td>
-      <td>45</td>
-      <td>6000</td>
-    </tr>
-    <tr>
-      <td>XT-8 ULTRA</td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>`,
     },
 
     {
@@ -925,7 +765,7 @@ th, td {
           id: 1,
           label:
             "У модели XT-8 ULTRA отсутствуют технические характеристики. Объедините пустые ячейки в одну, добавьте в нее текст 'Технические характеристики отсутствуют'.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
@@ -947,7 +787,7 @@ th, td {
         {
           id: 2,
           label: "Удалите лишние ячейки.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
@@ -962,42 +802,6 @@ th, td {
           failMsg: "Убедитесь, что удалены правильные ячейки",
         },
       ],
-      solution: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
-<p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Модель</th>
-      <th scope="col">Корпус</th>
-      <th scope="col">Кол-во языков</th>
-      <th scope="col">Стоимость, руб.</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>XR</td>
-      <td rowspan="2">пластик</td>
-      <td>40</td>
-      <td>4000</td>
-    </tr>
-    <tr>
-      <td>XR-1 PRO</td>
-      <td>60</td>
-      <td>7000</td>
-    </tr>
-    <tr>
-      <td>XT-8</td>
-      <td>алюминий</td>
-      <td>45</td>
-      <td>6000</td>
-    </tr>
-    <tr>
-      <td>XT-8 ULTRA</td>
-      <td colspan="3">Технические характеристики отсутствуют</td>
-    </tr>
-  </tbody>
-</table>`,
     },
   ],
 };

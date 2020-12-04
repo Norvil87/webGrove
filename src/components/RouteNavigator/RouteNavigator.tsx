@@ -69,9 +69,9 @@ const RouteNavigator = () => {
       <Route path="/" exact component={MainPage} />
       <Route
         //path={`/courses/${courseUrl}/lessons/${lessonUrl}/${exerciseUrl}`}
-        path={`/courses/css/lessons/css-selectors/css-multiple-selectors`}
+        path={`/courses/css/lessons/css-text/css-list-style`}
         //render={() => <Simulator exercise={course.lessons[lessonUrl].excercises[exerciseId - 1]} />}
-        render={() => <Simulator exercise={Css.lessons["css-selectors"].excercises[10]} />}
+        render={() => <Simulator exercise={Css.lessons["css-text"].excercises[13]} />}
       />
       <Route path={`/courses/${courseUrl}`} exact render={() => <CoursePage course={courseNavigator[courseUrl]} />} />
       <Route path="/register" component={UserRegistration} />

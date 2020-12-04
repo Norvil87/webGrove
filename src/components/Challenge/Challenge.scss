@@ -68,3 +68,16 @@
 .challenge__linkToCourse:active {
   opacity: 0.3;
 }
+
+.external-resource {
+  font-style: italic;
+}
+
+.external-resource a {
+  color: $primaryColor;
+}
+
+.external-resource a:hover {
+  text-decoration: underline;
+}
+

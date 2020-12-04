@@ -94,7 +94,7 @@ export const CssSelectors: ICourseLesson = {
         {
           id: 1,
           label: "Первому параграфу измените тип шрифта Tahoma с помощью правила font-family: Tahoma.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstP = iframe.contentDocument.querySelectorAll("p")[0];
             return firstP && firstP.style.fontFamily === "Tahoma";
           },
@@ -103,74 +103,13 @@ export const CssSelectors: ICourseLesson = {
         {
           id: 2,
           label: "Первому параграфу также задайте курсивное начертание с помощью правила font-stle: italic.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstP = iframe.contentDocument.querySelectorAll("p")[0];
             return firstP && firstP.style.fontStyle === "italic";
           },
           failMsg: "Убедитесь, что первому параграфу задан аттрибут style с правильным значением font-style",
         },
       ],
-      solution: `<!--HTML редактор-->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p style="font-family: Tahoma; font-style: italic">Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>`,
     },
 
     {
@@ -263,7 +202,7 @@ export const CssSelectors: ICourseLesson = {
         {
           id: 1,
           label: "В шапке страницы создайте элемент <code>style</code>.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const style = iframe.contentDocument.querySelector("body").querySelector("style");
             return style !== null;
           },
@@ -273,84 +212,10 @@ export const CssSelectors: ICourseLesson = {
           id: 2,
           label:
             "Перенесите стили первого параграфа в элемент style. Аттрибут style первого параграфа можно удалить, он больше не нужен",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("body").querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/p\s+{\s*font-family\s*:\s*Tahoma\s*;\s*font-style: italic;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/p\s+{\s*font-family\s*:\s*Tahoma\s*;\s*font-style: italic;\s*}/],
           failMsg: "Убедитесь, что в style всем параграфам заданы 2 css-свойства",
         },
       ],
-      solution: `<!--HTML редактор-->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <style>
-      p {
-        font-family: Tahoma;
-        font-style: italic;
-      }
-    </style>
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p>Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>`,
     },
 
     {
@@ -455,7 +320,7 @@ export const CssSelectors: ICourseLesson = {
           id: 1,
           label:
             "Создайте в шапке элемент <code>link</code>, задайте ему следующие аттрибуты: <ul><li><code>href</code> со значением <code>./style.css</code></li><li><code>type</code> с правильным значением</li><li><code>rel</code> с правильным значением</li></ul>",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const link = iframe.contentDocument.querySelector("link");
             return link && link.href === "" && link.rel === "stylesheet" && link.type === "text/css";
           },
@@ -464,95 +329,19 @@ export const CssSelectors: ICourseLesson = {
         {
           id: 2,
           label: "Перенесите код из элемента <code>style</code> в CSS редактор целиком.",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/p\s+{\s*font-family\s*:\s*Tahoma\s*;\s*font-style: italic;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/p\s+{\s*font-family\s*:\s*Tahoma\s*;\s*font-style: italic;\s*}/],
           failMsg: "Убедитесь, что вы перенесли код из элемента style в css редактор",
         },
         {
           id: 3,
           label: "Удалите элемент <code>style</code>.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const style = iframe.contentDocument.querySelector("body").querySelector("style");
             return style === null;
           },
           failMsg: "Убедитесь, что вы удалили элемент style из шапки страницы",
         },
       ],
-      solution: `<!--HTML -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p style="font-family: Tahoma; font-style: italic">Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>
-
-/* CSS */
-
-p {
-  font-family: Tahoma;
-  font-style: italic;
-}`,
     },
 
     {
@@ -647,102 +436,16 @@ p {
           id: 1,
           label:
             "Заголовку первого уровня задайте цвет текста <code>DarkSalmon</code>. Не забывайте, что после каждого правила должна стоять точка с запятой, даже если правило одно!",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/h1\s+{\s*color\s*:\s*DarkSalmon\s*;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/h1\s+{\s*color\s*:\s*DarkSalmon\s*;\s*}/],
           failMsg: "Убедитесь, что вы создали правило для тэга h1 с правильным значением цвета",
         },
         {
           id: 2,
           label: "У параграфов уберите курсивное начертание текста.",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/p\s+{\s*font-family\s*:\s*Tahoma\s*;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/p\s+{\s*font-family\s*:\s*Tahoma\s*;\s*}/],
           failMsg: "Убедитесь, что вы убрали правило font-style для параграфов",
         },
       ],
-      solution: `<!--HTML -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p style="font-family: Tahoma; font-style: italic">Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>
-
-/* CSS */
-
-p {
-  font-family: Tahoma;
-}
-
-h1 {
-  color: DarkSalmon;
-}`,
     },
 
     {
@@ -846,7 +549,7 @@ h1 {
         {
           id: 1,
           label: "В HTML редакторе задайте заголовку первого уровня идентификатор со значением 'main-title'.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const header = iframe.contentDocument.querySelector("h1");
             return header && header.id === "main-title";
           },
@@ -855,107 +558,16 @@ h1 {
         {
           id: 2,
           label: "Создайте путой селектор по идентификатору 'main-title'.",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/#main-title\s+{(.|\n)*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/#main-title\s+{(.|\n)*}/],
           failMsg: "Убедитесь, что вы используете селектор по id",
         },
         {
           id: 3,
           label: "Задайте цвет текста 'Indigo' и выравнивание по центру (text-align: center;).",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/#main-title\s+{\s*color: Indigo;\s*text-align: center;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/#main-title\s+{\s*color: Indigo;\s*text-align: center;\s*}/],
           failMsg: "Убедитесь, что вы задали 2 визуальных правила элементу с id 'main-title'",
         },
       ],
-      solution: `<!--HTML -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 id="main-title" class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p>Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>
-
-/* CSS */
-
-p {
-  font-family: Tahoma;
-}
-
-h1 {
-  color: DarkSalmon;
-}
-
-#main-title {
-  color: Indigo;
-  text-align: center;
-}`,
     },
 
     {
@@ -1100,35 +712,22 @@ h1 {
       tasks: [
         {
           id: 1,
-          label: "Заголовку <code>h1</code> с классом <code>title</code> задайте цвет текста 'SeaGreen'. Обратите внимание, что цвет у заголовка не поменялся. Это нормально, объяснение чуть дальше.",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/.title\s+{\s*color: SeaGreen;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          label:
+            "Заголовку <code>h1</code> с классом <code>title</code> задайте цвет текста 'SeaGreen'. Обратите внимание, что цвет у заголовка не поменялся. Это нормально, объяснение чуть дальше.",
+          testRegExp: [/.title\s+{\s*color: SeaGreen;\s*}/],
           failMsg: "Убедитесь, что вы задали классу title правильный цвет",
         },
         {
           id: 2,
           label: "Элементам с классом 'destination' задайте выравнивание текста по центру.",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/.destination\s+{\s*text-align: center;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/.destination\s+{\s*text-align: center;\s*}/],
           failMsg: "Убедитесь, что селектору по классу destination вы задали правильное свойство",
         },
         {
           id: 3,
           label:
             "Первому заголовку с классом 'destination' ('Сингапурский зоопарк') задайте дополнительный класс <code>shadowed</code>.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const header = iframe.contentDocument.querySelectorAll(".destination")[0];
             return header && header.classList.contains("shadowed");
           },
@@ -1137,106 +736,10 @@ h1 {
         {
           id: 4,
           label: "Элементу с классом <code>shadowed</code> задайте тень (text-shadow: 2px 2px 2px pink;).",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/.shadowed\s+{\s*text-shadow: 2px 2px 2px pink;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/.shadowed\s+{\s*text-shadow: 2px 2px 2px pink;\s*}/],
           failMsg: "Убедитесь, что селектору по классу shadowed вы задали правильное свойство",
         },
       ],
-      solution: `<!--HTML -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 id="main-title" class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p>Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination shadowed">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>
-
-/* CSS */
-
-p {
-  font-family: Tahoma;
-}
-
-h1 {
-  color: DarkSalmon;
-}
-
-#main-title {
-  color: Indigo;
-  text-align: center;
-}
-
-.title {
-  color: SeaGreen;
-}
-
-.destination {
-  text-align: center;
-}
-
-.shadowed {
-  text-shadow: 2px 2px 2px pink;
-}`,
     },
 
     {
@@ -1386,20 +889,13 @@ h1 {
           id: 1,
           label:
             "Перенесите правило для выравнивания текста по центру из селектора для id <code>#main-title</code> в классовый селектор <code>.title</code>.",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/.title\s+{\s*color: SeaGreen;\s*text-align: center;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/.title\s+{\s*color: SeaGreen;\s*text-align: center;\s*}/],
           failMsg: "Убедитесь, что правило text-align перенесено в селектор .title",
         },
         {
           id: 2,
           label: "Удалите селектор <code>#main-title</code>.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const style = iframe.contentDocument.querySelector("style");
             if (!style) {
               return false;
@@ -1411,7 +907,7 @@ h1 {
         {
           id: 3,
           label: "Удалите селектор <code>h1</code>.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const style = iframe.contentDocument.querySelector("style");
             if (!style) {
               return false;
@@ -1423,94 +919,13 @@ h1 {
         {
           id: 4,
           label: "У заголовка <code>h1</code> удалите id.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const header = iframe.contentDocument.querySelector("h1");
             return header && header.id === "";
           },
           failMsg: "Убедитесь, что вы удалили id у заголовка",
         },
       ],
-      solution: `<!--HTML -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p>Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination shadowed">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>
-
-/* CSS */
-
-p {
-  font-family: Tahoma;
-}
-
-.title {
-  color: SeaGreen;
-  text-align: center;
-}
-
-.destination {
-  text-align: center;
-}
-
-.shadowed {
-  text-shadow: 2px 2px 2px pink;
-}`,
     },
 
     {
@@ -1630,102 +1045,10 @@ h4.destination {
           id: 1,
           label:
             "Всем заголовкам четвертого уровня <code>h4</code> с классом <code>.destination</code> задайте курсивное начертание (font-style: italic;). Другие элементы с классом <code>.destination</code> и другие заголовки <code>h4</code> не должны буть затронуты стилями.",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/h4.destination\s+{\s*font-style: italic;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/h4.destination\s+{\s*font-style: italic;\s*}/],
           failMsg: "Убедитесь, что заголовкам с нужным классом задан правильный стиль",
         },
       ],
-      solution: `<!--HTML -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p>Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination shadowed">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>
-
-/* CSS */
-
-p {
-  font-family: Tahoma;
-}
-
-.title {
-  color: SeaGreen;
-  text-align: center;
-}
-
-.destination {
-  text-align: center;
-}
-
-.shadowed {
-  text-shadow: 2px 2px 2px pink;
-}
-
-h4.destination {
-  font-style: italic;
-}`,
     },
 
     {
@@ -1868,124 +1191,17 @@ h4.destination {
           id: 1,
           label:
             "Всем заголовкам четвертого уровня <code>h4</code> вложенным в элемент с классом <code>.description</code> задайте тень (text-shadow: 2px 2px 2px pink;). Другие заголовки <code>h4</code> не должны буть затронуты стилями.",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/.description h4\s+{\s*text-shadow: 2px 2px 2px pink;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/.description h4\s+{\s*text-shadow: 2px 2px 2px pink;\s*}/],
           failMsg: "Убедитесь, что вы правильно написали селектор для заголовков, вложенных в элемент с классом.",
         },
         {
           id: 2,
           label:
             "Ссылкам <code>a</code>, вложенным в <code>div</code> уберите нижнее подчеркивание (text-decoration: none;).",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/div a\s+{\s*text-decoration: none;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/div a\s+{\s*text-decoration: none;\s*}/],
           failMsg: "Убедитесь, что вы правильно написали селектор для вложенной ссылки.",
         },
       ],
-      solution: `<!--HTML -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p>Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination shadowed">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>
-
-/* CSS */
-
-p {
-  font-family: Tahoma;
-}
-
-.title {
-  color: SeaGreen;
-  text-align: center;
-}
-
-.destination {
-  text-align: center;
-}
-
-.shadowed {
-  text-shadow: 2px 2px 2px pink;
-}
-
-h4.destination {
-  font-style: italic;
-}
-
-.description h4 {
-  text-shadow: 2px 2px 2px pink;
-}
-
-div a {
-  text-decoration: none;
-}`,
     },
 
     {
@@ -2133,132 +1349,17 @@ div a {
           id: 1,
           label:
             "Всем элементам списков <code>li</code> на странице задайте написание прописными символами (text-transform: uppercase;).",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/li\s+{\s*text-transform: uppercase;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/li\s+{\s*text-transform: uppercase;\s*}/],
           failMsg: "Убедитесь, что вы правильно написали селектор для тэга li",
         },
         {
           id: 2,
           label:
             "Элементам <code>li</code>, вложенным в маркированный список <code>ol</code> верните написание как в предложении (text-transform: capitalize;).",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/ol li\s+{\s*text-transform: capitalize;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [/ol li\s+{\s*text-transform: capitalize;\s*}/],
           failMsg: "Убедитесь, что вы правильно написали селектор для вложенного тэга li",
         },
       ],
-      solution: `<!--HTML -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p>Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination shadowed">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>
-
-/* CSS */
-
-p {
-  font-family: Tahoma;
-}
-
-.title {
-  color: SeaGreen;
-  text-align: center;
-}
-
-.destination {
-  text-align: center;
-}
-
-.shadowed {
-  text-shadow: 2px 2px 2px pink;
-}
-
-h4.destination {
-  font-style: italic;
-}
-
-.description h4 {
-  text-shadow: 2px 2px 2px pink;
-}
-
-div a {
-  text-decoration: none;
-}
-
-ol li {
-  text-transform: capitalize;
-}
-
-li {
-  text-transform: uppercase;
-}`,
     },
 
     {
@@ -2390,114 +1491,12 @@ li {
           id: 1,
           label:
             "В текущем коде 2 CSS правила отвечают за отображние тени. Перепешите их, создав одно правило с перечислением селекторов.",
-          test: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
-            if (!style) {
-              return false;
-            }
-            const regExps = [/(.shadowed,\s*.description h4)|(.description h4,\s*.shadowed)\s+{\s*text-shadow: 2px 2px 2px pink;\s*}/];
-            return regExps.every(regexp => regexp.test(style.textContent));
-          },
+          testRegExp: [
+            /(.shadowed,\s*.description h4)|(.description h4,\s*.shadowed)\s+{\s*text-shadow: 2px 2px 2px pink;\s*}/,
+          ],
           failMsg: "Убедитесь, что вы правильно написали перечисление селекторов для свойства text-shadow",
         },
       ],
-      solution: `<!--HTML -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Zoo Planet</title>
-    <link href="./style.css" type="text/css" rel="stylesheet">
-  </head>
-
-  <body>
-    <img src="https://bigpicture.ru/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2011/02/0818-800x624.jpg.webp" />
-    <h1 class="title">Лучшие зоопарки мира</h1>
-    <h5 class="author">Автор: Екатерина Коростелева</h5>
-    <h5 class="category">Рубрика: Животные</h5>
-
-    <p>Один из самых авторитетных финансово-экономических журналов мира «Forbes» опубликовал список из 10 лучших зоопарков мира. Предлагаем познакомиться с этими замечательными зоопарками.</p>
-
-    <h2 class="destination shadowed">1. Сингапурский зоопарк</h2>
-    <div class="description">
-      <p>Этот зоопарк является одним из самых красивых и больших открытых (то есть без клеток и решеток) зоопарков мира. Площадь зоопарка занимает 28 га тропического леса. В сингапурском зоопарке собрана уникальная коллекция редчайших животных. Такой коллекцией может похвастаться не каждый европейский зоопарк.</p>
-      <a href="http://www.zoo.com.sg" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 20 сингапурских долларов</li>
-        <li>Детские: 13 сингапурских долларов</li>
-        <li>Семейные: 35 сингапурских долларов</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">2. Зоопарк Рануа</h2>
-    <div class="description">
-      <p>В этом зоопарке представлено почти 60 видов различных северных животных. Звери и птицы содержатся в условиях, приближенных к естественным. Зимой гостям зоопарка предлагают прокатиться на снегоходах, оленьих и собачьих упряжках, есть горка и лыжная трасса. А летом гостей ждет конно-спортивный комплекс и автотрек.</p>
-      <a href="http://www.ranuazoo.com" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 12 евро </li>
-        <li>Детские: 10.50 евро</li>
-        <li>Семейные: 18 евро</li>
-      </ul>
-    </div>
-
-    <h2 class="destination">3. Лондонский зоопарк</h2>
-    <div class="description">
-      <p>Лондонский зоопарк — это старейший научный зоопарк. Он был основан 27 апреля 1828 года. Первоначально это был не зоопарк, а зоологическая коллекция для проведения научных исследований. Но уже в 1847 зоопарк стал доступен для широкой публики. Сегодня в зоопарке собрана одна из богатейших коллекций животных.</p>
-      <a href="https://www.zsl.org" target="_blank">Перейти на сайт</a>.
-      <h4>Цена входных билетов:</h4>
-      <ul>
-        <li>Взрослые: 17.20 фунтов</li>
-        <li>Детские: 13.70 фунтов</li>
-        <li>Семейные: 25.20 фунтов</li>
-      </ul>
-    </div>
-
-    <h2>Другие известные зоопарки</h2>
-    <ol>
-      <li><h4 class="destination">Пражский зоопарк</h4></li>
-      <li><h4 class="destination">Иерусалимский зоопарк</h4></li>
-      <li><h4 class="destination">Зоопарк Чианг-Май</h4></li>
-    </ol>
-
-  </body>
-</html>
-
-/* CSS */
-
-p {
-  font-family: Tahoma;
-}
-
-.title {
-  color: SeaGreen;
-  text-align: center;
-}
-
-.destination {
-  text-align: center;
-}
-
-.shadowed, .description h4 {
-  text-shadow: 2px 2px 2px pink;
-}
-
-h4.destination {
-  font-style: italic;
-}
-
-div a {
-  text-decoration: none;
-}
-
-ol li {
-  text-transform: capitalize;
-}
-
-li {
-  text-transform: uppercase;
-}`,
     },
   ],
 };

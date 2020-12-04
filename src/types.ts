@@ -13,7 +13,8 @@ export interface ITask {
   id: number;
   label: string;
   failMsg: string;
-  test: (iframe: HTMLElement) => boolean;
+  testFn?: (iframe: HTMLElement) => boolean;
+  testRegExp?: RegExp[]
 }
 
 export interface IExcercise {
@@ -24,7 +25,6 @@ export interface IExcercise {
   goal: string;
   tasks: ITask[];
   initValues: IEditorValues;
-  solution?: string;
 }
 
 export interface ICourseLesson {

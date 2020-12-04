@@ -17,7 +17,6 @@ export const JsIntro: ICourseLesson = {
         js: "",
       },
       tasks: [],
-      solution: `solution`,
     },
   ],
 };

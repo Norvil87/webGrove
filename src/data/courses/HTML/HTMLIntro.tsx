@@ -25,14 +25,13 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: 'Элемент <code>p</code> должен содержать текст: "Завтра начну изучать вэб-разработку!".',
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const p = iframe.contentDocument.body.querySelector("p");
             return p && p.textContent === "Завтра начну изучать вэб-разработку!";
           },
           failMsg: '"Убедитесь, что элемент <p> содержит текст "Завтра начну изучать вэб-разработку!"',
         },
       ],
-      solution: `<p>Завтра начну изучать вэб-разработку!</p>`,
     },
     {
       id: 2,
@@ -58,7 +57,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: 'В первом параграфе измените текст на: "Пожалуй, начну изучать вэб-разработку сегодня!"',
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstP = iframe.contentDocument.body.querySelectorAll("p")[0];
 
             return firstP && firstP.textContent === "Пожалуй, начну изучать вэб-разработку сегодня!";
@@ -68,7 +67,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: 'Добавьте второй параграф с текстом: "Начну с основ HTML"',
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondP = iframe.contentDocument.body.querySelectorAll("p")[1];
 
             return secondP && secondP.textContent === "Начну с основ HTML";
@@ -76,8 +75,6 @@ export const HtmlIntro: ICourseLesson = {
           failMsg: 'Убедитесь, что текст внутри второго параграфа - "Начну с основ HTML"',
         },
       ],
-      solution: `<p>Пожалуй, начну изучать вэб-разработку сегодня!</p>
-<p>Начну с основ HTML</p>`,
     },
 
     {
@@ -121,7 +118,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: "Добавьте второй элемент <code>div</code>",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const divs = iframe.contentDocument.body.querySelectorAll("div");
 
             return divs.length === 2;
@@ -131,7 +128,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: "У второго элемента <code>div</code> должно быть 2 элемента-потомка <code>p</code>",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondDiv = iframe.contentDocument.body.querySelectorAll("div")[1];
             return (
               secondDiv &&
@@ -144,15 +141,6 @@ export const HtmlIntro: ICourseLesson = {
           failMsg: "Убедитесь, что во второй div вложены 2 параграфа p",
         },
       ],
-      solution: `<main>
-  <div>
-    <span>Этот элемент уже обернут в тэг div</span>
-  </div>
-  <div>
-    <p>Пожалуй, начну изучать вэб-разработку сегодня!</p>
-    <p>Начну с основ HTML</p>
-  </div>
-</main>`,
     },
 
     {
@@ -180,7 +168,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Добавьте заголовок второго уровня <code>h2</code> с текстом "Отдых"`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const headers = iframe.contentDocument.body.querySelectorAll("h2");
             return headers.length === 2 && headers[1].textContent === "Отдых";
           },
@@ -190,7 +178,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Ниже добавьте заголовок третьего уровня <code>h3</code> с текстом "Парки"`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondH2 = iframe.contentDocument.body.querySelectorAll("h2")[1];
             return (
               secondH2 &&
@@ -204,7 +192,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `Ниже добавьте еще один заголовок третьего уровня с текстом "Кинотеатры"`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const h3 = Array.from(iframe.contentDocument.body.querySelectorAll("h3")).find(
               header => header.textContent === "Парки"
             );
@@ -218,13 +206,6 @@ export const HtmlIntro: ICourseLesson = {
           failMsg: `Убедитесь, что после заголовка h3 "Парки" следует заголовок h3 с текстом "Кинотеатры"`,
         },
       ],
-      solution: `<h1>Москва</h1>
-<h2>Культура</h2>
-<h3>Музеи</h3>
-<h3>Театры</h3>
-<h2>Отдых</h2>
-<h3>Парки</h3>
-<h3>Кинотеатры</h3>`,
     },
 
     {
@@ -261,7 +242,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Группа заголовков <b>"Культура"</b>, <b>"Музеи"</b>, <b>"Театры"</b> должна быть обернута в <code>div</code>.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstDiv = iframe.contentDocument.body.querySelectorAll("div")[0];
             return (
               firstDiv &&
@@ -276,7 +257,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Группа заголовков <b>"Отдых"</b>, <b>"Парки"</b>, <b>"Кинотеатры"</b> должна быть обернута в <code>div</code>.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondDiv = iframe.contentDocument.body.querySelectorAll("div")[1];
             return (
               secondDiv &&
@@ -289,17 +270,6 @@ export const HtmlIntro: ICourseLesson = {
           failMsg: `Убедитесь, что внутри второго элемента div находятся заголовки - Отдых, Парки, Кинотеатры`,
         },
       ],
-      solution: `<h1>Москва</h1>
-<div>
-  <h2>Культура</h2>
-  <h3>Музеи</h3>
-  <h3>Театры</h3>
-</div>
-<div>
-  <h2>Отдых</h2>
-  <h3>Парки</h3>
-  <h3>Кинотеатры</h3>
-</div>`,
     },
 
     {
@@ -338,7 +308,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Под заголовком <b>"Музеи"</b> добавьте параграф с текстом <i>"В Москве огромное количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить хотя бы один раз в жизни."</i>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const museumH3 = iframe.contentDocument.body.querySelectorAll("h3")[0];
             return (
               museumH3 &&
@@ -354,7 +324,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Под заголовком <b>"Театры"</b> добавьте параграф с текстом <i>"Москва славится своими театрами не только на всю Россию, но и на весь мир. На сценах московских театров, которых насчитывается великое множество, проходят и классические и современные постановки. И в Москву часто приезжают театралы со всего мира."</i>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const theaterH3 = iframe.contentDocument.body.querySelectorAll("h3")[1];
             return (
               theaterH3 &&
@@ -370,26 +340,13 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `В параграфе про театры оберните фразу <i>не только на всю Россию, но и на весь мир.</i> в элемент <code>span</code>.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const span = iframe.contentDocument.body.querySelector("span");
             return span && span.textContent === "не только на всю Россию, но и на весь мир.";
           },
           failMsg: `Убедитесь, что на странице есть элемент span с текстом "не только на всю Россию, но и на весь мир."`,
         },
       ],
-      solution: `<h1>Москва</h1>
-<div>
-  <h2>Культура</h2>
-  <h3>Музеи</h3>
-  <p>В Москве огромное количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить хотя бы один раз в жизни.</p>
-  <h3>Театры</h3>
-  <p>Москва славится своими театрами <span>не только на всю Россию, но и на весь мир.</span> На сценах московских театров, которых насчитывается великое множество, проходят и классические и современные постановки. И в Москву часто приезжают театралы со всего мира.</p>
-</div>
-<div>
-  <h2>Отдых</h2>
-  <h3>Парки</h3>
-  <h3>Кинотеатры</h3>
-</div>`,
     },
 
     {
@@ -427,7 +384,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `В параграфе про театры Москвы подчеркните, что театров в Москве много, сделав акцент на фразе "великое множество".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const em = iframe.contentDocument.body.querySelectorAll("em")[1];
             return em && em.textContent === "великое множество";
           },
@@ -436,26 +393,13 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `В этом же параграфе укажите важность разнообразия постановок, выделив фразу "и классические и современные постановки.".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const strong = iframe.contentDocument.body.querySelectorAll("strong")[1];
             return strong && strong.textContent === "и классические и современные постановки.";
           },
           failMsg: `Убедитесь, что фраза "и классические и современные постановки." обернута в элемент strong.`,
         },
       ],
-      solution: `<h1>Москва</h1>
-<div>
-  <h2>Культура</h2>
-  <h3>Музеи</h3>
-  <p>В Москве <strong>огромное</strong> количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить <em>хотя бы один раз в жизни</em>.</p>
-  <h3>Театры</h3>
-  <p>Москва славится своими театрами <span>не только на всю Россию, но и на весь мир.</span> На сценах московских театров, которых насчитывается <em>великое множество</em>, проходят <strong>и классические и современные постановки.</strong> И в Москву часто приезжают театралы со всего мира.</p>
-</div>
-<div>
-  <h2>Отдых</h2>
-  <h3>Парки</h3>
-  <h3>Кинотеатры</h3>
-</div>`,
     },
 
     {
@@ -494,7 +438,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `В параграфе про театры Москвы второе предложение ("На сценах...") перенесите на следующую строку.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const br = iframe.contentDocument.body.querySelector("br");
             return (
               br &&
@@ -509,7 +453,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Отчеркните параграф про театры Москвы с помощью горизонтальной черты.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const hr = iframe.contentDocument.body.querySelector("hr");
             return (
               hr &&
@@ -521,19 +465,6 @@ export const HtmlIntro: ICourseLesson = {
           failMsg: `Убедитесь, что после фразы "театралы со всего мира." стоит элемент hr.`,
         },
       ],
-      solution: `<h1>Москва</h1>
-<div>
-  <h2>Культура</h2>
-  <h3>Музеи</h3>
-  <p>В Москве <strong>огромное</strong> количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить <em>хотя бы один раз в жизни</em>.</p>
-  <h3>Театры</h3>
-  <p>Москва славится своими театрами <span>не только на всю Россию, но и на весь мир.</span><br> На сценах московских театров, которых насчитывается <em>великое множество</em>, проходят <strong>и классические и современные постановки.</strong> И в Москву часто приезжают театралы со всего мира.</p><hr>
-</div>
-<div>
-  <h2>Отдых</h2>
-  <h3>Парки</h3>
-  <h3>Кинотеатры</h3>
-</div>`,
     },
 
     {
@@ -584,7 +515,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Ниже параграфа с текстом "Среди самых красивых парков Москвы:" добавьте неупорядоченный список.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return ul !== null;
           },
@@ -593,7 +524,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Добавьте элемент списка с текстом "Парк Горького".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return (
               ul && ul.children[0] && ul.children[0].tagName === "LI" && ul.children[0].textContent === "Парк Горького"
@@ -604,7 +535,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `Добавьте второй элемент списка с текстом "Нескучный сад".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return (
               ul && ul.children[1] && ul.children[1].tagName === "LI" && ul.children[1].textContent === "Нескучный сад"
@@ -615,7 +546,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 4,
           label: `Добавьте третий элемент списка с текстом "Парк Победы".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return (
               ul && ul.children[2] && ul.children[2].tagName === "LI" && ul.children[2].textContent === "Парк Победы"
@@ -624,25 +555,6 @@ export const HtmlIntro: ICourseLesson = {
           failMsg: `Убедитесь, что добавлен элемент списка с текстом "Парк Победы".`,
         },
       ],
-      solution: `<h1>Москва</h1>
-<div>
-  <h2>Культура</h2>
-  <h3>Музеи</h3>
-  <p>В Москве <strong>огромное</strong> количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить <em>хотя бы один раз в жизни</em>.</p>
-  <h3>Театры</h3>
-  <p>Москва славится своими театрами <span>не только на всю Россию, но и на весь мир.</span><br> На сценах московских театров, которых насчитывается <em>великое множество</em>, проходят <strong>и классические и современные постановки.</strong> И в Москву часто приезжают театралы со всего мира.</p><hr>
-</div>
-<div>
-  <h2>Отдых</h2>
-  <h3>Парки</h3>
-  <p>Среди самых красивых парков Москвы:</p>
-  <ul>
-    <li>Парк Горького</li>
-    <li>Нескучный сад</li>
-    <li>Парк Победы</li>
-  </ul>
-  <h3>Кинотеатры</h3>
-</div>`,
     },
 
     {
@@ -692,7 +604,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Ниже параграфа с текстом "К любимым кинотеатрам москвичей относятся:" добавьте упорядоченный список.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const ol = iframe.contentDocument.body.querySelector("ol");
             return !!ol;
           },
@@ -701,7 +613,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `В упорядоченный список добавьте <b>не менее трех</b> кинотеатров, которые относятся к вашим любимым.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const ol = iframe.contentDocument.body.querySelector("ol");
 
             return (
@@ -719,31 +631,6 @@ export const HtmlIntro: ICourseLesson = {
           failMsg: `Убедитесь, что список ol содержит не менее трех непустых элементов li`,
         },
       ],
-      solution: `<h1>Москва</h1>
-<div>
-  <h2>Культура</h2>
-  <h3>Музеи</h3>
-  <p>В Москве <strong>огромное</strong> количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить <em>хотя бы один раз в жизни</em>.</p>
-  <h3>Театры</h3>
-  <p>Москва славится своими театрами <span>не только на всю Россию, но и на весь мир.</span><br> На сценах московских театров, которых насчитывается <em>великое множество</em>, проходят <strong>и классические и современные постановки.</strong> И в Москву часто приезжают театралы со всего мира.</p><hr>
-</div>
-<div>
-  <h2>Отдых</h2>
-  <h3>Парки</h3>
-  <p>Среди самых красивых парков Москвы:</p>
-  <ul>
-    <li>Парк Горького</li>
-    <li>Нескучный сад</li>
-    <li>Парк Победы</li>
-  </ul>
-  <h3>Кинотеатры</h3>
-  <p>К любимым кинотеатрам москвичей относятся:</p>
-  <ol>
-    <li>Москва</li>
-    <li>Атриум</li>
-    <li>Родина</li>
-  </ol>
-</div>`,
     },
 
     {
@@ -799,7 +686,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Второму элементу <code>div</code> задайте id со значением "leisure".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const leisureElem = iframe.contentDocument.body.querySelector("#leisure");
             return (
               leisureElem &&
@@ -813,7 +700,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Заголовку <code>h2</code> с текстом "Отдых" задайте класс "big-header".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const bigHeader = iframe.contentDocument.body.querySelector(".big-header");
             return (
               bigHeader &&
@@ -827,7 +714,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `Неупорядоченному списку <code>ul</code> с помощью <code>style</code> задайте цвет текста "darkorchid". Обратите внимание, что цвет изменится у всех элементов списка.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return ul && ul.style.color === "darkorchid";
           },
@@ -836,38 +723,13 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 4,
           label: `Упорядоченному списку <code>ol</code> с помощью <code>style</code> задайте цвет фона "burlywood" (значение <code>style</code> установите "background-color: burlywood").`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const ol = iframe.contentDocument.body.querySelector("ol");
             return ol && ol.style.backgroundColor === "burlywood";
           },
           failMsg: `Убедитесь, что упорядоченному списку задан аттрибут style со значением "background-color: burlywood"`,
         },
       ],
-      solution: `<h1>Москва</h1>
-<div id="culture">
-  <h2>Культура</h2>
-  <h3 class="small-header">Музеи</h3>
-  <p>В Москве <strong>огромное</strong> количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить <em>хотя бы один раз в жизни</em>.</p>
-  <h3 class="small-header">Театры</h3>
-  <p>Москва славится своими театрами <span style="color: orange">не только на всю Россию, но и на весь мир.</span><br> На сценах московских театров, которых насчитывается <em>великое множество</em>, проходят <strong>и классические и современные постановки.</strong> И в Москву часто приезжают театралы со всего мира.</p><hr>
-</div>
-<div id="leisure">
-  <h2 class="big-header">Отдых</h2>
-  <h3>Парки</h3>
-  <p>Среди самых красивых парков Москвы:</p>
-  <ul style="color: darkorchid">
-    <li>Парк Горького</li>
-    <li>Нескучный сад</li>
-    <li>Парк Победы</li>
-  </ul>
-  <h3>Кинотеатры</h3>
-  <p>К любимым кинотеатрам москвичей относятся:</p>
-  <ol style="background-color: burlywood">
-    <li>Москва</li>
-    <li>Атриум</li>
-    <li>Родина</li>
-  </ol>
-</div>`,
     },
 
     {
@@ -930,7 +792,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `После параграфа с текстом "Вот как выглядит Парк Горького:" добавьте изображение.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondImg = iframe.contentDocument.body.querySelectorAll("img")[1];
             return (
               secondImg &&
@@ -944,7 +806,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Задайте изображению источник "http://uploads.gazeta-moy-rayon-donskoy.ru/2020/07/парк-горького-москва-панорама-вк-пг.jpg".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondImg = iframe.contentDocument.body.querySelectorAll("img")[1];
             return (
               secondImg &&
@@ -960,7 +822,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `Задайте изображению альтернативный текст "Парк Горького".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondImg = iframe.contentDocument.body.querySelectorAll("img")[1];
             return (
               secondImg &&
@@ -973,35 +835,6 @@ export const HtmlIntro: ICourseLesson = {
           failMsg: `Убедитесь, что изображению задан аттрибут alt со значением "Парк Горького"`,
         },
       ],
-      solution: `<h1>Москва</h1>
-<div id="culture">
-  <h2>Культура</h2> 
-  <h3 class="small-header">Музеи</h3>
-  <p>В Москве <strong>огромное</strong> количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить <em>хотя бы один раз в жизни</em>.</p>
-  <h3 class="small-header">Театры</h3>
-  <p>Москва славится своими театрами <span style="color: orange">не только на всю Россию, но и на весь мир.</span><br> На сценах московских театров, которых насчитывается <em>великое множество</em>, проходят <strong>и классические и современные постановки.</strong> И в Москву часто приезжают театралы со всего мира.</p>
-  <p>Самым узнаваемым театром столицы безусловно является Большой театр.</p>
-  <img src="https://adindex.ru/files2/news/2018_12/230066_4567.jpg" alt="Большой театр" /><hr>
-</div>
-<div id="leisure">
-  <h2 class="big-header">Отдых</h2>
-  <h3>Парки</h3>
-  <p>Среди самых красивых парков Москвы:</p>
-  <ul style="color: darkorchid">
-    <li>Парк Горького</li>
-    <li>Нескучный сад</li>
-    <li>Парк Победы</li>
-  </ul>
-  <p>Вот как выглядит Парк Горького:</p>
-  <img src="http://uploads.gazeta-moy-rayon-donskoy.ru/2020/07/парк-горького-москва-панорама-вк-пг.jpg" alt="Парк Горького" />
-  <h3>Кинотеатры</h3>
-  <p>К любимым кинотеатрам москвичей относятся:</p>
-  <ol style="background-color: burlywood">
-    <li>Москва</li>
-    <li>Атриум</li>
-    <li>Родина</li>
-  </ol>
-</div>`,
     },
   ],
 };

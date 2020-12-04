@@ -35,7 +35,7 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 1,
           label: "Создайте пустую форму.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const form = iframe.contentDocument.body.querySelector("form");
             return form !== null;
           },
@@ -44,7 +44,7 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 2,
           label: "Укажите адрес для отправки данных 'http://webgrove/server'.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const form = iframe.contentDocument.body.querySelector("form");
             return form && form.action === "http://webgrove/server";
           },
@@ -53,19 +53,13 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 3,
           label: "Укажите метод отправки данных 'POST'.",
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const form = iframe.contentDocument.body.querySelector("form");
             return form && form.method === "post";
           },
           failMsg: "Убедитесь, что вы правильно задали аттрибут method",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-
-</form>`,
     },
 
     {
@@ -115,7 +109,7 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 1,
           label: `Внутри формы создайте текстовое поле.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
             return textInput && textInput.parentElement && textInput.parentElement.tagName === "FORM";
           },
@@ -124,7 +118,7 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 2,
           label: `Укажите имя поля "username".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
             return textInput && textInput.name === "username";
           },
@@ -133,7 +127,7 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 3,
           label: `Укажите плэйсхолдер "Иван Сидоров".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
             return textInput && textInput.placeholder === "Иван Сидоров";
           },
@@ -142,19 +136,13 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 4,
           label: `В качестве исходного значения поле укажите свое имя (исходное значение не должно быть пустым).`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
             return textInput && textInput.value !== "";
           },
           failMsg: "Убедитесь, что вы задали непустой аттрибут value",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-  <input type="text" name="username" value="Дмитрий Степанов" placeholder="Иван Сидоров">
-</form>`,
     },
 
     {
@@ -207,7 +195,7 @@ label {
         {
           id: 1,
           label: `Дайте текстовому полю уникальный идентификатор <code>username</code>.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
             return textInput && textInput.id === "username";
           },
@@ -216,7 +204,7 @@ label {
         {
           id: 2,
           label: `<b>Перед</b> текстовым полем создайте <code>label</code> с текстом "Имя заказчика".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
             return (
               textInput &&
@@ -230,7 +218,7 @@ label {
         {
           id: 3,
           label: `Свяжите <code>label</code> c текстовым полем.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
             if (!textInput) {
               return false;
@@ -241,13 +229,6 @@ label {
           failMsg: "Убедитесь, что вы правильно задали аттрибут for",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-  <label for="username">Имя заказчика</label>
-  <input id="username" type="text" name="username" placeholder="Иван Сидоров">
-</form>`,
     },
 
     {
@@ -305,7 +286,7 @@ label {
         {
           id: 1,
           label: `Создайте числовое поле.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
             return numInput && numInput.parentElement && numInput.parentElement.tagName === "FORM";
           },
@@ -314,7 +295,7 @@ label {
         {
           id: 2,
           label: `Укажите аттрибуты поля: <ul><li>идентификатор со значением <code>num-guests</code></li><li>название поля <code>num-guests</code></li><li>исходное значение <code>4</code></li><li>шаг изменения значения <code>1</code></li></ul>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const numInput = iframe.contentDocument.body.querySelector("input[type=number]") as HTMLInputElement;
             return (
               numInput &&
@@ -329,7 +310,7 @@ label {
         {
           id: 3,
           label: `<b>Перед</b> числовым полем создайте <code>label</code> с текстом "Количество участников".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const numInput = iframe.contentDocument.body.querySelector("input[type=number]") as HTMLInputElement;
             return (
               numInput &&
@@ -343,7 +324,7 @@ label {
         {
           id: 4,
           label: `Свяжите <code>label</code> c числовым полем.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const numInput = iframe.contentDocument.body.querySelector("input[type=number]") as HTMLInputElement;
             if (!numInput) {
               return false;
@@ -354,18 +335,6 @@ label {
           failMsg: "Убедитесь, что вы правильно задали аттрибут for",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-  <div class="input-group">
-    <label for="username">Имя заказчика</label>
-    <input id="username" type="text" name="username" placeholder="Иван Сидоров">
-  </div>
-  <!--Создавайте элементы ниже этой линии-->
-  <label for="num-guests">Количество участников</label>
-  <input type="number" id="num-guests" name="num-guests" value="4" step="1">
-</form>`,
     },
 
     {
@@ -424,7 +393,7 @@ label {
         {
           id: 1,
           label: `Создайте поле для номера телефона: <ul><li>идентификатор со значением <code>tel</code></li><li>название поля <code>tel</code></li><li>максимальную длину <code>18</code> символов</li><li>плэйсхолдер на свое усмотрение (значение не должно быть пустым)</li></ul>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const telInput = iframe.contentDocument.body.querySelector("input[type=tel]") as HTMLInputElement;
             return (
               telInput &&
@@ -441,7 +410,7 @@ label {
         {
           id: 2,
           label: `<b>Перед</b>  полем для телефона создайте <code>label</code> с текстом "Телефон:", свяжите поле со своей подписью.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const telInput = iframe.contentDocument.body.querySelector("input[type=tel]") as HTMLInputElement;
             if (!telInput) {
               return false;
@@ -455,7 +424,7 @@ label {
         {
           id: 3,
           label: `Создайте поле для email: <ul><li>идентификатор со значением <code>email</code></li><li>название поля <code>email</code></li><li>плэйсхолдер на свое усмотрение (значение не должно быть пустым)</li></ul>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const emailInput = iframe.contentDocument.body.querySelector("input[type=email]") as HTMLInputElement;
             return (
               emailInput &&
@@ -471,7 +440,7 @@ label {
         {
           id: 4,
           label: `<b>Перед</b>  полем для email создайте <code>label</code> с текстом "E-mail:", свяжите поле со своей подписью.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const emailInput = iframe.contentDocument.body.querySelector("input[type=email]") as HTMLInputElement;
             if (!emailInput) {
               return false;
@@ -483,24 +452,6 @@ label {
             "Убедитесь, что вы создали label перед полем для email с правильным текстовым содержанием и аттрибутом for",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-  <div class="input-group">
-    <label for="username">Имя заказчика</label>
-    <input id="username" type="text" name="username" placeholder="Иван Сидоров">
-  </div>
-  <div class="input-group">
-    <label for="num-guests">Количество участников</label>
-    <input type="number" id="num-guests" name="num-guests" value="4" step="1">
-  </div>
-  <!--Добавляйте поля ниже этой линии-->
-  <label for="tel">Телефон:</label>
-  <input type="tel" id="tel" name="tel" maxlength="18" placeholder="8(799)569-12-12">
-  <label for="email">E-mail:</label>
-  <input type="email" id="email" name="email" placeholder="example@gmail.com">
-</form>`,
     },
 
     {
@@ -593,7 +544,7 @@ label {
         {
           id: 1,
           label: `Создайте выпадающий список, укажите <ul><li>идентификатор на свое усмотрение (значение не должно быть пустым)</li><li>название списка <code>scary</code></li></ul>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const select = iframe.contentDocument.body.querySelector("select");
             return (
               select &&
@@ -608,7 +559,7 @@ label {
         {
           id: 2,
           label: `Создайте следующие варианты выбора <ul><li>Первый вариант с текстом "Не страшно" и значением <code>scary-none</code></li><li>Второй вариант с текстом "Немного страшно" и значением <code>scary-low</code></li><li>Третий вариант с текстом "Страшновато" и значением <code>scary-moderate</code></li><li>Четвертый вариант на свое усмотрение</li></ul>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const select = iframe.contentDocument.body.querySelector("select");
             if (!select) {
               return false;
@@ -631,7 +582,7 @@ label {
         {
           id: 3,
           label: `<b>Перед</b> выпадающим списком создайте <code>label</code> с текстом "Хотите страшного?", свяжите выпадающий список со своей подписью.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const select = iframe.contentDocument.body.querySelector("select");
             if (!select) {
               return false;
@@ -643,41 +594,6 @@ label {
             "Убедитесь, что вы создали label перед выпадающим списком с правильным текстовым содержанием и аттрибутом for",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-  <fieldset>
-    <legend>Персональная информация</legend>
-    <div class="input-group">
-      <label for="username">Имя заказчика</label>
-      <input id="username" type="text" name="username" placeholder="Иван Сидоров">
-    </div>
-    <div class="input-group">
-      <label for="num-guests">Количество участников</label>
-      <input type="number" id="num-guests" name="num-guests" value="4" step="1">
-    </div>
-    <div class="input-group">
-      <label for="tel">Телефон:</label>
-      <input type="tel" id="tel" name="tel" maxlength="18" placeholder="8(799)569-12-12">
-    </div>
-    <div class="input-group">
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" placeholder="example@gmail.com">
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>Подбор квеста</legend>
-    <!--Добавляйте элементы ниже этой линии-->
-    <label for="scary">Хотите страшного?</label>
-    <select id="scary" name="scary">
-      <option value="scary-none">Не страшно</option>
-      <option value="scary-low">Немного страшно</option>
-      <option value="scary-moderate">Страшновато</option>
-      <option value="scary-high">Очень страшно</option>
-    </select>
-  </fieldset>
-</form>`,
     },
 
     {
@@ -797,7 +713,7 @@ span {
         {
           id: 1,
           label: `Создайте первый чекбокс, укажите <ul><li>идентификатор <code>reality</code></li><li>исходное значение <code>reality</code></li><li>имя чекбокса (и всей группы) <code>type</code></li></ul>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[0] as HTMLInputElement;
@@ -815,7 +731,7 @@ span {
         {
           id: 2,
           label: `<b>После</b> первого чекбокса создайте <code>label</code> с текстом "Квест в реальности", свяжите чекбокс с подписью.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[0] as HTMLInputElement;
@@ -830,7 +746,7 @@ span {
         {
           id: 3,
           label: `Создайте второй чекбокс, укажите <ul><li>идентификатор <code>performance</code></li><li>исходное значение <code>performance</code></li></ul> Второй чекбокс должен быть выбран по умолчанию.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[1] as HTMLInputElement;
@@ -849,7 +765,7 @@ span {
         {
           id: 4,
           label: `<b>После</b> второго чекбокса создайте <code>label</code> с текстом "Перформанс", свяжите чекбокс с подписью.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[1] as HTMLInputElement;
@@ -864,7 +780,7 @@ span {
         {
           id: 5,
           label: `Создайте третий чекбокс, укажите аттрибуты на свое усмотрение, <b>после</b> него создайте подпись и свяжите ее с чекбоксом.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const thirdCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[2] as HTMLInputElement;
@@ -888,51 +804,6 @@ span {
             "Убедитесь, что вы создали чекбокс с не пустыми значениями аттрибутов и элемент label, связанный с чекбоксом",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-  <fieldset>
-    <legend>Персональная информация</legend>
-    <div class="input-group">
-      <label for="username">Имя заказчика</label>
-      <input id="username" type="text" name="username" placeholder="Иван Сидоров">
-    </div>
-    <div class="input-group">
-      <label for="num-guests">Количество участников</label>
-      <input type="number" id="num-guests" name="num-guests" value="4" step="1">
-    </div>
-    <div class="input-group">
-      <label for="tel">Телефон:</label>
-      <input type="tel" id="tel" name="tel" maxlength="18" placeholder="8(799)569-12-12">
-    </div>
-    <div class="input-group">
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" placeholder="example@gmail.com">
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>Подбор квеста</legend>
-    <div class="input-group">
-      <label for="scary">Хотите страшного?</label>
-      <select id="scary" name="scary">
-        <option value="scary-none">Не страшно</option>
-        <option value="scary-low">Немного страшно</option>
-        <option value="scary-moderate">Страшновато</option>
-        <option value="scary-high">Очень страшно</option>
-      </select>
-    </div>
-    <span>Тип игры</span>
-    <!--Добавляйте элементы ниже этой линии-->
-  
-    <input id="reality" type="checkbox" name="type" value="reality">
-    <label for="reality">Квест в реальности</label>
-    <input id="performance" type="checkbox" name="type" value="performance" checked>
-    <label for="performance">Перформанс</label>
-    <input id="vr" type="checkbox" name="type" value="vr">
-    <label for="vr">Квест в VR</label> 
-  </fieldset>
-</form>`,
     },
 
     {
@@ -1067,7 +938,7 @@ span {
         {
           id: 1,
           label: `Создайте первую радиокнопку, укажите <ul><li>идентификатор <code>popularity</code></li><li>исходное значение <code>popularity</code></li><li>имя радиокнопки (и всей группы) <code>preference</code></li></ul>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] as HTMLInputElement;
             return (
               firstRadio &&
@@ -1083,7 +954,7 @@ span {
         {
           id: 2,
           label: `<b>После</b> первой радиокнопки создайте <code>label</code> с текстом "Популярность", свяжите радиокнопку с подписью.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] as HTMLInputElement;
             if (!firstRadio) {
               return false;
@@ -1097,7 +968,7 @@ span {
         {
           id: 3,
           label: `Создайте вторую радиокнопку, укажите <ul><li>идентификатор <code>reviews</code></li><li>исходное значение <code>reviews</code></li></ul> Вторая радиокнопка должна быть выбрана по умолчанию.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondRadio = iframe.contentDocument.body.querySelectorAll(
               "input[type=radio]"
             )[1] as HTMLInputElement;
@@ -1116,7 +987,7 @@ span {
         {
           id: 4,
           label: `<b>После</b> второй радиокнопки создайте <code>label</code> с текстом "Отзывы", свяжите радиокнопку с подписью.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const secondRadio = iframe.contentDocument.body.querySelectorAll(
               "input[type=radio]"
             )[1] as HTMLInputElement;
@@ -1132,7 +1003,7 @@ span {
         {
           id: 5,
           label: `Создайте третью радиокнопку, укажите аттрибуты на свое усмотрение, <b>после</b> нее создайте подпись и свяжите ее с радиокнопкой.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const thirdRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[2] as HTMLInputElement;
             if (!thirdRadio) {
               return false;
@@ -1154,66 +1025,6 @@ span {
             "Убедитесь, что вы создали радиокнопку с не пустыми значениями аттрибутов и элемент label, связанный с радиокнопкой",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-  <fieldset>
-    <legend>Персональная информация</legend>
-    <div class="input-group">
-      <label for="username">Имя заказчика</label>
-      <input id="username" type="text" name="username" placeholder="Иван Сидоров">
-    </div>
-    <div class="input-group">
-      <label for="num-guests">Количество участников</label>
-      <input type="number" id="num-guests" name="num-guests" value="4" step="1">
-    </div>
-    <div class="input-group">
-      <label for="tel">Телефон:</label>
-      <input type="tel" id="tel" name="tel" maxlength="18" placeholder="8(799)569-12-12">
-    </div>
-    <div class="input-group">
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" placeholder="example@gmail.com">
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>Подбор квеста</legend>
-    <div class="input-group">
-      <label for="scary">Хотите страшного?</label>
-      <select id="scary" name="scary">
-        <option value="scary-none">Не страшно</option>
-        <option value="scary-low">Немного страшно</option>
-        <option value="scary-moderate">Страшновато</option>
-        <option value="scary-high">Очень страшно</option>
-      </select>
-    </div>
-    <span>Тип игры</span>
-    <div class="input-group checkbox-group">
-      <div class="input-group">
-        <input id="reality" type="checkbox" name="type" value="reality">
-        <label for="reality">Квест в реальности</label>
-      </div>
-      <div class="input-group">
-        <input id="performance" type="checkbox" name="type" value="performance" checked>
-        <label for="performance">Перформанс</label>
-      </div>
-      <div class="input-group">
-        <input id="vr" type="checkbox" name="type" value="vr">
-        <label for="vr">Квест в VR</label> 
-      </div>
-    </div>
-    <span>Параметр подбора</span>
-    <!--Добавляйте элементы ниже этой линии-->
-
-    <input type="radio" name="preference" id="popularity" value="popularity">
-    <label for="popularity">Популярность</label>
-    <input type="radio" name="preference" id="reviews" value="reviews" checked>
-    <label for="reviews">Отзывы</label>
-    <input type="radio" name="preference" id="distance" value="distance">
-    <label for="distance">Расстояние</label>
-  </fieldset>
-</form>`,
     },
 
     {
@@ -1348,7 +1159,7 @@ textarea {
         {
           id: 1,
           label: `Создайте поле для многострочного текста, укажите <ul><li>идентификатор <code>message</code></li><li>имя <code>message</code></li><li><code>10</code> колонок</li><li><code>10</code> рядов</li></ul>`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textarea = iframe.contentDocument.body.querySelector("textarea");
             return (
               textarea &&
@@ -1365,7 +1176,7 @@ textarea {
         {
           id: 2,
           label: `<b>Перед</b> полем для многострочного текста создайте <code>label</code> с текстом "Дополнительная информация:", свяжите поле с подписью.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textarea = iframe.contentDocument.body.querySelector("textarea");
             if (!textarea) {
               return false;
@@ -1378,82 +1189,13 @@ textarea {
         {
           id: 3,
           label: `Полю для многострочного текста задайте исходный текст на свое усмотрение`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const textarea = iframe.contentDocument.body.querySelector("textarea");
             return textarea && textarea.textLength > 0;
           },
           failMsg: "Убедитесь, что поле для текста не пустое",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-  <fieldset>
-    <legend>Персональная информация</legend>
-    <div class="input-group">
-      <label for="username">Имя заказчика</label>
-      <input id="username" type="text" name="username" placeholder="Иван Сидоров">
-    </div>
-    <div class="input-group">
-      <label for="num-guests">Количество участников</label>
-      <input type="number" id="num-guests" name="num-guests" value="4" step="1">
-    </div>
-    <div class="input-group">
-      <label for="tel">Телефон:</label>
-      <input type="tel" id="tel" name="tel" maxlength="18" placeholder="8(799)569-12-12">
-    </div>
-    <div class="input-group">
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" placeholder="example@gmail.com">
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>Подбор квеста</legend>
-    <div class="input-group">
-      <label for="scary">Хотите страшного?</label>
-      <select id="scary" name="scary">
-        <option value="scary-none">Не страшно</option>
-        <option value="scary-low">Немного страшно</option>
-        <option value="scary-moderate">Страшновато</option>
-        <option value="scary-high">Очень страшно</option>
-      </select>
-    </div>
-    <span>Тип игры</span>
-    <div class="input-group checkbox-group">
-      <div class="input-group">
-        <input id="reality" type="checkbox" name="type" value="reality">
-        <label for="reality">Квест в реальности</label>
-      </div>
-      <div class="input-group">
-        <input id="performance" type="checkbox" name="type" value="performance" checked>
-        <label for="performance">Перформанс</label>
-      </div>
-      <div class="input-group">
-        <input id="vr" type="checkbox" name="type" value="vr">
-        <label for="vr">Квест в VR</label> 
-      </div>
-    </div>
-    <span>Параметр подбора</span>
-    <div class="input-group radio-group">
-      <div class="input-group">
-        <input type="radio" name="preference" id="popularity" value="popularity">
-        <label for="popularity">Популярность</label>
-      </div>
-      <div class="input-group">
-        <input type="radio" name="preference" id="reviews" value="reviews" checked>
-        <label for="reviews">Отзывы</label>
-      </div>
-      <div class="input-group">
-        <input type="radio" name="preference" id="distance" value="distance">
-        <label for="distance">Расстояние</label>
-      </div>
-    </div>
-    <!--Добавляйте элементы ниже этой линии-->
-    <label for="message">Дополнительная информация:</label>
-    <textarea id="message" name="message" cols="10" rows="10">Пожеланий нет</textarea>
-  </fieldset>
-</form>`,
     },
 
     {
@@ -1602,7 +1344,7 @@ textarea {
         {
           id: 1,
           label: `Создайте кнопку отправки данных формы.`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const submitButton = iframe.contentDocument.body.querySelector("button[type=submit]");
             return submitButton && submitButton.parentElement && submitButton.parentElement.tagName === "FIELDSET";
           },
@@ -1611,84 +1353,13 @@ textarea {
         {
           id: 2,
           label: `Задайте кнопке текст "Показать!".`,
-          test: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe: HTMLIFrameElement) => {
             const submitButton = iframe.contentDocument.body.querySelector("button[type=submit]");
             return submitButton && submitButton.textContent === "Показать!";
           },
           failMsg: "Убедитесь, что кнопка содержит правильный текст",
         },
       ],
-      solution: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
-<p>Заполните форму ниже:</p>
-
-<form action="http://webgrove/server" method="POST">
-  <fieldset>
-    <legend>Персональная информация</legend>
-    <div class="input-group">
-      <label for="username">Имя заказчика</label>
-      <input id="username" type="text" name="username" placeholder="Иван Сидоров">
-    </div>
-    <div class="input-group">
-      <label for="num-guests">Количество участников</label>
-      <input type="number" id="num-guests" name="num-guests" value="4" step="1">
-    </div>
-    <div class="input-group">
-      <label for="tel">Телефон:</label>
-      <input type="tel" id="tel" name="tel" maxlength="18" placeholder="8(799)569-12-12">
-    </div>
-    <div class="input-group">
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" placeholder="example@gmail.com">
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>Подбор квеста</legend>
-    <div class="input-group">
-      <label for="scary">Хотите страшного?</label>
-      <select id="scary" name="scary">
-        <option value="scary-none">Не страшно</option>
-        <option value="scary-low">Немного страшно</option>
-        <option value="scary-moderate">Страшновато</option>
-        <option value="scary-high">Очень страшно</option>
-      </select>
-    </div>
-    <span>Тип игры</span>
-    <div class="input-group checkbox-group">
-      <div class="input-group">
-        <input id="reality" type="checkbox" name="type" value="reality">
-        <label for="reality">Квест в реальности</label>
-      </div>
-      <div class="input-group">
-        <input id="performance" type="checkbox" name="type" value="performance" checked>
-        <label for="performance">Перформанс</label>
-      </div>
-      <div class="input-group">
-        <input id="vr" type="checkbox" name="type" value="vr">
-        <label for="vr">Квест в VR</label> 
-      </div>
-    </div>
-    <span>Параметр подбора</span>
-    <div class="input-group radio-group">
-      <div class="input-group">
-        <input type="radio" name="preference" id="popularity" value="popularity">
-        <label for="popularity">Популярность</label>
-      </div>
-      <div class="input-group">
-        <input type="radio" name="preference" id="reviews" value="reviews" checked>
-        <label for="reviews">Отзывы</label>
-      </div>
-      <div class="input-group">
-        <input type="radio" name="preference" id="distance" value="distance">
-        <label for="distance">Расстояние</label>
-      </div>
-    </div>
-    <div class="input-group">
-      <label for="message">Дополнительная информация:</label>
-      <textarea id="message" name="message" cols="10" rows="10">Пожеланий нет</textarea>
-    </div>
-    <button type="submit">Показать!</button>
-  </fieldset>
-</form>`,
     },
   ],
 };
