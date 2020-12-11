@@ -20,6 +20,7 @@ export const CssSelectors: ICourseLesson = {
 <p>Такие стили называются <em>встроенными</em> или <em>инлайновыми</em>. Вы можете задать элементу несколько стилей, в таком случае просто разделите их точкой с запятой. Например, сделаем текст параграфа не только оранжевым, но и выделим его жирным начертанием. </p>
 
 <pre><code><span class="tag">&lt;p <span class="attr-name">style=</span><span class="attr-value">"color: orange; font-weight: bold"</span>></span>Текст параграфа.<span class="tag">&lt;/p></span></code></pre>
+
 <p style="color:orange; font-weight: bold">Текст параграфа</p>
 
       <p>Потренируемся задавать стили через аттрибут.</p>`,
@@ -115,7 +116,7 @@ export const CssSelectors: ICourseLesson = {
     {
       id: 2,
       header: "CSS в HTML - элемент link",
-      url: "css-link",
+      url: "css-style-tag",
       theory: `<p>Ограничения предыдущего подхода очевидны - если мы захотим стилизовать таким образом все параграфы, нам придется прописывать стили в каждом из них вручную, а при добавлении новых параграфов не забывать прописывать стили еще и им. Разумеется, есть способ задать стили нескольким элементам сразу.</p>
 <p>Для этого есть специальный HTML элемент <code>style</code>, который должен быть расположен в шапке сайта <code>head</code>. Те же стили, записанные в элемент <code>style</code> будут выглядить так:</p>
 <p>На самом деле мы уже писали CSS правила в курсе по HTML. Для этого мы использовали аттрибут <code>style</code>. Вспомним, как это было:</p>
@@ -212,7 +213,7 @@ export const CssSelectors: ICourseLesson = {
           id: 2,
           label:
             "Перенесите стили первого параграфа в элемент style. Аттрибут style первого параграфа можно удалить, он больше не нужен",
-          testRegExp: [/p\s+{\s*font-family\s*:\s*Tahoma\s*;\s*font-style: italic;\s*}/],
+          testRegExp: [/p\s+{[\s\S]*font-family\s*:\s*Tahoma\s*;[\s\S]*}/, /p\s+{[\s\S]*font-style: italic;[\s\S]*}/],
           failMsg: "Убедитесь, что в style всем параграфам заданы 2 css-свойства",
         },
       ],
@@ -329,7 +330,7 @@ export const CssSelectors: ICourseLesson = {
         {
           id: 2,
           label: "Перенесите код из элемента <code>style</code> в CSS редактор целиком.",
-          testRegExp: [/p\s+{\s*font-family\s*:\s*Tahoma\s*;\s*font-style: italic;\s*}/],
+          testRegExp: [/p\s+{[\s\S]*font-family\s*:\s*Tahoma\s*;[\s\S]*}/, /p\s+{[\s\S]*font-style: italic;[\s\S]*}/],
           failMsg: "Убедитесь, что вы перенесли код из элемента style в css редактор",
         },
         {
@@ -349,10 +350,11 @@ export const CssSelectors: ICourseLesson = {
       header: "Селектор по тэгу - tag { }",
       url: "css-tag-selector",
       theory: `<p>Пришло время подробнее разобрать CSS синтаксис. Каждое CSS правило состоит из двух элементов - это <em>селектор</em>, который выбирает элементы определенного типа и <em>визуальные правила</em>, которые применяются к элементам, выбранным селекторами.</p>
-<code><pre><span class="selector">p</span> {
+
+<pre><code><span class="selector">p</span> {
   <span class="rule">color:</span> orange;
   <span class="rule">font-weight:</span> bold;
-}</pre></code>
+}</code></pre>
 
 <p>В данном правиле селектором является <code>p</code>. Этот селектор выберет все элементы <code>p</code> на странице. После селектора идут фигурные скобки. В фигурных скопках находятся 2 визуальных правила. Одно устанавливает цвет текста (color) в значение "orange", второе устанавливает жирное начертание шрифта. Визуальные правила отделяются друг от друга точкой с запятой.</p>
 <p>Поскольку селектор <code>p</code> выбирает все соответствующие тэги, он так и называется - <em>селектор по тэгу</em>. Остаток этого урока будет посвящен различным видам селекторов.</p>
@@ -458,9 +460,9 @@ p {
 
 <p>можно обратиться так:</p>
 
-<code><pre><span class="selector">#unique-paragraph</span> {
+<pre><code><span class="selector">#unique-paragraph</span> {
   <span class="rule">text-decoration:</span> underline;
-}</pre></code>
+}</code></pre>
 
 <p style="text-decoration: underline">какой-то текст</p>
 <p>Мы обратились к параграфу с <code>id="unique-paragraph"</code> с помощью селектора, начинающегося с хэш-символа <code>#</code>, за которым следует значение id <code>unique-paragraph</code> и задали ему нижнее подчеркивание.</p>
@@ -564,7 +566,7 @@ h1 {
         {
           id: 3,
           label: "Задайте цвет текста 'Indigo' и выравнивание по центру (text-align: center;).",
-          testRegExp: [/#main-title\s+{\s*color: Indigo;\s*text-align: center;\s*}/],
+          testRegExp: [/#main-title\s+{[\s\S]*color: Indigo;[\s\S]*}/i, /#main-title\s+{[\s\S]*text-align: center;[\s\S]*}/],
           failMsg: "Убедитесь, что вы задали 2 визуальных правила элементу с id 'main-title'",
         },
       ],
@@ -580,9 +582,9 @@ h1 {
 
 <p>можно обратиться так:</p>
 
-<code><pre><span class="selector">.myclass</span> {
+<pre><code><span class="selector">.myclass</span> {
   <span class="rule">text-decoration:</span> underline;
-}</pre></code>
+}</code></pre>
 
 <p style="text-decoration: underline">какой-то текст</p>
 <p>Мы обратились к параграфу с <code>class="myclass"</code> с помощью селектора, начинающегося с точки <code>.</code>, за которой следует значение класса <code>myclass</code> и задали ему нижнее подчеркивание.</p>
@@ -593,14 +595,13 @@ h1 {
 
 <p>и таким CSS правилом:</p>
 
-<code><pre><span class="selector">.uppercased</span> {
+<pre><code><span class="selector">.uppercased</span> {
   <span class="rule">text-transform:</span> uppercase;
-}</pre></code>
+}</code></pre>
 
 <p>Это правило делает все символы текста строчными:</p>
 <h3 style="text-transform: uppercase">Первый заголовок</h3>
 <h3 style="text-transform: uppercase">Второй заголовок</h3>
-
 <p>В какой-то момент мы решили, что неплохо было бы разместить первый заголовок по центру страницы, а второй - справа. Вот как можно решить эту задачу с помощью комбинации классов и CSS правил:</p>
 <p>HTML</p>
 
@@ -609,7 +610,7 @@ h1 {
 
 <p>CSS</p>
 
-<code><pre><span class="selector">.uppercased</span> {
+<pre><code><span class="selector">.uppercased</span> {
   <span class="rule">text-transform:</span> uppercase;
 }
 
@@ -619,7 +620,7 @@ h1 {
 
 <span class="selector">.right</span> {
   <span class="rule">text-align:</span> right;
-}</pre></code>
+}</code></pre>
 
 <h3 style="text-transform: uppercase; text-align: center">Первый заголовок</h3>
 <h3 style="text-transform: uppercase; text-align: right">Второй заголовок</h3>
@@ -763,7 +764,7 @@ h1 {
 
 <span class="selector">p</span> {
   <span class="rule">color:</span> red;
-}</pre></code>
+}</code></pre>
 
 <p>Какого цвета будет текст?</p>
 <p style="color:green;">какого же цвета будет текст?</p>
@@ -775,7 +776,7 @@ h1 {
 
 <span class="selector">p</span> {
   <span class="rule">color:</span> red;
-}</pre></code>
+}</code></pre>
 
 <p>Проверяем снова:</p>
 <p style="color:blue;">какого же цвета будет текст?</p>
@@ -783,7 +784,7 @@ h1 {
 
 <pre><code><span class="selector">p</span> {
   <span class="rule">color:</span> red;
-}</pre></code>
+}</code></pre>
 
 <p style="color:red;">какого же цвета будет текст?</p>
 <p>Специфичность селекторов - <code>id > class > tag</code>. Именно поэтому заголовок <code>h1</code> на странице окрашен в цвет "Indigo", определенный селектором по id.</p>
@@ -889,7 +890,7 @@ h1 {
           id: 1,
           label:
             "Перенесите правило для выравнивания текста по центру из селектора для id <code>#main-title</code> в классовый селектор <code>.title</code>.",
-          testRegExp: [/.title\s+{\s*color: SeaGreen;\s*text-align: center;\s*}/],
+          testRegExp: [/.title\s+{[\s\S]*color: SeaGreen;[\s\S]*}/, /.title\s+{[\s\S]*text-align: center;[\s\S]*}/],
           failMsg: "Убедитесь, что правило text-align перенесено в селектор .title",
         },
         {
@@ -942,12 +943,11 @@ h1 {
 
 <pre><code><span class="selector">p.colored</span> {
   <span class="rule">color:</span> violet;
-}</pre></code>
+}</code></pre>
 
 <p class="colored" style="color:violet">Параграф с классом</p>
 <h5 class="colored">Заголовок с классом</h5>
 <p>Параграф без класса</p>
-
 <p>Скомбинировав (поставив в цепочку) 2 простых селектора, мы даем такую команду: <b>выбрать только элементы <code>p</code>, у которых есть класс <code>.colored</code></b>.</p>
 `,
       goal: `Стилизуйте элементы с помощью цепочки селекторов.`,
@@ -1066,34 +1066,32 @@ h4.destination {
 
 <pre><code><span class="selector">div p</span> {
   <span class="rule">text-decoration:</span> line-through;
-}</pre></code>
+}</code></pre>
 
 <p>Параграф, живущий сам по себе</p>
 <div>
   <p style="text-decoration: line-through">Параграф, вложенный в div</p>
 </div>
-
 <p>Разделив селекторы пробелом, мы создали следующее правило: <b>Выбрать только элементы <code>p</code>, вложенные в элементы <code>div</code></b>.</p>
 <p>Любые элементы могут быть вложены друг в друга. Например:</p>
 
 <pre><code><span class="selector">.list li</span> {
   // какое-то правило
-}</pre></code>
+}</code></pre>
 
 <p>Выбрать все элементы <code>li</code>, вложенные в элемент с классом <code>.list</code>.</p>
 
 <pre><code><span class="selector">.list .sublist</span> {
   // какое-то правило
-}</pre></code>
+}</code></pre>
 
 <p>Выбрать все элементы с классом <code>.sublist</code>, вложенные в элемент с классом <code>.list</code>.</p>
 
 <pre><code><span class="selector">.list .sublist a img</span> {
   // какое-то правило
-}</pre></code>
+}</code></pre>
 
 <p>Выбрать все изображения <code>img</code>, вложенные в ссылки <code>a</code>, вложенные в элемент с классом <code>.sublist</code>, вложенные в элемент с классом <code>.list</code>...</p>
-
 <p>Вложенность селекторов - мощный инструмент, особенно когда иерархия HTML кода начинает усложняться.</p>
 `,
       goal: `Стилизуйте элементы с помощью вложенных селекторов.`,
@@ -1226,7 +1224,7 @@ h4.destination {
 
 <span class="selector">.container p</span> {
   <span class="rule">color:</span> blue;
-}</pre></code>
+}</code></pre>
 
 <p>Все селекторы обращаются к одному элементу, какой в итоге стиль будет применяться?</p>
 <p style="color: blue">Параграф, вложенный в div</p>
@@ -1238,7 +1236,7 @@ h4.destination {
 
 <span class="selector">div p</span> {
   <span class="rule">color:</span> green;
-}</pre></code>
+}</code></pre>
 
 <p style="color: green">Параграф, вложенный в div</p>
 
@@ -1374,13 +1372,13 @@ div a {
 
 <span class="selector">#main-list</span> {
   <span class="rule">color:</span> red;
-}</pre></code>
+}</code></pre>
 
 <p>можно переписать так:</p>
 
 <pre><code><span class="selector">p, #main-list</span> {
   <span class="rule">color:</span> red;
-}</pre></code>
+}</code></pre>
 
 <p>Мы просто перечислили селекторы с одинаковыми визуальными правилами через запятую. Таким образом удается избежать дублирования кода.</p>
 `,

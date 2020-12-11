@@ -1,6 +1,7 @@
 import { ICourse } from "../../../types";
 import { CssSelectors } from "./CSSSelector";
 import { CssText } from "./CSSText";
+import { CssUnits } from "./CSSUnits";
 
 export const Css: ICourse = {
   id: 1,
@@ -16,5 +17,6 @@ export const Css: ICourse = {
   lessons: {
     "css-selectors": CssSelectors,
     "css-text": CssText,
+    "css-units": CssUnits,
   },
 };

@@ -1,7 +1,7 @@
 import { ICourseLesson } from "../../../types";
 
 export const CssText: ICourseLesson = {
-  id: 1,
+  id: 2,
   title: "Стилизация текста",
   url: "css-text",
   excercises: [
@@ -17,9 +17,9 @@ export const CssText: ICourseLesson = {
 <p>Следует помнить, что текст в пределах HTML элемента - это единая сущность и нельзя стилизовать отдельные фразы или слова в пределах текстового элемента. Единственный способ сделать это - обернуть нужную фразу или слово в другой текстовый элемент, например <code>span</code>.</p>
 <p>Начнем с рассмотрения шрифтов. Свойство <code>font-family</code> определяет семейство из нескольких шрифтов, с помощью которых текст может быть выведен на экран. Например, такое стилевое правило:</p>
 
-<code><pre><span class="selector">p</span> {
+<pre><code><span class="selector">p</span> {
   <span class="rule">font-family:</span> cursive;
-}</pre></code>
+}</code></pre>
 
 <p style="font-family: cursive">во всех параграфах на странице отобразит текст шрифтом семейства курсивных шрифтов.</p>
 <p>В современных браузерах доступны следующие основные семейста шрифтов:</p>
@@ -28,8 +28,8 @@ export const CssText: ICourseLesson = {
  <li><code>sans-serif</code> - <span style="font-family: sans-serif">глифы имеют гладкие окончания. Например, <span style="font-family: 'Lucida Sans'">"Lucida Sans"</span>, <span style="font-family: 'Trebuchet MS'">"Trebuchet MS"</span> и, как шрифт по умолчанию в этом семействе, <span style="font-family: 'Arial'">"Arial"</span></span></li>
  <li><code>cursive</code> - <span style="font-family: cursive">глифы частично или полностью связаны, больше напоминая рукописное перо или кисть, чем печатные буквы. Например, <span style="font-family: 'Lucida Calligraphy'">"Lucida Calligraphy"</span>, <span style="font-family: 'Lucida Handwriting'">"Lucida Handwriting"</span></span></li>
  <li><code>monospace</code> - <span style="font-family: monospace">глифы имеют одинаковую фиксированную ширину. Например, <span style="font-family: 'Consolas'">"Consolas"</span>, <span style="font-family: 'Lucida Console'">"Lucida Console"</span></span></li>
- </ul>
- <p class="external-resource">Прочитать больше о свойстве <a href="https://developer.mozilla.org/ru/docs/Web/CSS/font-family" target="_blank">font-family</a>.</p>
+</ul>
+<p class="external-resource">Прочитать больше о свойстве <a href="https://developer.mozilla.org/ru/docs/Web/CSS/font-family" target="_blank">font-family</a>.</p>
  `,
       goal: `Задайте тексту семейство шрифтов`,
       initValues: {
@@ -79,13 +79,12 @@ export const CssText: ICourseLesson = {
       header: "Перечисление шрифтов",
       url: "css-font-stack",
       theory: `<p>Одного только указания семейства шрифтов, разумеется, недостаточно, для полного контроля над ними. Свойство <code>font-family</code> поддерживает указание конкретного шрифта, например <code>font-family: Arial</code>.</p>
-
 <p>Таким распространенные шрифты как Arial, Times New Roman, Verdana доступны в любой системе по умолчанию и не имеют проблем с отображением в браузере, а поэтому называются <b>вэб-безопасными шрифтами</b>. Этих шрифтов несколько десятков, и вы можете пользоваться ими абсолютно свободно. Но этого тоже недостаточно. Что, если вы захотите воспользоваться одним из красивейших вэб-шрифтов, который вы нашли в Интернете и загрузили себе на компьютер?</p>
 <p>В этом случае нельзя гарантировать правильное отображение шрифта в любом браузере на любой системе. Поэтому нам необходимо предусмотреть откат шрифта до вэб-безопасного. Делается это следующим образом:</p>
 
-<code><pre><span class="selector">p</span> {
+<pre><code><span class="selector">p</span> {
   <span class="rule">font-family:</span> "Crimson Text", Arial, sans-serif;
-}</pre></code>
+}</code></pre>
 
 <p>Предположим, вам понравился шрифт "Crimson Text", и вы загрузили его (то, как загружать и отображать вэб-шрифты из Интернета - тема другого урока). Тогда в свойстве <code>font-family</code> вы указывайте сначала имя загруженного шрифта (обратите внимание, что если имя шрифта состоит из нескольких слов, необходимо заключить его в двойные кавычки), потом чере запятую - имя вэб-безопасного шрифта и в конце - название семейства шрифтов.</p>
 <p>Браузер будет читать это свойство слева-направо. Сначала он попробует найти и отобразить символы вашего шрифта. Если ему это не удастся, он откатится до символов вэб-безопасного шрифта. Семейство шрифтов в данном случае - это последний рубеж обороны, чтобы текст был отображен хоть каким-то шрифтом.</p>
@@ -805,9 +804,9 @@ html {
       url: "css-text-shadow",
       theory: `<p>Свойство <code>text-shadow</code> позволяет вашему тексту отбрасывать тень!. Это свойство составное и принимает 4 значения. Вот пример:</p>
 
-<code><pre><span class="selector">p</span> {
+<pre><code><span class="selector">p</span> {
   <span class="rule">text-shadow:</span> 6px -5px 3px blue;
-}</pre></code>
+}</code></pre>
 
 <p style="text-shadow: 6px -5px 3px blue">Вот как будет выглядеть такая тень</p>
 <p>Разберем каждое свойство подробнее</p>
@@ -972,7 +971,7 @@ html {
       header: "Выравнивание текста - text-align",
       url: "css-text-align",
       theory: `<p>Во второй половине урока мы рассмотрим свойста, влияющие на расположение текста на странице и его взаимодействие с соседними текстовыми элементами.</p>
-      <p>Свойство <code>text-align</code> выравнивает текст относительно контентной области своего контйенера. Если вы не совсем понимаете, что такое контентная область и контейнер, пройдите урок по блочной модели документа, но в целом это просто выравнивание по какому-либо краю, как в любом текстовом редакторе. Свойство может принимать такие значения:</p>
+<p>Свойство <code>text-align</code> выравнивает текст относительно контентной области своего контйенера. Если вы не совсем понимаете, что такое контентная область и контейнер, пройдите урок по блочной модели документа, но в целом это просто выравнивание по какому-либо краю, как в любом текстовом редакторе. Свойство может принимать такие значения:</p>
 <ul>
   <li><code>left</code> - выравнивание по левому краю. Это значение по умолчанию</li>
   <li><code>right</code> - выравнивание по правому краю.</li>
@@ -1030,10 +1029,10 @@ html {
       url: "css-line-height",
       theory: `<p>Свойство <code>line-height</code> устанавливает высоту строки текста. Это одно из свойств, которому можно (и даже нужно) задавать безразмерное значение, например</p>
 
-<code><pre><span class="selector">p</span> {
+<pre><code><span class="selector">p</span> {
   <span class="rule">font-size:</span> 12px;
   <span class="rule">line-height:</span> 1.5;
-}</pre></code>
+}</code></pre>
 
 <p>В данном коде свойство <code>line-height</code> не имеет единицы измерения и будет коэффициентом для размера шрифта элемента. То есть в данном случае высота строки текста составит 12 * 1,5 = 18px.</p>
 <p>Лучше всего смотрится текст, в котором высота строки в 1.5 - 2 раза больше размера шрифта, именно на эти коэфифциенты можно ориентироваться. Кроме того, можно задавать высоту строки в других привычных единицах - <code>px, %, em, rem</code>.</p>
@@ -1104,7 +1103,6 @@ html {
       theory: `<p>Два свойства <code>letter-spacing</code> и <code>word-spacing</code> похожи и устанавливают расстояние между символами в словах и самими словами соответственно. Они могут принимать в качестве значений большинство абсолютных и относительных единиц. Также они могут принимать отрицательные значения, тогда символы и слова начинают как бы прижиматься друг к другу.</p>
 <p class="external-resource">Прочитать больше о свойстве <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing" target="_blank">letter-spacing</a>.</p>
 <p class="external-resource">Прочитать больше о свойстве <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing" target="_blank">word-spacing</a>.</p>
-
  `,
       goal: `Установите расстояние между символами и словами.`,
       initValues: {
@@ -1294,9 +1292,9 @@ html {
   <li>Владимир Русанов</li>
 </ul>
 
-<code><pre><span class="selector">ul</span> {
+<pre><code><span class="selector">ul</span> {
   <span class="rule">list-style-type:</span> circle;
-}</pre></code>
+}</code></pre>
 
 <h4>Русские покорители Арктики</h4>
 <ul style="list-style-type: circle;">
@@ -1307,9 +1305,9 @@ html {
 
 <p>Еще одна часто встречающаяся задача - сбросить дефолтные маркеры списков. Для этого установим такое значение <code>list-style</code>:</p>
 
-<code><pre><span class="selector">ul</span> {
+<pre><code><span class="selector">ul</span> {
   <span class="rule">list-style:</span> none;
-}</pre></code>
+}</code></pre>
 
 <h4>Русские покорители Арктики</h4>
 <ul style="list-style: none;">
@@ -1371,7 +1369,7 @@ html {
           id: 1,
           label:
             "Нумерованному списку задайте тип цифр <code>upper-roman</code> и внутреннее положение маркеров - значение <code>inside</code>.",
-          testRegExp: [/ol\s+{\s*list-style-type: upper-roman;\s*list-style-position: inside;\s*}/],
+          testRegExp: [/ol\s+{[\s\S]*list-style-type: upper-roman;[\s\S]*}/, /ol\s+{[\s\S]*list-style-position: inside;[\s\S]*}/],
           failMsg: "Убедитесь, что вы задали правильное значение list-style-type и list-style-position",
         },
         {

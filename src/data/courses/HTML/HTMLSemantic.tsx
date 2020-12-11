@@ -29,6 +29,7 @@ export const HtmlSemantic: ICourseLesson = {
     <span class="tag">&lt;/nav></span>
   <span class="tag">&lt;/header></span>
 <span class="tag">&lt;/body></span></code></pre>
+
 <p>Обратите внимание, что с точки зрения отображения элементов на странице нет разницы, какой именно элемент вы используете - <code>header</code> или <code>div</code>. Но встретив элемент <code>header</code> вы сразу поймете, что речь идет о шапке сайта.</p>
 `,
       goal: `Сайт в этом упражнении сверстан без учета семантики. Начните создавать семантическую разметку.`,

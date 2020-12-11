@@ -564,7 +564,7 @@ export const HtmlIntro: ICourseLesson = {
       theory: `<p>Иногда необходимо отобразить список элементов, в котором важна последовательность их расположения. Для этого служит <i>упорядоченный список</i> - <code>ol</code> (<i>ordered list</i>).</p>
         <p>Единственное его отличие от <code>ul</code> в том, что каждый элемент списка отобразится под собственным номером. В качестве вложенных элементов используются уже знакомые вам элементы списка <code>li</code>. Вот как это выглядит в разметке:</p>
         
-        <pre><code><span class="tag">&lt;h3></span>Самые длинные реки в мире:<span class="tag">&lt;/h3></span>
+<pre><code><span class="tag">&lt;h3></span>Самые длинные реки в мире:<span class="tag">&lt;/h3></span>
 <span class="tag">&lt;ol></span>
   <span class="tag">&lt;li></span>Нил<span class="tag">&lt;/li></span>
   <span class="tag">&lt;li></span>Амазонка<span class="tag">&lt;/li></span>
@@ -649,7 +649,7 @@ export const HtmlIntro: ICourseLesson = {
         <p>Аттрибут <code>class</code> используется для передачи CSS свойств группе элементов  с одинаковым классом. Например, если на странице есть несколько заголовков с классом "small-header", мы можем найти их из CSS и придать им необходимые свойста, например, покрасить в другой цвет или изменить размер шрифта. Этим аттрибутом мы будем активно пользоваться в курсе по CSS.</p>
         <p>А вот аттрибут, который меняет внешний вид элемента прямо из HTML:</p>
         
-        <pre><code><span class="tag">&lt;span <span class="attr-name">class=</span><span class="attr-value">"color: orange"</span>></span>не только на всю Россию, но и на весь мир.<span class="tag">&lt;/span></span></code></pre>
+        <pre><code><span class="tag">&lt;span <span class="attr-name">style=</span><span class="attr-value">"color: orange"</span>></span>не только на всю Россию, но и на весь мир.<span class="tag">&lt;/span></span></code></pre>
 
         <p>Аттрибут <code>style</code> задает стили элементам. В данном случае он покрасит текст, отображаемый элементом <code>span</code> в оранжевый цвет. Это один из трех способов изменять стили элементов, с остальными мы познакомимся позже.</p>`,
       goal: `Добавьте элементам аттрибуты`,

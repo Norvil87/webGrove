@@ -719,5 +719,109 @@ const Solution = {
         js: ``,
       },
     },
+    CSSUnit: {
+      1: {
+        html: ``,
+        css: `.unit-px {
+          width: 200px;
+        }`,
+        js: ``,
+      },
+      2: {
+        html: ``,
+        css: `html {
+          font-size: 18px;
+        }
+        
+        .unit-rem li {
+          font-size: 1.2rem;
+        }
+        
+        .unit-em li {
+          font-size: 1.2em;
+        }`,
+        js: ``,
+      },
+      3: {
+        html: ``,
+        css: `.wrapper {
+          width: 80%;
+        }
+        
+        .unit-percent {
+          width: 60%;
+        }`,
+        js: ``,
+      },
+      4: {
+        html: ``,
+        css: `.unit-vw {
+          width: 70vw;
+        }
+        
+        .unit-vh {
+          height: 20vh;
+        }`,
+        js: ``,
+      },
+      5: {
+        html: ``,
+        css: `.named-color {
+          background-color: mistyrose;
+          color: transparent; 
+        }`,
+        js: ``,
+      },
+      6: {
+        html: ``,
+        css: `.hex-color {
+          background-color: #66cdaa;
+          color: #0000fF;
+        }`,
+        js: ``,
+      },
+      7: {
+        html: ``,
+        css: `.rgb-color {
+          background-color: rgb(136, 94, 160);
+          color: rgb(255, 255, 255);
+        }
+        
+        .rgba-color {
+          background-color: rgba(103, 75, 60, 0.7);
+        }`,
+        js: ``,
+      },
+      8: {
+        html: ``,
+        css: `.hsl-color {
+          background-color: hsl(249, 80%, 67%);
+          color: hsl(120, 100%, 50%);
+        }
+        
+        .hsla-color {
+          background-color: hsla(220, 85%, 50%, 0.4);
+        }`,
+        js: ``,
+      },
+      9: {
+        html: `<link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">`,
+        css: `body {
+          font-family: "Lato", "Arial", sans-serif;
+        }`,
+        js: ``,
+      },
+      10: {
+        html: ``,
+        css: `@font-face {
+          font-family: "Lato";
+          font-weight: 700;
+          font-style: italic;
+          src: url("./fonts/Lato-italic-bold.woff2") format("woff2"),
+               url("./fonts/Lato-italic-bold.woff") format("woff");
+        }`,
+        js: ``,
+      },
+    }
   },
 };
