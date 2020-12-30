@@ -6,7 +6,7 @@ const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 module.exports = (env, argv) => {
   return {
     entry: "./src/index.tsx",
-    //mode: "development",
+    mode: "development",
     output: {
       path: path.resolve(__dirname, "build"),
       filename: "bundle.js",

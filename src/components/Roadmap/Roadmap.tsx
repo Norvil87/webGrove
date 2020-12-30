@@ -20,7 +20,7 @@ const Roadmap: React.FC = () => {
     <section id="roadmap" className="roadmap content__roadmap">
       <h2>Путь разработчика</h2>
       <div className="roadmap__container">
-        <img src={roadmap} />
+        <img src={roadmap} width="1000" height="1000" alt="Карта развития Frontend разработчика" />
         <Link
           to="/courses/html"
           className="roadmap__link roadmap__course-link html-link"

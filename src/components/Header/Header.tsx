@@ -7,7 +7,7 @@ const Header = () => {
     <div className="header-wrapper">
       <header className="header centrifier">
         <div className="logo">
-          <Link to="/">
+          <Link to="/" aria-label="Логотип сайта webgrove">
             <svg width="50" height="50" x="0px" y="0px" viewBox="0 0 441.302 441.302" xmlSpace="preserve">
               <g>
                 <path

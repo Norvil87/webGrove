@@ -64,7 +64,7 @@
 }
 
 .course-list__html-card {
-  background-color: invert($color: #e34e26);
+  background-color: #1cb1d9;
   background-image: url("../img/html5-logo.png");
 }
 
@@ -78,21 +78,21 @@
 }
 
 .course-list__css-card {
-  background-color: invert($color: #264de4);
+  background-color: #75eab6;
   background-image: url("../img/css3-logo.png");
 }
 
 .course-list__css-card:hover button {
-  background-color: #264de4;
+  background-color: #2965f1;
   border: none;
 }
 
 .course-list__css-card:hover h3 {
-  color: #264de4;
+  color: #2965f1;
 }
 
 .course-list__js-card {
-  background-color: invert($color: #ff922b);
+  background-color: #2a7fd0;
   background-image: url("../img/js-logo.png");
 }
 

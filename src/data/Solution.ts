@@ -776,7 +776,7 @@ const Solution = {
         html: ``,
         css: `.hex-color {
           background-color: #66cdaa;
-          color: #0000fF;
+          color: #0000ff;
         }`,
         js: ``,
       },
@@ -784,7 +784,7 @@ const Solution = {
         html: ``,
         css: `.rgb-color {
           background-color: rgb(136, 94, 160);
-          color: rgb(255, 255, 255);
+          color: rgb(0, 0, 0);
         }
         
         .rgba-color {
@@ -807,18 +807,191 @@ const Solution = {
       9: {
         html: `<link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">`,
         css: `body {
-          font-family: "Lato", "Arial", sans-serif;
+          font-family: Lato, Arial, sans-serif;
         }`,
         js: ``,
       },
       10: {
         html: ``,
         css: `@font-face {
-          font-family: "Lato";
+          font-family: Lato;
           font-weight: 700;
           font-style: italic;
           src: url("./fonts/Lato-italic-bold.woff2") format("woff2"),
                url("./fonts/Lato-italic-bold.woff") format("woff");
+        }`,
+        js: ``,
+      },
+    },
+    CSSBoxModel: {
+      1: {
+        html: ``,
+        css: `.header-wrapper {
+          height: 400px;
+        }
+        
+        .header-wrapper h1{
+          width: 400px;
+        }
+        
+        .content {
+          width: 70%;
+        }`,
+        js: ``,
+      },
+      2: {
+        html: ``,
+        css: `
+        .header-wrapper h1{
+          border: 2px dotted white;
+        }
+        
+        .share {
+          border: 3px solid rgb(0, 188, 212);
+        }`,
+        js: ``,
+      },
+      3: {
+        html: ``,
+        css: `
+        .header-wrapper h1{
+          padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+        }
+        
+        .share {
+          padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+        }`,
+        js: ``,
+      },
+      4: {
+        html: ``,
+        css: `
+        .header-wrapper h1{
+          padding: 25px;
+        }
+        
+        .share {
+          padding: 15px 5px;
+        }`,
+        js: ``,
+      },
+      5: {
+        html: ``,
+        css: `
+        .navigation li {
+          margin-bottom: 10px;
+        }
+        
+        .share {
+          margin: 1rem 2rem;
+        }`,
+        js: ``,
+      },
+      6: {
+        html: ``,
+        css: `
+        .header-wrapper h1 {
+          margin: 0 auto;
+        }
+        
+        .content {
+          margin: 0 auto;
+        }`,
+        js: ``,
+      },
+      7: {
+        html: ``,
+        css: `
+        body {
+          margin: 0;
+          padding: 0;
+        }`,
+        js: ``,
+      },
+      8: {
+        html: ``,
+        css: `
+        p {
+          min-width: 350px;
+          min-height: 100px;
+        }`,
+        js: ``,
+      },
+      9: {
+        html: ``,
+        css: `
+        p {
+          max-width: 600px;
+          max-height: 700px;
+        }`,
+        js: ``,
+      },
+      10: {
+        html: ``,
+        css: `
+        .content {
+          overflow: auto;
+          height: 500px;
+        }`,
+        js: ``,
+      },
+      11: {
+        html: ``,
+        css: `
+        .block {
+          height: 50px;
+          padding-top: 30px;
+          display: block;
+        }`,
+        js: ``,
+      },
+      12: {
+        html: ``,
+        css: `
+        .inline {
+          height: 40px;
+          display: inline;
+          margin: 3rem;
+        }`,
+        js: ``,
+      },
+      13: {
+        html: ``,
+        css: `
+        li {
+          display: inline-block;
+          height: 45px;
+          margin: 2rem;
+        }`,
+        js: ``,
+      },
+      14: {
+        html: ``,
+        css: `
+        .parent {
+          width: 500px;
+        }
+        
+        .child {
+          width: 440px;
+        }`,
+        js: ``,
+      },
+      15: {
+        html: ``,
+        css: `
+        * {
+          box-sizing: border-box;
+        }
+        
+        .child {
+          width: 100%;
         }`,
         js: ``,
       },
