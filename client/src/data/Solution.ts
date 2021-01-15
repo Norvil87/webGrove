@@ -937,7 +937,7 @@ const Solution = {
         css: `
         .content {
           overflow: auto;
-          height: 500px;
+          height: 400px;
         }`,
         js: ``,
       },

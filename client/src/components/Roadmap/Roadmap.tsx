@@ -44,7 +44,14 @@ const Roadmap: React.FC = () => {
         </Link>
 
         <a
-          href="https://developer.mozilla.org/ru/docs/%D0%A1%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/DNS"
+          href="https://finfocus.today/kak-rabotaet-internet.html"
+          target="_blank"
+          className="roadmap__link roadmap__article-link internet-link"
+        >
+          <span>Интернет</span>
+        </a>
+        <a
+          href="https://www.cloudflare.com/learning/dns/what-is-dns/"
           target="_blank"
           className="roadmap__link  roadmap__article-link dns-link"
         >
@@ -58,28 +65,28 @@ const Roadmap: React.FC = () => {
           <span>Что такое доменное имя</span>
         </a>
         <a
-          href="https://developer.mozilla.org/ru/docs/%D0%A1%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/Host"
+          href="https://www.ntchosting.com/encyclopedia/hosting/host/"
           target="_blank"
           className="roadmap__link  roadmap__article-link hosting-link"
         >
           <span>Что такое хост</span>
         </a>
         <a
-          href="https://developer.mozilla.org/ru/docs/Learn/How_the_Internet_works"
+          href="https://developer.mozilla.org/ru/docs/Web"
           target="_blank"
-          className="roadmap__link  roadmap__article-link internet-link"
+          className="roadmap__link  roadmap__article-link web-overview-link"
         >
           <span>Как работает Интернет</span>
         </a>
         <a
-          href="https://developer.mozilla.org/ru/docs/%D0%A1%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/HTTP"
+          href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"
           target="_blank"
           className="roadmap__link  roadmap__article-link http-link"
         >
           <span>Что такое HTTP</span>
         </a>
         <a
-          href="https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80"
+          href="https://developer.mozilla.org/ru/docs/Web/Performance/How_browsers_work"
           target="_blank"
           className="roadmap__link  roadmap__article-link browser-link"
         >
@@ -87,14 +94,14 @@ const Roadmap: React.FC = () => {
         </a>
 
         <a
-          href="https://developer.mozilla.org/ru/docs/%D0%A1%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/HTML"
+          href="https://webdesign-master.ru/blog/html-css/4.html"
           target="_blank"
           className="roadmap__link  roadmap__article-link htmlbase-link"
         >
           <span>Изучение основ</span>
         </a>
         <a
-          href="https://developer.mozilla.org/ru/docs/%D0%A1%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/Semantics"
+          href="https://rightblog.ru/2757"
           target="_blank"
           className="roadmap__link  roadmap__article-link htmlsemantics-link"
         >
@@ -108,21 +115,21 @@ const Roadmap: React.FC = () => {
           <span>Формы и валидация</span>
         </a>
         <a
-          href="https://developer.mozilla.org/ru/docs/HTML/HTML5/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B2_HTML5"
+          href="https://developer.mozilla.org/ru/docs/HTML/HTML5"
           target="_blank"
           className="roadmap__link  roadmap__article-link html5-link"
         >
           <span>Стандарт HTML5</span>
         </a>
         <a
-          href="https://developer.mozilla.org/ru/docs/%D0%A1%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/SEO"
+          href="https://netpeak.net/ru/blog/optimizatsiya-dlya-novichkov-html-tegi-i-atributy-v-seo/"
           target="_blank"
           className="roadmap__link  roadmap__article-link htmlseo-link"
         >
           <span>Основы SEO</span>
         </a>
         <a
-          href="https://developer.mozilla.org/ru/docs/Learn/%D0%94%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%BE%D1%81%D1%82%D1%8C"
+          href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML"
           target="_blank"
           className="roadmap__link  roadmap__article-link htmlaccessability-link"
         >

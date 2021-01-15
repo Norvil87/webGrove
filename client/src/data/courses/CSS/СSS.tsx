@@ -6,7 +6,7 @@ import { CssBoxModel } from "./CSSBoxModel";
 
 export const Css: ICourse = {
   id: 1,
-  title: "Курс по CSS (в разработке)",
+  title: "Курс по CSS",
   url: "css",
   info: {
     goal:
