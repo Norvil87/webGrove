@@ -22,11 +22,11 @@ db.mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Successfully connect to MongoDB");
+    console.log("Успешное подключение к MongoDB");
     initial();
   })
   .catch(err => {
-    console.error("Connecting error", err);
+    console.error("Ошибка подключения", err);
     process.exit();
   });
 
@@ -35,40 +35,45 @@ function initial() {
     if (!err && count === 0) {
       new Role({ name: "user" }).save(err => {
         if (err) {
-          console.log("Error", err);
+          console.log("Ошибка добавления роли", err);
         }
 
-        console.log("Added 'user' to roles collection");
+        console.log("К коллекции ролей добавлен 'user'");
       });
 
       new Role({
         name: "moderator",
       }).save(err => {
         if (err) {
-          console.log("Error", err);
+          console.log("Ошибка добавления роли", err);
         }
 
-        console.log("Added 'moderator' to roles collection");
+        console.log("К коллекции ролей добавлен 'moderator'");
       });
 
       new Role({
         name: "admin",
       }).save(err => {
         if (err) {
-          console.log("Error", err);
+          console.log("Ошибка добавления роли", err);
         }
 
-        console.log("Added 'admin' to roles collection");
+        console.log("К коллекции ролей добавлен 'admin'");
       });
     }
   });
 }
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome" });
+  res.json({ message: "Приветствуем" });
 });
 
+// routes
+require("./app/routes/auth.routes")(app);
+require("./app/routes/user.routes")(app);
+
 const PORT = process.env.PORT || 8081;
+
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Сервер запущен на порту ${PORT}.`);
 });

@@ -12,7 +12,7 @@ const UnderConstruction: React.FC = () => {
         alignItems: "center",
       }}
     >
-      This page is under construction right now
+      Страница прямо сейчас в разработке
     </div>
   );
 };
