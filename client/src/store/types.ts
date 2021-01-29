@@ -16,11 +16,18 @@ export interface ICurrentExercise {
   tasks: ICurrentTask[];
 }
 
+export interface IUser {
+  id: string;
+  email: string;
+  username: string;
+}
+
 export interface IRootState {
   course: ICourse;
   lessonUrl: string;
   editorValues: IEditorValues;
   currentExercise: ICurrentExercise;
+  user: IUser;
 }
 
 interface ISetEditorValue {
@@ -52,6 +59,11 @@ interface ISetLessonUrl {
   payload: { url: string };
 }
 
+interface ISetUser {
+  type: string;
+  payload: { user: IUser };
+}
+
 export type IActionType =
   | ISetEditorValues
   | ISetCurrentExercise
@@ -59,4 +71,5 @@ export type IActionType =
   | ISetCourse
   | ISetEditorValue
   | ISetEditorValues
-  | ISetLessonUrl;
+  | ISetLessonUrl
+  | ISetUser;

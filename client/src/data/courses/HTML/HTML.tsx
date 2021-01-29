@@ -1,4 +1,4 @@
- import { ICourse } from "../../../types";
+import { ICourse } from "../../../types";
 import { HtmlIntro } from "./HTMLIntro";
 import { HtmlDocument } from "./HTMLDocument";
 import { HtmlTable } from "./HTMLTable";

@@ -36,7 +36,7 @@ exports.register = (req, res) => {
               return;
             }
 
-            res.send({ message: "Пользователь был успешно зарегистрирован!" });
+            res.send({ message: "Пользователь был успешно зарегистрирован!", success: true, id: user.id });
           });
         }
       );
@@ -46,7 +46,7 @@ exports.register = (req, res) => {
 
 exports.login = (req, res) => {
   User.findOne({
-    username: req.body.username,
+    email: req.body.email,
   })
     .populate("roles", "-__v") // not sure about it
     .exec((err, user) => {
@@ -56,13 +56,14 @@ exports.login = (req, res) => {
       }
 
       if (!user) {
-        res.status(404).send({ message: "Пользователь не найден" });
+        res.status(200).send({ message: "Пользователь не найден", success: false });
+        return;
       }
 
       const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
 
       if (!passwordIsValid) {
-        return res.status(401).send({ accessToken: null, message: "Неверный пароль" });
+        return res.status(200).send({ accessToken: null, message: "Неверный пароль", success: false });
       }
 
       const token = jwt.sign({ id: user.id }, config.secret, { expiresIn: 86400 }); // 1 сутки
@@ -77,6 +78,7 @@ exports.login = (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
+        success: true,
         roles: authorities,
         accessToken: token,
       });

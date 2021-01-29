@@ -54,6 +54,19 @@
   position: absolute;
   bottom: -15px;
   left: 0;
-  font-size: 10px;
+  font-size: 0.7rem;
   color: $failColor;
+}
+
+.form-validate-message--fail {
+  color: $failColor;
+}
+
+.form-validate-message--success {
+  color: $successColor;
+}
+
+.form-register-status {
+  font-size: 0.9rem;
+  text-align: center;
 }

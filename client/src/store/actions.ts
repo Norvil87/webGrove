@@ -1,4 +1,4 @@
-import { ICurrentExercise, ICurrentTask, IActionType, IEditorValues } from "./types";
+import { ICurrentExercise, ICurrentTask, IActionType, IEditorValues, IUser } from "./types";
 import { ICourse } from "../types";
 
 export const setEditorValue = (key: string, value: string): IActionType => {
@@ -52,6 +52,15 @@ export const setLessonUrl = (url: string): IActionType => {
     type: "SET_LESSON_URL",
     payload: {
       url,
+    },
+  };
+};
+
+export const setUser = (user: IUser): IActionType => {
+  return {
+    type: "SET_USER",
+    payload: {
+      user,
     },
   };
 };

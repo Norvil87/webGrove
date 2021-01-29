@@ -1,7 +1,7 @@
 {
   "name": "webgrove",
   "version": "1.0.0",
-  "description": "webgrove server side",
+  "description": "webgrove server-side",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Norvil87/webGrove.git"
   },
-  "author": "Norvil87",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Norvil87/webGrove/issues"

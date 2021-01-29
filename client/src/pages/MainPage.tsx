@@ -20,10 +20,7 @@ const MainPage: React.FC = () => {
     <>
       <section className="content__intro centrifier">
         <h2>Если ты заинтересовался вэб-разработкой, ты попал в правильное место</h2>
-        <p>
-          Здесь должен быть небольшой текст про очередность выполнения заданий
-        </p>
-
+        <p>Здесь должен быть небольшой текст про очередность выполнения заданий</p>
       </section>
       <Roadmap />
       <section id="courses" className="content__courses centrifier">
@@ -55,10 +52,12 @@ const MainPage: React.FC = () => {
           </li>
         </ul>
       </section>
-      {/* <section id="articles" className="content__articles">
+      <section id="articles" className="content__articles">
         <h2>Статьи</h2>
-        <Link to="/articles">В настоящее время статей нет</Link>
-      </section> */}
+        <Link to="/articles" style={{ display: 'block', textAlign: "center", fontSize: 18 }}>
+          Статей еще нет, но обязательно будут
+        </Link>
+      </section>
     </>
   );
 };

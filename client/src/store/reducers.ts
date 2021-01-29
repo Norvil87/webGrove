@@ -16,6 +16,11 @@ const initialState: IRootState = {
   },
   lessonUrl: null,
   course: null,
+  user: {
+    id: null,
+    email: null,
+    username: null,
+  },
 };
 
 export const reducer = (state: IRootState = initialState, action: any) => {
@@ -33,8 +38,10 @@ export const reducer = (state: IRootState = initialState, action: any) => {
       return { ...state, currentExercise: { ...state.currentExercise, tasks: action.payload.tasks } };
     case "SET_COURSE":
       return { ...state, course: action.payload.course };
-      case "SET_LESSON_URL":
+    case "SET_LESSON_URL":
       return { ...state, lessonUrl: action.payload.url };
+    case "SET_USER":
+      return { ...state, user: action.payload.user };
     default:
       return state;
   }

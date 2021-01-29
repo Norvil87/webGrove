@@ -1,8 +1,12 @@
 import React from "react";
 import "./Header.scss";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { IRootState } from "../../store/types";
 
 const Header = () => {
+  const user = useSelector((state: IRootState) => state.user);
+
   return (
     <div className="header-wrapper">
       <header className="header centrifier">
@@ -29,24 +33,28 @@ const Header = () => {
         <nav>
           <ul>
             <li>
-              <a href="#roadmap">Путь разработчика</a>
+              <Link to="/#roadmap">Путь разработчика</Link>
             </li>
             <li>
-              <a href="#courses">Курсы</a>
+              <Link to="/#courses">Курсы</Link>
             </li>
             <li>
-              <a href="#articles">Статьи</a>
+              <Link to="/articles">Статьи</Link>
             </li>
           </ul>
         </nav>
-        <div className="header__buttonCont">
-          <Link to="/login" className="button header__login-button">
-            Войти
-          </Link>
-          <Link to="/register" className="button button-primary header__registration-button">
-            Регистрация
-          </Link>
-        </div>
+        {user.username ? (
+          <p className="header__greeting">{` ${user.username}, ты опять хакнул систему?`}</p>
+        ) : (
+          <div className="header__buttonCont">
+            <Link to="/login" className="button header__login-button">
+              Войти
+            </Link>
+            <Link to="/register" className="button button-primary header__registration-button">
+              Регистрация
+            </Link>
+          </div>
+        )}
       </header>
     </div>
   );
