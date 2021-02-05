@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Challenge from "../Challenge";
 import Editor from "../Editor";
 import Output from "../Output";
@@ -13,6 +13,13 @@ interface ISimulatorProps {
 const Simulator: React.FC<ISimulatorProps> = ({ exercise }) => {
   const minPaneWidth = 300;
 
+  const [width, setWidth] = useState(0);
+  const editorContRef = useRef(null);
+
+  const handleResize = () => {
+    setWidth(editorContRef.current.clientWidth);
+  };
+
   return (
     <div className="simulator__wrapper">
       <ReflexContainer orientation="vertical">
@@ -20,8 +27,10 @@ const Simulator: React.FC<ISimulatorProps> = ({ exercise }) => {
           <Challenge {...exercise} />
         </ReflexElement>
         <ReflexSplitter />
-        <ReflexElement minSize={minPaneWidth}>
-          <Editor initValues={exercise.initValues} />
+        <ReflexElement minSize={minPaneWidth} onStopResize={handleResize}>
+          <div className="simulator__resize-detector" ref={editorContRef}>
+            <Editor initValues={exercise.initValues} outerWidth={width} />
+          </div>
         </ReflexElement>
         <ReflexSplitter />
         <ReflexElement minSize={minPaneWidth}>

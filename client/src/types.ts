@@ -1,5 +1,3 @@
-//export type id = number | string;
-
 export enum ResultMessage {
   SUCCESS = "Поздравляем! Все тесты пройдены",
   FAIL = `Без паники! Внимательно просмотрите код и попробуйте еще раз`,

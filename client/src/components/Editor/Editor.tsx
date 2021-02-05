@@ -1,28 +1,40 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { ControlledEditor } from "@monaco-editor/react";
-import * as monacoEditor from "monaco-editor/esm/vs/editor/editor.api";
-import "./Editor.scss";
+import monacoEditor from "monaco-editor/esm/vs/editor/editor.api";
 import { useDispatch, useSelector } from "react-redux";
 import { setEditorValue, setEditorValues } from "../../store/actions";
 import { IEditorValues } from "../../types";
 import { IRootState } from "../../store/types";
 import { ReflexContainer, ReflexElement, ReflexSplitter } from "react-reflex";
+import "./Editor.scss";
 
 interface IEditor {
   initValues: IEditorValues;
+  outerWidth?: number;
 }
 
-const Editor: React.FC<IEditor> = ({ initValues }) => {
+const Editor: React.FC<IEditor> = ({ initValues, outerWidth }) => {
   const { html, css, js, courseUrl } = useSelector((state: IRootState) => {
     return {
       html: state.editorValues.html,
       css: state.editorValues.css,
       js: state.editorValues.js,
-      courseUrl: state.course?.url,
+      courseUrl: state.courseStructure?.url,
     };
   });
 
+  const htmlEditorRef = useRef(null);
+  const cssEditorRef = useRef(null);
+  const [width, setWidth] = useState(0);
+
+  if (outerWidth !== width) {
+    htmlEditorRef.current.layout();
+    cssEditorRef.current.layout();
+    setWidth(outerWidth);
+  }
+
   const dispatch = useDispatch();
+
   const inCssMode = courseUrl === "css";
 
   const options: monacoEditor.editor.IEditorOptions = {
@@ -37,7 +49,9 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
       comments: false,
       strings: false,
     },
-    suggestOnTriggerCharacters: false,
+    hover: {
+      enabled: false,
+    },
   };
 
   const handleHtmlValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, html: string) => {
@@ -48,7 +62,13 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
     dispatch(setEditorValue("css", css));
   };
 
-  const onEditorMount = () => {
+  const onHtmlEditorMount = (getEditorValue: () => string, editor: monacoEditor.editor.IStandaloneCodeEditor) => {
+    htmlEditorRef.current = editor;
+    dispatch(setEditorValues(initValues));
+  };
+
+  const onCssEditorMount = (getEditorValue: () => string, editor: monacoEditor.editor.IStandaloneCodeEditor) => {
+    cssEditorRef.current = editor;
     dispatch(setEditorValues(initValues));
   };
 
@@ -59,7 +79,7 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
           <ControlledEditor
             options={options}
             onChange={handleHtmlValueChange}
-            editorDidMount={onEditorMount}
+            editorDidMount={onHtmlEditorMount}
             language="html"
             value={html}
           />
@@ -70,7 +90,7 @@ const Editor: React.FC<IEditor> = ({ initValues }) => {
             <ControlledEditor
               options={options}
               onChange={handleCssValueChange}
-              editorDidMount={onEditorMount}
+              editorDidMount={onCssEditorMount}
               language="css"
               value={css}
             />

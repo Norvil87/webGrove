@@ -12,8 +12,11 @@ import UnderConstruction from "./../UnderConstruction";
 import UserRegistration from "./../Modals/UserRegistration";
 import UserLogin from "./../Modals/UserLogin";
 import PasswordReminder from "./../Modals/PasswordReminder";
-import { setCourse, setCurrentExercise, setEditorValues, setLessonUrl } from "../../store/actions";
+import { setCurrentExercise, setEditorValues, setCourseStructure, setCurrentLesson } from "../../store/actions";
+import { IExcercise } from "../../types";
+import { createCourseStructure } from "../../../services";
 
+// temp. Remove CourseNavigator when course structure is fetched from server
 const courseNavigator: any = {
   html: Html,
   css: Css,
@@ -21,46 +24,49 @@ const courseNavigator: any = {
 };
 
 const RouteNavigator = () => {
-  let { course, courseUrl, exerciseUrl, lessonUrl, exerciseId } = useSelector((state: IRootState) => {
+  let { courseUrl, courseStructure, exerciseUrl, lessonUrl, currentExercise } = useSelector((state: IRootState) => {
     return {
-      course: state.course,
-      courseUrl: state.course?.url,
-      exerciseUrl: state.currentExercise.exerciseUrl,
-      lessonUrl: state.lessonUrl,
-      exerciseId: state.currentExercise.exerciseId,
+      courseStructure: state.courseStructure,
+      courseUrl: state.courseStructure?.url,
+      exerciseUrl: state.currentExercise.url,
+      exerciseId: state.currentExercise.id,
+      currentExercise: state.currentExercise,
+      currentLesson: state.currentLesson,
+      lessonUrl: state.currentLesson?.url,
     };
   });
 
   const dispatch = useDispatch();
 
-  if (!course && window.location.href.includes("/courses/")) {
+  if (!courseStructure && window.location.href.includes("/courses/")) {
     const parsedUrl = window.location.href.split("/");
     courseUrl = parsedUrl[4];
-    course = courseNavigator[courseUrl];
+    let course = courseNavigator[courseUrl];
+    const courseStructure = createCourseStructure(course);
 
-    dispatch(setCourse(course));
+    dispatch(setCourseStructure(courseStructure));
 
     if (window.location.href.includes("/lessons/")) {
       lessonUrl = parsedUrl[6];
       exerciseUrl = parsedUrl[7];
 
-      const { id, url, tasks, initValues } = course.lessons[lessonUrl].excercises.find(
-        excersice => excersice.url === exerciseUrl
-      );
+      let lesson;
+      for (const url in course.lessons) {
+        if (url === lessonUrl) {
+          lesson = course.lessons[url];
+        }
+      }
+      const excersice = lesson.excercises.find((excersice: IExcercise) => excersice.url === exerciseUrl);
 
       dispatch(
         setCurrentExercise({
-          exerciseId: id,
-          exerciseUrl: url,
+          ...excersice,
           passed: undefined,
           message: ["Тесты не запущены"],
-          tasks: tasks,
         })
       );
-      dispatch(setLessonUrl(lessonUrl));
-      dispatch(setEditorValues(initValues));
-
-      exerciseId = id;
+      dispatch(setCurrentLesson(lesson));
+      dispatch(setEditorValues(excersice.initValues));
     }
   }
 
@@ -70,10 +76,15 @@ const RouteNavigator = () => {
       <Route
         path={`/courses/${courseUrl}/lessons/${lessonUrl}/${exerciseUrl}`}
         //path={`/courses/css/lessons/css-box-model/css-border-box`}
-        render={() => <Simulator exercise={course.lessons[lessonUrl].excercises[exerciseId - 1]} />}
+        render={() => <Simulator exercise={currentExercise} />}
         //render={() => <Simulator exercise={Css.lessons["css-box-model"].excercises[14]} />}
       />
-      <Route path={`/courses/${courseUrl}`} exact render={() => <CoursePage course={courseNavigator[courseUrl]} />} />
+
+      <Route
+        path={`/courses/${courseUrl}`}
+        exact
+        render={() => <CoursePage courseStructure={courseNavigator[courseStructure?.url]} />}
+      />
       <Route path="/register" component={UserRegistration} />
       <Route path="/login" exact component={UserLogin} />
       <Route path="/login/reminder" component={PasswordReminder} />

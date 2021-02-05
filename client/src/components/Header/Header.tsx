@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Header.scss";
-import { Link, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { IRootState } from "../../store/types";
+import { setUser } from "../../store/actions";
 
 const Header = () => {
   const user = useSelector((state: IRootState) => state.user);
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(setUser({ id: null, username: null, email: null }));
+    localStorage.removeItem("webgroveUser");
+  };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("webgroveUser"));
+    if (user && user.accessToken) {
+      dispatch(setUser({ id: user.id, email: user.email, username: user.username }));
+    }
+  }, []);
 
   return (
     <div className="header-wrapper">
@@ -43,18 +57,25 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        {user.username ? (
-          <p className="header__greeting">{` ${user.username}, ты опять хакнул систему?`}</p>
-        ) : (
-          <div className="header__buttonCont">
-            <Link to="/login" className="button header__login-button">
-              Войти
-            </Link>
-            <Link to="/register" className="button button-primary header__registration-button">
-              Регистрация
-            </Link>
-          </div>
-        )}
+        <div className="header__user">
+          {user.username ? (
+            <>
+              <p className="header__greeting">{` ${user.username}, ты опять хакнул систему?`}</p>
+              <button className="button header__logout-button" onClick={logout}>
+                Выйти
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="button">
+                Войти
+              </Link>
+              <Link to="/register" className="button button-primary">
+                Регистрация
+              </Link>
+            </>
+          )}
+        </div>
       </header>
     </div>
   );

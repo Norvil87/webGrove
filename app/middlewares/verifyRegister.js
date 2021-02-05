@@ -39,7 +39,7 @@ checkRolesExisted = (req, res, next) => {
     for (let role of req.body.roles) {
       if (!ROLES.includes(role)) {
         res.status(400).send({
-          message: `Право ${role} не зарегистрировано`,
+          message: `Роль ${role} не зарегистрирована`,
         });
         return;
       }

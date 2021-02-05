@@ -1,5 +1,5 @@
 import { ICurrentExercise, ICurrentTask, IActionType, IEditorValues, IUser } from "./types";
-import { ICourse } from "../types";
+import { ICourse, ICourseLesson } from "../types";
 
 export const setEditorValue = (key: string, value: string): IActionType => {
   return {
@@ -38,20 +38,20 @@ export const setCurrentTasks = (tasks: ICurrentTask[]): IActionType => {
   };
 };
 
-export const setCourse = (course: ICourse): IActionType => {
+export const setCourseStructure = (courseStructure: ICourse): any => {
   return {
-    type: "SET_COURSE",
+    type: "SET_COURSE_STRUCTURE",
     payload: {
-      course,
+      courseStructure,
     },
   };
 };
 
-export const setLessonUrl = (url: string): IActionType => {
+export const setCurrentLesson = (lesson: ICourseLesson): any => {
   return {
-    type: "SET_LESSON_URL",
+    type: "SET_CURRENT_LESSON",
     payload: {
-      url,
+      lesson,
     },
   };
 };

@@ -1,5 +1,4 @@
-import { IRootState, IActionType } from "./types";
-import { Html } from "../data/courses/HTML/HTML";
+import { IRootState } from "./types";
 
 const initialState: IRootState = {
   editorValues: {
@@ -8,14 +7,18 @@ const initialState: IRootState = {
     js: "",
   },
   currentExercise: {
-    exerciseId: null,
-    exerciseUrl: null,
+    id: null,
+    header: null,
+    theory: null,
+    goal: null,
+    url: null,
     passed: undefined,
     message: ["Тесты не запущены"],
     tasks: [],
+    initValues: null,
   },
-  lessonUrl: null,
-  course: null,
+  currentLesson: null,
+  courseStructure: null,
   user: {
     id: null,
     email: null,
@@ -36,10 +39,10 @@ export const reducer = (state: IRootState = initialState, action: any) => {
       return { ...state, currentExercise: action.payload.exercise };
     case "SET_CURRENT_TASKS":
       return { ...state, currentExercise: { ...state.currentExercise, tasks: action.payload.tasks } };
-    case "SET_COURSE":
-      return { ...state, course: action.payload.course };
-    case "SET_LESSON_URL":
-      return { ...state, lessonUrl: action.payload.url };
+    case "SET_COURSE_STRUCTURE":
+      return { ...state, courseStructure: { ...action.payload.courseStructure } };
+    case "SET_CURRENT_LESSON":
+      return { ...state, currentLesson: action.payload.lesson };
     case "SET_USER":
       return { ...state, user: action.payload.user };
     default:

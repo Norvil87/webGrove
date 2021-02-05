@@ -19,12 +19,10 @@ interface IChallengeProps {
 }
 
 const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues }) => {
-  const { tasks, courseUrl, exerciseUrl, exerciseId } = useSelector((state: IRootState) => {
+  const { currentExercise, courseUrl } = useSelector((state: IRootState) => {
     return {
-      tasks: state.currentExercise.tasks,
-      courseUrl: state.course?.url,
-      exerciseId: state.currentExercise.exerciseId,
-      exerciseUrl: state.currentExercise.exerciseUrl,
+      courseUrl: state.courseStructure?.url,
+      currentExercise: state.currentExercise,
     };
   });
 
@@ -36,7 +34,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
     let excerciseMessage = [];
     const iframe = document.body.querySelector("iframe");
 
-    tasks.map((task: ICurrentTask) => {
+    currentExercise.tasks.map((task: ICurrentTask) => {
       let taskPassed;
       if (task.testRegExp) {
         const textContent = iframe.contentDocument.querySelector("style").textContent;
@@ -58,11 +56,9 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
 
     dispatch(
       setCurrentExercise({
-        exerciseId,
-        exerciseUrl,
+        ...currentExercise,
         passed: excercisePassed,
         message: excerciseMessage,
-        tasks,
       })
     );
   };

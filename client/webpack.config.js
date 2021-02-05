@@ -1,9 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
+//const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
-module.exports = (env, argv) => {
+module.exports = () => {
   return {
     entry: "./src/index.tsx",
     mode: "development",

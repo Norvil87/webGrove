@@ -6,7 +6,8 @@ import { reducer } from "./store/reducers";
 import { Provider } from "react-redux";
 import "./styles/index.scss";
 
-export const store = createStore(reducer);
+const store = createStore(reducer);
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

@@ -3,7 +3,7 @@
 .simulator__wrapper {
   height: 100%;
   background-color: #fff;
-  padding: 0 10px; 
+  padding: 0 10px;
 }
 
 .simulator__wrapper .challenge,
@@ -19,7 +19,8 @@
 
 .reflex-container.horizontal {
   flex-direction: column;
-  min-height: 1px; }
+  min-height: 1px;
+}
 
 .reflex-container {
   justify-content: flex-start;
@@ -52,4 +53,8 @@
   cursor: col-resize;
   width: 100%;
   height: 3px;
+}
+
+.simulator__resize-detector {
+  height: 100%;
 }

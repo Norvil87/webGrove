@@ -4,11 +4,16 @@ import { ICourse } from "../types";
 import "./CoursePage.scss";
 
 interface ICoursePage {
-  course: ICourse;
+  courseStructure: ICourse;
 }
 
-const CoursePage: React.FC<ICoursePage> = course => {
-  const { title, info } = course.course;
+const CoursePage: React.FC<ICoursePage> = courseStructure => {
+
+   if (!courseStructure.courseStructure) {
+    return null;
+  } 
+
+  const { title, info } = courseStructure.courseStructure;
   const { goal, result, prerequisite, followup } = info;
 
   return (
@@ -36,7 +41,7 @@ const CoursePage: React.FC<ICoursePage> = course => {
           </div>
         </div>
       </header>
-      <CourseList {...course} />
+      <CourseList {...courseStructure} />
     </section>
   );
 };

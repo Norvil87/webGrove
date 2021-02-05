@@ -30,12 +30,25 @@
   background-color: $secondaryColor;
 }
 
-.header__buttonCont {
+.header__user {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  width: 250px;
 }
 
 .header__greeting {
   color: $primaryColor;
+  margin: 0;
+  margin-right: 10px;
+}
+
+.header__logout-button {
+  border: 1px solid  $primaryColor;
+  font-weight: 700;
+  min-width: 100px;
+
+  &:hover {
+    color: $primaryColor;
+  }
 }

@@ -2,8 +2,8 @@ import React from "react";
 import "./CourseStructure.scss";
 import { Link, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setCurrentExercise, setLessonUrl } from "../../store/actions";
-import { ICourse, IExcercise, ITask } from "../../types";
+import { setCurrentExercise, setCurrentLesson } from "../../store/actions";
+import { ICourse, IExcercise, ICourseLesson } from "../../types";
 import {
   Accordion,
   AccordionItem,
@@ -14,59 +14,56 @@ import {
 import "react-accessible-accordion/dist/fancy-example.css";
 
 interface ICourseListProps {
-  course: ICourse;
+  courseStructure: ICourse;
 }
 
-const CourseList: React.FC<ICourseListProps> = ({ course }) => {
+const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
   const dispatch = useDispatch();
   const { url: matchedUrl } = useRouteMatch();
 
-  const onExcerciseLinkClick = (id: number, url: string, lessonUrl: string, tasks: ITask[]) => () => {
+  const onExcerciseLinkClick = (id: number, lesson: ICourseLesson) => () => {
+    const excercise = lesson.excercises[id - 1];
+
     dispatch(
       setCurrentExercise({
-        exerciseId: id,
-        exerciseUrl: url,
+        ...excercise,
         passed: undefined,
         message: [],
-        tasks,
       })
     );
-    dispatch(setLessonUrl(lessonUrl));
+    dispatch(setCurrentLesson(lesson));
   };
 
-  const renderExcersises = (excercises: IExcercise[], lessonUrl: string) => {
-    const array: JSX.Element[] = [];
+  const renderExcersises = (lesson: ICourseLesson) => {
+    const excercises: JSX.Element[] = [];
 
-    excercises.map(({ id, url, header, tasks }: IExcercise, i: number) => {
-      array.push(
+    lesson.excercises.map(({ id, url, header }: IExcercise, i: number) => {
+      excercises.push(
         <li key={id + url} className="course-structure__exercise">
           <span>{i + 1}. </span>
-          <Link
-            to={`${matchedUrl}/lessons/${lessonUrl}/${url}`}
-            onClick={onExcerciseLinkClick(id, url, lessonUrl, tasks)}
-          >
+          <Link to={`${matchedUrl}/lessons/${lesson.url}/${url}`} onClick={onExcerciseLinkClick(id, lesson)}>
             {header}
           </Link>
         </li>
       );
     });
 
-    return array;
+    return excercises;
   };
 
   const renderLessons = () => {
     const lessons: JSX.Element[] = [];
 
-    for (const title in course.lessons) {
-      const currentBlock = course.lessons[title];
+    for (const title in courseStructure.lessons) {
+      const lesson = courseStructure.lessons[title];
 
       lessons.push(
-        <AccordionItem key={title + currentBlock.id} uuid={`${currentBlock.id}`}>
+        <AccordionItem key={title + lesson.id} uuid={`${lesson.id}`}>
           <AccordionItemHeading>
-            <AccordionItemButton>{`${currentBlock.title}. ${currentBlock.excercises.length} упражнений`}</AccordionItemButton>
+            <AccordionItemButton>{`${lesson.title}. ${lesson.excercises.length} упражнений`}</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <ul className="course-structure__lessons">{renderExcersises(currentBlock.excercises, currentBlock.url)}</ul>
+            <ul className="course-structure__lessons">{renderExcersises(lesson)}</ul>
           </AccordionItemPanel>
         </AccordionItem>
       );
@@ -77,7 +74,7 @@ const CourseList: React.FC<ICourseListProps> = ({ course }) => {
 
   return (
     <section className="course-structure">
-      <h3>{`Проходите ${course.title} в следующем порядке:`}</h3>
+      <h3>{`Проходите ${courseStructure.title} в следующем порядке:`}</h3>
       <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={["1"]}>
         {renderLessons()}
       </Accordion>

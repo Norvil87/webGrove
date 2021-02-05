@@ -2,18 +2,20 @@ import React from "react";
 import Roadmap from "../components/Roadmap/Roadmap";
 import "./MainPage.scss";
 import { Link } from "react-router-dom";
-import { setCourse } from "../store/actions";
+import { setCourseStructure } from "../store/actions";
 import { useDispatch } from "react-redux";
 import { Html } from "../data/courses/HTML/HTML";
 import { Css } from "../data/courses/CSS/СSS";
 import { Js } from "../data/courses/JS/JS";
 import { ICourse } from "../types";
+import { createCourseStructure } from "../../services";
 
 const MainPage: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleCourseLinkClick = (course: ICourse) => () => {
-    dispatch(setCourse(course));
+    const courseStructure = createCourseStructure(course);
+    dispatch(setCourseStructure(courseStructure));
   };
 
   return (
@@ -54,7 +56,7 @@ const MainPage: React.FC = () => {
       </section>
       <section id="articles" className="content__articles">
         <h2>Статьи</h2>
-        <Link to="/articles" style={{ display: 'block', textAlign: "center", fontSize: 18 }}>
+        <Link to="/articles" style={{ display: "block", textAlign: "center", fontSize: 18 }}>
           Статей еще нет, но обязательно будут
         </Link>
       </section>

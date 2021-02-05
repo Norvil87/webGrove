@@ -1,4 +1,4 @@
-import { ITask, ICourse } from "../types";
+import { ITask, ICourse, ICourseLesson, IExcercise } from "../types";
 
 export interface IEditorValues {
   [key: string]: string;
@@ -8,12 +8,9 @@ export interface ICurrentTask extends ITask {
   passed?: boolean;
 }
 
-export interface ICurrentExercise {
-  exerciseUrl: string;
-  exerciseId: number;
+export interface ICurrentExercise extends IExcercise {
   passed: boolean;
   message: string[];
-  tasks: ICurrentTask[];
 }
 
 export interface IUser {
@@ -23,10 +20,10 @@ export interface IUser {
 }
 
 export interface IRootState {
-  course: ICourse;
-  lessonUrl: string;
-  editorValues: IEditorValues;
+  courseStructure: ICourse;
+  currentLesson: ICourseLesson;
   currentExercise: ICurrentExercise;
+  editorValues: IEditorValues;
   user: IUser;
 }
 
@@ -49,16 +46,6 @@ interface ISetCurrentTasks {
   payload: { tasks: ICurrentTask[] };
 }
 
-interface ISetCourse {
-  type: string;
-  payload: { course: ICourse };
-}
-
-interface ISetLessonUrl {
-  type: string;
-  payload: { url: string };
-}
-
 interface ISetUser {
   type: string;
   payload: { user: IUser };
@@ -68,8 +55,6 @@ export type IActionType =
   | ISetEditorValues
   | ISetCurrentExercise
   | ISetCurrentTasks
-  | ISetCourse
   | ISetEditorValue
   | ISetEditorValues
-  | ISetLessonUrl
   | ISetUser;

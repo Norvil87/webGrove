@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import roadmap from "../../img/roadmap_ru.png";
 import "./Roadmap.scss";
-import { setCourse } from "../../store/actions";
+import { setCourseStructure } from "../../store/actions";
 import { useDispatch } from "react-redux";
 import { ICourse } from "../../types";
+import { createCourseStructure } from "../../../services";
 
 import { Html } from "../../data/courses/HTML/HTML";
 import { Css } from "../../data/courses/CSS/СSS";
@@ -13,7 +14,9 @@ import { Js } from "../../data/courses/JS/JS";
 const Roadmap: React.FC = () => {
   const dispatch = useDispatch();
   const handleCourseLinkClick = (course: ICourse) => () => {
-    dispatch(setCourse(course));
+    const courseStructure = createCourseStructure(course);
+
+    dispatch(setCourseStructure(courseStructure));
   };
 
   return (

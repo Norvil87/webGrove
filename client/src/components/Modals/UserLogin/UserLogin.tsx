@@ -19,6 +19,7 @@ interface LoginDataInResponse {
   success: boolean;
   username: string;
   email: string;
+  accessToken: string;
 }
 
 const UserLogin: React.FC = () => {
@@ -34,12 +35,16 @@ const UserLogin: React.FC = () => {
 
   const onFormSubmit = async () => {
     const data: LoginDataInResponse = await post("http://localhost:8081/login", userProfile);
+    const { id, username, email, accessToken, success, message } = data;
 
-    if (!data || !data.success) {
-      setResponseMessage(data.message);
+    if (!data || !success) {
+      setResponseMessage(message);
     } else {
-      dispatch(setUser({ id: data.id, username: data.username, email: data.email }));
+      dispatch(setUser({ id, username, email }));
       setLoginSuccess(true);
+      if (accessToken) {
+        localStorage.setItem("webgroveUser", JSON.stringify(data));
+      }
     }
   };
 

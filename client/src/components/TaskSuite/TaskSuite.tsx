@@ -6,8 +6,12 @@ import { setCurrentTasks } from "../../store/actions";
 import { ITask } from "../../types";
 import { ICurrentTask } from "../../store/types";
 
-const TaskSuite: React.FC = ({}) => {
+const TaskSuite: React.FC = () => {
   const tasks = useSelector((state: IRootState) => state.currentExercise.tasks);
+  if (!tasks) {
+    return null;
+  }
+
   const dispatch = useDispatch();
 
   const setTasks = () => {
@@ -20,7 +24,11 @@ const TaskSuite: React.FC = ({}) => {
     dispatch(setCurrentTasks(array));
   };
 
-  useEffect(() => setTasks(), []);
+  useEffect(() => {
+    if (tasks) {
+      setTasks();
+    }
+  }, []);
 
   let taskClassName: string;
   const renderTasks = () => {
