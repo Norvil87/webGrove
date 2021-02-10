@@ -1,6 +1,4 @@
-import { ICourseLesson } from "../../../types";
-
-export const HtmlSemantic: ICourseLesson = {
+module.exports = {
   id: 5,
   title: "Семантический HTML",
   url: "html-semantic",
@@ -142,7 +140,7 @@ ul a {
           id: 1,
           label:
             "Найдите в текущей верстке элемент <code>div</code>, в который вложены элементы, характерные для шапки сайта, замените его соответствующим семантическим элементом.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const header = iframe.contentDocument.body.querySelector("header");
             return (
               header && header.parentElement && header.parentElement.tagName === "BODY" && header.children.length === 3
@@ -154,7 +152,7 @@ ul a {
           id: 2,
           label:
             "В шапке сайта найдите элемент <code>div</code>, который соответствует блоку навигации, замените его соответствующим семантическим элементом.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const nav = iframe.contentDocument.body.querySelector("nav");
             return nav && nav.parentElement && nav.parentElement.tagName === "HEADER" && nav.children.length === 1;
           },
@@ -315,7 +313,7 @@ ul a {
           id: 1,
           label:
             "Найдите в текущей верстке элемент <code>div</code>, соответствующий подвалу сайта, замените его семантическим элементом.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const footer = iframe.contentDocument.body.querySelector("footer");
             return (
               footer && footer.parentElement && footer.parentElement.tagName === "BODY" && footer.children.length === 2
@@ -327,7 +325,7 @@ ul a {
           id: 2,
           label:
             "Найдите в текущей верстке элемент <code>div</code>, соответствующий основному контенту сайта, замените его семантическим элементом.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const main = iframe.contentDocument.body.querySelector("main");
             return (
               main &&
@@ -483,7 +481,7 @@ ul a {
         {
           id: 1,
           label: "Замените семантическим элементом <code>div</code>, соответствующий блоку независимого контента.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const article = iframe.contentDocument.body.querySelector("article");
             return (
               article &&
@@ -499,7 +497,7 @@ ul a {
           id: 2,
           label:
             "Замените семантическим элементом <code>div</code>, соответствующие отдельным разделам блока независимого контента.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const sections = iframe.contentDocument.body.querySelectorAll("section");
             return (
               sections &&
@@ -667,7 +665,7 @@ ul a {
         {
           id: 1,
           label: "Замените семантическим элементом <code>div</code>, соответствующий блоку второстепенной информации.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const aside = iframe.contentDocument.body.querySelector("aside");
             return (
               aside &&
@@ -848,7 +846,7 @@ ul a {
         {
           id: 1,
           label: "В секции с описанием музыки добавьте аудиоэлемент c аттрибутом controls.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const audio = iframe.contentDocument.body.querySelector("audio");
             return audio && audio.controls;
           },
@@ -858,7 +856,7 @@ ul a {
           id: 2,
           label:
             "В качестве источника аудио укажите файл с адресом 'http://www.openculture.ru/wp-content/uploads/2011/11/Ravel_Bolero.mp3' и типом 'audio/mp3'.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const audio = iframe.contentDocument.body.querySelector("audio");
             if (!audio) {
               return false;
@@ -876,7 +874,7 @@ ul a {
           id: 3,
           label:
             "В секции с описанием фламенко добавьте видеоэлемент c аттрибутом controls и текстом 'Видео не доступно'. В качестве источника видео укажите файл с адресом 'https://www.youtube.com/watch?v=VdAkQjfUqJU' .",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const video = iframe.contentDocument.body.querySelector("video");
             return (
               video &&
@@ -1051,7 +1049,7 @@ ul a {
           id: 1,
           label:
             "В секции с описанием корриды добавьте встроенный контент, укажите адрес файла 'https://gifer.com/embed/7PZg'.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const embedIframe = iframe.contentDocument.body.querySelector("iframe");
             return (
               embedIframe &&
@@ -1065,7 +1063,7 @@ ul a {
         {
           id: 2,
           label: "Добавьте заголовок контента 'Коррида в Андалусии', ширину элемента 300, высоту - 200.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const embedIframe = iframe.contentDocument.body.querySelector("iframe");
             return (
               embedIframe &&

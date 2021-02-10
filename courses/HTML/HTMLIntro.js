@@ -1,6 +1,4 @@
-import { ICourseLesson } from "../../../types";
-
-export const HtmlIntro: ICourseLesson = {
+module.exports = {
   id: 1,
   title: "Язык разметки HTML",
   url: "html-intro",
@@ -25,7 +23,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: 'Элемент <code>p</code> должен содержать текст: "Завтра начну изучать вэб-разработку!".',
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const p = iframe.contentDocument.body.querySelector("p");
             return p && p.textContent === "Завтра начну изучать вэб-разработку!";
           },
@@ -57,7 +55,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: 'В первом параграфе измените текст на: "Пожалуй, начну изучать вэб-разработку сегодня!"',
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const firstP = iframe.contentDocument.body.querySelectorAll("p")[0];
 
             return firstP && firstP.textContent === "Пожалуй, начну изучать вэб-разработку сегодня!";
@@ -67,7 +65,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: 'Добавьте второй параграф с текстом: "Начну с основ HTML"',
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondP = iframe.contentDocument.body.querySelectorAll("p")[1];
 
             return secondP && secondP.textContent === "Начну с основ HTML";
@@ -118,7 +116,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: "Добавьте второй элемент <code>div</code>",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const divs = iframe.contentDocument.body.querySelectorAll("div");
 
             return divs.length === 2;
@@ -128,7 +126,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: "У второго элемента <code>div</code> должно быть 2 элемента-потомка <code>p</code>",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondDiv = iframe.contentDocument.body.querySelectorAll("div")[1];
             return (
               secondDiv &&
@@ -168,7 +166,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Добавьте заголовок второго уровня <code>h2</code> с текстом "Отдых"`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const headers = iframe.contentDocument.body.querySelectorAll("h2");
             return headers.length === 2 && headers[1].textContent === "Отдых";
           },
@@ -178,7 +176,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Ниже добавьте заголовок третьего уровня <code>h3</code> с текстом "Парки"`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondH2 = iframe.contentDocument.body.querySelectorAll("h2")[1];
             return (
               secondH2 &&
@@ -192,7 +190,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `Ниже добавьте еще один заголовок третьего уровня с текстом "Кинотеатры"`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const h3 = Array.from(iframe.contentDocument.body.querySelectorAll("h3")).find(
               header => header.textContent === "Парки"
             );
@@ -242,7 +240,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Группа заголовков <b>"Культура"</b>, <b>"Музеи"</b>, <b>"Театры"</b> должна быть обернута в <code>div</code>.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const firstDiv = iframe.contentDocument.body.querySelectorAll("div")[0];
             return (
               firstDiv &&
@@ -257,7 +255,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Группа заголовков <b>"Отдых"</b>, <b>"Парки"</b>, <b>"Кинотеатры"</b> должна быть обернута в <code>div</code>.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondDiv = iframe.contentDocument.body.querySelectorAll("div")[1];
             return (
               secondDiv &&
@@ -308,7 +306,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Под заголовком <b>"Музеи"</b> добавьте параграф с текстом <i>"В Москве огромное количество музеев, но среди них выделяются настоящие гиганты исторических, технических и художественных экспозиций, которые необходимо посетить хотя бы один раз в жизни."</i>`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const museumH3 = iframe.contentDocument.body.querySelectorAll("h3")[0];
             return (
               museumH3 &&
@@ -324,7 +322,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Под заголовком <b>"Театры"</b> добавьте параграф с текстом <i>"Москва славится своими театрами не только на всю Россию, но и на весь мир. На сценах московских театров, которых насчитывается великое множество, проходят и классические и современные постановки. И в Москву часто приезжают театралы со всего мира."</i>`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const theaterH3 = iframe.contentDocument.body.querySelectorAll("h3")[1];
             return (
               theaterH3 &&
@@ -340,7 +338,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `В параграфе про театры оберните фразу <i>не только на всю Россию, но и на весь мир.</i> в элемент <code>span</code>.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const span = iframe.contentDocument.body.querySelector("span");
             return span && span.textContent === "не только на всю Россию, но и на весь мир.";
           },
@@ -384,7 +382,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `В параграфе про театры Москвы подчеркните, что театров в Москве много, сделав акцент на фразе "великое множество".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const em = iframe.contentDocument.body.querySelectorAll("em")[1];
             return em && em.textContent === "великое множество";
           },
@@ -393,7 +391,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `В этом же параграфе укажите важность разнообразия постановок, выделив фразу "и классические и современные постановки.".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const strong = iframe.contentDocument.body.querySelectorAll("strong")[1];
             return strong && strong.textContent === "и классические и современные постановки.";
           },
@@ -438,7 +436,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `В параграфе про театры Москвы второе предложение ("На сценах...") перенесите на следующую строку.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const br = iframe.contentDocument.body.querySelector("br");
             return (
               br &&
@@ -453,7 +451,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Отчеркните параграф про театры Москвы с помощью горизонтальной черты.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const hr = iframe.contentDocument.body.querySelector("hr");
             return (
               hr &&
@@ -515,7 +513,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Ниже параграфа с текстом "Среди самых красивых парков Москвы:" добавьте неупорядоченный список.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return ul !== null;
           },
@@ -524,7 +522,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Добавьте элемент списка с текстом "Парк Горького".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return (
               ul && ul.children[0] && ul.children[0].tagName === "LI" && ul.children[0].textContent === "Парк Горького"
@@ -535,7 +533,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `Добавьте второй элемент списка с текстом "Нескучный сад".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return (
               ul && ul.children[1] && ul.children[1].tagName === "LI" && ul.children[1].textContent === "Нескучный сад"
@@ -546,7 +544,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 4,
           label: `Добавьте третий элемент списка с текстом "Парк Победы".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return (
               ul && ul.children[2] && ul.children[2].tagName === "LI" && ul.children[2].textContent === "Парк Победы"
@@ -604,7 +602,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Ниже параграфа с текстом "К любимым кинотеатрам москвичей относятся:" добавьте упорядоченный список.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const ol = iframe.contentDocument.body.querySelector("ol");
             return !!ol;
           },
@@ -613,7 +611,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `В упорядоченный список добавьте <b>не менее трех</b> кинотеатров, которые относятся к вашим любимым.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const ol = iframe.contentDocument.body.querySelector("ol");
 
             return (
@@ -686,7 +684,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `Второму элементу <code>div</code> задайте id со значением "leisure".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const leisureElem = iframe.contentDocument.body.querySelector("#leisure");
             return (
               leisureElem &&
@@ -700,7 +698,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Заголовку <code>h2</code> с текстом "Отдых" задайте класс "big-header".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const bigHeader = iframe.contentDocument.body.querySelector(".big-header");
             return (
               bigHeader &&
@@ -714,7 +712,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `Неупорядоченному списку <code>ul</code> с помощью <code>style</code> задайте цвет текста "darkorchid". Обратите внимание, что цвет изменится у всех элементов списка.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const ul = iframe.contentDocument.body.querySelector("ul");
             return ul && ul.style.color === "darkorchid";
           },
@@ -723,7 +721,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 4,
           label: `Упорядоченному списку <code>ol</code> с помощью <code>style</code> задайте цвет фона "burlywood" (значение <code>style</code> установите "background-color: burlywood").`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const ol = iframe.contentDocument.body.querySelector("ol");
             return ol && ol.style.backgroundColor === "burlywood";
           },
@@ -792,7 +790,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 1,
           label: `После параграфа с текстом "Вот как выглядит Парк Горького:" добавьте изображение.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondImg = iframe.contentDocument.body.querySelectorAll("img")[1];
             return (
               secondImg &&
@@ -806,7 +804,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 2,
           label: `Задайте изображению источник "http://uploads.gazeta-moy-rayon-donskoy.ru/2020/07/парк-горького-москва-панорама-вк-пг.jpg".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondImg = iframe.contentDocument.body.querySelectorAll("img")[1];
             return (
               secondImg &&
@@ -822,7 +820,7 @@ export const HtmlIntro: ICourseLesson = {
         {
           id: 3,
           label: `Задайте изображению альтернативный текст "Парк Горького".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondImg = iframe.contentDocument.body.querySelectorAll("img")[1];
             return (
               secondImg &&

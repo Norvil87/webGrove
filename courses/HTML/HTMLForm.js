@@ -1,6 +1,4 @@
-import { ICourseLesson } from "../../../types";
-
-export const HtmlForm: ICourseLesson = {
+module.exports = {
   id: 4,
   title: "Формы в HTML",
   url: "html-form",
@@ -35,7 +33,7 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 1,
           label: "Создайте пустую форму.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const form = iframe.contentDocument.body.querySelector("form");
             return form !== null;
           },
@@ -44,7 +42,7 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 2,
           label: "Укажите адрес для отправки данных 'http://webgrove/server'.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const form = iframe.contentDocument.body.querySelector("form");
             return form && form.action === "http://webgrove/server";
           },
@@ -53,7 +51,7 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 3,
           label: "Укажите метод отправки данных 'POST'.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const form = iframe.contentDocument.body.querySelector("form");
             return form && form.method === "post";
           },
@@ -109,7 +107,7 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 1,
           label: `Внутри формы создайте текстовое поле.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
             return textInput && textInput.parentElement && textInput.parentElement.tagName === "FORM";
           },
@@ -118,8 +116,8 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 2,
           label: `Укажите имя поля "username".`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") ;
             return textInput && textInput.name === "username";
           },
           failMsg: "Убедитесь, что вы правильно задали аттрибут name",
@@ -127,8 +125,8 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 3,
           label: `Укажите плэйсхолдер "Иван Сидоров".`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") ;
             return textInput && textInput.placeholder === "Иван Сидоров";
           },
           failMsg: "Убедитесь, что вы правильно задали аттрибут placeholder",
@@ -136,8 +134,8 @@ export const HtmlForm: ICourseLesson = {
         {
           id: 4,
           label: `В качестве исходного значения поле укажите свое имя (исходное значение не должно быть пустым).`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") ;
             return textInput && textInput.value !== "";
           },
           failMsg: "Убедитесь, что вы задали непустой аттрибут value",
@@ -195,7 +193,7 @@ label {
         {
           id: 1,
           label: `Дайте текстовому полю уникальный идентификатор <code>username</code>.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
             return textInput && textInput.id === "username";
           },
@@ -204,8 +202,8 @@ label {
         {
           id: 2,
           label: `<b>Перед</b> текстовым полем создайте <code>label</code> с текстом "Имя заказчика".`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") ;
             return (
               textInput &&
               textInput.previousElementSibling &&
@@ -218,12 +216,12 @@ label {
         {
           id: 3,
           label: `Свяжите <code>label</code> c текстовым полем.`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const textInput = iframe.contentDocument.body.querySelector("input[type=text]") ;
             if (!textInput) {
               return false;
             }
-            const label = textInput.previousElementSibling as HTMLLabelElement;
+            const label = textInput.previousElementSibling ;
             return textInput.id === "username" && label && label.htmlFor === "username";
           },
           failMsg: "Убедитесь, что вы правильно задали аттрибут for",
@@ -286,7 +284,7 @@ label {
         {
           id: 1,
           label: `Создайте числовое поле.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
             return numInput && numInput.parentElement && numInput.parentElement.tagName === "FORM";
           },
@@ -295,8 +293,8 @@ label {
         {
           id: 2,
           label: `Укажите аттрибуты поля: <ul><li>идентификатор со значением <code>num-guests</code></li><li>название поля <code>num-guests</code></li><li>исходное значение <code>4</code></li><li>шаг изменения значения <code>1</code></li></ul>`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const numInput = iframe.contentDocument.body.querySelector("input[type=number]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const numInput = iframe.contentDocument.body.querySelector("input[type=number]") ;
             return (
               numInput &&
               numInput.id === "num-guests" &&
@@ -310,8 +308,8 @@ label {
         {
           id: 3,
           label: `<b>Перед</b> числовым полем создайте <code>label</code> с текстом "Количество участников".`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const numInput = iframe.contentDocument.body.querySelector("input[type=number]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const numInput = iframe.contentDocument.body.querySelector("input[type=number]") ;
             return (
               numInput &&
               numInput.previousElementSibling &&
@@ -324,12 +322,12 @@ label {
         {
           id: 4,
           label: `Свяжите <code>label</code> c числовым полем.`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const numInput = iframe.contentDocument.body.querySelector("input[type=number]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const numInput = iframe.contentDocument.body.querySelector("input[type=number]") ;
             if (!numInput) {
               return false;
             }
-            const label = numInput.previousElementSibling as HTMLLabelElement;
+            const label = numInput.previousElementSibling ;
             return numInput.id === "num-guests" && label && label.htmlFor === "num-guests";
           },
           failMsg: "Убедитесь, что вы правильно задали аттрибут for",
@@ -393,8 +391,8 @@ label {
         {
           id: 1,
           label: `Создайте поле для номера телефона: <ul><li>идентификатор со значением <code>tel</code></li><li>название поля <code>tel</code></li><li>максимальную длину <code>18</code> символов</li><li>плэйсхолдер на свое усмотрение (значение не должно быть пустым)</li></ul>`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const telInput = iframe.contentDocument.body.querySelector("input[type=tel]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const telInput = iframe.contentDocument.body.querySelector("input[type=tel]") ;
             return (
               telInput &&
               telInput.parentElement &&
@@ -410,12 +408,12 @@ label {
         {
           id: 2,
           label: `<b>Перед</b>  полем для телефона создайте <code>label</code> с текстом "Телефон:", свяжите поле со своей подписью.`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const telInput = iframe.contentDocument.body.querySelector("input[type=tel]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const telInput = iframe.contentDocument.body.querySelector("input[type=tel]") ;
             if (!telInput) {
               return false;
             }
-            const label = telInput.previousElementSibling as HTMLLabelElement;
+            const label = telInput.previousElementSibling ;
             return label && label.textContent === "Телефон:" && label.htmlFor === "tel";
           },
           failMsg:
@@ -424,8 +422,8 @@ label {
         {
           id: 3,
           label: `Создайте поле для email: <ul><li>идентификатор со значением <code>email</code></li><li>название поля <code>email</code></li><li>плэйсхолдер на свое усмотрение (значение не должно быть пустым)</li></ul>`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const emailInput = iframe.contentDocument.body.querySelector("input[type=email]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const emailInput = iframe.contentDocument.body.querySelector("input[type=email]") ;
             return (
               emailInput &&
               emailInput.parentElement &&
@@ -440,12 +438,12 @@ label {
         {
           id: 4,
           label: `<b>Перед</b>  полем для email создайте <code>label</code> с текстом "E-mail:", свяжите поле со своей подписью.`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const emailInput = iframe.contentDocument.body.querySelector("input[type=email]") as HTMLInputElement;
+          testFn: (iframe) => {
+            const emailInput = iframe.contentDocument.body.querySelector("input[type=email]") ;
             if (!emailInput) {
               return false;
             }
-            const label = emailInput.previousElementSibling as HTMLLabelElement;
+            const label = emailInput.previousElementSibling ;
             return label && label.textContent === "E-mail:" && label.htmlFor === "email";
           },
           failMsg:
@@ -544,7 +542,7 @@ label {
         {
           id: 1,
           label: `Создайте выпадающий список, укажите <ul><li>идентификатор на свое усмотрение (значение не должно быть пустым)</li><li>название списка <code>scary</code></li></ul>`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const select = iframe.contentDocument.body.querySelector("select");
             return (
               select &&
@@ -559,7 +557,7 @@ label {
         {
           id: 2,
           label: `Создайте следующие варианты выбора <ul><li>Первый вариант с текстом "Не страшно" и значением <code>scary-none</code></li><li>Второй вариант с текстом "Немного страшно" и значением <code>scary-low</code></li><li>Третий вариант с текстом "Страшновато" и значением <code>scary-moderate</code></li><li>Четвертый вариант на свое усмотрение</li></ul>`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const select = iframe.contentDocument.body.querySelector("select");
             if (!select) {
               return false;
@@ -582,12 +580,12 @@ label {
         {
           id: 3,
           label: `<b>Перед</b> выпадающим списком создайте <code>label</code> с текстом "Хотите страшного?", свяжите выпадающий список со своей подписью.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const select = iframe.contentDocument.body.querySelector("select");
             if (!select) {
               return false;
             }
-            const label = select.previousElementSibling as HTMLLabelElement;
+            const label = select.previousElementSibling ;
             return label && label.textContent === "Хотите страшного?" && label.htmlFor === select.id;
           },
           failMsg:
@@ -713,10 +711,10 @@ span {
         {
           id: 1,
           label: `Создайте первый чекбокс, укажите <ul><li>идентификатор <code>reality</code></li><li>исходное значение <code>reality</code></li><li>имя чекбокса (и всей группы) <code>type</code></li></ul>`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const firstCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
-            )[0] as HTMLInputElement;
+            )[0] ;
             return (
               firstCheckbox &&
               firstCheckbox.parentElement &&
@@ -731,14 +729,14 @@ span {
         {
           id: 2,
           label: `<b>После</b> первого чекбокса создайте <code>label</code> с текстом "Квест в реальности", свяжите чекбокс с подписью.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const firstCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
-            )[0] as HTMLInputElement;
+            )[0] ;
             if (!firstCheckbox) {
               return false;
             }
-            const label = firstCheckbox.nextElementSibling as HTMLLabelElement;
+            const label = firstCheckbox.nextElementSibling ;
             return label && label.textContent === "Квест в реальности" && label.htmlFor === firstCheckbox.id;
           },
           failMsg: "Убедитесь, что вы создали label после чекбокса с правильным текстовым содержанием и аттрибутом for",
@@ -746,10 +744,10 @@ span {
         {
           id: 3,
           label: `Создайте второй чекбокс, укажите <ul><li>идентификатор <code>performance</code></li><li>исходное значение <code>performance</code></li></ul> Второй чекбокс должен быть выбран по умолчанию.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
-            )[1] as HTMLInputElement;
+            )[1] ;
             return (
               secondCheckbox &&
               secondCheckbox.parentElement &&
@@ -765,14 +763,14 @@ span {
         {
           id: 4,
           label: `<b>После</b> второго чекбокса создайте <code>label</code> с текстом "Перформанс", свяжите чекбокс с подписью.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
-            )[1] as HTMLInputElement;
+            )[1] ;
             if (!secondCheckbox) {
               return false;
             }
-            const label = secondCheckbox.nextElementSibling as HTMLLabelElement;
+            const label = secondCheckbox.nextElementSibling ;
             return label && label.textContent === "Перформанс" && label.htmlFor === secondCheckbox.id;
           },
           failMsg: "Убедитесь, что вы создали label после чекбокса с правильным текстовым содержанием и аттрибутом for",
@@ -780,14 +778,14 @@ span {
         {
           id: 5,
           label: `Создайте третий чекбокс, укажите аттрибуты на свое усмотрение, <b>после</b> него создайте подпись и свяжите ее с чекбоксом.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const thirdCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
-            )[2] as HTMLInputElement;
+            )[2] ;
             if (!thirdCheckbox) {
               return false;
             }
-            const label = thirdCheckbox.nextElementSibling as HTMLLabelElement;
+            const label = thirdCheckbox.nextElementSibling ;
             return (
               thirdCheckbox &&
               thirdCheckbox.parentElement &&
@@ -938,8 +936,8 @@ span {
         {
           id: 1,
           label: `Создайте первую радиокнопку, укажите <ul><li>идентификатор <code>popularity</code></li><li>исходное значение <code>popularity</code></li><li>имя радиокнопки (и всей группы) <code>preference</code></li></ul>`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] as HTMLInputElement;
+          testFn: (iframe) => {
+            const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] ;
             return (
               firstRadio &&
               firstRadio.parentElement &&
@@ -954,12 +952,12 @@ span {
         {
           id: 2,
           label: `<b>После</b> первой радиокнопки создайте <code>label</code> с текстом "Популярность", свяжите радиокнопку с подписью.`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] as HTMLInputElement;
+          testFn: (iframe) => {
+            const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] ;
             if (!firstRadio) {
               return false;
             }
-            const label = firstRadio.nextElementSibling as HTMLLabelElement;
+            const label = firstRadio.nextElementSibling ;
             return label && label.textContent === "Популярность" && label.htmlFor === firstRadio.id;
           },
           failMsg:
@@ -968,10 +966,10 @@ span {
         {
           id: 3,
           label: `Создайте вторую радиокнопку, укажите <ul><li>идентификатор <code>reviews</code></li><li>исходное значение <code>reviews</code></li></ul> Вторая радиокнопка должна быть выбрана по умолчанию.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondRadio = iframe.contentDocument.body.querySelectorAll(
               "input[type=radio]"
-            )[1] as HTMLInputElement;
+            )[1] ;
             return (
               secondRadio &&
               secondRadio.parentElement &&
@@ -987,14 +985,14 @@ span {
         {
           id: 4,
           label: `<b>После</b> второй радиокнопки создайте <code>label</code> с текстом "Отзывы", свяжите радиокнопку с подписью.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondRadio = iframe.contentDocument.body.querySelectorAll(
               "input[type=radio]"
-            )[1] as HTMLInputElement;
+            )[1] ;
             if (!secondRadio) {
               return false;
             }
-            const label = secondRadio.nextElementSibling as HTMLLabelElement;
+            const label = secondRadio.nextElementSibling ;
             return label && label.textContent === "Отзывы" && label.htmlFor === secondRadio.id;
           },
           failMsg:
@@ -1003,12 +1001,12 @@ span {
         {
           id: 5,
           label: `Создайте третью радиокнопку, укажите аттрибуты на свое усмотрение, <b>после</b> нее создайте подпись и свяжите ее с радиокнопкой.`,
-          testFn: (iframe: HTMLIFrameElement) => {
-            const thirdRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[2] as HTMLInputElement;
+          testFn: (iframe) => {
+            const thirdRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[2] ;
             if (!thirdRadio) {
               return false;
             }
-            const label = thirdRadio.nextElementSibling as HTMLLabelElement;
+            const label = thirdRadio.nextElementSibling ;
             return (
               thirdRadio &&
               thirdRadio.parentElement &&
@@ -1159,7 +1157,7 @@ textarea {
         {
           id: 1,
           label: `Создайте поле для многострочного текста, укажите <ul><li>идентификатор <code>message</code></li><li>имя <code>message</code></li><li><code>10</code> колонок</li><li><code>10</code> рядов</li></ul>`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const textarea = iframe.contentDocument.body.querySelector("textarea");
             return (
               textarea &&
@@ -1176,12 +1174,12 @@ textarea {
         {
           id: 2,
           label: `<b>Перед</b> полем для многострочного текста создайте <code>label</code> с текстом "Дополнительная информация:", свяжите поле с подписью.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const textarea = iframe.contentDocument.body.querySelector("textarea");
             if (!textarea) {
               return false;
             }
-            const label = textarea.previousElementSibling as HTMLLabelElement;
+            const label = textarea.previousElementSibling ;
             return label && label.textContent === "Дополнительная информация:" && label.htmlFor === textarea.id;
           },
           failMsg: "Убедитесь, что вы создали label перед полем с правильным текстовым содержанием и аттрибутом for",
@@ -1189,7 +1187,7 @@ textarea {
         {
           id: 3,
           label: `Полю для многострочного текста задайте исходный текст на свое усмотрение`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const textarea = iframe.contentDocument.body.querySelector("textarea");
             return textarea && textarea.textLength > 0;
           },
@@ -1344,7 +1342,7 @@ textarea {
         {
           id: 1,
           label: `Создайте кнопку отправки данных формы.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const submitButton = iframe.contentDocument.body.querySelector("button[type=submit]");
             return submitButton && submitButton.parentElement && submitButton.parentElement.tagName === "FIELDSET";
           },
@@ -1353,7 +1351,7 @@ textarea {
         {
           id: 2,
           label: `Задайте кнопке текст "Показать!".`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const submitButton = iframe.contentDocument.body.querySelector("button[type=submit]");
             return submitButton && submitButton.textContent === "Показать!";
           },

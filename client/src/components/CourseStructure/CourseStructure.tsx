@@ -12,6 +12,7 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import "react-accessible-accordion/dist/fancy-example.css";
+import { post } from "../../../services";
 
 interface ICourseListProps {
   courseStructure: ICourse;
@@ -21,7 +22,9 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
   const dispatch = useDispatch();
   const { url: matchedUrl } = useRouteMatch();
 
-  const onExcerciseLinkClick = (id: number, lesson: ICourseLesson) => () => {
+  const onExcerciseLinkClick = (id: number, lessonUrl: string) => async () => {
+    const { url: courseUrl } = courseStructure;
+    const lesson = await post("http://localhost:8081/lesson", { lessonUrl, courseUrl });
     const excercise = lesson.excercises[id - 1];
 
     dispatch(
@@ -41,7 +44,7 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
       excercises.push(
         <li key={id + url} className="course-structure__exercise">
           <span>{i + 1}. </span>
-          <Link to={`${matchedUrl}/lessons/${lesson.url}/${url}`} onClick={onExcerciseLinkClick(id, lesson)}>
+          <Link to={`${matchedUrl}/lessons/${lesson.url}/${url}`} onClick={onExcerciseLinkClick(id, lesson.url)}>
             {header}
           </Link>
         </li>

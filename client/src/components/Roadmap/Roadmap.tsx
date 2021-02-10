@@ -4,19 +4,11 @@ import roadmap from "../../img/roadmap_ru.png";
 import "./Roadmap.scss";
 import { setCourseStructure } from "../../store/actions";
 import { useDispatch } from "react-redux";
-import { ICourse } from "../../types";
-import { createCourseStructure } from "../../../services";
-
-import { Html } from "../../data/courses/HTML/HTML";
-import { Css } from "../../data/courses/CSS/СSS";
-import { Js } from "../../data/courses/JS/JS";
 
 const Roadmap: React.FC = () => {
   const dispatch = useDispatch();
-  const handleCourseLinkClick = (course: ICourse) => () => {
-    const courseStructure = createCourseStructure(course);
-
-    dispatch(setCourseStructure(courseStructure));
+  const handleCourseLinkClick = (courseUrl: string) => () => {
+    dispatch(setCourseStructure({ url: courseUrl, title: null, info: null, lessons: null, id: null }));
   };
 
   return (
@@ -27,21 +19,21 @@ const Roadmap: React.FC = () => {
         <Link
           to="/courses/html"
           className="roadmap__link roadmap__course-link html-link"
-          onClick={handleCourseLinkClick(Html)}
+          onClick={handleCourseLinkClick('Html')}
         >
           <span>HTML</span> Пройти курс
         </Link>
         <Link
           to="/courses/css"
           className="roadmap__link roadmap__course-link css-link"
-          onClick={handleCourseLinkClick(Css)}
+          onClick={handleCourseLinkClick('Css')}
         >
           <span>CSS</span> Пройти курс
         </Link>
         <Link
           to="/courses/js"
           className="roadmap__link roadmap__course-link js-link"
-          onClick={handleCourseLinkClick(Js)}
+          onClick={handleCourseLinkClick('Js')}
         >
           <span>Javascript</span> Пройти курс
         </Link>

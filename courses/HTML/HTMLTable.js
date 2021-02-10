@@ -1,6 +1,4 @@
-import { ICourseLesson } from "../../../types";
-
-export const HtmlTable: ICourseLesson = {
+module.exports = {
   id: 3,
   title: "Таблицы в HTML",
   url: "html-table",
@@ -28,7 +26,7 @@ export const HtmlTable: ICourseLesson = {
         {
           id: 1,
           label: "Под параграфом с текстом создайте пустую таблицу.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const table = iframe.contentDocument.body.querySelector("table");
             return table && table.previousElementSibling && table.previousElementSibling.tagName === "P";
           },
@@ -72,7 +70,7 @@ export const HtmlTable: ICourseLesson = {
         {
           id: 1,
           label: "Добавьте в таблицу еще 3 пустые строки.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const table = iframe.contentDocument.body.querySelector("table");
             if (!table) {
               return false;
@@ -149,7 +147,7 @@ th, td {
           id: 1,
           label:
             "Добавьте во вторую строку таблицы ячейки с данными: <ul><li>XR-1 PRO</li><li>пластик</li><li>60</li><li>7000</li></ul>",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondRow = iframe.contentDocument.body.querySelectorAll("tr")[1];
             if (!secondRow) {
               return false;
@@ -169,7 +167,7 @@ th, td {
           id: 2,
           label:
             "Добавьте в третью строку таблицы ячейки с данными: <ul><li>XT-8</li><li>алюминий</li><li>45</li><li>6000</li></ul>",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const thirdRow = iframe.contentDocument.body.querySelectorAll("tr")[2];
             if (!thirdRow) {
               return false;
@@ -189,7 +187,7 @@ th, td {
           id: 3,
           label:
             "Добавьте в четвертую строку таблицы ячейки с данными: <ul><li>XT-8 ULTRA</li></ul> Остальные ячейки оставьте пустыми.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const fourthRow = iframe.contentDocument.body.querySelectorAll("tr")[3];
             if (!fourthRow) {
               return false;
@@ -301,7 +299,7 @@ th, td {
           id: 1,
           label:
             "Добавьте в первую строку таблицы заголовки с данными: <ul><li>Модель</li><li>Корпус</li><li>Кол-во языков</li><li>Стоимость, руб.</li></ul>",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const firstRow = iframe.contentDocument.body.querySelectorAll("tr")[0];
             if (!firstRow) {
               return false;
@@ -320,7 +318,7 @@ th, td {
         {
           id: 2,
           label: "Укажите, что заголовки являются заголовками столбцов.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const firstRow = iframe.contentDocument.body.querySelectorAll("tr")[0];
             if (!firstRow) {
               return false;
@@ -433,7 +431,7 @@ th, td {
         {
           id: 1,
           label: "Оберните заголовки таблицы в элемент <code>thead</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const thead = iframe.contentDocument.body.querySelector("thead");
 
             return (
@@ -450,7 +448,7 @@ th, td {
         {
           id: 2,
           label: "Оберните данные таблицы в элемент <code>tbody</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
 
             return (
@@ -599,7 +597,7 @@ th, td {
         {
           id: 1,
           label: "Корпус моделей XR и XR-1 PRO сделан из одинакового материала - пластика. Объедините эти ячейки.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
@@ -616,7 +614,7 @@ th, td {
         {
           id: 2,
           label: "Удалите лишние ячейки.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
@@ -765,7 +763,7 @@ th, td {
           id: 1,
           label:
             "У модели XT-8 ULTRA отсутствуют технические характеристики. Объедините пустые ячейки в одну, добавьте в нее текст 'Технические характеристики отсутствуют'.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
@@ -787,7 +785,7 @@ th, td {
         {
           id: 2,
           label: "Удалите лишние ячейки.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;

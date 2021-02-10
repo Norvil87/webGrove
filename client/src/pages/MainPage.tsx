@@ -4,18 +4,12 @@ import "./MainPage.scss";
 import { Link } from "react-router-dom";
 import { setCourseStructure } from "../store/actions";
 import { useDispatch } from "react-redux";
-import { Html } from "../data/courses/HTML/HTML";
-import { Css } from "../data/courses/CSS/СSS";
-import { Js } from "../data/courses/JS/JS";
-import { ICourse } from "../types";
-import { createCourseStructure } from "../../services";
 
 const MainPage: React.FC = () => {
   const dispatch = useDispatch();
 
-  const handleCourseLinkClick = (course: ICourse) => () => {
-    const courseStructure = createCourseStructure(course);
-    dispatch(setCourseStructure(courseStructure));
+  const handleCourseLinkClick = (courseUrl: string) => () => {
+    dispatch(setCourseStructure({ url: courseUrl, title: null, info: null, lessons: null, id: null }));
   };
 
   return (
@@ -29,7 +23,7 @@ const MainPage: React.FC = () => {
         <h2>Курсы</h2>
         <ul className="course-list">
           <li className="course-list__course-card course-list__html-card">
-            <Link to="/courses/html" onClick={handleCourseLinkClick(Html)}>
+            <Link to="/courses/html" onClick={handleCourseLinkClick("Html")}>
               <h3>HTML</h3>
               <button className="button" type="button">
                 Приступить
@@ -37,7 +31,7 @@ const MainPage: React.FC = () => {
             </Link>
           </li>
           <li className="course-list__course-card course-list__css-card">
-            <Link to="/courses/css" onClick={handleCourseLinkClick(Css)}>
+            <Link to="/courses/css" onClick={handleCourseLinkClick("Css")}>
               <h3>CSS</h3>
               <button className="button" type="button">
                 Приступить
@@ -45,7 +39,7 @@ const MainPage: React.FC = () => {
             </Link>
           </li>
           <li className="course-list__course-card course-list__js-card">
-            <Link to="/courses/js" onClick={handleCourseLinkClick(Js)}>
+            <Link to="/courses/js" onClick={handleCourseLinkClick("Js")}>
               <h3>JavaScript</h3>
               <button className="button" type="button">
                 Приступить

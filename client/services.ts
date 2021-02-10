@@ -12,20 +12,3 @@ export const post = async (url: string, data: any): Promise<any> => {
 
   return response.data;
 };
-
-// temp. Remove when courseStructure is fetched fron server
-export const createCourseStructure = (course: any) => {
-  const courseStructure = JSON.parse(JSON.stringify(course));
-  const lessons = courseStructure.lessons;
-  for (const lesson in lessons) {
-    const excercises = lessons[lesson].excercises;
-    for (const excercise of excercises) {
-      delete excercise.theory;
-      delete excercise.tasks;
-      delete excercise.goal;
-      delete excercise.initValues;
-    }
-  }
-
-  return courseStructure;
-};

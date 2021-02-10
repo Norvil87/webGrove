@@ -1,14 +1,13 @@
-import { ICourse } from "../../../types";
-import { HtmlIntro } from "./HTMLIntro";
-import { HtmlDocument } from "./HTMLDocument";
-import { HtmlTable } from "./HTMLTable";
-import { HtmlForm } from "./HTMLForm";
-import { HtmlSemantic } from "./HTMLSemantic";
+const HtmlIntro = require("./HTMLIntro.js");
+const HtmlDocument = require("./HTMLDocument.js");
+const HtmlTable = require("./HTMLTable.js");
+const HtmlForm = require("./HTMLForm.js");
+const HtmlSemantic = require("./HTMLSemantic.js");
 
-export const Html: ICourse = {
+module.exports = {
   id: 1,
   title: "Курс по HTML",
-  url: 'html',
+  url: "html",
   info: {
     goal: "HTML - основа вэб-страницы. Весь контент, который вы видите на странице - различные HTML элементы",
     result: "Знание основных HTML элементов, структуры страницы, HTML таблиц и форм, семантический HTML",

@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CourseList from "../components/CourseStructure/CourseStructure";
-import { ICourse } from "../types";
 import "./CoursePage.scss";
+import { post } from "../../services";
 
 interface ICoursePage {
-  courseStructure: ICourse;
+  courseUrl: string;
 }
 
-const CoursePage: React.FC<ICoursePage> = courseStructure => {
+const CoursePage: React.FC<ICoursePage> = courseUrl => {
+  const [courseStructure, setCourseStructure] = useState(null);
 
-   if (!courseStructure.courseStructure) {
+  const fetchCourseStructure = async () => {
+    const courseStructure = await post("http://localhost:8081/courseStructure", courseUrl);
+    setCourseStructure(courseStructure);
+  };
+
+  useEffect(() => {
+    fetchCourseStructure();
+  }, []);
+
+  if (!courseStructure) {
     return null;
-  } 
+  }
 
-  const { title, info } = courseStructure.courseStructure;
+  const { title, info } = courseStructure;
   const { goal, result, prerequisite, followup } = info;
 
   return (
@@ -41,7 +51,7 @@ const CoursePage: React.FC<ICoursePage> = courseStructure => {
           </div>
         </div>
       </header>
-      <CourseList {...courseStructure} />
+      <CourseList courseStructure={courseStructure} />
     </section>
   );
 };

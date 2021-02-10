@@ -1,6 +1,4 @@
-import { ICourseLesson } from "../../../types";
-
-export const HtmlDocument: ICourseLesson = {
+module.exports = {
   id: 2,
   title: "HTML документ",
   url: "html-document",
@@ -34,7 +32,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 1,
           label: "Объявите тип документа.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const spans = iframe.ownerDocument.querySelector(".monaco-editor").querySelectorAll("span");
             const doctype = Array.from(spans).filter(span => span.textContent === "<!DOCTYPE")[0];
             return (
@@ -50,7 +48,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 2,
           label: "Под доктайпом добавьте элемент <code>html</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const spans = iframe.ownerDocument.querySelector(".monaco-editor").querySelectorAll("span");
             const html = Array.from(spans).filter(span => span.textContent === "html");
             return (
@@ -101,7 +99,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 1,
           label: "Добавьте на страницу элемент <code>head</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const spans = iframe.ownerDocument.querySelector(".monaco-editor").querySelectorAll("span");
             const head = Array.from(spans).filter(span => span.textContent === "head");
             return (
@@ -117,7 +115,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 2,
           label: "Добавьте на страницу заголовок документа с текстом 'Достопримечательности Москвы'.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const spans = iframe.ownerDocument.querySelector(".monaco-editor").querySelectorAll("span");
             const title = Array.from(spans).filter(span => span.textContent === "title");
             return (
@@ -169,7 +167,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 1,
           label: "Добавьте на страницу элемент <code>body</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const spans = iframe.ownerDocument.querySelector(".monaco-editor").querySelectorAll("span");
             const body = Array.from(spans).filter(span => span.textContent === "body");
             return (
@@ -246,7 +244,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 1,
           label: "Сразу после параграфа про музеи Москвы добавьте ссылку с текстом 'Политехнический музей Москвы'.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const a = iframe.contentDocument.body.querySelector("a");
             return (
               a &&
@@ -263,7 +261,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 2,
           label: "Задайте ссылке адрес 'https://polymus.ru/ru/'. Не забудьте проверить ссылку кликнув по ней.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const a = iframe.contentDocument.body.querySelector("a");
             return (
               a &&
@@ -343,7 +341,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 1,
           label: "Картинку с изображением Большого театра сделайте ссылкой.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const a = iframe.contentDocument.body.querySelectorAll("a")[1];
             return (
               a &&
@@ -359,7 +357,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 2,
           label: "Задайте ссылке адрес 'https://en.wikipedia.org/wiki/Bolshoi_Theatre'.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const a = iframe.contentDocument.body.querySelectorAll("a")[1];
             return (
               a &&
@@ -441,7 +439,7 @@ export const HtmlDocument: ICourseLesson = {
           id: 1,
           label:
             "Сразу под неупорядоченным списком парков добавьте ссылку на страницу <b>parks.html</b> с текстом 'Узнать больше о парках'. Файл расположен в той же папке, что и <b>index.html</b>.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const anchor = Array.from(iframe.contentDocument.body.querySelectorAll("a")).find(
               anchor => anchor.textContent === "Узнать больше о парках"
             );
@@ -459,7 +457,7 @@ export const HtmlDocument: ICourseLesson = {
           id: 2,
           label:
             "Сразу под упорядоченным списком кинотеатров добавьте ссылку на страницу <b>cinemas.html</b> с текстом 'Полный список кинотеатров'. Файл расположен в той же папке, что и остальные 2 файла.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const anchor = Array.from(iframe.contentDocument.body.querySelectorAll("a")).find(
               anchor => anchor.textContent === "Полный список кинотеатров"
             );
@@ -551,7 +549,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 1,
           label: "Сразу под заголовком <code>h1</code> создайте неупорядоченный список с двумя элементами.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const ul = iframe.contentDocument.body.querySelector("h1").nextElementSibling;
             return (
               ul &&
@@ -567,12 +565,12 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 2,
           label: `В первый элемент списка поместите якорную ссылку с текстом 'Культура', ведущую к разделу с <code>id="culture"</code>.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const firstLi = iframe.contentDocument.body.querySelectorAll("ul")[0].firstElementChild;
             if (!firstLi || firstLi.tagName !== "LI" || !firstLi.children) {
               return false;
             }
-            const anchor = firstLi.children[0] as HTMLAnchorElement;
+            const anchor = firstLi.children[0] ;
             return anchor && anchor.tagName === "A" && anchor.textContent === "Культура" && anchor.hash === "#culture";
           },
           failMsg:
@@ -581,12 +579,12 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 3,
           label: `Во второй элемент списка поместите якорную ссылку с текстом 'Отдых', ведущую к разделу с <code>id="leisure"</code>.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const secondLi = iframe.contentDocument.body.querySelectorAll("ul")[0].lastElementChild;
             if (!secondLi || secondLi.tagName !== "LI" || !secondLi.children) {
               return false;
             }
-            const anchor = secondLi.children[0] as HTMLAnchorElement;
+            const anchor = secondLi.children[0] ;
             return anchor && anchor.tagName === "A" && anchor.textContent === "Отдых" && anchor.hash === "#leisure";
           },
           failMsg:
@@ -670,7 +668,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 1,
           label: "Раскомментируйте заголовок <code>h1</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             const h1 = iframe.contentDocument.body.querySelector("h1");
             return h1 !== null;
           },
@@ -679,7 +677,7 @@ export const HtmlDocument: ICourseLesson = {
         {
           id: 2,
           label: `Добавьте любой комментарий.`,
-          testFn: (iframe: HTMLIFrameElement) => {
+          testFn: (iframe) => {
             let comments = [];
             let currentNode;
             const iterator = document.createNodeIterator(iframe.contentDocument.body, NodeFilter.SHOW_COMMENT);
