@@ -15,7 +15,7 @@ exports.createCourseStructure = (req, res) => {
       delete excercise.initValues;
     }
   }
-  console.log('gfhgfhfghfghgfh')
+
   if (!courseStructure) {
     return res.status(500).send({ message: "Не удалось создать структуру курса" });
   }
@@ -27,11 +27,11 @@ exports.getLesson = (req, res) => {
   const { courseUrl, lessonUrl } = req.body;
   const course = courses[courseUrl.toUpperCase()];
   const lesson = course.lessons[lessonUrl];
-  console.log('gfhgfhfghfghgfh')
+  console.log(lesson)
 
   if (!lesson) {
     return res.status(404).send({ message: "Неверный url урока" });
   }
 
-  res.status(200).send(lesson);
+    res.status(200).send(lesson);
 };

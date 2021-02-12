@@ -1,4 +1,4 @@
-import { ICourse } from "../../../types";
+import { ICourse } from "../../types";
 import { JsIntro } from "./JSIntro";
 
 export const Js: ICourse = {

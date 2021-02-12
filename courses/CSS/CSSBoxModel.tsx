@@ -1,4 +1,4 @@
-import { ICourseLesson } from "../../../types";
+import { ICourseLesson } from "../../types";
 
 export const CssBoxModel: ICourseLesson = {
   id: 4,

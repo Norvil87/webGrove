@@ -30,7 +30,9 @@ const RouteNavigator = () => {
 
   const getLesson = async (courseUrl: string, lessonUrl: string, exerciseUrl: string) => {
     await post("http://localhost:8081/lesson", { lessonUrl, courseUrl }).then(response => {
+     
       const excersice = response.excercises.find((excersice: IExcercise) => excersice.url === exerciseUrl);
+      console.log(excersice)
       dispatch(
         setCurrentExercise({
           ...excersice,

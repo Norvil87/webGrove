@@ -36,12 +36,12 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
 
     currentExercise.tasks.map((task: ICurrentTask) => {
       let taskPassed;
-     
+
       if (task.testRegExp) {
         const textContent = iframe.contentDocument.querySelector("style").textContent;
         taskPassed = task.testRegExp.every(regexp => regexp.test(textContent));
       } else {
-        taskPassed = task.testFn(iframe);
+        taskPassed = new Function("iframe", task.testFn)(iframe);
       }
 
       if (taskPassed) {
