@@ -1,15 +1,15 @@
-exports.allAccess = (req, res) => {
+export const allAccess = (req, res) => {
   res.status(200).send("Публичный контент");
 };
 
-exports.userBoard = (req, res) => {
+export const userBoard = (req, res) => {
   res.status(200).send("Контент пользователя");
 };
 
-exports.adminBoard = (req, res) => {
+export const adminBoard = (req, res) => {
   res.status(200).send("Контент админа");
 };
 
-exports.moderatorBoard = (req, res) => {
+export const moderatorBoard = (req, res) => {
   res.status(200).send("Контент модератора");
 };

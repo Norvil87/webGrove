@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "target": "es6",
     "moduleResolution": "node",
-    //"outDir": "dist"
+    "outDir": "dist"
   },
   "exclude": ["client"],
   "lib": ["es2015"]

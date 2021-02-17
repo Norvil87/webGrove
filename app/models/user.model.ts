@@ -7,4 +7,4 @@ const User = mongoose.model("User", {
   roles: [{ type: mongoose.Schema.Types.ObjectId, ref: "Role" }],
 });
 
-module.exports = User;
+export default User;

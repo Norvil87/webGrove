@@ -1,7 +1,8 @@
-const { verifyRegister } = require("../middlewares");
-const controller = require("../controllers/auth.controllers");
+import middlewares from "../middlewares";
+import {register, login } from "../controllers/auth.controllers";
+import verifyRegister from "../middlewares/verifyRegister";
 
-module.exports = function (app) {
+export default function (app) {
   app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Header", "x-access-token, Origin, Content-Type, Accept");
     next();
@@ -10,8 +11,8 @@ module.exports = function (app) {
   app.post(
     "/register",
     [verifyRegister.checkDuplicateUsernameOrEmail, verifyRegister.checkRolesExisted],
-    controller.register
+    register
   );
 
-  app.post("/login", controller.login);
+  app.post("/login", login);
 };
