@@ -1,15 +1,16 @@
-import { ICourseLesson } from "../../types";
-
-export const CssSelectors: ICourseLesson = {
-  id: 1,
-  title: "Селекторы CSS",
-  url: "css-selectors",
-  excercises: [
-    {
-      id: 1,
-      header: "Язык таблиц стилей CSS",
-      url: "css-intro",
-      theory: `<p>HTML обладает большими возможностями по созданию контента вашей страницы, но выглядит он... Впрочем, смотрите сами  - страница справа сверстана на чистом HTML. Вся красота современных вэб-сайтов создается с помощью ряда инструментов, а за визуальное отображение элементов на странице отвечает <em>CSS</em>.</p>
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CssSelectors = void 0;
+exports.CssSelectors = {
+    id: 1,
+    title: "Селекторы CSS",
+    url: "css-selectors",
+    excercises: [
+        {
+            id: 1,
+            header: "Язык таблиц стилей CSS",
+            url: "css-intro",
+            theory: `<p>HTML обладает большими возможностями по созданию контента вашей страницы, но выглядит он... Впрочем, смотрите сами  - страница справа сверстана на чистом HTML. Вся красота современных вэб-сайтов создается с помощью ряда инструментов, а за визуальное отображение элементов на странице отвечает <em>CSS</em>.</p>
 <p>CSS - каскадная таблица стилей (<b>Cascading Style Sheets</b>), это набор визуальных правил (<em>стилей</em>), которые применяются к HTML элементам, задавая им размеры, тип и размер шрифта, цвет, фон, позицию на странице, взаимодействие с другими элементами (раскладку) и другие визуальные свойства. Что в этом определении означает "каскадная", мы поговорим позже.</p>
 <p>На самом деле мы уже применяли CSS в курсе по HTML. Для этого мы использовали аттрибут <code>style</code>. Вспомним, как это работало:</p>
 
@@ -23,9 +24,9 @@ export const CssSelectors: ICourseLesson = {
 
 <p style="color:orange; font-weight: bold">Текст параграфа</p>
 <p>Потренируемся задавать стили через аттрибут.</p>`,
-      goal: `Задайте элементу встроенные стили`,
-      initValues: {
-        html: `<!--HTML редактор-->
+            goal: `Задайте элементу встроенные стили`,
+            initValues: {
+                html: `<!--HTML редактор-->
 
 <!DOCTYPE html>
 <html>
@@ -87,37 +88,31 @@ export const CssSelectors: ICourseLesson = {
   </body>
 </html>
 `,
-        css: `/* CSS редактор */`,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label: "Первому параграфу измените тип шрифта Tahoma с помощью правила <code>font-family: Tahoma;</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const firstP = iframe.contentDocument.querySelectorAll("p")[0];
-            return firstP && firstP.style.fontFamily === "Tahoma";
-          },
-          failMsg: "Убедитесь, что первому параграфу задан аттрибут style с правильным значением font-family",
+                css: `/* CSS редактор */`,
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "Первому параграфу измените тип шрифта Tahoma с помощью правила <code>font-family: Tahoma;</code>.",
+                    testFn: `const firstP = iframe.contentDocument.querySelectorAll("p")[0];
+            return firstP && firstP.style.fontFamily === "Tahoma";`,
+                    failMsg: "Убедитесь, что первому параграфу задан аттрибут style с правильным значением font-family",
+                },
+                {
+                    id: 2,
+                    label: "Первому параграфу также задайте курсивное начертание с помощью правила <code>font-style: italic;</code>.",
+                    testFn: `const firstP = iframe.contentDocument.querySelectorAll("p")[0];
+            return firstP && firstP.style.fontStyle === "italic";`,
+                    failMsg: "Убедитесь, что первому параграфу задан аттрибут style с правильным значением font-style",
+                },
+            ],
         },
         {
-          id: 2,
-          label:
-            "Первому параграфу также задайте курсивное начертание с помощью правила <code>font-style: italic;</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const firstP = iframe.contentDocument.querySelectorAll("p")[0];
-            return firstP && firstP.style.fontStyle === "italic";
-          },
-          failMsg: "Убедитесь, что первому параграфу задан аттрибут style с правильным значением font-style",
-        },
-      ],
-    },
-
-    {
-      id: 2,
-      header: "CSS в HTML - элемент style",
-      url: "css-style-tag",
-      theory: `<p>Ограничения предыдущего подхода очевидны - если мы захотим стилизовать таким образом все параграфы, нам придется прописывать стилевые правила в каждом из них вручную, а при добавлении новых параграфов не забывать добавлять стили еще и им. Разумеется, есть способ задать стили нескольким элементам сразу.</p>
+            id: 2,
+            header: "CSS в HTML - элемент style",
+            url: "css-style-tag",
+            theory: `<p>Ограничения предыдущего подхода очевидны - если мы захотим стилизовать таким образом все параграфы, нам придется прописывать стилевые правила в каждом из них вручную, а при добавлении новых параграфов не забывать добавлять стили еще и им. Разумеется, есть способ задать стили нескольким элементам сразу.</p>
 <p>Для этого есть специальный HTML элемент <code>style</code>, который должен быть расположен в шапке сайта <code>head</code>. Стили из предыдущего упражнения, расположенные в элементе <code>style</code> будут выглядить так:</p>
 
 <pre><code><span class="tag">&lt;head></span>
@@ -130,9 +125,9 @@ export const CssSelectors: ICourseLesson = {
 <span class="tag">&lt;/head></span></code></pre>
 
 <p>Элемент <code>style</code> должен быть потомком элемента <code>head</code>. Синтаксис визуальных правил здесь уже полностью соответствует синтаксису CSS. Мы разберем его подробнее, сейчас важно понимать, что эти правила будут применены уже ко всем параграфам <code>p</code> на странице.</p>`,
-      goal: `Перенесите стили в заголовок HTML документа`,
-      initValues: {
-        html: `<!--HTML редактор-->
+            goal: `Перенесите стили в заголовок HTML документа`,
+            initValues: {
+                html: `<!--HTML редактор-->
 
 <!DOCTYPE html>
 <html>
@@ -195,43 +190,37 @@ export const CssSelectors: ICourseLesson = {
   </body>
 </html>
 `,
-        css: `/* CSS редактор */`,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label: "В шапке страницы создайте элемент <code>style</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("body").querySelector("style");
-            return style !== null;
-          },
-          failMsg: "Убедитесь, что в шапке сайта вы создали элемент style",
-        },
-        {
-          id: 2,
-          label:
-            "Перенесите стили первого параграфа в элемент <code>style</code>. Аттрибут style первого параграфа можно удалить, он больше не нужен.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("body").querySelector("style");
+                css: `/* CSS редактор */`,
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "В шапке страницы создайте элемент <code>style</code>.",
+                    testFn: ` const style = iframe.contentDocument.querySelector("body").querySelector("style");
+            return style !== null;`,
+                    failMsg: "Убедитесь, что в шапке сайта вы создали элемент style",
+                },
+                {
+                    id: 2,
+                    label: "Перенесите стили первого параграфа в элемент <code>style</code>. Аттрибут style первого параграфа можно удалить, он больше не нужен.",
+                    testFn: `const style = iframe.contentDocument.querySelector("body").querySelector("style");
             return (
               style &&
               [
                 /p\s+{[\s\S]*font-family\s*:\s*Tahoma\s*;[\s\S]*}/,
                 /p\s+{[\s\S]*font-style: italic;[\s\S]*}/,
               ].every(regexp => regexp.test(style.textContent))
-            );
-          },
-          failMsg: "Убедитесь, что для всех параграфов записаны 2 css-свойства",
+            );`,
+                    failMsg: "Убедитесь, что для всех параграфов записаны 2 css-свойства",
+                },
+            ],
         },
-      ],
-    },
-
-    {
-      id: 3,
-      header: "Файл .css",
-      url: "css-in-file",
-      theory: `<p>Хранить CSS код в HTML файле возможно только в совсем маленьких проектах. Со временем CSS код начинает быстро разрастаться и в реальных проектах его выносят в отдельные .css файлы. Корневой файл стилей, как правило, называется <em>style.css</em>.</p>
+        {
+            id: 3,
+            header: "Файл .css",
+            url: "css-in-file",
+            theory: `<p>Хранить CSS код в HTML файле возможно только в совсем маленьких проектах. Со временем CSS код начинает быстро разрастаться и в реальных проектах его выносят в отдельные .css файлы. Корневой файл стилей, как правило, называется <em>style.css</em>.</p>
 <p>Для того, чтобы перенести код в .css файл, нужно сделать 2 вещи:</p>
 <ul>
   <li>Создать этот файл с нужным расширением и скопировать туда CSS код (в нашем случае это CSS редактор, который подменяет CSS файл в данном упражнении).</li>
@@ -249,9 +238,9 @@ export const CssSelectors: ICourseLesson = {
   <li><code>rel</code> - показывает отношение подключаемого документа к текущему. В данном случае значение аттрибута <code>stylesheet</code>, т. е. стилевой лист.</li>
   <li><code>type</code> - тип содержимого подключаемого документа. В данном случае это <code>text/css</code>.</li>
 </ul>`,
-      goal: `Перенесите стили с CSS файл и подключите его.`,
-      initValues: {
-        html: `<!--HTML -->
+            goal: `Перенесите стили с CSS файл и подключите его.`,
+            initValues: {
+                html: `<!--HTML -->
 
 <!DOCTYPE html>
 <html>
@@ -319,44 +308,41 @@ export const CssSelectors: ICourseLesson = {
   </body>
 </html>
 `,
-        css: `/* CSS */
+                css: `/* CSS */
 `,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label:
-            "Создайте в шапке элемент <code>link</code>, задайте ему следующие аттрибуты: <ul><li><code>href</code> со значением <code>./style.css</code></li><li><code>type</code> с правильным значением</li><li><code>rel</code> с правильным значением</li></ul>",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const link = iframe.contentDocument.querySelector("link");
-            return link && link.href === "" && link.rel === "stylesheet" && link.type === "text/css";
-          },
-          failMsg: "Убедитесь, что в шапке сайта вы создали элемент link с правильными значениями аттрибутов",
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "Создайте в шапке элемент <code>link</code>, задайте ему следующие аттрибуты: <ul><li><code>href</code> со значением <code>./style.css</code></li><li><code>type</code> с правильным значением</li><li><code>rel</code> с правильным значением</li></ul>",
+                    testFn: `const link = iframe.contentDocument.querySelector("link");
+            return link && link.href === "" && link.rel === "stylesheet" && link.type === "text/css";`,
+                    failMsg: "Убедитесь, что в шапке сайта вы создали элемент link с правильными значениями аттрибутов",
+                },
+                {
+                    id: 2,
+                    label: "Перенесите код из элемента <code>style</code> в CSS редактор целиком.",
+                    testRegExp: [
+                        `\p\\s+{[\\s\\S]*font-family\\s*:\\s*Tahoma\\s*;[\\s\\S]*}`,
+                        `\p\\s+{[\\s\\S]*font-style: italic;[\\s\\S]*}`,
+                    ],
+                    failMsg: "Убедитесь, что вы перенесли код из элемента style в css редактор",
+                },
+                {
+                    id: 3,
+                    label: "Удалите элемент <code>style</code>.",
+                    testFn: ` const style = iframe.contentDocument.querySelector("body").querySelector("style");
+            return style === null;`,
+                    failMsg: "Убедитесь, что вы удалили элемент style из шапки документа",
+                },
+            ],
         },
         {
-          id: 2,
-          label: "Перенесите код из элемента <code>style</code> в CSS редактор целиком.",
-          testRegExp: [/p\s+{[\s\S]*font-family\s*:\s*Tahoma\s*;[\s\S]*}/, /p\s+{[\s\S]*font-style: italic;[\s\S]*}/],
-          failMsg: "Убедитесь, что вы перенесли код из элемента style в css редактор",
-        },
-        {
-          id: 3,
-          label: "Удалите элемент <code>style</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("body").querySelector("style");
-            return style === null;
-          },
-          failMsg: "Убедитесь, что вы удалили элемент style из шапки документа",
-        },
-      ],
-    },
-
-    {
-      id: 4,
-      header: "Селектор по тэгу - tag { }",
-      url: "css-tag-selector",
-      theory: `<p>Пришло время подробнее разобрать синтаксис CSS правил. Каждое CSS правило состоит из двух элементов - это <em>селектор</em>, который выбирает элементы определенного типа и <em>стилевые свойства</em>, которые применяются к выбранным элементам.</p>
+            id: 4,
+            header: "Селектор по тэгу - tag { }",
+            url: "css-tag-selector",
+            theory: `<p>Пришло время подробнее разобрать синтаксис CSS правил. Каждое CSS правило состоит из двух элементов - это <em>селектор</em>, который выбирает элементы определенного типа и <em>стилевые свойства</em>, которые применяются к выбранным элементам.</p>
 
 <pre><code><span class="selector">p</span> {
   <span class="rule">color:</span> orange;
@@ -366,9 +352,9 @@ export const CssSelectors: ICourseLesson = {
 <p>В данном правиле селектором является <code>p</code>. Этот селектор выберет все элементы <code>p</code> на странице. После селектора идут фигурные скобки. В фигурных скопках находятся 2 визуальных свойства. Одно устанавливает цвет текста (color) в значение "orange", второе устанавливает жирное начертание шрифта. Стилевые свойства отделяются друг от друга точкой с запятой.</p>
 <p>Поскольку селектор <code>p</code> выбирает все соответствующие тэги, он так и называется - <em>селектор по тэгу</em>. Остаток этого урока будет посвящен различным видам селекторов.</p>
 `,
-      goal: `Добавьте стили с помощью селектора по тэгу.`,
-      initValues: {
-        html: `<!--HTML -->
+            goal: `Добавьте стили с помощью селектора по тэгу.`,
+            initValues: {
+                html: `<!--HTML -->
 
 <!DOCTYPE html>
 <html>
@@ -431,37 +417,35 @@ export const CssSelectors: ICourseLesson = {
   </body>
 </html>
 `,
-        css: `/* CSS */
+                css: `/* CSS */
 
 p {
   font-family: Tahoma;
   font-style: italic;
 }
 `,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label:
-            "Заголовку первого уровня задайте цвет текста <code>DarkSalmon</code>. Не забывайте, что после каждого свойства должна стоять точка с запятой, даже если свойство одно!",
-          testRegExp: [/h1\s+{\s*color\s*:\s*DarkSalmon\s*;\s*}/],
-          failMsg: "Убедитесь, что вы создали правило для тэга h1 с правильным значением цвета",
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "Заголовку первого уровня задайте цвет текста <code>DarkSalmon</code>. Не забывайте, что после каждого свойства должна стоять точка с запятой, даже если свойство одно!",
+                    testRegExp: [`\h1\\s+{\\s*color\\s*:\\s*DarkSalmon\\s*;\\s*}`],
+                    failMsg: "Убедитесь, что вы создали правило для тэга h1 с правильным значением цвета",
+                },
+                {
+                    id: 2,
+                    label: "У параграфов уберите курсивное начертание текста.",
+                    testRegExp: [`\p\\s+{\\s*font-family\\s*:\\s*Tahoma\\s*;\\s*}`],
+                    failMsg: "Убедитесь, что вы убрали свойство font-style для параграфов",
+                },
+            ],
         },
         {
-          id: 2,
-          label: "У параграфов уберите курсивное начертание текста.",
-          testRegExp: [/p\s+{\s*font-family\s*:\s*Tahoma\s*;\s*}/],
-          failMsg: "Убедитесь, что вы убрали свойство font-style для параграфов",
-        },
-      ],
-    },
-
-    {
-      id: 5,
-      header: "Селектор по id - #id { }",
-      url: "css-id-selector",
-      theory: `<p>Может возникнуть необходимость стилизовать уникальный элемент на странице. Для этого элементу необходимо задать аттрибут <code>id</code> и обратиться к нему из CSS. Например, к такому элементу:</p>
+            id: 5,
+            header: "Селектор по id - #id { }",
+            url: "css-id-selector",
+            theory: `<p>Может возникнуть необходимость стилизовать уникальный элемент на странице. Для этого элементу необходимо задать аттрибут <code>id</code> и обратиться к нему из CSS. Например, к такому элементу:</p>
 
 <pre><code><span class="tag">&lt;p <span class="attr-name">id=</span><span class="attr-value">"unique-paragraph"</span>></span>какой-то текст<span class="tag">&lt;/p></code></pre>
 
@@ -476,9 +460,9 @@ p {
 <p>Селекторами по id надо пользоваться осторожно. Во-первых, их частое применение возвращает нас к проблеме с инлайновыми стилями, когда слишком многим элементам приходится задавать уникальные аттрибуты и стили, что сводит на нет всю мощь селекторов. Во-вторых, могут возникнуть проблемы со специфичностью, о чем мы поговорим позже.</p>
 <p>Но иногда селекторы по id бывают полезны и знать их надо.</p>
 `,
-      goal: `Добавьте стили с помощью селектора по id.`,
-      initValues: {
-        html: `<!--HTML -->
+            goal: `Добавьте стили с помощью селектора по id.`,
+            initValues: {
+                html: `<!--HTML -->
 
 <!DOCTYPE html>
 <html>
@@ -541,7 +525,7 @@ p {
   </body>
 </html>
 `,
-        css: `/* CSS */
+                css: `/* CSS */
 
 p {
   font-family: Tahoma;
@@ -551,41 +535,38 @@ h1 {
   color: DarkSalmon;
 }
 `,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label: "В HTML редакторе задайте заголовку первого уровня идентификатор со значением 'main-title'.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const header = iframe.contentDocument.querySelector("h1");
-            return header && header.id === "main-title";
-          },
-          failMsg: "Убедитесь, что вы задали заголовку id с правильным значением",
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "В HTML редакторе задайте заголовку первого уровня идентификатор со значением 'main-title'.",
+                    testFn: ` const header = iframe.contentDocument.querySelector("h1");
+            return header && header.id === "main-title";`,
+                    failMsg: "Убедитесь, что вы задали заголовку id с правильным значением",
+                },
+                {
+                    id: 2,
+                    label: "Создайте путой селектор по идентификатору 'main-title'.",
+                    testRegExp: [`\#main-title\\s+{(.|\\n)*}`],
+                    failMsg: "Убедитесь, что вы используете селектор по id",
+                },
+                {
+                    id: 3,
+                    label: "Задайте цвет текста 'Indigo' и выравнивание текста по центру (text-align: center;).",
+                    testRegExp: [
+                        [`\#main-title\\s+{[\\s\\S]*color: Indigo;[\\s\\S]*}`, "i"],
+                        `\#main-title\\s+{[\\s\\S]*text-align: center;[\\s\\S]*}`,
+                    ],
+                    failMsg: "Убедитесь, что вы задали 2 визуальных свойства элементу с id 'main-title'",
+                },
+            ],
         },
         {
-          id: 2,
-          label: "Создайте путой селектор по идентификатору 'main-title'.",
-          testRegExp: [/#main-title\s+{(.|\n)*}/],
-          failMsg: "Убедитесь, что вы используете селектор по id",
-        },
-        {
-          id: 3,
-          label: "Задайте цвет текста 'Indigo' и выравнивание текста по центру (text-align: center;).",
-          testRegExp: [
-            /#main-title\s+{[\s\S]*color: Indigo;[\s\S]*}/i,
-            /#main-title\s+{[\s\S]*text-align: center;[\s\S]*}/,
-          ],
-          failMsg: "Убедитесь, что вы задали 2 визуальных свойства элементу с id 'main-title'",
-        },
-      ],
-    },
-
-    {
-      id: 6,
-      header: "Селектор по классу - .class { }",
-      url: "css-class-selector",
-      theory: `<p>Рассмотрим третий способ обратиться к элементу из CSS. Для этого элементу необходимо задать аттрибут <code>class</code> и обратиться к нему по классу. Например, к такому элементу:</p>
+            id: 6,
+            header: "Селектор по классу - .class { }",
+            url: "css-class-selector",
+            theory: `<p>Рассмотрим третий способ обратиться к элементу из CSS. Для этого элементу необходимо задать аттрибут <code>class</code> и обратиться к нему по классу. Например, к такому элементу:</p>
 
 <pre><code><span class="tag">&lt;p <span class="attr-name">class=</span><span class="attr-value">"myclass"</span>></span>какой-то текст<span class="tag">&lt;/p></code></pre>
 
@@ -635,9 +616,9 @@ h1 {
 <h3 style="text-transform: uppercase; text-align: right">Второй заголовок</h3>
 <p>В этом основное преимущество стилизации по классам - вы можете переиспользовать классы, добавляя их к любым элементам. Комбинируя классы элементов и CSS правила вы сможете добиться гибкости визуального оформления.</p>
 `,
-      goal: `Добавьте стили с помощью селектора по классу.`,
-      initValues: {
-        html: `<!--HTML -->
+            goal: `Добавьте стили с помощью селектора по классу.`,
+            initValues: {
+                html: `<!--HTML -->
 
 <!DOCTYPE html>
 <html>
@@ -700,7 +681,7 @@ h1 {
   </body>
 </html>
 `,
-        css: `/* CSS */
+                css: `/* CSS */
 
 p {
   font-family: Tahoma;
@@ -715,46 +696,41 @@ h1 {
   text-align: center;
 }
 `,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label:
-            "Заголовку <code>h1</code> с классом <code>title</code> задайте цвет текста 'SeaGreen'. Обратите внимание, что цвет у заголовка не поменялся. Это нормально, объяснение чуть дальше.",
-          testRegExp: [/.title\s+{\s*color: SeaGreen;\s*}/],
-          failMsg: "Убедитесь, что вы задали классу title правильный цвет",
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "Заголовку <code>h1</code> с классом <code>title</code> задайте цвет текста 'SeaGreen'. Обратите внимание, что цвет у заголовка не поменялся. Это нормально, объяснение чуть дальше.",
+                    testRegExp: [`\.title\\s+{\\s*color: SeaGreen;\\s*}`],
+                    failMsg: "Убедитесь, что вы задали классу title правильный цвет",
+                },
+                {
+                    id: 2,
+                    label: "Элементам с классом <code>destination</code> задайте выравнивание текста по центру.",
+                    testRegExp: [`\.destination\\s+{\\s*text-align: center;\\s*}`],
+                    failMsg: "Убедитесь, что селектору по классу destination вы задали правильное свойство",
+                },
+                {
+                    id: 3,
+                    label: "Первому заголовку с классом <code>destination</code> ('Сингапурский зоопарк') задайте дополнительный класс <code>shadowed</code>.",
+                    testFn: ` const header = iframe.contentDocument.querySelectorAll(".destination")[0];
+            return header && header.classList.contains("shadowed");`,
+                    failMsg: "Убедитесь, что вы добавили класс правильному элементу",
+                },
+                {
+                    id: 4,
+                    label: "Элементу с классом <code>shadowed</code> задайте тень (text-shadow: 2px 2px 2px pink;).",
+                    testRegExp: [`\.shadowed\\s+{\\s*text-shadow: 2px 2px 2px pink;\\s*}`],
+                    failMsg: "Убедитесь, что селектору по классу shadowed вы задали правильное свойство",
+                },
+            ],
         },
         {
-          id: 2,
-          label: "Элементам с классом <code>destination</code> задайте выравнивание текста по центру.",
-          testRegExp: [/.destination\s+{\s*text-align: center;\s*}/],
-          failMsg: "Убедитесь, что селектору по классу destination вы задали правильное свойство",
-        },
-        {
-          id: 3,
-          label:
-            "Первому заголовку с классом <code>destination</code> ('Сингапурский зоопарк') задайте дополнительный класс <code>shadowed</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const header = iframe.contentDocument.querySelectorAll(".destination")[0];
-            return header && header.classList.contains("shadowed");
-          },
-          failMsg: "Убедитесь, что вы добавили класс правильному элементу",
-        },
-        {
-          id: 4,
-          label: "Элементу с классом <code>shadowed</code> задайте тень (text-shadow: 2px 2px 2px pink;).",
-          testRegExp: [/.shadowed\s+{\s*text-shadow: 2px 2px 2px pink;\s*}/],
-          failMsg: "Убедитесь, что селектору по классу shadowed вы задали правильное свойство",
-        },
-      ],
-    },
-
-    {
-      id: 7,
-      header: "Специфичность селекторов",
-      url: "css-selector-specificy",
-      theory: `<p>Вам ничего не показалось странным в стилизации заголовка <code>h1</code> нашей страницы?</p>
+            id: 7,
+            header: "Специфичность селекторов",
+            url: "css-selector-specificy",
+            theory: `<p>Вам ничего не показалось странным в стилизации заголовка <code>h1</code> нашей страницы?</p>
 <p>В прошлых упражнениях мы несколько раз обращались к нему с помощью разных селекторов и задавали разный цвет текста. Мы задали цвет "DarkSalmon" с помощью селектора по тэгу, "Indigo" с помощью селектора по id и наконец "SeaGreen" с помощью селектора по классу.</p>
 <p>Но ведь у одного элемента не может быть текст разных цветов. Таким образом мы попали в ситуацию, которая называется <em>конфликт стилей</em>. В случае, когда одному элементу соответствуют одинаковые визуальные свойства с разными значениями, браузер решает, какие из них важнее и перезаписывает менее важные правила более важными.</p>
 <p>Существуют несколько правил, по которым браузер определяет, какие из значений визуальных свойств более важные, первостепенное значение при этом имеет <em>специфичность</em> селекторов. Чем выше специфичность, тем важнее правило, которое он задает. Рассмотрим такой пример:</p>
@@ -797,9 +773,9 @@ h1 {
 <p>Специфичность селекторов - <code>id > class > tag</code>. Именно поэтому заголовок <code>h1</code> на странице в данный момент окрашен в цвет "Indigo", который задается селектором по id.</p>
 <p>Каким образом использовать эту информацию при стилизации? Старайтесь использовать селекторы с минимальной специфичностью там, где это возможно. Используйте селекторы по тэгу, если их не хватает, добавьте элементам классы, в крайнем случае добавьте id. Селектор по id плох именно своей высокой специфичностью, стили, определенные этим селектором сложно переопределить, в то время как стили, заданные селекторами с низкой специфичностью, переопределить легче.</p>
 `,
-      goal: `Устраните конфликты стилей.`,
-      initValues: {
-        html: `<!--HTML -->
+            goal: `Устраните конфликты стилей.`,
+            initValues: {
+                html: `<!--HTML -->
 
 <!DOCTYPE html>
 <html>
@@ -862,7 +838,7 @@ h1 {
   </body>
 </html>
 `,
-        css: `/* CSS */
+                css: `/* CSS */
 
 p {
   font-family: Tahoma;
@@ -890,57 +866,52 @@ h1 {
 }
 
 `,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label:
-            "Перенесите выравнивание текста по центру из селектора для id <code>#main-title</code> в селектор по классу <code>title</code>.",
-          testRegExp: [/.title\s+{[\s\S]*color: SeaGreen;[\s\S]*}/, /.title\s+{[\s\S]*text-align: center;[\s\S]*}/],
-          failMsg: "Убедитесь, что свойство text-align задается селектором .title",
-        },
-        {
-          id: 2,
-          label: "Удалите селектор <code>main-title</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "Перенесите выравнивание текста по центру из селектора для id <code>#main-title</code> в селектор по классу <code>title</code>.",
+                    testRegExp: [
+                        `\.title\\s+{[\\s\\S]*color: SeaGreen;[\\s\\S]*}`,
+                        `\.title\\s+{[\\s\\S]*text-align: center;[\\s\\S]*}`,
+                    ],
+                    failMsg: "Убедитесь, что свойство text-align задается селектором .title",
+                },
+                {
+                    id: 2,
+                    label: "Удалите селектор <code>main-title</code>.",
+                    testFn: `const style = iframe.contentDocument.querySelector("style");
             if (!style) {
               return false;
             }
-            return !style.textContent.includes("#main-title {");
-          },
-          failMsg: "Убедитесь, что вы удалили селектор #main-title",
-        },
-        {
-          id: 3,
-          label: "Удалите селектор <code>h1</code>.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const style = iframe.contentDocument.querySelector("style");
+            return !style.textContent.includes("#main-title {");`,
+                    failMsg: "Убедитесь, что вы удалили селектор #main-title",
+                },
+                {
+                    id: 3,
+                    label: "Удалите селектор <code>h1</code>.",
+                    testFn: `const style = iframe.contentDocument.querySelector("style");
             if (!style) {
               return false;
             }
-            return !style.textContent.includes("h1 {");
-          },
-          failMsg: "Убедитесь, что вы удалили селектор h1",
+            return !style.textContent.includes("h1 {");`,
+                    failMsg: "Убедитесь, что вы удалили селектор h1",
+                },
+                {
+                    id: 4,
+                    label: "У заголовка <code>h1</code> удалите id.",
+                    testFn: `const header = iframe.contentDocument.querySelector("h1");
+            return header && header.id === "";`,
+                    failMsg: "Убедитесь, что вы удалили id у заголовка",
+                },
+            ],
         },
         {
-          id: 4,
-          label: "У заголовка <code>h1</code> удалите id.",
-          testFn: (iframe: HTMLIFrameElement) => {
-            const header = iframe.contentDocument.querySelector("h1");
-            return header && header.id === "";
-          },
-          failMsg: "Убедитесь, что вы удалили id у заголовка",
-        },
-      ],
-    },
-
-    {
-      id: 8,
-      header: "Цепочки селекторов",
-      url: "css-selector-chaining",
-      theory: `<p>Селекторы можно комбинировать для того, чтобы выбирать нужный элемент точнее. Есть несколько вариантов комбинирования селекторов. Разберем цепочки селекторов:</p>
+            id: 8,
+            header: "Цепочки селекторов",
+            url: "css-selector-chaining",
+            theory: `<p>Селекторы можно комбинировать для того, чтобы выбирать нужный элемент точнее. Есть несколько вариантов комбинирования селекторов. Разберем цепочки селекторов:</p>
 
 <pre><code><span class="tag">&lt;p <span class="attr-name">class=</span><span class="attr-value">"colored"</span>></span>Параграф с классом<span class="tag">&lt;/p></span>
 <span class="tag">&lt;h5 <span class="attr-name">class=</span><span class="attr-value">"colored"</span>></span>Заголовок с классом<span class="tag">&lt;/h5></span>
@@ -957,9 +928,9 @@ h1 {
 <p>Параграф без класса</p>
 <p>Поставив в цепочку (без пробела) 2 простых селектора, мы передаем CSS такую команду: <b>выбрать только те элементы <code>p</code>, у которых есть класс <code>.colored</code></b>.</p>
 `,
-      goal: `Стилизуйте элементы с помощью цепочки селекторов.`,
-      initValues: {
-        html: `<!--HTML -->
+            goal: `Стилизуйте элементы с помощью цепочки селекторов.`,
+            initValues: {
+                html: `<!--HTML -->
 
 <!DOCTYPE html>
 <html>
@@ -1022,7 +993,7 @@ h1 {
   </body>
 </html>
 `,
-        css: `/* CSS */
+                css: `/* CSS */
 
 p {
   font-family: Tahoma;
@@ -1041,24 +1012,22 @@ p {
   text-shadow: 2px 2px 2px pink;
 }
 `,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label:
-            "Всем заголовкам четвертого уровня с классом <code>destination</code> задайте курсивное начертание (<code>font-style: italic;</code>). Другие элементы с этим классом и другие заголовки не должны выбираться селектором.",
-          testRegExp: [/h4.destination\s+{\s*font-style: italic;\s*}/],
-          failMsg: "Убедитесь, что вы выбрали элементы с помощью цепочки селекторов",
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "Всем заголовкам четвертого уровня с классом <code>destination</code> задайте курсивное начертание (<code>font-style: italic;</code>). Другие элементы с этим классом и другие заголовки не должны выбираться селектором.",
+                    testRegExp: ["h4.destination\\s+{\\s*font-style: italic;\\s*}"],
+                    failMsg: "Убедитесь, что вы выбрали элементы с помощью цепочки селекторов",
+                },
+            ],
         },
-      ],
-    },
-
-    {
-      id: 9,
-      header: "Вложенные селекторы",
-      url: "css-selector-nesting",
-      theory: `<p>С помощью селекторов можно выбирать элементы, вложенные в другие элементы. Например, у нас есть такая HTML разметка:</p>
+        {
+            id: 9,
+            header: "Вложенные селекторы",
+            url: "css-selector-nesting",
+            theory: `<p>С помощью селекторов можно выбирать элементы, вложенные в другие элементы. Например, у нас есть такая HTML разметка:</p>
 
 <pre><code><span class="tag">&lt;p></span>Параграф, живущий сам по себе<span class="tag">&lt;/p></span>
 <span class="tag">&lt;div></span>
@@ -1097,9 +1066,9 @@ p {
 <p>Выберет все изображения <code>img</code>, вложенные в ссылки <code>a</code>, вложенные в элементы с классом <code>.sublist</code>, вложенные в элемент с классом <code>.list</code>...</p>
 <p>Вложенность селекторов - мощный инструмент, особенно при глубокой иерархии элементов в HTML коде.</p>
 `,
-      goal: `Стилизуйте элементы с помощью вложенных селекторов.`,
-      initValues: {
-        html: `<!--HTML -->
+            goal: `Стилизуйте элементы с помощью вложенных селекторов.`,
+            initValues: {
+                html: `<!--HTML -->
 
 <!DOCTYPE html>
 <html>
@@ -1162,7 +1131,7 @@ p {
   </body>
 </html>
 `,
-        css: `/* CSS */
+                css: `/* CSS */
 
 p {
   font-family: Tahoma;
@@ -1185,31 +1154,28 @@ h4.destination {
   font-style: italic;
 }
 `,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label:
-            "Всем заголовкам четвертого уровня, вложенным в элементы с классом <code>description</code>, задайте тень (<code>text-shadow: 2px 2px 2px pink;</code>). Другие заголовки не должны быть выбраны селектором.",
-          testRegExp: [/.description h4\s+{\s*text-shadow: 2px 2px 2px pink;\s*}/],
-          failMsg: "Убедитесь, что вы использовали вложенность элементов для выбора заголовков.",
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "Всем заголовкам четвертого уровня, вложенным в элементы с классом <code>description</code>, задайте тень (<code>text-shadow: 2px 2px 2px pink;</code>). Другие заголовки не должны быть выбраны селектором.",
+                    testRegExp: [`\.description h4\\s+{\\s*text-shadow: 2px 2px 2px pink;\\s*}`],
+                    failMsg: "Убедитесь, что вы использовали вложенность элементов для выбора заголовков.",
+                },
+                {
+                    id: 2,
+                    label: "Всем ссылкам, вложенным в <code>div</code>, уберите нижнее подчеркивание (<code>text-decoration: none;</code>).",
+                    testRegExp: [`\div a\\s+{\\s*text-decoration: none;\\s*}`],
+                    failMsg: "Убедитесь, что вы использовали вложенность элементов для выбора ссылок.",
+                },
+            ],
         },
         {
-          id: 2,
-          label:
-            "Всем ссылкам, вложенным в <code>div</code>, уберите нижнее подчеркивание (<code>text-decoration: none;</code>).",
-          testRegExp: [/div a\s+{\s*text-decoration: none;\s*}/],
-          failMsg: "Убедитесь, что вы использовали вложенность элементов для выбора ссылок.",
-        },
-      ],
-    },
-
-    {
-      id: 10,
-      header: "Влияние вложенности на специфичность",
-      url: "css-nesting-with-specificy",
-      theory: `<p>Вложенность селекторов повышает их специфичность. Рассмотрим такую разметку:</p>
+            id: 10,
+            header: "Влияние вложенности на специфичность",
+            url: "css-nesting-with-specificy",
+            theory: `<p>Вложенность селекторов повышает их специфичность. Рассмотрим такую разметку:</p>
 
 <pre><code><span class="tag">&lt;div <span class="attr-name">class=</span><span class="attr-value">"container"</span>></span>
   <span class="tag">&lt;p></span>Параграф, вложенный в div<span class="tag">&lt;/p></span>
@@ -1246,9 +1212,9 @@ h4.destination {
 <p>А <i>параграфов, вложенных в элемент определенного класса</i> еще меньше, так как из упражнения про специфичность мы помним, что селектор по классу специфичнее селектора по тэгу. Стили более специфичных селекторов будут перезаписывать стили менее специфичных.</p>
 <p>Общее правило таково, что чем выше уровень вложенности, тем выше специфичность селектора. Если у вас возникают конфликты стилей, посмотрите, нет ли какого-либо более специфичного селектора, который перезаписывает нужные вам стили ненужными.</p>
 `,
-      goal: `Используйте вложенные селекторы для повышения специфичности.`,
-      initValues: {
-        html: `<!--HTML -->
+            goal: `Используйте вложенные селекторы для повышения специфичности.`,
+            initValues: {
+                html: `<!--HTML -->
 
 <!DOCTYPE html>
 <html>
@@ -1311,7 +1277,7 @@ h4.destination {
   </body>
 </html>
 `,
-        css: `/* CSS */
+                css: `/* CSS */
 
 p {
   font-family: Tahoma;
@@ -1342,31 +1308,28 @@ div a {
   text-decoration: none;
 }
 `,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label:
-            "Всем элементам списков <code>li</code> на странице задайте написание прописными символами (<code>text-transform: uppercase;</code>).",
-          testRegExp: [/li\s+{\s*text-transform: uppercase;\s*}/],
-          failMsg: "Убедитесь, что вы правильно написали селектор для тэга li",
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "Всем элементам списков <code>li</code> на странице задайте написание прописными символами (<code>text-transform: uppercase;</code>).",
+                    testRegExp: [`\li\\s+{\\s*text-transform: uppercase;\\s*}`],
+                    failMsg: "Убедитесь, что вы правильно написали селектор для тэга li",
+                },
+                {
+                    id: 2,
+                    label: "Элементам списка, вложенным в маркированный список <code>ol</code>, верните написание как в предложении (<code>text-transform: capitalize;</code>).",
+                    testRegExp: [`\ol li\\s+{\\s*text-transform: capitalize;\\s*}`],
+                    failMsg: "Убедитесь, что вы правильно написали селектор для вложенных li",
+                },
+            ],
         },
         {
-          id: 2,
-          label:
-            "Элементам списка, вложенным в маркированный список <code>ol</code>, верните написание как в предложении (<code>text-transform: capitalize;</code>).",
-          testRegExp: [/ol li\s+{\s*text-transform: capitalize;\s*}/],
-          failMsg: "Убедитесь, что вы правильно написали селектор для вложенных li",
-        },
-      ],
-    },
-
-    {
-      id: 11,
-      header: "Перечисление селекторов",
-      url: "css-multiple-selectors",
-      theory: `<p>Существует возможность перечислить селекторы и задать им единые визуальные правила. Например, такие селекторы:</p>
+            id: 11,
+            header: "Перечисление селекторов",
+            url: "css-multiple-selectors",
+            theory: `<p>Существует возможность перечислить селекторы и задать им единые визуальные правила. Например, такие селекторы:</p>
 
 <pre><code><span class="selector">p</span> {
   <span class="rule">color:</span> red;
@@ -1384,9 +1347,9 @@ div a {
 
 <p>Мы просто перечислили селекторы с одинаковыми визуальными правилами через запятую. Таким образом удалось избежать дублирования кода.</p>
 `,
-      goal: `Уберите дублирующийся код с помощью перечисления селекторов.`,
-      initValues: {
-        html: `<!--HTML -->
+            goal: `Уберите дублирующийся код с помощью перечисления селекторов.`,
+            initValues: {
+                html: `<!--HTML -->
 
 <!DOCTYPE html>
 <html>
@@ -1449,7 +1412,7 @@ div a {
   </body>
 </html>
 `,
-        css: `/* CSS */
+                css: `/* CSS */
 
 p {
   font-family: Tahoma;
@@ -1488,19 +1451,18 @@ li {
   text-transform: uppercase;
 }
 `,
-        js: "",
-      },
-      tasks: [
-        {
-          id: 1,
-          label:
-            "В текущем коде 2 CSS правила отвечают за отображние тени. Перепешите их, создав одно правило с перечислением селекторов.",
-          testRegExp: [
-            /(.shadowed, .description h4)|(.description h4, .shadowed)\s+{\s*text-shadow: 2px 2px 2px pink;\s*}/,
-          ],
-          failMsg: "Убедитесь, что вы правильно написали перечисление селекторов для свойства text-shadow",
+                js: "",
+            },
+            tasks: [
+                {
+                    id: 1,
+                    label: "В текущем коде 2 CSS правила отвечают за отображние тени. Перепешите их, создав одно правило с перечислением селекторов.",
+                    testRegExp: [
+                        `\(.shadowed, .description h4)|(.description h4, .shadowed)\\s+{\\s*text-shadow: 2px 2px 2px pink;\\s*}`,
+                    ],
+                    failMsg: "Убедитесь, что вы правильно написали перечисление селекторов для свойства text-shadow",
+                },
+            ],
         },
-      ],
-    },
-  ],
+    ],
 };

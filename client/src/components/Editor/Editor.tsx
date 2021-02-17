@@ -34,7 +34,7 @@ const Editor: React.FC<IEditor> = ({ initValues, outerWidth }) => {
   }
 
   const dispatch = useDispatch();
-
+console.log(courseUrl)
   const inCssMode = courseUrl === "css";
 
   const options: monacoEditor.editor.IEditorOptions = {

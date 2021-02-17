@@ -1,16 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.HtmlForm = void 0;
-exports.HtmlForm = {
-    id: 4,
-    title: "Формы в HTML",
-    url: "html-form",
-    excercises: [
-        {
-            id: 1,
-            header: "Создание HTML формы - элемент form",
-            url: "html-form-creation",
-            theory: `<p>Как и формы в реальной жизни, HTML формы необходимы, чтобы собрать информацию от пользователя и передать ее на дальнейшую обработку (в случае HTML это вэб-сервер). Формы регистрации и входа на сайт, сервисы заказов и бронирования, форм в Интернете очень много. Например, поисковая строка Google - это тоже часть формы, поскольку она принимает информацию от пользователя (текстовый поисковый запрос) и передает ее на дальнейшую обработку (на сервера Google).</p>
+import { ICourseLesson } from "../../types";
+
+export const HtmlForm: ICourseLesson = {
+  id: 4,
+  title: "Формы в HTML",
+  url: "html-form",
+  excercises: [
+    {
+      id: 1,
+      header: "Создание HTML формы - элемент form",
+      url: "html-form-creation",
+      theory: `<p>Как и формы в реальной жизни, HTML формы необходимы, чтобы собрать информацию от пользователя и передать ее на дальнейшую обработку (в случае HTML это вэб-сервер). Формы регистрации и входа на сайт, сервисы заказов и бронирования, форм в Интернете очень много. Например, поисковая строка Google - это тоже часть формы, поскольку она принимает информацию от пользователя (текстовый поисковый запрос) и передает ее на дальнейшую обработку (на сервера Google).</p>
 <p>Форма создается с помощью элемента <code>form</code> и имеет несколько обязательных аттрибутов. Приведем пример формы в разметке:</p>
       
 <pre><code><span class="tag">&lt;form <span class="attr-name">action=<span><span class="attr-value">"http://destination"<span> <span class="attr-name">method=<span><span class="attr-value">"POST"<span>></span>
@@ -22,45 +21,46 @@ exports.HtmlForm = {
 <p>Методы запроса - это то, как именно желаемое действие выполнится для данного ресурса, их несколько, но чаще всего используются следующие два: <ul><li>GET</li><li>POST</li></ul> Подробное описание методов отправки данных выходит за рамки данного урока, более подробную информацию можно почитать, например, <a style="color: blue" href="https://developer.mozilla.org/ru/docs/Web/HTTP/Methods">в этой документации</a>.</p>
 <p>Написание метода отправки заглавными буквами - это пример соглашения о наименовании, вариант написания строчными буквами <code>post</code> тоже будет работать.</p>
 `,
-            goal: `Создайте пустую форму.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Создайте пустую форму.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 <!--Начните создавать форму ниже этой линии-->
 `,
-                css: `
+        css: `
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Создайте пустую форму.",
-                    testFn: `const form = iframe.contentDocument.body.querySelector("form");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "Создайте пустую форму.",
+          testFn: `const form = iframe.contentDocument.body.querySelector("form");
             return form !== null;`,
-                    failMsg: "Убедитесь, что вы создали элемент form",
-                },
-                {
-                    id: 2,
-                    label: "Укажите адрес для отправки данных 'http://webgrove/server'.",
-                    testFn: `const form = iframe.contentDocument.body.querySelector("form");
-            return form && form.action === "http://webgrove/server";`,
-                    failMsg: "Убедитесь, что вы правильно задали аттрибут action",
-                },
-                {
-                    id: 3,
-                    label: "Укажите метод отправки данных 'POST'.",
-                    testFn: `const form = iframe.contentDocument.body.querySelector("form");
-            return form && form.method === "post";`,
-                    failMsg: "Убедитесь, что вы правильно задали аттрибут method",
-                },
-            ],
+          failMsg: "Убедитесь, что вы создали элемент form",
         },
         {
-            id: 2,
-            header: "Текстовое поле - input[type='text']",
-            url: "html-text-input",
-            theory: `<p>Формы содержат в себе интерактивные элементы <code>input</code>, в которые пользователи могут вводить данные различных типов. То, какого типа данные можно вводить а поле  <code>input</code> определяется аттрибутом <code>type</code>. Для начала рассмотрим поле для ввода текстовой информации. Вот как оно может выглядить в разметке:</p>
+          id: 2,
+          label: "Укажите адрес для отправки данных 'http://webgrove/server'.",
+          testFn: `const form = iframe.contentDocument.body.querySelector("form");
+            return form && form.action === "http://webgrove/server";`,
+          failMsg: "Убедитесь, что вы правильно задали аттрибут action",
+        },
+        {
+          id: 3,
+          label: "Укажите метод отправки данных 'POST'.",
+          testFn: `const form = iframe.contentDocument.body.querySelector("form");
+            return form && form.method === "post";`,
+          failMsg: "Убедитесь, что вы правильно задали аттрибут method",
+        },
+      ],
+    },
+
+    {
+      id: 2,
+      header: "Текстовое поле - input[type='text']",
+      url: "html-text-input",
+      theory: `<p>Формы содержат в себе интерактивные элементы <code>input</code>, в которые пользователи могут вводить данные различных типов. То, какого типа данные можно вводить а поле  <code>input</code> определяется аттрибутом <code>type</code>. Для начала рассмотрим поле для ввода текстовой информации. Вот как оно может выглядить в разметке:</p>
       
 <pre><code><span class="tag">&lt;input <span class="attr-name">type=</span><span class="attr-value">"text"</span> <span class="attr-name">name=</span><span class="attr-value">"school"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"Введите название школы"</span>></span></code></pre>
       
@@ -80,16 +80,16 @@ exports.HtmlForm = {
 <p><input type="text" name="school" value="Гимназия №5" placeholder="Введите название школы"></p>
 <p>Теперь в поле по умолчанию проставляется значение <code>value</code>, а не <code>placeholder</code>. Подчеркнем разницу между ними: <code>value</code> - это реальное значение поля, введенное пользователем, которое отправляется с формой и хранится на сервере, в то время как плэйсхолдер - это просто текст-заглушка, созданный для визуального удобства пользователя.</p>
 `,
-            goal: `Начните заполнять форму с создания текстового поля.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Начните заполнять форму с создания текстового поля.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 
 <form action="http://webgrove/server" method="POST">
 
 </form>
 `,
-                css: `
+        css: `
         form {
   background-color: #d7d6d6;
   text-align: center;
@@ -97,44 +97,45 @@ exports.HtmlForm = {
   border-radius: 30px;
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: `Внутри формы создайте текстовое поле.`,
-                    testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Внутри формы создайте текстовое поле.`,
+          testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
             return textInput && textInput.parentElement && textInput.parentElement.tagName === "FORM";`,
-                    failMsg: "Убедитесь, что в форме создан элемент input с правильным типом",
-                },
-                {
-                    id: 2,
-                    label: `Укажите имя поля "username".`,
-                    testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
-            return textInput && textInput.name === "username";`,
-                    failMsg: "Убедитесь, что вы правильно задали аттрибут name",
-                },
-                {
-                    id: 3,
-                    label: `Укажите плэйсхолдер "Иван Сидоров".`,
-                    testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
-            return textInput && textInput.placeholder === "Иван Сидоров";`,
-                    failMsg: "Убедитесь, что вы правильно задали аттрибут placeholder",
-                },
-                {
-                    id: 4,
-                    label: `В качестве исходного значения поле укажите свое имя (исходное значение не должно быть пустым).`,
-                    testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
-            return textInput && textInput.value !== "";`,
-                    failMsg: "Убедитесь, что вы задали непустой аттрибут value",
-                },
-            ],
+          failMsg: "Убедитесь, что в форме создан элемент input с правильным типом",
         },
         {
-            id: 3,
-            header: "Подписи полей - элемент label",
-            url: "html-labels",
-            theory: `<p>Мы создали текстовое поле, но пока не понятно, для чего оно предназначено. Полю необходимо текстовое описание и для этого существует элемент <code>label</code>. Мы должны связать элементы <code>label</code> и <code>input</code>, чтобы понимать, какая подпись к какому полю относится. Вот один из способов это сделать:</p>
+          id: 2,
+          label: `Укажите имя поля "username".`,
+          testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
+            return textInput && textInput.name === "username";`,
+          failMsg: "Убедитесь, что вы правильно задали аттрибут name",
+        },
+        {
+          id: 3,
+          label: `Укажите плэйсхолдер "Иван Сидоров".`,
+          testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
+            return textInput && textInput.placeholder === "Иван Сидоров";`,
+          failMsg: "Убедитесь, что вы правильно задали аттрибут placeholder",
+        },
+        {
+          id: 4,
+          label: `В качестве исходного значения поле укажите свое имя (исходное значение не должно быть пустым).`,
+          testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
+            return textInput && textInput.value !== "";`,
+          failMsg: "Убедитесь, что вы задали непустой аттрибут value",
+        },
+      ],
+    },
+
+    {
+      id: 3,
+      header: "Подписи полей - элемент label",
+      url: "html-labels",
+      theory: `<p>Мы создали текстовое поле, но пока не понятно, для чего оно предназначено. Полю необходимо текстовое описание и для этого существует элемент <code>label</code>. Мы должны связать элементы <code>label</code> и <code>input</code>, чтобы понимать, какая подпись к какому полю относится. Вот один из способов это сделать:</p>
       
 <pre><code><span class="tag">&lt;label></span>
   Название школы
@@ -152,9 +153,9 @@ exports.HtmlForm = {
 <p>Полю <code>input</code> мы задаем аттрибут <code>id</code>, а элементу <code>label</code> аттрибут <code>for</code>  с точно таким же значением. Визуально ничего не изменится, но у такого способа есть преимущество - поле и его текстовое описание могут находится в разных частях разметки и все-равно будут связаны по <code>id</code>.</p>
 <p>Также следует помнить, что <code>id</code> с определенным значением может быть только один на странице, поэтому к выбору значения идентификатора надо подходить внимательно.</p>
 `,
-            goal: `Создайте текстовое описание для поля.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Создайте текстовое описание для поля.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 
 <form action="http://webgrove/server" method="POST">
@@ -162,7 +163,7 @@ exports.HtmlForm = {
   <input type="text" name="username" placeholder="Иван Сидоров">
 </form>
 `,
-                css: `
+        css: `
         form {
   background-color: #d7d6d6;
   text-align: center;
@@ -174,20 +175,20 @@ label {
   margin-right: 7px;
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: `Дайте текстовому полю уникальный идентификатор <code>username</code>.`,
-                    testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Дайте текстовому полю уникальный идентификатор <code>username</code>.`,
+          testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
             return textInput && textInput.id === "username";`,
-                    failMsg: "Убедитесь, что полю задан правильный id",
-                },
-                {
-                    id: 2,
-                    label: `<b>Перед</b> текстовым полем создайте <code>label</code> с текстом "Имя заказчика".`,
-                    testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
+          failMsg: "Убедитесь, что полю задан правильный id",
+        },
+        {
+          id: 2,
+          label: `<b>Перед</b> текстовым полем создайте <code>label</code> с текстом "Имя заказчика".`,
+          testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
             return (
               textInput &&
               textInput.previousElementSibling &&
@@ -195,26 +196,27 @@ label {
               textInput.previousElementSibling.textContent === "Имя заказчика"
             );
           `,
-                    failMsg: "Убедитесь, что вы создали label перед текстовым полем",
-                },
-                {
-                    id: 3,
-                    label: `Свяжите <code>label</code> c текстовым полем.`,
-                    testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
+          failMsg: "Убедитесь, что вы создали label перед текстовым полем",
+        },
+        {
+          id: 3,
+          label: `Свяжите <code>label</code> c текстовым полем.`,
+          testFn: `const textInput = iframe.contentDocument.body.querySelector("input[type=text]");
             if (!textInput) {
               return false;
             }
             const label = textInput.previousElementSibling;
             return textInput.id === "username" && label && label.htmlFor === "username";`,
-                    failMsg: "Убедитесь, что вы правильно задали аттрибут for",
-                },
-            ],
+          failMsg: "Убедитесь, что вы правильно задали аттрибут for",
         },
-        {
-            id: 4,
-            header: "Числовое поле - input[type='number']",
-            url: "html-input-number",
-            theory: `<p>Мы уже можем вводить текстовые данные. Для того, чтобы можно было вводить числа создадим <code>input</code> с типом <code>number</code>:</p>
+      ],
+    },
+
+    {
+      id: 4,
+      header: "Числовое поле - input[type='number']",
+      url: "html-input-number",
+      theory: `<p>Мы уже можем вводить текстовые данные. Для того, чтобы можно было вводить числа создадим <code>input</code> с типом <code>number</code>:</p>
       
 <pre><code><span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"students"</span>></span>Количество учеников<span class="tag">&lt;/label></span>
 <span class="tag">&lt;input <span class="attr-name">id=</span><span class="attr-value">"students"</span> <span class="attr-name">type=</span><span class="attr-value">"number"</span> <span class="attr-name">name=</span><span class="attr-value">"students"</span> <span class="attr-name">value=</span><span class="attr-value">"4"</span> <span class="attr-name">step=</span><span class="attr-value">"5"</span>></span></code></pre>
@@ -229,9 +231,9 @@ label {
 </ul></p>
 <p>Есть также специфичный для числового поля аттрибут <code>step</code>. Если вы установите фокус в числовое поле, то увидите справа управляющие стрелки. При клике на стрелки они увеличат или уменьшат значение в поле на величину, указанную в <code>step</code> (в данном случае на 5). Попробуйте.</p>
 `,
-            goal: `Создайте в форме числовое поле.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Создайте в форме числовое поле.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 
 <form action="http://webgrove/server" method="POST">
@@ -243,7 +245,7 @@ label {
   
 </form>
 `,
-                css: `
+        css: `
 form {
   background-color: #d7d6d6;
   text-align: center;
@@ -259,20 +261,20 @@ label {
   margin-bottom: 15px
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: `Создайте числовое поле.`,
-                    testFn: `const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Создайте числовое поле.`,
+          testFn: `const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
             return numInput && numInput.parentElement && numInput.parentElement.tagName === "FORM";`,
-                    failMsg: "Убедитесь, что вы создали поле с правильным типом",
-                },
-                {
-                    id: 2,
-                    label: `Укажите аттрибуты поля: <ul><li>идентификатор со значением <code>num-guests</code></li><li>название поля <code>num-guests</code></li><li>исходное значение <code>4</code></li><li>шаг изменения значения <code>1</code></li></ul>`,
-                    testFn: `const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
+          failMsg: "Убедитесь, что вы создали поле с правильным типом",
+        },
+        {
+          id: 2,
+          label: `Укажите аттрибуты поля: <ul><li>идентификатор со значением <code>num-guests</code></li><li>название поля <code>num-guests</code></li><li>исходное значение <code>4</code></li><li>шаг изменения значения <code>1</code></li></ul>`,
+          testFn: `const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
             return (
               numInput &&
               numInput.id === "num-guests" &&
@@ -280,38 +282,39 @@ label {
               numInput.value === "4" &&
               numInput.step === "1"
             );`,
-                    failMsg: "Убедитесь, что числовому полю заданы аттрибуты с правильными значениями",
-                },
-                {
-                    id: 3,
-                    label: `<b>Перед</b> числовым полем создайте <code>label</code> с текстом "Количество участников".`,
-                    testFn: `const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
+          failMsg: "Убедитесь, что числовому полю заданы аттрибуты с правильными значениями",
+        },
+        {
+          id: 3,
+          label: `<b>Перед</b> числовым полем создайте <code>label</code> с текстом "Количество участников".`,
+          testFn: `const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
             return (
               numInput &&
               numInput.previousElementSibling &&
               numInput.previousElementSibling.tagName === "LABEL" &&
               numInput.previousElementSibling.textContent === "Количество участников"
             );`,
-                    failMsg: "Убедитесь, что вы создали label перед числовым полем",
-                },
-                {
-                    id: 4,
-                    label: `Свяжите <code>label</code> c числовым полем.`,
-                    testFn: `const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
+          failMsg: "Убедитесь, что вы создали label перед числовым полем",
+        },
+        {
+          id: 4,
+          label: `Свяжите <code>label</code> c числовым полем.`,
+          testFn: `const numInput = iframe.contentDocument.body.querySelector("input[type=number]");
             if (!numInput) {
               return false;
             }
             const label = numInput.previousElementSibling;
             return numInput.id === "num-guests" && label && label.htmlFor === "num-guests";`,
-                    failMsg: "Убедитесь, что вы правильно задали аттрибут for",
-                },
-            ],
+          failMsg: "Убедитесь, что вы правильно задали аттрибут for",
         },
-        {
-            id: 5,
-            header: "Поля для телефона и email - input[type='tel'], input[type='email']",
-            url: "html-input-tel-email",
-            theory: `<p>Пользователям на сайтах часто предлагают ввести свой телефон и электронную почту <span style="text-decoration: line-through">чтобы заваливать их потом спамом</span>. Вводить эти данные нужно так часто, что в стандарте HTML5 предусмотрены специальные поля для этого.</p>
+      ],
+    },
+
+    {
+      id: 5,
+      header: "Поля для телефона и email - input[type='tel'], input[type='email']",
+      url: "html-input-tel-email",
+      theory: `<p>Пользователям на сайтах часто предлагают ввести свой телефон и электронную почту <span style="text-decoration: line-through">чтобы заваливать их потом спамом</span>. Вводить эти данные нужно так часто, что в стандарте HTML5 предусмотрены специальные поля для этого.</p>
       
 <code><pre><span class="tag">&lt;input <span class="attr-name">type=</span><span class="attr-value">"tel"</span> <span class="attr-name">name=</span><span class="attr-value">"tel"</span> <span class="attr-name">maxlength=</span><span class="attr-value">"16"</span> <span class="attr-name">placeholder=</span><span class="attr-value">"+7(906)342-43-12"</span>></span></code></pre>
       
@@ -323,9 +326,9 @@ label {
 <p><input type="email" name="email" placeholder="example@gmail.com"></p>
 <p>Поле с типом <code>email</code> нужно для ввода адреса электронной почты. При отправке формы браузер проверяет, чтобы в поле был валидный e-mail адрес, в частности присутствовал символ <code>@</code>.</p>
 `,
-            goal: `Создайте в форме поле для номера телефона и электронной почты.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Создайте в форме поле для номера телефона и электронной почты.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 
 <form action="http://webgrove/server" method="POST">
@@ -341,7 +344,7 @@ label {
 
 </form>
 `,
-                css: `
+        css: `
 form {
   background-color: #d7d6d6;
   text-align: center;
@@ -357,13 +360,13 @@ label {
   margin-bottom: 15px
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: `Создайте поле для номера телефона: <ul><li>идентификатор со значением <code>tel</code></li><li>название поля <code>tel</code></li><li>максимальную длину <code>18</code> символов</li><li>плэйсхолдер на свое усмотрение (значение не должно быть пустым)</li></ul>`,
-                    testFn: `const telInput = iframe.contentDocument.body.querySelector("input[type=tel]");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Создайте поле для номера телефона: <ul><li>идентификатор со значением <code>tel</code></li><li>название поля <code>tel</code></li><li>максимальную длину <code>18</code> символов</li><li>плэйсхолдер на свое усмотрение (значение не должно быть пустым)</li></ul>`,
+          testFn: `const telInput = iframe.contentDocument.body.querySelector("input[type=tel]");
             return (
               telInput &&
               telInput.parentElement &&
@@ -373,23 +376,24 @@ label {
               telInput.maxLength === 18 &&
               telInput.placeholder !== ""
             );`,
-                    failMsg: "Убедитесь, что вы создали поле для телефона с правильными значениями аттрибутов",
-                },
-                {
-                    id: 2,
-                    label: `<b>Перед</b>  полем для телефона создайте <code>label</code> с текстом "Телефон:", свяжите поле со своей подписью.`,
-                    testFn: `const telInput = iframe.contentDocument.body.querySelector("input[type=tel]");
+          failMsg: "Убедитесь, что вы создали поле для телефона с правильными значениями аттрибутов",
+        },
+        {
+          id: 2,
+          label: `<b>Перед</b>  полем для телефона создайте <code>label</code> с текстом "Телефон:", свяжите поле со своей подписью.`,
+          testFn: `const telInput = iframe.contentDocument.body.querySelector("input[type=tel]");
             if (!telInput) {
               return false;
             }
             const label = telInput.previousElementSibling;
             return label && label.textContent === "Телефон:" && label.htmlFor === "tel";`,
-                    failMsg: "Убедитесь, что вы создали label перед полем для телефона с правильным текстовым содержанием и аттрибутом for",
-                },
-                {
-                    id: 3,
-                    label: `Создайте поле для email: <ul><li>идентификатор со значением <code>email</code></li><li>название поля <code>email</code></li><li>плэйсхолдер на свое усмотрение (значение не должно быть пустым)</li></ul>`,
-                    testFn: ` const emailInput = iframe.contentDocument.body.querySelector("input[type=email]");
+          failMsg:
+            "Убедитесь, что вы создали label перед полем для телефона с правильным текстовым содержанием и аттрибутом for",
+        },
+        {
+          id: 3,
+          label: `Создайте поле для email: <ul><li>идентификатор со значением <code>email</code></li><li>название поля <code>email</code></li><li>плэйсхолдер на свое усмотрение (значение не должно быть пустым)</li></ul>`,
+          testFn: ` const emailInput = iframe.contentDocument.body.querySelector("input[type=email]");
             return (
               emailInput &&
               emailInput.parentElement &&
@@ -398,26 +402,28 @@ label {
               emailInput.name === "email" &&
               emailInput.placeholder !== ""
             );`,
-                    failMsg: "Убедитесь, что вы создали поле для email с правильными значениями аттрибутов",
-                },
-                {
-                    id: 4,
-                    label: `<b>Перед</b>  полем для email создайте <code>label</code> с текстом "E-mail:", свяжите поле со своей подписью.`,
-                    testFn: `const emailInput = iframe.contentDocument.body.querySelector("input[type=email]") ;
+          failMsg: "Убедитесь, что вы создали поле для email с правильными значениями аттрибутов",
+        },
+        {
+          id: 4,
+          label: `<b>Перед</b>  полем для email создайте <code>label</code> с текстом "E-mail:", свяжите поле со своей подписью.`,
+          testFn: `const emailInput = iframe.contentDocument.body.querySelector("input[type=email]") ;
             if (!emailInput) {
               return false;
             }
             const label = emailInput.previousElementSibling;
             return label && label.textContent === "E-mail:" && label.htmlFor === "email";`,
-                    failMsg: "Убедитесь, что вы создали label перед полем для email с правильным текстовым содержанием и аттрибутом for",
-                },
-            ],
+          failMsg:
+            "Убедитесь, что вы создали label перед полем для email с правильным текстовым содержанием и аттрибутом for",
         },
-        {
-            id: 6,
-            header: "Выпадающий список - элементы select и option",
-            url: "html-select-option",
-            theory: `<p>Не все интерактивные элементы форм отображаются с помощью <code>input</code>. Например, мы хотим отобразить выпадающий список элементов. Для этого используем элемент <code>select</code>:</p>
+      ],
+    },
+
+    {
+      id: 6,
+      header: "Выпадающий список - элементы select и option",
+      url: "html-select-option",
+      theory: `<p>Не все интерактивные элементы форм отображаются с помощью <code>input</code>. Например, мы хотим отобразить выпадающий список элементов. Для этого используем элемент <code>select</code>:</p>
       
 <pre><code><span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"color"</span>></span>Выберите цвет автомобиля:<span class="tag">&lt;/label></span>
 <span class="tag">&lt;select <span class="attr-name">id=</span><span class="attr-value">"color"</span> <span class="attr-name">name=</span><span class="attr-value">"color"</span>></span>
@@ -440,9 +446,9 @@ label {
 <p>Выпадающий список представлен элементом <code>select</code>, а каждый из вариантов выбора с помощью элемента <code>option</code>. Текст, расположенный между открывающим и закрывающим тэгами <code>option</code> отобразится в списке, но нам важнее аттрибут <code>value</code>. При отправке формы он уйдет на сервер в паре с аттрибутом <code>name</code> элемента <code>select</code>.</p>
 <p>Например, если в списке сверху выбрать черный цвет, то при отправке формы на сервер уйдет значение <code>color="black"</code>. Не забывайте давать <code>value</code> своим <code>option</code>.</p>
 `,
-            goal: `Создайте в форме выпададающий список.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Создайте в форме выпададающий список.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 
 <form action="http://webgrove/server" method="POST">
@@ -472,7 +478,7 @@ label {
   </fieldset>
 </form>
 `,
-                css: `
+        css: `
 form {
   background-color: #d7d6d6;
   text-align: center;
@@ -497,13 +503,13 @@ label {
   margin-bottom: 15px
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: `Создайте выпадающий список, укажите <ul><li>идентификатор на свое усмотрение (значение не должно быть пустым)</li><li>название списка <code>scary</code></li></ul>`,
-                    testFn: `const select = iframe.contentDocument.body.querySelector("select");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Создайте выпадающий список, укажите <ul><li>идентификатор на свое усмотрение (значение не должно быть пустым)</li><li>название списка <code>scary</code></li></ul>`,
+          testFn: `const select = iframe.contentDocument.body.querySelector("select");
             return (
               select &&
               select.parentElement &&
@@ -511,12 +517,12 @@ label {
               select.id !== "" &&
               select.name === "scary"
             );`,
-                    failMsg: "Убедитесь, что вы создали элемент select с правильными значениями аттрибутов",
-                },
-                {
-                    id: 2,
-                    label: `Создайте следующие варианты выбора <ul><li>Первый вариант с текстом "Не страшно" и значением <code>scary-none</code></li><li>Второй вариант с текстом "Немного страшно" и значением <code>scary-low</code></li><li>Третий вариант с текстом "Страшновато" и значением <code>scary-moderate</code></li><li>Четвертый вариант на свое усмотрение</li></ul>`,
-                    testFn: `const select = iframe.contentDocument.body.querySelector("select");
+          failMsg: "Убедитесь, что вы создали элемент select с правильными значениями аттрибутов",
+        },
+        {
+          id: 2,
+          label: `Создайте следующие варианты выбора <ul><li>Первый вариант с текстом "Не страшно" и значением <code>scary-none</code></li><li>Второй вариант с текстом "Немного страшно" и значением <code>scary-low</code></li><li>Третий вариант с текстом "Страшновато" и значением <code>scary-moderate</code></li><li>Четвертый вариант на свое усмотрение</li></ul>`,
+          testFn: `const select = iframe.contentDocument.body.querySelector("select");
             if (!select) {
               return false;
             }
@@ -532,26 +538,28 @@ label {
               options[3].textContent !== "" &&
               options[3].value !== ""
             );`,
-                    failMsg: "Убедитесь, что вы создали 4 элемента option с текстом и исходным значением",
-                },
-                {
-                    id: 3,
-                    label: `<b>Перед</b> выпадающим списком создайте <code>label</code> с текстом "Хотите страшного?", свяжите выпадающий список со своей подписью.`,
-                    testFn: `const select = iframe.contentDocument.body.querySelector("select");
+          failMsg: "Убедитесь, что вы создали 4 элемента option с текстом и исходным значением",
+        },
+        {
+          id: 3,
+          label: `<b>Перед</b> выпадающим списком создайте <code>label</code> с текстом "Хотите страшного?", свяжите выпадающий список со своей подписью.`,
+          testFn: `const select = iframe.contentDocument.body.querySelector("select");
             if (!select) {
               return false;
             }
             const label = select.previousElementSibling;
             return label && label.textContent === "Хотите страшного?" && label.htmlFor === select.id;`,
-                    failMsg: "Убедитесь, что вы создали label перед выпадающим списком с правильным текстовым содержанием и аттрибутом for",
-                },
-            ],
+          failMsg:
+            "Убедитесь, что вы создали label перед выпадающим списком с правильным текстовым содержанием и аттрибутом for",
         },
-        {
-            id: 7,
-            header: "Чекбоксы - input[type=checkbox]",
-            url: "html-checkbox",
-            theory: `<p>Элемент <code>select</code> предоставляет пользователям выбор одного варианта из множества. Если мы хотим предоставить возможность выбора нескольких вариантов, используем элемент <code>input</code> с типом <code>checkbox</code>.</p>
+      ],
+    },
+
+    {
+      id: 7,
+      header: "Чекбоксы - input[type=checkbox]",
+      url: "html-checkbox",
+      theory: `<p>Элемент <code>select</code> предоставляет пользователям выбор одного варианта из множества. Если мы хотим предоставить возможность выбора нескольких вариантов, используем элемент <code>input</code> с типом <code>checkbox</code>.</p>
       
 <pre><code><span class="tag">&lt;span></span>Выберите предпочитаемые цвета:<span class="tag">&lt;/span></span>
 <span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag">&lt;/label></span>
@@ -580,9 +588,9 @@ label {
 <p>У нас на странице появилось 4 варианта выбора цвета, причем вы можете выбрать любое количество. Обратите внимание, что для группы чекбоксов значение аттрибута <code>name</code> должно быть одинаковым (в данном случае <code>color</code>) и должно быть сразу указано значение <code>value</code>. Как и в случае с другими полями, именно это значение уйдет на сервер при отправке формы.</p>
 <p>Также у первого чекбокса указан аттрибут <code>checked</code> (у этого аттрибута нет значения). Это означает, что вариант со значением <code>red</code> будет выбран по умолчанию.</p>
 `,
-            goal: `Создайте в форме группу чекбоксов.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Создайте в форме группу чекбоксов.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 
 <form action="http://webgrove/server" method="POST">
@@ -622,7 +630,7 @@ label {
   </fieldset>
 </form>
 `,
-                css: `
+        css: `
 form {
   background-color: #d7d6d6;
   text-align: center;
@@ -658,13 +666,13 @@ span {
   margin-bottom: 15px
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: `Создайте первый чекбокс, укажите <ul><li>идентификатор <code>reality</code></li><li>исходное значение <code>reality</code></li><li>имя чекбокса (и всей группы) <code>type</code></li></ul>`,
-                    testFn: `const firstCheckbox = iframe.contentDocument.body.querySelectorAll(
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Создайте первый чекбокс, укажите <ul><li>идентификатор <code>reality</code></li><li>исходное значение <code>reality</code></li><li>имя чекбокса (и всей группы) <code>type</code></li></ul>`,
+          testFn: `const firstCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[0];
             return (
@@ -675,12 +683,12 @@ span {
               firstCheckbox.value === "reality" &&
               firstCheckbox.name === "type"
             );`,
-                    failMsg: "Убедитесь, что вы создали чекбокс с правильными значениями аттрибутов",
-                },
-                {
-                    id: 2,
-                    label: `<b>После</b> первого чекбокса создайте <code>label</code> с текстом "Квест в реальности", свяжите чекбокс с подписью.`,
-                    testFn: `const firstCheckbox = iframe.contentDocument.body.querySelectorAll(
+          failMsg: "Убедитесь, что вы создали чекбокс с правильными значениями аттрибутов",
+        },
+        {
+          id: 2,
+          label: `<b>После</b> первого чекбокса создайте <code>label</code> с текстом "Квест в реальности", свяжите чекбокс с подписью.`,
+          testFn: `const firstCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[0];
             if (!firstCheckbox) {
@@ -688,12 +696,12 @@ span {
             }
             const label = firstCheckbox.nextElementSibling;
             return label && label.textContent === "Квест в реальности" && label.htmlFor === firstCheckbox.id;`,
-                    failMsg: "Убедитесь, что вы создали label после чекбокса с правильным текстовым содержанием и аттрибутом for",
-                },
-                {
-                    id: 3,
-                    label: `Создайте второй чекбокс, укажите <ul><li>идентификатор <code>performance</code></li><li>исходное значение <code>performance</code></li></ul> Второй чекбокс должен быть выбран по умолчанию.`,
-                    testFn: `const secondCheckbox = iframe.contentDocument.body.querySelectorAll(
+          failMsg: "Убедитесь, что вы создали label после чекбокса с правильным текстовым содержанием и аттрибутом for",
+        },
+        {
+          id: 3,
+          label: `Создайте второй чекбокс, укажите <ul><li>идентификатор <code>performance</code></li><li>исходное значение <code>performance</code></li></ul> Второй чекбокс должен быть выбран по умолчанию.`,
+          testFn: `const secondCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[1];
             return (
@@ -705,12 +713,12 @@ span {
               secondCheckbox.name === "type" &&
               secondCheckbox.checked
             );`,
-                    failMsg: "Убедитесь, что вы создали чекбокс с правильными значениями аттрибутов",
-                },
-                {
-                    id: 4,
-                    label: `<b>После</b> второго чекбокса создайте <code>label</code> с текстом "Перформанс", свяжите чекбокс с подписью.`,
-                    testFn: `const secondCheckbox = iframe.contentDocument.body.querySelectorAll(
+          failMsg: "Убедитесь, что вы создали чекбокс с правильными значениями аттрибутов",
+        },
+        {
+          id: 4,
+          label: `<b>После</b> второго чекбокса создайте <code>label</code> с текстом "Перформанс", свяжите чекбокс с подписью.`,
+          testFn: `const secondCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[1] ;
             if (!secondCheckbox) {
@@ -718,12 +726,12 @@ span {
             }
             const label = secondCheckbox.nextElementSibling ;
             return label && label.textContent === "Перформанс" && label.htmlFor === secondCheckbox.id;`,
-                    failMsg: "Убедитесь, что вы создали label после чекбокса с правильным текстовым содержанием и аттрибутом for",
-                },
-                {
-                    id: 5,
-                    label: `Создайте третий чекбокс, укажите аттрибуты на свое усмотрение, <b>после</b> него создайте подпись и свяжите ее с чекбоксом.`,
-                    testFn: `const thirdCheckbox = iframe.contentDocument.body.querySelectorAll(
+          failMsg: "Убедитесь, что вы создали label после чекбокса с правильным текстовым содержанием и аттрибутом for",
+        },
+        {
+          id: 5,
+          label: `Создайте третий чекбокс, укажите аттрибуты на свое усмотрение, <b>после</b> него создайте подпись и свяжите ее с чекбоксом.`,
+          testFn: `const thirdCheckbox = iframe.contentDocument.body.querySelectorAll(
               "input[type=checkbox]"
             )[2];
             if (!thirdCheckbox) {
@@ -741,15 +749,17 @@ span {
               label.textContent !== "" &&
               label.htmlFor === thirdCheckbox.id
             );`,
-                    failMsg: "Убедитесь, что вы создали чекбокс с не пустыми значениями аттрибутов и элемент label, связанный с чекбоксом",
-                },
-            ],
+          failMsg:
+            "Убедитесь, что вы создали чекбокс с не пустыми значениями аттрибутов и элемент label, связанный с чекбоксом",
         },
-        {
-            id: 8,
-            header: "Радиокнопки - input[type=radio]",
-            url: "html-radio",
-            theory: `<p>Наконец, есть еще один способ предоставить пользователю выбор из нескольких вариантов - использование полей с типом <code>radio</code> - радиокнопок. Вот пример:</p>
+      ],
+    },
+
+    {
+      id: 8,
+      header: "Радиокнопки - input[type=radio]",
+      url: "html-radio",
+      theory: `<p>Наконец, есть еще один способ предоставить пользователю выбор из нескольких вариантов - использование полей с типом <code>radio</code> - радиокнопок. Вот пример:</p>
       
 <pre><code><span class="tag">&lt;span></span>Выберите один любимый цвет:<span class="tag">&lt;/span></span>
 <span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"red"</span>></span>Красный<span class="tag">&lt;/label></span>
@@ -778,9 +788,9 @@ span {
 <p>Радиокнопки близки к элементу <code>select</code> в том смысле, что позволяют выбрать только один вариант из множества, но в данном случае все варианты сразу отображены на странице.</p>
 <p>Правила использования радиокнопок такие же, как и чекбоксов. У группы радиокнопок должен быть аттрибут <code>name</code> с одинаковым значением и аттрибут <code>value</code> с уникальным значением. Также вы можете указать аттрибут <code>checked</code>, чтобы выбрать радиокнопку по умолчанию.</p>
 `,
-            goal: `Создайте в форме группу радиокнопок.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Создайте в форме группу радиокнопок.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 
 <form action="http://webgrove/server" method="POST">
@@ -835,7 +845,7 @@ span {
   </fieldset>
 </form>
 `,
-                css: `
+        css: `
 form {
   background-color: #d7d6d6;
   text-align: center;
@@ -871,13 +881,13 @@ span {
   margin-bottom: 15px
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: `Создайте первую радиокнопку, укажите <ul><li>идентификатор <code>popularity</code></li><li>исходное значение <code>popularity</code></li><li>имя радиокнопки (и всей группы) <code>preference</code></li></ul>`,
-                    testFn: `const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] ;
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Создайте первую радиокнопку, укажите <ul><li>идентификатор <code>popularity</code></li><li>исходное значение <code>popularity</code></li><li>имя радиокнопки (и всей группы) <code>preference</code></li></ul>`,
+          testFn: `const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] ;
             return (
               firstRadio &&
               firstRadio.parentElement &&
@@ -886,23 +896,24 @@ span {
               firstRadio.value === "popularity" &&
               firstRadio.name === "preference"
             );`,
-                    failMsg: "Убедитесь, что вы создали радиокнопку с правильными значениями аттрибутов",
-                },
-                {
-                    id: 2,
-                    label: `<b>После</b> первой радиокнопки создайте <code>label</code> с текстом "Популярность", свяжите радиокнопку с подписью.`,
-                    testFn: ` const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] ;
+          failMsg: "Убедитесь, что вы создали радиокнопку с правильными значениями аттрибутов",
+        },
+        {
+          id: 2,
+          label: `<b>После</b> первой радиокнопки создайте <code>label</code> с текстом "Популярность", свяжите радиокнопку с подписью.`,
+          testFn: ` const firstRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[0] ;
             if (!firstRadio) {
               return false;
             }
             const label = firstRadio.nextElementSibling ;
             return label && label.textContent === "Популярность" && label.htmlFor === firstRadio.id;`,
-                    failMsg: "Убедитесь, что вы создали label после радиокнопки с правильным текстовым содержанием и аттрибутом for",
-                },
-                {
-                    id: 3,
-                    label: `Создайте вторую радиокнопку, укажите <ul><li>идентификатор <code>reviews</code></li><li>исходное значение <code>reviews</code></li></ul> Вторая радиокнопка должна быть выбрана по умолчанию.`,
-                    testFn: `const secondRadio = iframe.contentDocument.body.querySelectorAll(
+          failMsg:
+            "Убедитесь, что вы создали label после радиокнопки с правильным текстовым содержанием и аттрибутом for",
+        },
+        {
+          id: 3,
+          label: `Создайте вторую радиокнопку, укажите <ul><li>идентификатор <code>reviews</code></li><li>исходное значение <code>reviews</code></li></ul> Вторая радиокнопка должна быть выбрана по умолчанию.`,
+          testFn: `const secondRadio = iframe.contentDocument.body.querySelectorAll(
               "input[type=radio]"
             )[1] ;
             return (
@@ -914,12 +925,12 @@ span {
               secondRadio.name === "preference" &&
               secondRadio.checked
             );`,
-                    failMsg: "Убедитесь, что вы создали радиокнопку с правильными значениями аттрибутов",
-                },
-                {
-                    id: 4,
-                    label: `<b>После</b> второй радиокнопки создайте <code>label</code> с текстом "Отзывы", свяжите радиокнопку с подписью.`,
-                    testFn: `const secondRadio = iframe.contentDocument.body.querySelectorAll(
+          failMsg: "Убедитесь, что вы создали радиокнопку с правильными значениями аттрибутов",
+        },
+        {
+          id: 4,
+          label: `<b>После</b> второй радиокнопки создайте <code>label</code> с текстом "Отзывы", свяжите радиокнопку с подписью.`,
+          testFn: `const secondRadio = iframe.contentDocument.body.querySelectorAll(
               "input[type=radio]"
             )[1];
             if (!secondRadio) {
@@ -927,12 +938,13 @@ span {
             }
             const label = secondRadio.nextElementSibling;
             return label && label.textContent === "Отзывы" && label.htmlFor === secondRadio.id;`,
-                    failMsg: "Убедитесь, что вы создали label после радиокнопки с правильным текстовым содержанием и аттрибутом for",
-                },
-                {
-                    id: 5,
-                    label: `Создайте третью радиокнопку, укажите аттрибуты на свое усмотрение, <b>после</b> нее создайте подпись и свяжите ее с радиокнопкой.`,
-                    testFn: `const thirdRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[2] ;
+          failMsg:
+            "Убедитесь, что вы создали label после радиокнопки с правильным текстовым содержанием и аттрибутом for",
+        },
+        {
+          id: 5,
+          label: `Создайте третью радиокнопку, укажите аттрибуты на свое усмотрение, <b>после</b> нее создайте подпись и свяжите ее с радиокнопкой.`,
+          testFn: `const thirdRadio = iframe.contentDocument.body.querySelectorAll("input[type=radio]")[2] ;
             if (!thirdRadio) {
               return false;
             }
@@ -948,15 +960,17 @@ span {
               label.textContent !== "" &&
               label.htmlFor === thirdRadio.id
             );`,
-                    failMsg: "Убедитесь, что вы создали радиокнопку с не пустыми значениями аттрибутов и элемент label, связанный с радиокнопкой",
-                },
-            ],
+          failMsg:
+            "Убедитесь, что вы создали радиокнопку с не пустыми значениями аттрибутов и элемент label, связанный с радиокнопкой",
         },
-        {
-            id: 9,
-            header: "Многострочный текст - элемент textarea",
-            url: "html-textarea",
-            theory: `<p>В элемент <code>input</code> с типом <code>text</code> можно записать только одну строку текста. Но что если нам нужно отправить многострочный текст, например текст статьи или текст обращения куда-либо? Для этой цели есть специальный элемент - <code>textarea</code>:</p>
+      ],
+    },
+
+    {
+      id: 9,
+      header: "Многострочный текст - элемент textarea",
+      url: "html-textarea",
+      theory: `<p>В элемент <code>input</code> с типом <code>text</code> можно записать только одну строку текста. Но что если нам нужно отправить многострочный текст, например текст статьи или текст обращения куда-либо? Для этой цели есть специальный элемент - <code>textarea</code>:</p>
       
 <pre><code><span class="tag">&lt;label <span class="attr-name">for=</span><span class="attr-value">"details"</span>></span>Укажите подробности<span class="tag">&lt;/label></span>
 <span class="tag">&lt;textarea <span class="attr-name">id=</span><span class="attr-value">"details"</span> <span class="attr-name">name=</span><span class="attr-value">"details"</span> <span class="attr-name">rows=</span><span class="attr-value">"8"</span> <span class="attr-name">cols=</span><span class="attr-value">"30"</span>></span>Текст обращения<span class="tag">&lt;/textarea></span></code></pre>      
@@ -967,9 +981,9 @@ span {
 <p>На странице появилось большое текстовое поле, в которое можно ввести многострочный текст. Размер поля можно задать заранее, указывая количество столбцов с помощью аттрибута <code>col</code> (в данном случае <code>30</code>) и количество строк с помощью аттрибута <code>rows</code> (в данном случае <code>8</code>). Но вы также можете изменить размер <code>textarea</code> просто потянув мышкой за правый нижний угол элемента!</p>
 <p>У <code>textarea</code> нет аттрибута <code>value</code>. На сервер отправится текст, который вы ввели между открывающим и закрывающим тэгами элемента (в данном случае "Текст обращения"). Аттрибут <code>name</code> по прежнему необходим.</p>
 `,
-            goal: `Создайте в форме поле для многострочного текста.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Создайте в форме поле для многострочного текста.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 
 <form action="http://webgrove/server" method="POST">
@@ -1038,7 +1052,7 @@ span {
   </fieldset>
 </form>
 `,
-                css: `
+        css: `
 form {
   background-color: #d7d6d6;
   text-align: center;
@@ -1078,13 +1092,13 @@ textarea {
   margin-bottom: 15px
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: `Создайте поле для многострочного текста, укажите <ul><li>идентификатор <code>message</code></li><li>имя <code>message</code></li><li><code>10</code> колонок</li><li><code>10</code> рядов</li></ul>`,
-                    testFn: `const textarea = iframe.contentDocument.body.querySelector("textarea");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Создайте поле для многострочного текста, укажите <ul><li>идентификатор <code>message</code></li><li>имя <code>message</code></li><li><code>10</code> колонок</li><li><code>10</code> рядов</li></ul>`,
+          testFn: `const textarea = iframe.contentDocument.body.querySelector("textarea");
             return (
               textarea &&
               textarea.parentElement &&
@@ -1094,33 +1108,34 @@ textarea {
               textarea.cols === 10 &&
               textarea.rows === 10
             );`,
-                    failMsg: "Убедитесь, что вы создали textarea с правильными значениями аттрибутов",
-                },
-                {
-                    id: 2,
-                    label: `<b>Перед</b> полем для многострочного текста создайте <code>label</code> с текстом "Дополнительная информация:", свяжите поле с подписью.`,
-                    testFn: `const textarea = iframe.contentDocument.body.querySelector("textarea");
+          failMsg: "Убедитесь, что вы создали textarea с правильными значениями аттрибутов",
+        },
+        {
+          id: 2,
+          label: `<b>Перед</b> полем для многострочного текста создайте <code>label</code> с текстом "Дополнительная информация:", свяжите поле с подписью.`,
+          testFn: `const textarea = iframe.contentDocument.body.querySelector("textarea");
             if (!textarea) {
               return false;
             }
             const label = textarea.previousElementSibling ;
             return label && label.textContent === "Дополнительная информация:" && label.htmlFor === textarea.id;`,
-                    failMsg: "Убедитесь, что вы создали label перед полем с правильным текстовым содержанием и аттрибутом for",
-                },
-                {
-                    id: 3,
-                    label: `Полю для многострочного текста задайте исходный текст на свое усмотрение`,
-                    testFn: `const textarea = iframe.contentDocument.body.querySelector("textarea");
-            return textarea && textarea.textLength > 0;`,
-                    failMsg: "Убедитесь, что поле для текста не пустое",
-                },
-            ],
+          failMsg: "Убедитесь, что вы создали label перед полем с правильным текстовым содержанием и аттрибутом for",
         },
         {
-            id: 10,
-            header: "Отправка формы - button[type='submit']",
-            url: "html-submit",
-            theory: `<p>В нашей форме мы собрали уже много самой разнообразной информации и теперь всего один клик отделяет нас от отправки формы на сервер. Так, стоп, но куда кликать? Давайте используем специальное поле для отправки данных с типом <code>submit</code>:</p>
+          id: 3,
+          label: `Полю для многострочного текста задайте исходный текст на свое усмотрение`,
+          testFn: `const textarea = iframe.contentDocument.body.querySelector("textarea");
+            return textarea && textarea.textLength > 0;`,
+          failMsg: "Убедитесь, что поле для текста не пустое",
+        },
+      ],
+    },
+
+    {
+      id: 10,
+      header: "Отправка формы - button[type='submit']",
+      url: "html-submit",
+      theory: `<p>В нашей форме мы собрали уже много самой разнообразной информации и теперь всего один клик отделяет нас от отправки формы на сервер. Так, стоп, но куда кликать? Давайте используем специальное поле для отправки данных с типом <code>submit</code>:</p>
       
 <pre><code><span class="tag">&lt;input <span class="attr-name">type=</span><span class="attr-value">"submit"</span> <span class="attr-name">value=</span><span class="attr-value">"submit"</span>></span></code></pre>      
 
@@ -1134,9 +1149,9 @@ textarea {
 <p>При использовании элемента <code>button</code> в качестве аттрибута мы указываем только тип, а текст разместим между открывающим и закрывающим тэгами.</p>
 <p>Давайте потренируемся отправлять данные формы с помощью <code>button</code>, так как этот способ более широко применяется в реальных проектах.</p>
 `,
-            goal: `Создайте в форме кнопку отправки данных.`,
-            initValues: {
-                html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
+      goal: `Создайте в форме кнопку отправки данных.`,
+      initValues: {
+        html: `<h2>Забронируйте квест в компании Quest and Adventure!</h2>
 <p>Заполните форму ниже:</p>
 
 <form action="http://webgrove/server" method="POST">
@@ -1209,7 +1224,7 @@ textarea {
   </fieldset>
 </form>
 `,
-                css: `
+        css: `
 form {
   background-color: #d7d6d6;
   text-align: center;
@@ -1256,24 +1271,24 @@ textarea {
   margin-bottom: 15px
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: `Создайте кнопку отправки данных формы.`,
-                    testFn: `const submitButton = iframe.contentDocument.body.querySelector("button[type=submit]");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Создайте кнопку отправки данных формы.`,
+          testFn: `const submitButton = iframe.contentDocument.body.querySelector("button[type=submit]");
             return submitButton && submitButton.parentElement && submitButton.parentElement.tagName === "FIELDSET";`,
-                    failMsg: "Убедитесь, что вы создали кнопку с правильным типом",
-                },
-                {
-                    id: 2,
-                    label: `Задайте кнопке текст "Показать!".`,
-                    testFn: `const submitButton = iframe.contentDocument.body.querySelector("button[type=submit]");
-            return submitButton && submitButton.textContent === "Показать!";`,
-                    failMsg: "Убедитесь, что кнопка содержит правильный текст",
-                },
-            ],
+          failMsg: "Убедитесь, что вы создали кнопку с правильным типом",
         },
-    ],
+        {
+          id: 2,
+          label: `Задайте кнопке текст "Показать!".`,
+          testFn: `const submitButton = iframe.contentDocument.body.querySelector("button[type=submit]");
+            return submitButton && submitButton.textContent === "Показать!";`,
+          failMsg: "Убедитесь, что кнопка содержит правильный текст",
+        },
+      ],
+    },
+  ],
 };

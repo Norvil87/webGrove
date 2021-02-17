@@ -23,7 +23,7 @@ const MainPage: React.FC = () => {
         <h2>Курсы</h2>
         <ul className="course-list">
           <li className="course-list__course-card course-list__html-card">
-            <Link to="/courses/html" onClick={handleCourseLinkClick("Html")}>
+            <Link to="/courses/html" onClick={handleCourseLinkClick("html")}>
               <h3>HTML</h3>
               <button className="button" type="button">
                 Приступить
@@ -31,7 +31,7 @@ const MainPage: React.FC = () => {
             </Link>
           </li>
           <li className="course-list__course-card course-list__css-card">
-            <Link to="/courses/css" onClick={handleCourseLinkClick("Css")}>
+            <Link to="/courses/css" onClick={handleCourseLinkClick("css")}>
               <h3>CSS</h3>
               <button className="button" type="button">
                 Приступить
@@ -39,7 +39,7 @@ const MainPage: React.FC = () => {
             </Link>
           </li>
           <li className="course-list__course-card course-list__js-card">
-            <Link to="/courses/js" onClick={handleCourseLinkClick("Js")}>
+            <Link to="/courses/js" onClick={handleCourseLinkClick("js")}>
               <h3>JavaScript</h3>
               <button className="button" type="button">
                 Приступить

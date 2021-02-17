@@ -1,0 +1,8 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ResultMessage = void 0;
+var ResultMessage;
+(function (ResultMessage) {
+    ResultMessage["SUCCESS"] = "\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u0435\u043C! \u0412\u0441\u0435 \u0442\u0435\u0441\u0442\u044B \u043F\u0440\u043E\u0439\u0434\u0435\u043D\u044B";
+    ResultMessage["FAIL"] = "\u0411\u0435\u0437 \u043F\u0430\u043D\u0438\u043A\u0438! \u0412\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0438\u0442\u0435 \u043A\u043E\u0434 \u0438 \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437";
+})(ResultMessage = exports.ResultMessage || (exports.ResultMessage = {}));

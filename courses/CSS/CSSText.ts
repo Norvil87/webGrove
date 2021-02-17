@@ -62,13 +62,13 @@ export const CssText: ICourseLesson = {
         {
           id: 1,
           label: "Абзацу с классом <code>serif</code> задайте начертание семейством шрифтов с засечками.",
-          testRegExp: [/.serif\s+{\s*font-family: serif;\s*}/],
+          testRegExp: [`\.serif\\s+{\\s*font-family: serif;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное семейство шрифтов элементу с классом serif",
         },
         {
           id: 2,
           label: "Абзацу с классом <code>sans-serif</code> задайте начертание семейством шрифтов без засечек.",
-          testRegExp: [/.sans-serif\s+{\s*font-family: sans-serif;\s*}/],
+          testRegExp: [`\.sans-serif\\s+{\\s*font-family: sans-serif;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное семейство шрифтов элементу с классом sans-serif",
         },
       ],
@@ -130,14 +130,14 @@ export const CssText: ICourseLesson = {
           id: 1,
           label:
             "Абзацу с классом <code>serif</code> задайте <code>Georgia</code> в качестве основного шрифта, <code>Times New Roman</code> в качестве вэб-безопасного, <code>serif</code> в качестве семейства шрифтов. Не забудьте про двойные кавычки если название шрифта состоит из нескольких слов.",
-          testRegExp: [/.serif\s+{\s*font-family: Georgia,\s*"Times New Roman",\s*serif;\s*}/],
+          testRegExp: [`\.serif\\s+{\\s*font-family: Georgia,\\s*"Times New Roman",\\s*serif;\\s*}`],
           failMsg: "Убедитесь, что вы задали шрифты через перечисление элементу с классом serif",
         },
         {
           id: 2,
           label:
             "Абзацу с классом <code>sans-serif</code> задайте <code>Crimson Text</code> в качестве основного шрифта, <code>Arial</code> в качестве вэб-безопасного, <code>sans-serif</code> в качестве семейства шрифтов. Обратите внимание, что скорее всего в вашей системе не установлен Crimson Text, поэтому произойдет откат до вэб-безопасного Arial.",
-          testRegExp: [/.sans-serif\s+{\s*font-family: "Crimson Text",\s*Arial,\s*sans-serif;\s*}/],
+          testRegExp: [`\.sans-serif\\s+{\\s*font-family: "Crimson Text",\\s*Arial,\\s*sans-serif;\\s*}`],
           failMsg: "Убедитесь, что вы задали шрифты через перечисление элементу с классом sans-serif",
         },
       ],
@@ -204,20 +204,20 @@ export const CssText: ICourseLesson = {
         {
           id: 1,
           label: "Абзацу с классом <code>small-font</code> задайте размер шрифта <code>10px</code>.",
-          testRegExp: [/.small-font\s+{\s*font-size: 10px;\s*}/],
+          testRegExp: [`\.small-font\\s+{\\s*font-size: 10px;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильный размер шрифта",
         },
         {
           id: 2,
           label: "Корневому документу задайте размер шрифта <code>14px</code>.",
-          testRegExp: [/html\s+{\s*font-size: 14px;\s*}/],
+          testRegExp: [`\html\\s+{\\s*font-size: 14px;\\s*}`],
           failMsg: "Убедитесь, что элементу html вы задали правильный размер шрифта",
         },
         {
           id: 3,
           label:
             "Абзацу с классом <code>large-font</code> задайте размер шрифта в 1.8 раза больше размера шрифта корневого документа.",
-          testRegExp: [/.large-font\s+{\s*font-size: 1.8rem;\s*}/],
+          testRegExp: [`\.large-font\\s+{\\s*font-size: 1.8rem;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильный размер шрифта в относительных единицах",
         },
       ],
@@ -298,7 +298,7 @@ html {
         {
           id: 1,
           label: "Абзацу с классом <code>italic</code> задайте курсивное начертание текста.",
-          testRegExp: [/.italic\s+{\s*font-style: italic;\s*}/],
+          testRegExp: [`\.italic\\s+{\\s*font-style: italic;\\s*}`],
           failMsg: "Убедитесь, что вы сделали текст курсивным",
         },
       ],
@@ -388,7 +388,7 @@ html {
         {
           id: 1,
           label: "Абзацу с классом <code>bold</code> задайте жирное начертание.",
-          testRegExp: [/.bold\s+{\s*font-weight: bold;\s*}/],
+          testRegExp: [`\.bold\\s+{\\s*font-weight: bold;\\s*}`],
           failMsg: "Убедитесь, что вы сделали текст жирным",
         },
       ],
@@ -491,26 +491,26 @@ html {
         {
           id: 1,
           label: "Абзацу с классом <code>color-keyword</code> задайте цвет <code>tan</code>.",
-          testRegExp: [/.color-keyword\s+{\s*color: tan;\s*}/],
+          testRegExp: [`\.color-keyword\\s+{\\s*color: tan;\\s*}`],
           failMsg: "Убедитесь, что вы задали именованный цвет",
         },
         {
           id: 2,
           label: "Абзацу с классом <code>color-hex</code> задайте цвет <code>#d2b48c</code>.",
-          testRegExp: [/.color-hex\s+{\s*color: #d2b48c;\s*}/],
+          testRegExp: [`\.color-hex\\s+{\\s*color: #d2b48c;\\s*}`],
           failMsg: "Убедитесь, что вы задали цвет в hex формате",
         },
         {
           id: 3,
           label: "Абзацу с классом <code>color-rgb</code> задайте цвет <code>rgb(210, 180, 140)</code>.",
-          testRegExp: [/.color-rgb\s+{\s*color: rgb\(210, 180, 140\);\s*}/],
+          testRegExp: [`\.color-rgb\\s+{\\s*color: rgb\\(210, 180, 140\\);\\s*}`],
           failMsg: "Убедитесь, что вы задали цвет в rgb формате",
         },
         {
           id: 4,
           label:
             "Абзацу с классом <code>color-hsl</code> задайте цвет <code>hsl(34, 44%, 69%)</code>. Да, это все один и тот же цвет.",
-          testRegExp: [/.color-hsl\s+{\s*color: hsl\(34, 44%, 69%\);\s*}/],
+          testRegExp: [`\.color-hsl\\s+{\\s*color: hsl\\(34, 44%, 69%\\);\\s*}`],
           failMsg: "Убедитесь, что вы задали цвет в hsl формате",
         },
       ],
@@ -636,13 +636,13 @@ html {
         {
           id: 1,
           label: "Абзацу с классом <code>underline</code> задайте нижнее подчеркивание.",
-          testRegExp: [/.underline\s+{\s*text-decoration: underline;\s*}/],
+          testRegExp: [`\.underline\\s+{\\s*text-decoration: underline;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение text-decoration",
         },
         {
           id: 2,
           label: "В абзаце с классом <code>line-through</code>перечеркните текст.",
-          testRegExp: [/.line-through\s+{\s*text-decoration: line-through;\s*}/],
+          testRegExp: [`\.line-through\\s+{\\s*text-decoration: line-through;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение text-decoration",
         },
       ],
@@ -780,13 +780,13 @@ html {
         {
           id: 1,
           label: "В абзаце с классом <code>capitalize</code> сделайте первый символ каждого слова прописным.",
-          testRegExp: [/.capitalize\s+{\s*text-transform: capitalize;\s*}/],
+          testRegExp: [`\.capitalize\\s+{\\s*text-transform: capitalize;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение text-transform",
         },
         {
           id: 2,
           label: "В абзаце с классом <code>uppercase</code> сделайте все символы прописными.",
-          testRegExp: [/.uppercase\s+{\s*text-transform: uppercase;\s*}/],
+          testRegExp: [`\.uppercase\\s+{\\s*text-transform: uppercase;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение text-transform",
         },
       ],
@@ -946,14 +946,14 @@ html {
           id: 1,
           label:
             "Абзацу с классом <code>simple-shadow</code> задайте тень со следующими свойствами: <ul><li>смещение справо на 2px</li><li>смещение вниз на 4px</li></ul>.",
-          testRegExp: [/.simple-shadow\s+{\s*text-shadow: 2px 4px;\s*}/],
+          testRegExp: [`\.simple-shadow\\s+{\\s*text-shadow: 2px 4px;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение text-shadow с двумя свойствами",
         },
         {
           id: 2,
           label:
             "Абзацу с классом <code>blurred-shadow</code> задайте тень со следующими свойствами: <ul><li>смещение влево на 5px</li><li>смещение вверх на 5px</li><li>размытие 2px</li><li>цвет #d55813</li></ul>.",
-          testRegExp: [/.blurred-shadow\s+{\s*text-shadow: -5px -5px 2px #d55813;\s*}/],
+          testRegExp: [`\.blurred-shadow\\s+{\\s*text-shadow: -5px -5px 2px #d55813;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение text-shadow с четырьмя свойствами",
         },
       ],
@@ -1004,13 +1004,13 @@ html {
         {
           id: 1,
           label: "Абзацу с классом <code>right</code> задайте выравнивание текста по правому краю.",
-          testRegExp: [/.right\s+{\s*text-align: right;\s*}/],
+          testRegExp: [`\.right\\s+{\\s*text-align: right;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение text-align",
         },
         {
           id: 2,
           label: "Абзацу с классом <code>center</code> задайте выравнивание текста по центру.",
-          testRegExp: [/.center\s+{\s*text-align: center;\s*}/],
+          testRegExp: [`\.center\\s+{\\s*text-align: center;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение text-align",
         },
       ],
@@ -1077,13 +1077,13 @@ html {
         {
           id: 1,
           label: "Абзацу с классом <code>line-height-small</code> задайте высоту строки <code>9px</code>.",
-          testRegExp: [/.line-height-small\s+{\s*line-height: 9px;\s*}/],
+          testRegExp: [`\.line-height-small\\s+{\\s*line-height: 9px;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение line-height",
         },
         {
           id: 2,
           label: "Абзацу с классом <code>line-height-big</code> задайте высоту строки в 2 раза больше размера шрифта.",
-          testRegExp: [/.line-height-big\s+{\s*line-height: 2;\s*}/],
+          testRegExp: [`\.line-height-big\\s+{\\s*line-height: 2;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение line-height",
         },
       ],
@@ -1158,13 +1158,13 @@ html {
           id: 1,
           label:
             "Абзацу с классом <code>broad-space</code> задайте интервал между символами в словах <code>3px</code>.",
-          testRegExp: [/.broad-space\s+{\s*letter-spacing: 3px;\s*}/],
+          testRegExp: [`\.broad-space\\s+{\\s*letter-spacing: 3px;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение letter-spacing",
         },
         {
           id: 2,
           label: "Абзацу с классом <code>narrow-space</code> задайте интервал между словами <code>-0.15rem</code>.",
-          testRegExp: [/.narrow-space\s+{\s*word-spacing: -0.15rem;\s*}/],
+          testRegExp: [`\.narrow-space\\s+{\\s*word-spacing: -0.15rem;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение word-spacing",
         },
       ],
@@ -1261,7 +1261,7 @@ html {
         {
           id: 1,
           label: "Абзацу с классом <code>overflow-wrapped</code> задайте перенос текста.",
-          testRegExp: [/.overflow-wrapped\s+{\s*overflow-wrap: break-word;\s*}/],
+          testRegExp: [`\.overflow-wrapped\\s+{\\s*overflow-wrap: break-word;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение overflow-wrap",
         },
       ],
@@ -1362,19 +1362,19 @@ html {
           id: 1,
           label:
             "Нумерованному списку задайте тип цифр <code>upper-roman</code> и внутреннее положение маркеров - значение <code>inside</code>.",
-          testRegExp: [/ol\s+{[\s\S]*list-style-type: upper-roman;[\s\S]*}/, /ol\s+{[\s\S]*list-style-position: inside;[\s\S]*}/],
+          testRegExp: [`\ol\\s+{[\\s\\S]*list-style-type: upper-roman;[\\s\\S]*}`, `\ol\\s+{[\\s\\S]*list-style-position: inside;[\\s\\S]*}`],
           failMsg: "Убедитесь, что вы задали правильное значение list-style-type и list-style-position",
         },
         {
           id: 2,
           label: "Всем ненумерованным спискам на странице сбросьте стили.",
-          testRegExp: [/ul\s+{\s*list-style: none;\s*}/],
+          testRegExp: [`\\ul\\s+{\\s*list-style: none;\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение list-style",
         },
         {
           id: 3,
           label: `После этого ненумерованному списку с классом <code>done</code> задайте тип маркера <code>"\\1F44D"</code> (thumbs up).`,
-          testRegExp: [/.done\s+{\s*list-style-type: "\\1F44D";\s*}/],
+          testRegExp: [`\.done\\s+{\\s*list-style-type: "\\1F44D";\\s*}`],
           failMsg: "Убедитесь, что вы задали правильное значение list-style-type",
         },
       ],

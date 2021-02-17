@@ -4,7 +4,7 @@ import { CssText } from "./CSSText";
 import { CssUnits } from "./CSSUnits";
 import { CssBoxModel } from "./CSSBoxModel";
 
-export const Css: ICourse = {
+const Css: ICourse = {
   id: 1,
   title: "Курс по CSS",
   url: "css",
@@ -19,6 +19,8 @@ export const Css: ICourse = {
     "css-selectors": CssSelectors,
     "css-text": CssText,
     "css-units": CssUnits,
-    "css-box-model": CssBoxModel
+    "css-box-model": CssBoxModel,
   },
 };
+
+export default Css;

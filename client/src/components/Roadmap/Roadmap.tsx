@@ -19,21 +19,21 @@ const Roadmap: React.FC = () => {
         <Link
           to="/courses/html"
           className="roadmap__link roadmap__course-link html-link"
-          onClick={handleCourseLinkClick('Html')}
+          onClick={handleCourseLinkClick('html')}
         >
           <span>HTML</span> Пройти курс
         </Link>
         <Link
           to="/courses/css"
           className="roadmap__link roadmap__course-link css-link"
-          onClick={handleCourseLinkClick('Css')}
+          onClick={handleCourseLinkClick('css')}
         >
           <span>CSS</span> Пройти курс
         </Link>
         <Link
           to="/courses/js"
           className="roadmap__link roadmap__course-link js-link"
-          onClick={handleCourseLinkClick('Js')}
+          onClick={handleCourseLinkClick('js')}
         >
           <span>Javascript</span> Пройти курс
         </Link>

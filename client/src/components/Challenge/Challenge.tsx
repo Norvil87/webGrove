@@ -39,7 +39,12 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
 
       if (task.testRegExp) {
         const textContent = iframe.contentDocument.querySelector("style").textContent;
-        taskPassed = task.testRegExp.every(regexp => regexp.test(textContent));
+        taskPassed = task.testRegExp.every(expression => {
+          const noGlobalFlags = typeof expression === "string";
+          const regExp = noGlobalFlags ? new RegExp(expression) : new RegExp(expression[0], expression[1]);
+
+          return regExp.test(textContent);
+        });
       } else {
         taskPassed = new Function("iframe", task.testFn)(iframe);
       }

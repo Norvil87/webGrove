@@ -12,7 +12,7 @@ export interface ITask {
   label: string;
   failMsg: string;
   testFn?: string;
-  testRegExp?: RegExp[];
+  testRegExp?: (string | string[])[];
 }
 
 export interface IExcercise {

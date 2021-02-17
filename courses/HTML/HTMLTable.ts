@@ -1,45 +1,45 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.HtmlTable = void 0;
-exports.HtmlTable = {
-    id: 3,
-    title: "Таблицы в HTML",
-    url: "html-table",
-    excercises: [
-        {
-            id: 1,
-            header: "Создание HTML таблицы - элемент table",
-            url: "html-table-creation",
-            theory: `<p>Существует большое количество разнообразных данных, которые удобно отображать в виде последовательности строк и столбцов, т. е. таблиц. В HTML существует группа элементов, предназначенных для отображения табличных данных.</p>
+import { ICourseLesson } from "../../types";
+
+export const HtmlTable: ICourseLesson = {
+  id: 3,
+  title: "Таблицы в HTML",
+  url: "html-table",
+  excercises: [
+    {
+      id: 1,
+      header: "Создание HTML таблицы - элемент table",
+      url: "html-table-creation",
+      theory: `<p>Существует большое количество разнообразных данных, которые удобно отображать в виде последовательности строк и столбцов, т. е. таблиц. В HTML существует группа элементов, предназначенных для отображения табличных данных.</p>
       <p> HTML таблица создается с помощью элемента <code>table</code>:</p>
       
 <pre><code><span class="tag">&lt;table></span>
       
 <span class="tag">&lt;/table></span></code></pre>`,
-            goal: `Создайте пустую таблицу.`,
-            initValues: {
-                html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
+      goal: `Создайте пустую таблицу.`,
+      initValues: {
+        html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
 <p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>`,
-                css: `h3 {
+        css: `h3 {
   text-align: center
 }`,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Под параграфом с текстом создайте пустую таблицу.",
-                    testFn: `const table = iframe.contentDocument.body.querySelector("table");
-            return table && table.previousElementSibling && table.previousElementSibling.tagName === "P";`,
-                    failMsg: "Убедитесь, что вы создали таблицу с помощью элемента table",
-                },
-            ],
-        },
+        js: "",
+      },
+      tasks: [
         {
-            id: 2,
-            header: "Строки таблицы - элемент tr",
-            url: "html-table-rows",
-            theory: `<p>Создавить структуру таблицы мы начнем со строк. Строки задаются с помощью элемента <code>tr</code> (<i>table row</i>), вот так:</p>
+          id: 1,
+          label: "Под параграфом с текстом создайте пустую таблицу.",
+          testFn: `const table = iframe.contentDocument.body.querySelector("table");
+            return table && table.previousElementSibling && table.previousElementSibling.tagName === "P";`,
+          failMsg: "Убедитесь, что вы создали таблицу с помощью элемента table",
+        },
+      ],
+    },
+
+    {
+      id: 2,
+      header: "Строки таблицы - элемент tr",
+      url: "html-table-rows",
+      theory: `<p>Создавить структуру таблицы мы начнем со строк. Строки задаются с помощью элемента <code>tr</code> (<i>table row</i>), вот так:</p>
   
 <pre><code><span class="tag">&lt;table></span>  
   <span class="tag">&lt;tr></span>
@@ -52,39 +52,40 @@ exports.HtmlTable = {
 </code></pre>
 
       <p>В этой таблице 2 пустые строки.</p>`,
-            goal: `Добавьте строки в таблицу.`,
-            initValues: {
-                html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
+      goal: `Добавьте строки в таблицу.`,
+      initValues: {
+        html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
 <p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
 
 <table>
   <tr>
   </tr>
 </table>`,
-                css: `h3 {
+        css: `h3 {
   text-align: center
 }`,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Добавьте в таблицу еще 3 пустые строки.",
-                    testFn: `const table = iframe.contentDocument.body.querySelector("table");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "Добавьте в таблицу еще 3 пустые строки.",
+          testFn: `const table = iframe.contentDocument.body.querySelector("table");
             if (!table) {
               return false;
             }
             const rows = table.querySelectorAll("tr");
             return rows.length === 4;`,
-                    failMsg: "Убедитесь, что в таблице 4 строки",
-                },
-            ],
+          failMsg: "Убедитесь, что в таблице 4 строки",
         },
-        {
-            id: 3,
-            header: "Данные таблицы - элемент td",
-            url: "html-table-data",
-            theory: `<p>Давайте начнем заполнять таблицу данными. Для этого в строки таблицы <code>tr</code> вложим ячейки, содержащие данные - элемент <code>td</code> (<i>table data</i>):</p>
+      ],
+    },
+
+    {
+      id: 3,
+      header: "Данные таблицы - элемент td",
+      url: "html-table-data",
+      theory: `<p>Давайте начнем заполнять таблицу данными. Для этого в строки таблицы <code>tr</code> вложим ячейки, содержащие данные - элемент <code>td</code> (<i>table data</i>):</p>
 
 <pre><code><span class="tag">&lt;table></span>  
   <span class="tag">&lt;tr></span>
@@ -100,9 +101,9 @@ exports.HtmlTable = {
 
       <p><table style='margin: 0 auto'><tr><td style='border: 1px solid grey'>Ячейка 1 строки 1</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td><tr><td style='border: 1px solid grey'>Ячейка 1 строки 2</td><td style='border: 1px solid grey'>Ячейка 2 строки 2</td></table></p>
       <p>Такая разметка отобразит таблицу с двумя строками, в каждой из которых 2 ячейки с данными. Таким образом у нас получится таблица из 2 строк и 2 столбцов. Обратите внимание, что количество элементов с данными должно быть одинаковым в каждой строке, иначе таблица может отобразиться неверно.</p>`,
-            goal: `Добавьте данные в таблицу.`,
-            initValues: {
-                html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
+      goal: `Добавьте данные в таблицу.`,
+      initValues: {
+        html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
 <p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
 
 <table>
@@ -119,7 +120,7 @@ exports.HtmlTable = {
   <tr>
   </tr>
 </table>`,
-                css: `h3 {
+        css: `h3 {
   text-align: center
 }
 
@@ -137,13 +138,14 @@ tr {
 th, td {
   padding: 15px;
 } `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Добавьте во вторую строку таблицы ячейки с данными: <ul><li>XR-1 PRO</li><li>пластик</li><li>60</li><li>7000</li></ul>",
-                    testFn: `const secondRow = iframe.contentDocument.body.querySelectorAll("tr")[1];
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label:
+            "Добавьте во вторую строку таблицы ячейки с данными: <ul><li>XR-1 PRO</li><li>пластик</li><li>60</li><li>7000</li></ul>",
+          testFn: `const secondRow = iframe.contentDocument.body.querySelectorAll("tr")[1];
             if (!secondRow) {
               return false;
             }
@@ -155,12 +157,13 @@ th, td {
               cells[2].textContent === "60" &&
               cells[3].textContent === "7000"
             );`,
-                    failMsg: "Убедитесь, что во второй строке tr таблицы 4 ячейки td с правильным текстовым содержанием",
-                },
-                {
-                    id: 2,
-                    label: "Добавьте в третью строку таблицы ячейки с данными: <ul><li>XT-8</li><li>алюминий</li><li>45</li><li>6000</li></ul>",
-                    testFn: `const thirdRow = iframe.contentDocument.body.querySelectorAll("tr")[2];
+          failMsg: "Убедитесь, что во второй строке tr таблицы 4 ячейки td с правильным текстовым содержанием",
+        },
+        {
+          id: 2,
+          label:
+            "Добавьте в третью строку таблицы ячейки с данными: <ul><li>XT-8</li><li>алюминий</li><li>45</li><li>6000</li></ul>",
+          testFn: `const thirdRow = iframe.contentDocument.body.querySelectorAll("tr")[2];
             if (!thirdRow) {
               return false;
             }
@@ -172,12 +175,13 @@ th, td {
               cells[2].textContent === "45" &&
               cells[3].textContent === "6000"
             );`,
-                    failMsg: "Убедитесь, что в третьей строке tr таблицы 4 ячейки td с правильным текстовым содержанием",
-                },
-                {
-                    id: 3,
-                    label: "Добавьте в четвертую строку таблицы ячейки с данными: <ul><li>XT-8 ULTRA</li></ul> Остальные ячейки оставьте пустыми.",
-                    testFn: `const fourthRow = iframe.contentDocument.body.querySelectorAll("tr")[3];
+          failMsg: "Убедитесь, что в третьей строке tr таблицы 4 ячейки td с правильным текстовым содержанием",
+        },
+        {
+          id: 3,
+          label:
+            "Добавьте в четвертую строку таблицы ячейки с данными: <ul><li>XT-8 ULTRA</li></ul> Остальные ячейки оставьте пустыми.",
+          testFn: `const fourthRow = iframe.contentDocument.body.querySelectorAll("tr")[3];
             if (!fourthRow) {
               return false;
             }
@@ -190,15 +194,16 @@ th, td {
               cells[2].textContent === "" &&
               cells[3].textContent === ""
             );`,
-                    failMsg: "Убедитесь, что в четвертой строке tr таблицы 4 ячейки td с правильным текстовым содержанием",
-                },
-            ],
+          failMsg: "Убедитесь, что в четвертой строке tr таблицы 4 ячейки td с правильным текстовым содержанием",
         },
-        {
-            id: 4,
-            header: "Заголовки таблицы - элемент th",
-            url: "html-table-header",
-            theory: `<p>В данный момент наша таблица заполнена данными, но не понятно, что эти данные означают. Чтобы придать им смысл, таблице необходимы заголовки. Мы создадим заголовки с помощью элемента <code>th</code> (<i>table header</i>). Вот пример табицы с заголовками:</p>
+      ],
+    },
+
+    {
+      id: 4,
+      header: "Заголовки таблицы - элемент th",
+      url: "html-table-header",
+      theory: `<p>В данный момент наша таблица заполнена данными, но не понятно, что эти данные означают. Чтобы придать им смысл, таблице необходимы заголовки. Мы создадим заголовки с помощью элемента <code>th</code> (<i>table header</i>). Вот пример табицы с заголовками:</p>
 
 <pre><code><span class="tag">&lt;table></span>
   <span class="tag">&lt;tr></span>
@@ -219,9 +224,9 @@ th, td {
       <p><table style='margin: 0 auto'><tr><th scope="col">Заголовок 1</th><th scope="col">Заголовок 2</th><tr><tr><td style='border: 1px solid grey'>Ячейка 1 строки 1</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td><tr><td style='border: 1px solid grey'>Ячейка 1 строки 2</td><td style='border: 1px solid grey'>Ячейка 2 строки 2</td></table></p>
       <p>Подобно обычным ячейкам с данными заголовки расположены в строках таблицы.</p>
       <p>Заголовкам можно указать аттрибут <code>scope</code>. Значение аттрибута <code>col</code> означает, что это заголовок колонки. Если вы создаете заголовок для ряда, значение аттрибута должно быть <code>row</code>.</p>`,
-            goal: `Добавьте заголовки в таблицу.`,
-            initValues: {
-                html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
+      goal: `Добавьте заголовки в таблицу.`,
+      initValues: {
+        html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
 <p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
 
 <table>
@@ -253,7 +258,7 @@ th, td {
     <td></td>
   </tr>
 </table>`,
-                css: `h3 {
+        css: `h3 {
   text-align: center
 }
 
@@ -279,13 +284,14 @@ tr {
 th, td {
   padding: 15px;
 } `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Добавьте в первую строку таблицы заголовки с данными: <ul><li>Модель</li><li>Корпус</li><li>Кол-во языков</li><li>Стоимость, руб.</li></ul>",
-                    testFn: ` const firstRow = iframe.contentDocument.body.querySelectorAll("tr")[0];
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label:
+            "Добавьте в первую строку таблицы заголовки с данными: <ul><li>Модель</li><li>Корпус</li><li>Кол-во языков</li><li>Стоимость, руб.</li></ul>",
+          testFn: ` const firstRow = iframe.contentDocument.body.querySelectorAll("tr")[0];
             if (!firstRow) {
               return false;
             }
@@ -297,27 +303,28 @@ th, td {
               headings[2].textContent === "Кол-во языков" &&
               headings[3].textContent === "Стоимость, руб."
             );`,
-                    failMsg: "Убедитесь, что в первой строке таблицы 4 заголовка th с правильным текстовым содержанием",
-                },
-                {
-                    id: 2,
-                    label: "Укажите, что заголовки являются заголовками столбцов.",
-                    testFn: `const firstRow = iframe.contentDocument.body.querySelectorAll("tr")[0];
+          failMsg: "Убедитесь, что в первой строке таблицы 4 заголовка th с правильным текстовым содержанием",
+        },
+        {
+          id: 2,
+          label: "Укажите, что заголовки являются заголовками столбцов.",
+          testFn: `const firstRow = iframe.contentDocument.body.querySelectorAll("tr")[0];
             if (!firstRow) {
               return false;
             }
             const headings = firstRow.querySelectorAll("th");
             const result = Array.from(headings).every(heading => heading.scope && heading.scope === "col");
             return headings.length === 4 && result;`,
-                    failMsg: "Убедитесь, что заголовкам правльно задан аттрибут scope",
-                },
-            ],
+          failMsg: "Убедитесь, что заголовкам правльно задан аттрибут scope",
         },
-        {
-            id: 5,
-            header: "Структура таблицы - элементы thead, tbody",
-            url: "html-thead-tbody",
-            theory: `<p>Наша таблица пока еще сравнительно небольшая, но по мере ее увеличения может возникнуть необходимость структурировать ее содержимое. Подобно обычной HTML странице, у которой есть <code>head</code> и <code>body</code>, у таблицы есть <code>thead</code> (<i>table head</i>) и <code>tbody</code> (<i>table body</i>):</p>
+      ],
+    },
+
+    {
+      id: 5,
+      header: "Структура таблицы - элементы thead, tbody",
+      url: "html-thead-tbody",
+      theory: `<p>Наша таблица пока еще сравнительно небольшая, но по мере ее увеличения может возникнуть необходимость структурировать ее содержимое. Подобно обычной HTML странице, у которой есть <code>head</code> и <code>body</code>, у таблицы есть <code>thead</code> (<i>table head</i>) и <code>tbody</code> (<i>table body</i>):</p>
 
 <pre><code><span class="tag">&lt;table></span>
   <span class="tag">&lt;thead></span>
@@ -343,9 +350,9 @@ th, td {
       <p>В <code>thead</code> помещают заголовки таблицы вместе с их <code>tr</code> строкой (только заголовки столбцов! Аттрибут <code>scope</code> со значением <code>col</code> либо без аттрибута).</p>
       <p>В <code>tbody</code> помещают все данные таблицы вместе с их <code>tr</code> строками.</p>
       <p><code>thead</code> и <code>tbody</code> никак не отображаются на странице, но вашу таблицу становится легче читать.</p>`,
-            goal: `Структурируйте таблицу.`,
-            initValues: {
-                html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
+      goal: `Структурируйте таблицу.`,
+      initValues: {
+        html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
 <p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
 
 <table>
@@ -380,7 +387,7 @@ th, td {
     <td></td>
   </tr>
 </table>`,
-                css: `h3 {
+        css: `h3 {
   text-align: center
 }
 
@@ -406,13 +413,13 @@ tr {
 th, td {
   padding: 15px;
 } `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Оберните заголовки таблицы в элемент <code>thead</code>.",
-                    testFn: `const thead = iframe.contentDocument.body.querySelector("thead");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "Оберните заголовки таблицы в элемент <code>thead</code>.",
+          testFn: `const thead = iframe.contentDocument.body.querySelector("thead");
 
             return (
               thead &&
@@ -422,12 +429,12 @@ th, td {
               thead.children.length === 1 &&
               thead.children[0].tagName === "TR"
             );`,
-                    failMsg: "Убедитесь, что ряд таблицы с заголовками обернут в thead",
-                },
-                {
-                    id: 2,
-                    label: "Оберните данные таблицы в элемент <code>tbody</code>.",
-                    testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
+          failMsg: "Убедитесь, что ряд таблицы с заголовками обернут в thead",
+        },
+        {
+          id: 2,
+          label: "Оберните данные таблицы в элемент <code>tbody</code>.",
+          testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
 
             return (
               tbody &&
@@ -437,15 +444,16 @@ th, td {
               tbody.children.length === 4 &&
               tbody.children[0].tagName === "TR"
             );`,
-                    failMsg: "Убедитесь, что ряды таблицы с данными обернуты в tbody",
-                },
-            ],
+          failMsg: "Убедитесь, что ряды таблицы с данными обернуты в tbody",
         },
-        {
-            id: 6,
-            header: "Объединение ячеек в строках - аттрибут rowspan",
-            url: "html-rowspan",
-            theory: `<p>Иногда у вас может возникнуть необходимость объединить ячейки в нескольких рядах. К примеру, добиться такого результата:</p>
+      ],
+    },
+
+    {
+      id: 6,
+      header: "Объединение ячеек в строках - аттрибут rowspan",
+      url: "html-rowspan",
+      theory: `<p>Иногда у вас может возникнуть необходимость объединить ячейки в нескольких рядах. К примеру, добиться такого результата:</p>
       <p><table style='margin: 0 auto'><tr><th scope="col">Заголовок 1</th><th scope="col">Заголовок 2</th></tr>
       <tr><td rowspan="2" style='border: 1px solid grey'>Объединенная ячейка</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td></tr>
       <tr><td style='border: 1px solid grey'>Ячейка 2 строки 2</td></tr>
@@ -500,9 +508,9 @@ th, td {
 </code></pre>
 
       <p>Теперь таблица выглядит как в начале упражнения. При объединении ячеек в строках всегда внимательно проверяйте поведение таблицы и удаляйте лишние ячейки.</p>`,
-            goal: `Объедините ячейки в рядах таблицы.`,
-            initValues: {
-                html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
+      goal: `Объедините ячейки в рядах таблицы.`,
+      initValues: {
+        html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
 <p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
 
 <table>
@@ -541,7 +549,7 @@ th, td {
     </tr>
   </tbody>
 </table>`,
-                css: `h3 {
+        css: `h3 {
   text-align: center
 }
 
@@ -567,13 +575,13 @@ tr {
 th, td {
   padding: 15px;
 } `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Корпус моделей XR и XR-1 PRO сделан из одинакового материала - пластика. Объедините эти ячейки.",
-                    testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "Корпус моделей XR и XR-1 PRO сделан из одинакового материала - пластика. Объедините эти ячейки.",
+          testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
             }
@@ -583,12 +591,12 @@ th, td {
             }
             const secondCell = firstRow.querySelectorAll("td")[1];
             return secondCell && secondCell.rowSpan && secondCell.rowSpan === 2;`,
-                    failMsg: "Убедитесь, что ячейке в первой строке с данными правильно задан аттрибут rowspan",
-                },
-                {
-                    id: 2,
-                    label: "Удалите лишние ячейки.",
-                    testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
+          failMsg: "Убедитесь, что ячейке в первой строке с данными правильно задан аттрибут rowspan",
+        },
+        {
+          id: 2,
+          label: "Удалите лишние ячейки.",
+          testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
             }
@@ -598,15 +606,16 @@ th, td {
             }
             const cells = secondRow.querySelectorAll("td");
             return cells && cells.length === 3;`,
-                    failMsg: "Убедитесь, что удалена правильная ячейка",
-                },
-            ],
+          failMsg: "Убедитесь, что удалена правильная ячейка",
         },
-        {
-            id: 7,
-            header: "Объединение ячеек в столбцах - аттрибут colspan",
-            url: "html-colspan",
-            theory: `<p>Ячейки в столбцах можно объединять точно так же, как ячейки в строках:</p>
+      ],
+    },
+
+    {
+      id: 7,
+      header: "Объединение ячеек в столбцах - аттрибут colspan",
+      url: "html-colspan",
+      theory: `<p>Ячейки в столбцах можно объединять точно так же, как ячейки в строках:</p>
       <p><table style='margin: 0 auto'><tr><th scope="col">Заголовок 1</th><th scope="col">Заголовок 2</th></tr>
       <tr><td style='border: 1px solid grey'>Ячейка 1 строки 1</td><td style='border: 1px solid grey'>Ячейка 2 строки 1</td></tr>
       <tr><td colspan="2" style='border: 1px solid grey'>Объединенная ячейка</td></tr>
@@ -661,9 +670,9 @@ th, td {
 </code></pre>
 
       <p>Теперь таблица выглядит правильно.</p>`,
-            goal: `Объедините ячейки в столбцах таблицы.`,
-            initValues: {
-                html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
+      goal: `Объедините ячейки в столбцах таблицы.`,
+      initValues: {
+        html: `<h3>Сравнительные характеристики электронных голосовых переводчиков</h3>
 <p>На рынке представлено большое количество <em>электронных голосовых переводчиков</em>, решающих самые разнообразные задачи. Для вашего удобства, технические зарактеристики некоторых наиболее распространенных моделей сведены в таблицу.</p>
 
 <table>
@@ -701,7 +710,7 @@ th, td {
     </tr>
   </tbody>
 </table>`,
-                css: `h3 {
+        css: `h3 {
   text-align: center
 }
 
@@ -727,13 +736,14 @@ tr {
 th, td {
   padding: 15px;
 } `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "У модели XT-8 ULTRA отсутствуют технические характеристики. Объедините пустые ячейки в одну, добавьте в нее текст 'Технические характеристики отсутствуют'.",
-                    testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label:
+            "У модели XT-8 ULTRA отсутствуют технические характеристики. Объедините пустые ячейки в одну, добавьте в нее текст 'Технические характеристики отсутствуют'.",
+          testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
             }
@@ -748,12 +758,12 @@ th, td {
               secondCell.colSpan === 3 &&
               secondCell.textContent === "Технические характеристики отсутствуют"
             );`,
-                    failMsg: "Убедитесь, что ячейке в последней строке правильно задан аттрибут colspan и текстовое содержание",
-                },
-                {
-                    id: 2,
-                    label: "Удалите лишние ячейки.",
-                    testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
+          failMsg: "Убедитесь, что ячейке в последней строке правильно задан аттрибут colspan и текстовое содержание",
+        },
+        {
+          id: 2,
+          label: "Удалите лишние ячейки.",
+          testFn: `const tbody = iframe.contentDocument.body.querySelector("tbody");
             if (!tbody) {
               return false;
             }
@@ -763,9 +773,9 @@ th, td {
             }
             const cells = fourthRow.querySelectorAll("td");
             return cells && cells.length === 2;`,
-                    failMsg: "Убедитесь, что удалены правильные ячейки",
-                },
-            ],
+          failMsg: "Убедитесь, что удалены правильные ячейки",
         },
-    ],
+      ],
+    },
+  ],
 };

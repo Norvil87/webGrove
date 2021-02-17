@@ -27,7 +27,6 @@ exports.getLesson = (req, res) => {
   const { courseUrl, lessonUrl } = req.body;
   const course = courses[courseUrl.toUpperCase()];
   const lesson = course.lessons[lessonUrl];
-  console.log(lesson)
 
   if (!lesson) {
     return res.status(404).send({ message: "Неверный url урока" });

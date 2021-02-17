@@ -1,16 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.HtmlSemantic = void 0;
-exports.HtmlSemantic = {
-    id: 5,
-    title: "Семантический HTML",
-    url: "html-semantic",
-    excercises: [
-        {
-            id: 1,
-            header: "Шапка и навигация - элементы header и nav",
-            url: "html-header-nav",
-            theory: `<p>В предыдущих уроках мы пользовались HTML элементами в основном как <b>структурными</b> единицами страницы, то есть нас интересовало преимущественно их взаимное расположение, но не смысловое содержание. Например, элемент <code>div</code> представляет собой контейнер для любых других элементов, элемент <code>p</code> - контейнер для блока текста и т. д.</p>
+import { ICourseLesson } from "../../types";
+
+export const HtmlSemantic: ICourseLesson = {
+  id: 5,
+  title: "Семантический HTML",
+  url: "html-semantic",
+  excercises: [
+    {
+      id: 1,
+      header: "Шапка и навигация - элементы header и nav",
+      url: "html-header-nav",
+      theory: `<p>В предыдущих уроках мы пользовались HTML элементами в основном как <b>структурными</b> единицами страницы, то есть нас интересовало преимущественно их взаимное расположение, но не смысловое содержание. Например, элемент <code>div</code> представляет собой контейнер для любых других элементов, элемент <code>p</code> - контейнер для блока текста и т. д.</p>
 <p>В дополнение к структурному подходу стандарт HTML5 предлагает <b>семантический</b> подход, когда выбор HTML элемента основывается на том, какой вид содержимого он отображает и какой смысл вы вкладывайте в тот или иной раздел.</p>
 <p>Например, один из разделов, встречающихся почти на всех сайтах - это его "шапка" (<i>header</i>). Шапка находится сверху и отображается на всех страницах сайта. Шапка, как правило, содержит следующие элементы:</p>
 <p><ul><li>Логотип компании</li><li>Навигационные ссылки для перехода на другие страницы сайта</li><li>Кнопки для входа пользователей на сайт и регистрации новых пользователей</li><li>Форма поиска по сайту</li></ul></p>
@@ -33,9 +32,9 @@ exports.HtmlSemantic = {
 
 <p>Обратите внимание, что с точки зрения отображения элементов на странице нет разницы, какой именно элемент вы используете - <code>header</code> или <code>div</code>. Но встретив элемент <code>header</code> вы сразу поймете, что речь идет о шапке сайта.</p>
 `,
-            goal: `Сайт в этом упражнении сверстан без учета семантики. Начните создавать семантическую разметку.`,
-            initValues: {
-                html: `<!DOCTYPE html>
+      goal: `Сайт в этом упражнении сверстан без учета семантики. Начните создавать семантическую разметку.`,
+      initValues: {
+        html: `<!DOCTYPE html>
 <html>
   <head>
     <title>Культура Андалусии</title>
@@ -87,7 +86,7 @@ exports.HtmlSemantic = {
   </body>
 </html>
 `,
-                css: `
+        css: `
 a:hover {
   opacity: 0.6
 }
@@ -136,32 +135,35 @@ ul a {
   background-size: contain;
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Найдите в текущей верстке элемент <code>div</code>, в который вложены элементы, характерные для шапки сайта, замените его соответствующим семантическим элементом.",
-                    testFn: ` const header = iframe.contentDocument.body.querySelector("header");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label:
+            "Найдите в текущей верстке элемент <code>div</code>, в который вложены элементы, характерные для шапки сайта, замените его соответствующим семантическим элементом.",
+          testFn: ` const header = iframe.contentDocument.body.querySelector("header");
             return (
               header && header.parentElement && header.parentElement.tagName === "BODY" && header.children.length === 3
             );`,
-                    failMsg: "Убедитесь, что вы заменили div элементом header",
-                },
-                {
-                    id: 2,
-                    label: "В шапке сайта найдите элемент <code>div</code>, который соответствует блоку навигации, замените его соответствующим семантическим элементом.",
-                    testFn: `const nav = iframe.contentDocument.body.querySelector("nav");
-            return nav && nav.parentElement && nav.parentElement.tagName === "HEADER" && nav.children.length === 1;`,
-                    failMsg: "Убедитесь, что вы заменили div элементом nav",
-                },
-            ],
+          failMsg: "Убедитесь, что вы заменили div элементом header",
         },
         {
-            id: 2,
-            header: "Подвал и основной контент - элементы footer и main",
-            url: "html-footer-main",
-            theory: `<p>Зачем вообще использовать семантический подход? Вот основные преимущества, которые он дает:</p>
+          id: 2,
+          label:
+            "В шапке сайта найдите элемент <code>div</code>, который соответствует блоку навигации, замените его соответствующим семантическим элементом.",
+          testFn: `const nav = iframe.contentDocument.body.querySelector("nav");
+            return nav && nav.parentElement && nav.parentElement.tagName === "HEADER" && nav.children.length === 1;`,
+          failMsg: "Убедитесь, что вы заменили div элементом nav",
+        },
+      ],
+    },
+
+    {
+      id: 2,
+      header: "Подвал и основной контент - элементы footer и main",
+      url: "html-footer-main",
+      theory: `<p>Зачем вообще использовать семантический подход? Вот основные преимущества, которые он дает:</p>
 <p><ul>
 <li>SEO оптимизация. Поисковые движки в Интернете лучше распознают контент вашего сайта и придают ему больший вес, если он выделен соответствющими семантическими элементами.</li>
 <li>Доступность. Семантические элементы лучше обрабатываются экранными читалками и делают ваш сайт дружелюбнее к людям с ограниченными возможностями.</li>
@@ -199,9 +201,9 @@ ul a {
 
 <p>Обратите внимание, что <code>main</code> содержит уникальный контент страницы, поэтому он на странице может быть только один. Подвалов и шапок может быть несколько в зависимости от структуры вашей страницы.</p>
 `,
-            goal: `Выделите на странице основное содержание и подвал.`,
-            initValues: {
-                html: `<!DOCTYPE html>
+      goal: `Выделите на странице основное содержание и подвал.`,
+      initValues: {
+        html: `<!DOCTYPE html>
 <html>
   <head>
     <title>Культура Андалусии</title>
@@ -253,7 +255,7 @@ ul a {
   </body>
 </html>
 `,
-                css: `
+        css: `
 a:hover {
   opacity: 0.6
 }
@@ -302,22 +304,24 @@ ul a {
   background-size: contain;
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Найдите в текущей верстке элемент <code>div</code>, соответствующий подвалу сайта, замените его семантическим элементом.",
-                    testFn: ` const footer = iframe.contentDocument.body.querySelector("footer");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label:
+            "Найдите в текущей верстке элемент <code>div</code>, соответствующий подвалу сайта, замените его семантическим элементом.",
+          testFn: ` const footer = iframe.contentDocument.body.querySelector("footer");
             return (
               footer && footer.parentElement && footer.parentElement.tagName === "BODY" && footer.children.length === 2
             );`,
-                    failMsg: "Убедитесь, что вы заменили div элементом footer",
-                },
-                {
-                    id: 2,
-                    label: "Найдите в текущей верстке элемент <code>div</code>, соответствующий основному контенту сайта, замените его семантическим элементом.",
-                    testFn: `const main = iframe.contentDocument.body.querySelector("main");
+          failMsg: "Убедитесь, что вы заменили div элементом footer",
+        },
+        {
+          id: 2,
+          label:
+            "Найдите в текущей верстке элемент <code>div</code>, соответствующий основному контенту сайта, замените его семантическим элементом.",
+          testFn: `const main = iframe.contentDocument.body.querySelector("main");
             return (
               main &&
               main.parentElement &&
@@ -325,15 +329,16 @@ ul a {
               main.previousElementSibling &&
               main.previousElementSibling.tagName === "HEADER"
             );`,
-                    failMsg: "Убедитесь, что вы заменили div элементом main",
-                },
-            ],
+          failMsg: "Убедитесь, что вы заменили div элементом main",
         },
-        {
-            id: 3,
-            header: "Блоки основного контента - элементы article и section",
-            url: "html-article-section",
-            theory: `<p>Основное содержание страницы также можно разбить на смысловые блоки. К примеру, с помощью элемента <code>article</code> можно выделить контент страницы, который имеет смысл сам по себе, в отрыве от остального контента. Это, прежде всего, статьи, заметки, комментарии, записи в блоге и т. д.</p>
+      ],
+    },
+
+    {
+      id: 3,
+      header: "Блоки основного контента - элементы article и section",
+      url: "html-article-section",
+      theory: `<p>Основное содержание страницы также можно разбить на смысловые блоки. К примеру, с помощью элемента <code>article</code> можно выделить контент страницы, который имеет смысл сам по себе, в отрыве от остального контента. Это, прежде всего, статьи, заметки, комментарии, записи в блоге и т. д.</p>
 
 <pre><code><span class="tag">&lt;main></span>
   <span class="tag">&lt;article></span>
@@ -361,9 +366,9 @@ ul a {
 <p>Придерживайтесь следующего правила. Если контенту можно дать заголовок (любого уровня), подумайте над тем, чтобы обернуть этот контент в <code>section</code>.</p>
 <p>В примере выше элемент <code>article</code> содержит в себе несколько <code>section</code>. Но вы можете структурировать контент по-другому - выделить несколько <code>article</code> в пределах <code>section</code>, либо вообще не использовать <code>article</code>, если считаете, что контент не имеет смысла за пределами данной страницы. Семантический подход позволяет подходить к вопросу структурирования HTML творчески, пользуйтесь этим.</p>
 `,
-            goal: `Разбейте основной контент на семантические блоки.`,
-            initValues: {
-                html: `<!DOCTYPE html>
+      goal: `Разбейте основной контент на семантические блоки.`,
+      initValues: {
+        html: `<!DOCTYPE html>
 <html>
   <head>
     <title>Культура Андалусии</title>
@@ -415,7 +420,7 @@ ul a {
   </body>
 </html>
 `,
-                css: `
+        css: `
 a:hover {
   opacity: 0.6
 }
@@ -464,13 +469,13 @@ ul a {
   background-size: contain;
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Замените семантическим элементом <code>div</code>, соответствующий блоку независимого контента.",
-                    testFn: `const article = iframe.contentDocument.body.querySelector("article");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "Замените семантическим элементом <code>div</code>, соответствующий блоку независимого контента.",
+          testFn: `const article = iframe.contentDocument.body.querySelector("article");
             return (
               article &&
               article.parentElement &&
@@ -478,12 +483,13 @@ ul a {
               article.children[0] &&
               article.children[0].tagName === "H1"
             );`,
-                    failMsg: "Убедитесь, что вы заменили div элементом article",
-                },
-                {
-                    id: 2,
-                    label: "Замените семантическим элементом <code>div</code>, соответствующие отдельным разделам блока независимого контента.",
-                    testFn: `const sections = iframe.contentDocument.body.querySelectorAll("section");
+          failMsg: "Убедитесь, что вы заменили div элементом article",
+        },
+        {
+          id: 2,
+          label:
+            "Замените семантическим элементом <code>div</code>, соответствующие отдельным разделам блока независимого контента.",
+          testFn: `const sections = iframe.contentDocument.body.querySelectorAll("section");
             return (
               sections &&
               sections.length === 3 &&
@@ -491,15 +497,16 @@ ul a {
               sections[1].id === "flamenco" &&
               sections[2].id === "bullfight"
             );`,
-                    failMsg: "Убедитесь, что вы заменили div элементами section",
-                },
-            ],
+          failMsg: "Убедитесь, что вы заменили div элементами section",
         },
-        {
-            id: 4,
-            header: "Второстепенный контент - элемент aside",
-            url: "html-aside",
-            theory: `<p>Мы разметили семантически блоки основного контента. На странице также может быть дополнительный контент, который не связан напрямую с основным. Такой контент следует семантически выделить с помощью элемента <code>aside</code>:</p>
+      ],
+    },
+
+    {
+      id: 4,
+      header: "Второстепенный контент - элемент aside",
+      url: "html-aside",
+      theory: `<p>Мы разметили семантически блоки основного контента. На странице также может быть дополнительный контент, который не связан напрямую с основным. Такой контент следует семантически выделить с помощью элемента <code>aside</code>:</p>
 
 <pre><code><span class="tag">&lt;main></span>
   <span class="tag">&lt;article></span>
@@ -514,9 +521,9 @@ ul a {
 <p><ul><li>Примечания</li><li>Заметки на полях</li><li>Комментарии</li><li>Редакторские колонки</li><li>Место, зарезервированное под рекламные блоки</li></ul> и т. д.</p>
 <p>Пользуйтесь элементом <code>aside</code>, если его удаление никак не повлияет на содержание основного контента страницы.</p>
 `,
-            goal: `Выделите блок второстепенной информации.`,
-            initValues: {
-                html: `<!DOCTYPE html>
+      goal: `Выделите блок второстепенной информации.`,
+      initValues: {
+        html: `<!DOCTYPE html>
 <html>
   <head>
     <title>Культура Андалусии</title>
@@ -568,7 +575,7 @@ ul a {
   </body>
 </html>
 `,
-                css: `
+        css: `
 a:hover {
   opacity: 0.6
 }
@@ -642,13 +649,13 @@ ul a {
   background-size: contain;
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "Замените семантическим элементом <code>div</code>, соответствующий блоку второстепенной информации.",
-                    testFn: `const aside = iframe.contentDocument.body.querySelector("aside");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "Замените семантическим элементом <code>div</code>, соответствующий блоку второстепенной информации.",
+          testFn: `const aside = iframe.contentDocument.body.querySelector("aside");
             return (
               aside &&
               aside.parentElement &&
@@ -656,15 +663,16 @@ ul a {
               aside.previousElementSibling &&
               aside.previousElementSibling.tagName === "ARTICLE"
             );`,
-                    failMsg: "Убедитесь, что вы заменили div элементом aside",
-                },
-            ],
+          failMsg: "Убедитесь, что вы заменили div элементом aside",
         },
-        {
-            id: 5,
-            header: "Медиаконтент - элементы video и audio",
-            url: "html-video-audio",
-            theory: `<p>С помощью элемента <code>video</code> мы можем легко добавить видеоизображение на сайт.</p>
+      ],
+    },
+
+    {
+      id: 5,
+      header: "Медиаконтент - элементы video и audio",
+      url: "html-video-audio",
+      theory: `<p>С помощью элемента <code>video</code> мы можем легко добавить видеоизображение на сайт.</p>
 
 <pre><code><span class="tag">&lt;video <span class="attr-name">src=</span><span class="attr-value">"../video/cats_dancing.mpeg"</span> <span class="attr-name">controls</span> <span class="attr-name">autoplay</span>></span>Видеоизображение не найдено<span class="tag">&lt;/video></span></code></pre>
 
@@ -688,9 +696,9 @@ ul a {
 <p>В этот раз в <code>audio</code> вложены 2 элемента <code>source</code>, которые указывают источники аудиофайлов. У нас указаны 2 источника аудиофайлов разных форматов. Сначала браузер попробует найти файл "anthem.mp3". Если такой файл отсутствует или не поддерживается вашим браузером, он попробует найти файл "anthem.ogg".</p>
 <p>Тип аудиофайла каждого источника указан в аттрибуте <code>type</code> элемента <code>source</code>. Данный аттрибут не является обязательным, но желательно его указывать, чтобы облегчить браузеру определение типа файла.</p>
 `,
-            goal: `Добавьте на страницу медиаконтент.`,
-            initValues: {
-                html: `<!DOCTYPE html>
+      goal: `Добавьте на страницу медиаконтент.`,
+      initValues: {
+        html: `<!DOCTYPE html>
 <html>
   <head>
     <title>Культура Андалусии</title>
@@ -746,7 +754,7 @@ ul a {
   </body>
 </html>
 `,
-                css: `
+        css: `
 a:hover {
   opacity: 0.6
 }
@@ -820,20 +828,21 @@ ul a {
   background-size: contain;
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "В секции с описанием музыки добавьте аудиоэлемент c аттрибутом controls.",
-                    testFn: `const audio = iframe.contentDocument.body.querySelector("audio");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label: "В секции с описанием музыки добавьте аудиоэлемент c аттрибутом controls.",
+          testFn: `const audio = iframe.contentDocument.body.querySelector("audio");
             return audio && audio.controls;`,
-                    failMsg: "Убедитесь, что вы добавили элемент audio с правильным аттрибутом",
-                },
-                {
-                    id: 2,
-                    label: "В качестве источника аудио укажите файл с адресом 'http://www.openculture.ru/wp-content/uploads/2011/11/Ravel_Bolero.mp3' и типом 'audio/mp3'.",
-                    testFn: `const audio = iframe.contentDocument.body.querySelector("audio");
+          failMsg: "Убедитесь, что вы добавили элемент audio с правильным аттрибутом",
+        },
+        {
+          id: 2,
+          label:
+            "В качестве источника аудио укажите файл с адресом 'http://www.openculture.ru/wp-content/uploads/2011/11/Ravel_Bolero.mp3' и типом 'audio/mp3'.",
+          testFn: `const audio = iframe.contentDocument.body.querySelector("audio");
             if (!audio) {
               return false;
             }
@@ -843,27 +852,29 @@ ul a {
               source.src === "http://www.openculture.ru/wp-content/uploads/2011/11/Ravel_Bolero.mp3" &&
               source.type === "audio/mp3"
             );`,
-                    failMsg: "Убедитесь, что вы добавили элемент source с правильными аттрибутами",
-                },
-                {
-                    id: 3,
-                    label: "В секции с описанием фламенко добавьте видеоэлемент c аттрибутом controls и текстом 'Видео не доступно'. В качестве источника видео укажите файл с адресом 'https://www.youtube.com/watch?v=VdAkQjfUqJU' .",
-                    testFn: `const video = iframe.contentDocument.body.querySelector("video");
+          failMsg: "Убедитесь, что вы добавили элемент source с правильными аттрибутами",
+        },
+        {
+          id: 3,
+          label:
+            "В секции с описанием фламенко добавьте видеоэлемент c аттрибутом controls и текстом 'Видео не доступно'. В качестве источника видео укажите файл с адресом 'https://www.youtube.com/watch?v=VdAkQjfUqJU' .",
+          testFn: `const video = iframe.contentDocument.body.querySelector("video");
             return (
               video &&
               video.src === "https://www.youtube.com/watch?v=VdAkQjfUqJU" &&
               video.textContent === "Видео не доступно" &&
               video.controls
             );`,
-                    failMsg: "Убедитесь, что вы добавили элемент video с правильными аттрибутами",
-                },
-            ],
+          failMsg: "Убедитесь, что вы добавили элемент video с правильными аттрибутами",
         },
-        {
-            id: 6,
-            header: "Встроенный контент - элемент iframe",
-            url: "html-iframe",
-            theory: `<p>Существует способ добавить на вашу страницу любой медиаэлемент и даже содержание другой HTML страницы, а в нее - содержание другой HTML страницы... Все это называется встроенным контентом, элементы <code>audio</code> и <code>video</code>, с которыми мы работали в прошлом упражнении, являются частными случаями встроенного контента.</p>
+      ],
+    },
+
+    {
+      id: 6,
+      header: "Встроенный контент - элемент iframe",
+      url: "html-iframe",
+      theory: `<p>Существует способ добавить на вашу страницу любой медиаэлемент и даже содержание другой HTML страницы, а в нее - содержание другой HTML страницы... Все это называется встроенным контентом, элементы <code>audio</code> и <code>video</code>, с которыми мы работали в прошлом упражнении, являются частными случаями встроенного контента.</p>
       <p>Познакомимся с элементом <code>iframe</code>. Результат вашей верстки, отображаемый в этом упражнении справа, встроен на страницу именно с помощью этого элемента.</p>
 
 <pre><code><span class="tag">&lt;iframe <span class="attr-name">src=</span><span class="attr-value">"../resource/some_content.gif"</span> <span class="attr-name">title=</span><span class="attr-value">"content_title"</span> <span class="attr-name">width=</span><span class="attr-value">"200"</span> <span class="attr-name">height=</span><span class="attr-value">"150"</span>></span><span class="tag">&lt;/iframe></code></pre>
@@ -877,9 +888,9 @@ ul a {
   </ul>
 </p>
 `,
-            goal: `Добавьте на страницу встроенный контент.`,
-            initValues: {
-                html: `<!DOCTYPE html>
+      goal: `Добавьте на страницу встроенный контент.`,
+      initValues: {
+        html: `<!DOCTYPE html>
 <html>
   <head>
     <title>Культура Андалусии</title>
@@ -939,7 +950,7 @@ ul a {
   </body>
 </html>
 `,
-                css: `
+        css: `
 a:hover {
   opacity: 0.6
 }
@@ -1013,34 +1024,35 @@ ul a {
   background-size: contain;
 }
 `,
-                js: "",
-            },
-            tasks: [
-                {
-                    id: 1,
-                    label: "В секции с описанием корриды добавьте встроенный контент, укажите адрес файла 'https://gifer.com/embed/7PZg'.",
-                    testFn: ` const embedIframe = iframe.contentDocument.body.querySelector("iframe");
+        js: "",
+      },
+      tasks: [
+        {
+          id: 1,
+          label:
+            "В секции с описанием корриды добавьте встроенный контент, укажите адрес файла 'https://gifer.com/embed/7PZg'.",
+          testFn: ` const embedIframe = iframe.contentDocument.body.querySelector("iframe");
             return (
               embedIframe &&
               embedIframe.parentElement &&
               embedIframe.parentElement.id === "bullfight" &&
               embedIframe.src === "https://gifer.com/embed/7PZg"
             );`,
-                    failMsg: "Убедитесь, что вы добавили элемент iframe с правильным источником данных",
-                },
-                {
-                    id: 2,
-                    label: "Добавьте заголовок контента 'Коррида в Андалусии', ширину элемента 300, высоту - 200.",
-                    testFn: ` const embedIframe = iframe.contentDocument.body.querySelector("iframe");
+          failMsg: "Убедитесь, что вы добавили элемент iframe с правильным источником данных",
+        },
+        {
+          id: 2,
+          label: "Добавьте заголовок контента 'Коррида в Андалусии', ширину элемента 300, высоту - 200.",
+          testFn: ` const embedIframe = iframe.contentDocument.body.querySelector("iframe");
             return (
               embedIframe &&
               embedIframe.title === "Коррида в Андалусии" &&
               embedIframe.width === "300" &&
               embedIframe.height === "200"
             );`,
-                    failMsg: "Убедитесь, что вы указали правильные аттрибуты",
-                },
-            ],
+          failMsg: "Убедитесь, что вы указали правильные аттрибуты",
         },
-    ],
+      ],
+    },
+  ],
 };
