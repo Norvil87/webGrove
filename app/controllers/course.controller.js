@@ -2,6 +2,7 @@ const courses = require("../../courses");
 
 exports.createCourseStructure = (req, res) => {
   const course = courses[req.body.courseUrl.toUpperCase()];
+  console.log('courseStructure')
 
   const courseStructure = JSON.parse(JSON.stringify(course));
 
