@@ -1,6 +1,6 @@
-const courses = require("../../courses");
+import courses from "../../courses";
 
-exports.createCourseStructure = (req, res) => {
+export const createCourseStructure = (req, res) => {
   const course = courses[req.body.courseUrl.toUpperCase()];
   console.log('courseStructure')
 
@@ -24,7 +24,7 @@ exports.createCourseStructure = (req, res) => {
   res.status(200).send(courseStructure);
 };
 
-exports.getLesson = (req, res) => {
+export const getLesson = (req, res) => {
   const { courseUrl, lessonUrl } = req.body;
   const course = courses[courseUrl.toUpperCase()];
   const lesson = course.lessons[lessonUrl];

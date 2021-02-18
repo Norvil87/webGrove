@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); // can't use es5 modules for some reason
 
 const User = mongoose.model("User", {
   username: String,

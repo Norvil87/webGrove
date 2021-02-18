@@ -1,10 +1,10 @@
 import config from "../config/auth.config";
 import db from "../models";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+
 const User = db.user;
 const Role = db.role;
-
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
 
 export const register = (req, res) => {
   const user = new User({
