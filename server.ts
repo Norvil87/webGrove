@@ -30,7 +30,7 @@ db.mongoose
   })
   .then(() => {
     console.log("Успешное подключение к MongoDB");
-    //initial();
+    initial();
   })
   .catch(err => {
     console.error("Ошибка подключения", err);
