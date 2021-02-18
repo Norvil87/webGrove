@@ -3,7 +3,7 @@ import "./TaskSuite.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { IRootState } from "../../store/types";
 import { setCurrentTasks } from "../../store/actions";
-import { ITask } from "../../types";
+import { ITask } from "../../../../shared/types";
 import { ICurrentTask } from "../../store/types";
 
 const TaskSuite: React.FC = () => {

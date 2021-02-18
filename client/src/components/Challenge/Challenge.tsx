@@ -6,7 +6,7 @@ import LessonNavigator from "../LessonNavigator";
 import ResetConfirmModal from "../Modals/ResetConfirmModal";
 import { IRootState } from "../../store/types";
 import { setCurrentExercise, setEditorValues } from "../../store/actions";
-import { ITask, ResultMessage, IEditorValues } from "../../types";
+import { ITask, ResultMessage, IEditorValues } from "../../../../shared/types";
 import { ICurrentTask } from "../../store/types";
 import { Link } from "react-router-dom";
 
@@ -41,7 +41,7 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
         const textContent = iframe.contentDocument.querySelector("style").textContent;
         taskPassed = task.testRegExp.every(expression => {
           const noGlobalFlags = typeof expression === "string";
-          const regExp = noGlobalFlags ? new RegExp(expression) : new RegExp(expression[0], expression[1]);
+          const regExp = noGlobalFlags ? new RegExp(expression as string) : new RegExp(expression[0], expression[1]);
 
           return regExp.test(textContent);
         });

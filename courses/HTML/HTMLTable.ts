@@ -1,4 +1,4 @@
-import { ICourseLesson } from "../../types";
+import { ICourseLesson } from "../../shared/types";
 
 export const HtmlTable: ICourseLesson = {
   id: 3,

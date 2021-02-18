@@ -3,7 +3,7 @@ import Challenge from "../Challenge";
 import Editor from "../Editor";
 import Output from "../Output";
 import "./Simulator.scss";
-import { IExcercise } from "../../types";
+import { IExcercise } from "../../../../shared/types";
 import { ReflexContainer, ReflexElement, ReflexSplitter } from "react-reflex";
 
 interface ISimulatorProps {

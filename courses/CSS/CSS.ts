@@ -1,4 +1,4 @@
-import { ICourse } from "../../types";
+import { ICourse } from "../../shared/types";
 import { CssSelectors } from "./CSSSelector";
 import { CssText } from "./CSSText";
 import { CssUnits } from "./CSSUnits";

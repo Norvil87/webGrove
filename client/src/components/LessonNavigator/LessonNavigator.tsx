@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { IRootState } from "../../store/types";
-import { IExcercise } from "../../types";
+import { IExcercise } from "../../../../shared/types";
 import { setCurrentExercise, setEditorValues } from "../../store/actions";
 import { Link } from "react-router-dom";
 import "./LessonNavigator.scss";

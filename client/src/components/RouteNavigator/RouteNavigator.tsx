@@ -10,7 +10,7 @@ import UserRegistration from "./../Modals/UserRegistration";
 import UserLogin from "./../Modals/UserLogin";
 import PasswordReminder from "./../Modals/PasswordReminder";
 import { setCurrentExercise, setEditorValues, setCourseStructure, setCurrentLesson } from "../../store/actions";
-import { IExcercise } from "../../types";
+import { IExcercise } from "../../../../shared/types";
 import { post } from "../../../services";
 
 const RouteNavigator = () => {

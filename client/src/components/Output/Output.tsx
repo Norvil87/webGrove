@@ -3,7 +3,7 @@ import "./Output.scss";
 import Iframe from "react-iframe";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../store/types";
-import { IEditorValues } from "../../types";
+import { IEditorValues } from "../../../../shared/types";
 
 const Output = () => {
   const { html, css, js, passed, message } = useSelector((state: IRootState) => {

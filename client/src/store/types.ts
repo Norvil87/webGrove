@@ -1,4 +1,4 @@
-import { ITask, ICourse, ICourseLesson, IExcercise } from "../types";
+import { ITask, ICourse, ICourseLesson, IExcercise } from "../../../shared/types";
 
 export interface IEditorValues {
   [key: string]: string;

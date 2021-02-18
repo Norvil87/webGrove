@@ -3,7 +3,7 @@ import { ControlledEditor } from "@monaco-editor/react";
 import monacoEditor from "monaco-editor/esm/vs/editor/editor.api";
 import { useDispatch, useSelector } from "react-redux";
 import { setEditorValue, setEditorValues } from "../../store/actions";
-import { IEditorValues } from "../../types";
+import { IEditorValues } from "../../../../shared/types";
 import { IRootState } from "../../store/types";
 import { ReflexContainer, ReflexElement, ReflexSplitter } from "react-reflex";
 import "./Editor.scss";
@@ -34,7 +34,7 @@ const Editor: React.FC<IEditor> = ({ initValues, outerWidth }) => {
   }
 
   const dispatch = useDispatch();
-console.log(courseUrl)
+
   const inCssMode = courseUrl === "css";
 
   const options: monacoEditor.editor.IEditorOptions = {

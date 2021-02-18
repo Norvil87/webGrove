@@ -1,5 +1,5 @@
 import { ICurrentExercise, ICurrentTask, IActionType, IEditorValues, IUser } from "./types";
-import { ICourse, ICourseLesson } from "../types";
+import { ICourse, ICourseLesson } from "../../../shared/types";
 
 export const setEditorValue = (key: string, value: string): IActionType => {
   return {

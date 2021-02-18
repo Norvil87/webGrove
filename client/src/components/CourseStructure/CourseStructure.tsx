@@ -3,7 +3,7 @@ import "./CourseStructure.scss";
 import { Link, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentExercise, setCurrentLesson } from "../../store/actions";
-import { ICourse, IExcercise, ICourseLesson } from "../../types";
+import { ICourse, IExcercise, ICourseLesson } from "../../../../shared/types";
 import {
   Accordion,
   AccordionItem,

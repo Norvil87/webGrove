@@ -1,4 +1,4 @@
-import { ICourseLesson } from "../../types";
+import { ICourseLesson } from "../../shared/types";
 
 export const JsIntro: ICourseLesson = {
   id: 1,
