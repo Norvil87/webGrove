@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "jsx": "react",
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
     "moduleResolution": "node",
     "outDir": "dist"
   },
-  "exclude": ["client"],
+  "exclude": ["client", "node_modules", "dist"],
   "lib": ["es2015"]
 }
