@@ -35,16 +35,16 @@ const UserLogin: React.FC = () => {
 
   const onFormSubmit = async () => {
     const data: LoginDataInResponse = await post("http://localhost:8081/login", userProfile);
-    const { id, username, email, accessToken, success, message } = data;
+    const { accessToken, message } = data;
 
-    if (!data || !success) {
-      setResponseMessage(message);
-    } else {
-      dispatch(setUser({ id, username, email }));
+    if (data && data.id) {
+      dispatch(setUser({ ...data, progress: {} })); // temp
       setLoginSuccess(true);
       if (accessToken) {
-        localStorage.setItem("webgroveUser", JSON.stringify(data));
+        localStorage.setItem("webgroveUser", JSON.stringify({ ...data, progress: {} })); // temp
       }
+    } else {
+      setResponseMessage(message);
     }
   };
 

@@ -16,8 +16,9 @@ const Header = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("webgroveUser"));
+
     if (user && user.accessToken) {
-      dispatch(setUser({ id: user.id, email: user.email, username: user.username }));
+      dispatch(setUser(user));
     }
   }, []);
 

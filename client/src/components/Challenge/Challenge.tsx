@@ -5,7 +5,7 @@ import TaskSuite from "../TaskSuite";
 import LessonNavigator from "../LessonNavigator";
 import ResetConfirmModal from "../Modals/ResetConfirmModal";
 import { IRootState } from "../../store/types";
-import { setCurrentExercise, setEditorValues } from "../../store/actions";
+import { setCurrentExercise, setEditorValues, updateUserProgress } from "../../store/actions";
 import { ITask, ResultMessage, IEditorValues } from "../../../../shared/types";
 import { ICurrentTask } from "../../store/types";
 import { Link } from "react-router-dom";
@@ -19,10 +19,12 @@ interface IChallengeProps {
 }
 
 const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues }) => {
-  const { currentExercise, courseUrl } = useSelector((state: IRootState) => {
+  const { currentExercise, currentLesson, courseUrl, user } = useSelector((state: IRootState) => {
     return {
       courseUrl: state.courseStructure?.url,
+      currentLesson: state.currentLesson,
       currentExercise: state.currentExercise,
+      user: state.user,
     };
   });
 
@@ -59,6 +61,9 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
     });
 
     excerciseMessage.push(excercisePassed ? ResultMessage.SUCCESS : ResultMessage.FAIL);
+    if (user && excercisePassed) {
+      dispatch(updateUserProgress([currentLesson.url, currentExercise.url]));
+    }
 
     dispatch(
       setCurrentExercise({

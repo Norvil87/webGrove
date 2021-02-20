@@ -19,8 +19,11 @@
 
 .course-structure__exercise {
   margin-bottom: 10px;
-  color: $primaryColor;
   opacity: 1;
+}
+
+.course-structure__exercise.passed a {
+  color: $successColor;
 }
 
 .accordion__button {

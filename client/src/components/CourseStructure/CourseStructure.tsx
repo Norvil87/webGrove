@@ -1,7 +1,7 @@
 import React from "react";
 import "./CourseStructure.scss";
 import { Link, useRouteMatch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentExercise, setCurrentLesson } from "../../store/actions";
 import { ICourse, IExcercise, ICourseLesson } from "../../../../shared/types";
 import {
@@ -13,12 +13,17 @@ import {
 } from "react-accessible-accordion";
 import "react-accessible-accordion/dist/fancy-example.css";
 import { post } from "../../../services";
+import { IRootState } from "../../store/types";
 
 interface ICourseListProps {
   courseStructure: ICourse;
 }
 
 const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
+  const user = useSelector((state: IRootState) => state.user);
+  let courseProgress = 0;
+  let courseLength = 0;
+
   const dispatch = useDispatch();
   const { url: matchedUrl } = useRouteMatch();
 
@@ -37,12 +42,17 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
     dispatch(setCurrentLesson(lesson));
   };
 
-  const renderExcersises = (lesson: ICourseLesson) => {
+  const renderExcersises = (lesson: ICourseLesson, lessonProgress: any) => {
     const excercises: JSX.Element[] = [];
 
     lesson.excercises.map(({ id, url, header }: IExcercise, i: number) => {
+      let className = "course-structure__exercise";
+      if (lessonProgress && lessonProgress[url]) {
+        className += " passed";
+      }
+      console.log(lessonProgress?.url);
       excercises.push(
-        <li key={id + url} className="course-structure__exercise">
+        <li key={id + url} className={className}>
           <span>{i + 1}. </span>
           <Link to={`${matchedUrl}/lessons/${lesson.url}/${url}`} onClick={onExcerciseLinkClick(id, lesson.url)}>
             {header}
@@ -60,13 +70,31 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
     for (const title in courseStructure.lessons) {
       const lesson = courseStructure.lessons[title];
 
+      let excercisesPassed = 0;
+      let lessonProgressString = "Зарегистрируйтесь, чтобы отслеживать прогресс";
+      let lessonProgress;
+
+      if (user && user.id) {
+        //Object.keys(user?.progress).length
+        const userProgress = user.progress;
+        lessonProgress = userProgress[title];
+        if (lessonProgress) {
+          excercisesPassed = Object.keys(lessonProgress).length;
+        }
+
+        lessonProgressString = `Ваш прогресс ${excercisesPassed} из ${lesson.excercises.length} упражнений`;
+
+        courseProgress += excercisesPassed;
+        courseLength += lesson.excercises.length;
+      }
+
       lessons.push(
         <AccordionItem key={title + lesson.id} uuid={`${lesson.id}`}>
           <AccordionItemHeading>
-            <AccordionItemButton>{`${lesson.title}. ${lesson.excercises.length} упражнений`}</AccordionItemButton>
+            <AccordionItemButton>{`${lesson.title}. ${lessonProgressString}`}</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <ul className="course-structure__lessons">{renderExcersises(lesson)}</ul>
+            <ul className="course-structure__lessons">{renderExcersises(lesson, lessonProgress)}</ul>
           </AccordionItemPanel>
         </AccordionItem>
       );

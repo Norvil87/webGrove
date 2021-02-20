@@ -13,10 +13,15 @@ export interface ICurrentExercise extends IExcercise {
   message: string[];
 }
 
+interface IUserProgress {
+  [url: string]: { passed: boolean };
+}
+
 export interface IUser {
   id: string;
   email: string;
   username: string;
+  progress?: IUserProgress;
 }
 
 export interface IRootState {
@@ -46,9 +51,29 @@ interface ISetCurrentTasks {
   payload: { tasks: ICurrentTask[] };
 }
 
+interface ICourseStructure {
+  type: string;
+  payload: { courseStructure: ICourse };
+}
+
+interface ISetCurrentLesson {
+  type: string;
+  payload: { lesson: ICourseLesson };
+}
+
+interface ISetCurrentTasks {
+  type: string;
+  payload: { tasks: ICurrentTask[] };
+}
+
 interface ISetUser {
   type: string;
   payload: { user: IUser };
+}
+
+interface IUpdateUserResults {
+  type: string;
+  payload: { urls: string[] };
 }
 
 export type IActionType =
@@ -57,4 +82,7 @@ export type IActionType =
   | ISetCurrentTasks
   | ISetEditorValue
   | ISetEditorValues
+  | ICourseStructure
+  | ISetCurrentLesson
+  | IUpdateUserResults
   | ISetUser;
