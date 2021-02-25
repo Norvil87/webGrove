@@ -10,6 +10,7 @@ export const register = (req, res) => {
   const user = new User({
     username: req.body.username,
     email: req.body.email,
+    progress: {},
     password: bcrypt.hashSync(req.body.password, 8),
   });
 
@@ -56,14 +57,14 @@ export const login = (req, res) => {
       }
 
       if (!user) {
-        res.status(200).send({ message: "Пользователь не найден", success: false });
+        res.status(200).send({ message: "Пользователь не найден" });
         return;
       }
 
       const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
 
       if (!passwordIsValid) {
-        return res.status(200).send({ accessToken: null, message: "Неверный пароль", success: false });
+        return res.status(200).send({ accessToken: null, message: "Неверный пароль" });
       }
 
       const token = jwt.sign({ id: user.id }, config.secret, { expiresIn: 86400 }); // 1 сутки
@@ -78,6 +79,7 @@ export const login = (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
+        progress: user.progress,
         roles: authorities,
         accessToken: token,
       });

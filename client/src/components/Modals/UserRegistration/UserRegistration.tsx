@@ -24,16 +24,15 @@ interface RegisterDataInResponse {
 const UserRegistration: React.FC = () => {
   const [userProfile, setUserProfile] = useState({
     id: "",
-    email: "admin@admin.ru",
-    username: "Admin",
-    password: "adminadmin",
-    passwordConfirm: "adminadmin",
+    email: "user@user.ru",
+    username: "User",
+    password: "useruser",
+    passwordConfirm: "useruser",
   });
+
   const [responseMessage, setResponseMessage] = useState(null);
   const [registerSuccess, setRegisterSuccess] = useState(null);
-
   const { register, handleSubmit, setError, errors } = useForm<Inputs>();
-
   const dispatch = useDispatch();
 
   const handleLoginLinkClick = () => {

@@ -59,7 +59,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className="header__user">
-          {user.username ? (
+          {user?.username ? (
             <>
               <p className="header__greeting">{` ${user.username}, ты опять хакнул систему?`}</p>
               <button className="button header__logout-button" onClick={logout}>

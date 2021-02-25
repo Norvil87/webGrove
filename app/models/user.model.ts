@@ -4,7 +4,7 @@ const User = mongoose.model("User", {
   username: String,
   email: String,
   password: String,
-  progress: Object,
+  progress: Map,
   roles: [{ type: mongoose.Schema.Types.ObjectId, ref: "Role" }],
 });
 

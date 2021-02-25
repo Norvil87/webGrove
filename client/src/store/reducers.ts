@@ -20,12 +20,7 @@ const initialState: IRootState = {
   },
   currentLesson: null,
   courseStructure: null,
-  user: {
-    id: null,
-    email: null,
-    username: null,
-    progress: {},
-  },
+  user: null,
 };
 
 export const reducer = (state: IRootState = initialState, action: any) => {
@@ -47,21 +42,8 @@ export const reducer = (state: IRootState = initialState, action: any) => {
       return { ...state, currentLesson: action.payload.lesson };
     case "SET_USER":
       return { ...state, user: action.payload.user };
-    case "UPDATE_USER_PROGRESS":
-      const [currentLessonUrl, currentExerciseUrl] = action.payload.urls;
-      const progress = JSON.parse(JSON.stringify(state.user.progress));
-      const lesson = progress[currentLessonUrl];
-      if (lesson) {
-        lesson[currentExerciseUrl] = true;
-      } else {
-        progress[currentLessonUrl] = { [currentExerciseUrl]: true };
-      }
-
-      const user = { ...state.user, progress };
-
-      localStorage.setItem("webgroveUser", JSON.stringify(user)); // have to move this somewhere
-
-      return { ...state, user: user };
+    case "SET_USER_PROGRESS":
+      return { ...state, user: { ...state.user, progress: action.payload.progress } };
     default:
       return state;
   }

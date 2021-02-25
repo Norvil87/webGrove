@@ -38,10 +38,10 @@ const UserLogin: React.FC = () => {
     const { accessToken, message } = data;
 
     if (data && data.id) {
-      dispatch(setUser({ ...data, progress: {} })); // temp
+      dispatch(setUser(data));
       setLoginSuccess(true);
       if (accessToken) {
-        localStorage.setItem("webgroveUser", JSON.stringify({ ...data, progress: {} })); // temp
+        localStorage.setItem("webgroveUser", JSON.stringify(data));
       }
     } else {
       setResponseMessage(message);

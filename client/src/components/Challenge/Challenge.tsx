@@ -5,10 +5,11 @@ import TaskSuite from "../TaskSuite";
 import LessonNavigator from "../LessonNavigator";
 import ResetConfirmModal from "../Modals/ResetConfirmModal";
 import { IRootState } from "../../store/types";
-import { setCurrentExercise, setEditorValues, updateUserProgress } from "../../store/actions";
+import { setCurrentExercise, setEditorValues, setUserProgress } from "../../store/actions";
 import { ITask, ResultMessage, IEditorValues } from "../../../../shared/types";
 import { ICurrentTask } from "../../store/types";
 import { Link } from "react-router-dom";
+import { post } from "../../../services";
 
 interface IChallengeProps {
   header: string;
@@ -30,6 +31,21 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
 
   const [resetModalVisible, setResetModalVisible] = useState(false);
   const dispatch = useDispatch();
+
+  const updateUserProgress = (lessonUrl: string, excerciseUrl: string) => {
+    const { id, progress } = user;
+    const updatedProgress = JSON.parse(JSON.stringify(progress));
+    const lesson = updatedProgress[lessonUrl];
+    if (lesson) {
+      lesson[excerciseUrl] = true;
+    } else {
+      updatedProgress[lessonUrl] = { [excerciseUrl]: true };
+    }
+
+    dispatch(setUserProgress(updatedProgress));
+    localStorage.setItem("webgroveUser", JSON.stringify({ ...user, updatedProgress }));
+    post("http://localhost:8081/userProgress", { id, updatedProgress });
+  };
 
   const handleRunButtonClick = () => {
     let excercisePassed = true;
@@ -61,8 +77,9 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
     });
 
     excerciseMessage.push(excercisePassed ? ResultMessage.SUCCESS : ResultMessage.FAIL);
+
     if (user && excercisePassed) {
-      dispatch(updateUserProgress([currentLesson.url, currentExercise.url]));
+      updateUserProgress(currentLesson.url, currentExercise.url);
     }
 
     dispatch(

@@ -65,11 +65,11 @@ export const setUser = (user: IUser): IActionType => {
   };
 };
 
-export const updateUserProgress = (urls: string[]): IActionType => {
+export const setUserProgress = (progress: any): IActionType => {
   return {
-    type: "UPDATE_USER_PROGRESS",
+    type: "SET_USER_PROGRESS",
     payload: {
-      urls,
+      progress,
     },
   };
 };
