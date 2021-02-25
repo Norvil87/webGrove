@@ -1,11 +1,16 @@
-@import "../../../styles/variables.scss";
+@import "../../styles/variables.scss";
 
 .progressBar {
-  width: 100px;
+  width: 200px;
   height: 10px;
   background-color: $primaryColor;
+  display: inline-block;
+  margin: 0 5px 0 20px;
+  border-radius: 5px;
 }
 
 .progressBar .progressIndicator {
   background-color: $successColor;
+  height: 100%;
+  border-radius: 5px;
 }

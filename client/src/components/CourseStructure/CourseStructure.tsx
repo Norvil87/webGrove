@@ -4,6 +4,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentExercise, setCurrentLesson } from "../../store/actions";
 import { ICourse, IExcercise, ICourseLesson } from "../../../../shared/types";
+import ProgressBar from "../ProgressBar";
 import {
   Accordion,
   AccordionItem,
@@ -50,7 +51,7 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
       if (lessonProgress && lessonProgress[url]) {
         className += " passed";
       }
-      console.log(lessonProgress?.url);
+
       excercises.push(
         <li key={id + url} className={className}>
           <span>{i + 1}. </span>
@@ -75,7 +76,6 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
       let lessonProgress;
 
       if (user && user.id) {
-        //Object.keys(user?.progress).length
         const userProgress = user.progress;
         lessonProgress = userProgress[title];
         if (lessonProgress) {
@@ -83,15 +83,22 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
         }
 
         lessonProgressString = `Ваш прогресс ${excercisesPassed} из ${lesson.excercises.length} упражнений`;
-
         courseProgress += excercisesPassed;
         courseLength += lesson.excercises.length;
       }
 
+      const lessonProgressPercent = Math.floor((excercisesPassed / lesson.excercises.length) * 100);
+
       lessons.push(
         <AccordionItem key={title + lesson.id} uuid={`${lesson.id}`}>
           <AccordionItemHeading>
-            <AccordionItemButton>{`${lesson.title}. ${lessonProgressString}`}</AccordionItemButton>
+            <AccordionItemButton>
+              <span style={{ marginRight: 20 }}>
+                <b>{lesson.title}.</b> {lessonProgressString}
+                <ProgressBar progress={lessonProgressPercent}></ProgressBar>
+                {lessonProgressPercent} %
+              </span>
+            </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
             <ul className="course-structure__lessons">{renderExcersises(lesson, lessonProgress)}</ul>

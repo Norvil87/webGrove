@@ -3,15 +3,12 @@ import "./ProgressBar.scss";
 
 interface ProgressBarProps {
   progress: number;
-  length: number;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ progress, length }) => {
-  const progressIndicatorWidth = Math.floor((progress / length) * 100);
-
+const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
   return (
     <div className="progressBar">
-      <div className="progressIndicator" style={{ width: `${progressIndicatorWidth}%` }}></div>
+      <div className="progressIndicator" style={{ width: `${progress}%` }}></div>
     </div>
   );
 };
