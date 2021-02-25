@@ -6,10 +6,14 @@ interface ProgressBarProps {
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
+  console.log(progress)
   return (
-    <div className="progressBar">
-      <div className="progressIndicator" style={{ width: `${progress}%` }}></div>
-    </div>
+    <>
+      <div className="progressBar">
+        <div className="progressIndicator" style={{ width: `${progress}%` }}></div>
+      </div>
+      {progress} %
+    </>
   );
 };
 

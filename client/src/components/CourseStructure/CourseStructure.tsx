@@ -22,11 +22,15 @@ interface ICourseListProps {
 
 const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
   const user = useSelector((state: IRootState) => state.user);
+  const dispatch = useDispatch();
+  const { url: matchedUrl } = useRouteMatch();
+
   let courseProgress = 0;
   let courseLength = 0;
 
-  const dispatch = useDispatch();
-  const { url: matchedUrl } = useRouteMatch();
+  const calculateProgress = (completed: number, capacity: number) => Math.floor((completed / capacity) * 100);
+  const getProgressString = (completed: number, capacity: number) =>
+    user?.id ? `Ваш прогресс ${completed} из ${capacity} упражнений` : "Зарегистрируйтесь, чтобы отслеживать прогресс";
 
   const onExcerciseLinkClick = (id: number, lessonUrl: string) => async () => {
     const { url: courseUrl } = courseStructure;
@@ -47,7 +51,7 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
     const excercises: JSX.Element[] = [];
 
     lesson.excercises.map(({ id, url, header }: IExcercise, i: number) => {
-      let className = "course-structure__exercise";
+      let className = "course__exercise";
       if (lessonProgress && lessonProgress[url]) {
         className += " passed";
       }
@@ -68,40 +72,38 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
   const renderLessons = () => {
     const lessons: JSX.Element[] = [];
 
-    for (const title in courseStructure.lessons) {
-      const lesson = courseStructure.lessons[title];
+    for (const lessonUrl in courseStructure.lessons) {
+      const lesson = courseStructure.lessons[lessonUrl];
+      const { excercises, title, id } = lesson;
 
       let excercisesPassed = 0;
-      let lessonProgressString = "Зарегистрируйтесь, чтобы отслеживать прогресс";
       let lessonProgress;
 
-      if (user && user.id) {
+      if (user?.id) {
         const userProgress = user.progress;
-        lessonProgress = userProgress[title];
+        lessonProgress = userProgress[lessonUrl];
+
         if (lessonProgress) {
           excercisesPassed = Object.keys(lessonProgress).length;
         }
 
-        lessonProgressString = `Ваш прогресс ${excercisesPassed} из ${lesson.excercises.length} упражнений`;
         courseProgress += excercisesPassed;
-        courseLength += lesson.excercises.length;
+        courseLength += excercises.length;
       }
 
-      const lessonProgressPercent = Math.floor((excercisesPassed / lesson.excercises.length) * 100);
+      const lessonProgressString = getProgressString(excercisesPassed, excercises.length);
+      const lessonProgressPercent = calculateProgress(excercisesPassed, excercises.length);
 
       lessons.push(
-        <AccordionItem key={title + lesson.id} uuid={`${lesson.id}`}>
+        <AccordionItem key={title + id} uuid={`${id}`}>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <span style={{ marginRight: 20 }}>
-                <b>{lesson.title}.</b> {lessonProgressString}
-                <ProgressBar progress={lessonProgressPercent}></ProgressBar>
-                {lessonProgressPercent} %
-              </span>
+              <b>{title}.</b> {lessonProgressString}
+              {user?.id && <ProgressBar progress={lessonProgressPercent} />}
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <ul className="course-structure__lessons">{renderExcersises(lesson, lessonProgress)}</ul>
+            <ul className="course__lessons">{renderExcersises(lesson, lessonProgress)}</ul>
           </AccordionItemPanel>
         </AccordionItem>
       );
@@ -111,11 +113,16 @@ const CourseList: React.FC<ICourseListProps> = ({ courseStructure }) => {
   };
 
   return (
-    <section className="course-structure">
+    <section className="course__structure">
       <h3>{`Проходите ${courseStructure.title} в следующем порядке:`}</h3>
-      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={["1"]}>
+      <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={["1"]} className="course__lessons-container">
         {renderLessons()}
       </Accordion>
+      <div className="course__progress">
+        <h3>Общий прогресс курса</h3>
+        {getProgressString(courseProgress, courseLength)}
+        {user?.id && <ProgressBar progress={calculateProgress(courseProgress, courseLength)} />}
+      </div>
     </section>
   );
 };
