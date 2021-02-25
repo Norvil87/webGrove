@@ -78,7 +78,6 @@ export const login = (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
-        success: true,
         roles: authorities,
         accessToken: token,
       });

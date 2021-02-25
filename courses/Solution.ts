@@ -104,7 +104,7 @@ const Solution = {
     },
     HTMLDocument: {
       1: {
-        html: `!DOCTYPE html>
+        html: `<!DOCTYPE html>
         <html>
         </html>`,
         css: ``,

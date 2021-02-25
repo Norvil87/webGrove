@@ -38,7 +38,7 @@ export const setCurrentTasks = (tasks: ICurrentTask[]): IActionType => {
   };
 };
 
-export const setCourseStructure = (courseStructure: ICourse): any => {
+export const setCourseStructure = (courseStructure: ICourse): IActionType => {
   return {
     type: "SET_COURSE_STRUCTURE",
     payload: {
@@ -47,7 +47,7 @@ export const setCourseStructure = (courseStructure: ICourse): any => {
   };
 };
 
-export const setCurrentLesson = (lesson: ICourseLesson): any => {
+export const setCurrentLesson = (lesson: ICourseLesson): IActionType => {
   return {
     type: "SET_CURRENT_LESSON",
     payload: {
@@ -61,6 +61,15 @@ export const setUser = (user: IUser): IActionType => {
     type: "SET_USER",
     payload: {
       user,
+    },
+  };
+};
+
+export const updateUserProgress = (urls: string[]): IActionType => {
+  return {
+    type: "UPDATE_USER_PROGRESS",
+    payload: {
+      urls,
     },
   };
 };
