@@ -12,27 +12,24 @@
   .task_failed {
     color: $failColor;
   }
-}
 
-.iframe {
-  border: none;
-}
+  .iframe {
+    flex-grow: 1;
+    border: none;
+  }
 
-.iframe-output {
-  flex-grow: 1;
-}
+  .test {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: $secondaryColor;
+    overflow-y: auto;
+  }
 
-.console-output {
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 10px;
-  background-color: $secondaryColor;
-  overflow-y: auto;
-}
-
-.console-output p {
-  width: 100%;
+  .test p {
+    width: 100%;
+  }
 }

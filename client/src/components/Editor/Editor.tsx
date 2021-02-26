@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { ControlledEditor } from "@monaco-editor/react";
 import monacoEditor from "monaco-editor/esm/vs/editor/editor.api";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,17 +25,22 @@ const Editor: React.FC<IEditor> = ({ initValues, outerWidth }) => {
 
   const htmlEditorRef = useRef(null);
   const cssEditorRef = useRef(null);
+  const jsEditorRef = useRef(null);
   const [width, setWidth] = useState(0);
 
-  if (outerWidth !== width) {
-    htmlEditorRef.current.layout();
-    cssEditorRef.current.layout();
+  useEffect(() => {
+    htmlEditorRef.current && htmlEditorRef.current.layout();
+    cssEditorRef.current && cssEditorRef.current.layout();
+    jsEditorRef.current && jsEditorRef.current.layout();
     setWidth(outerWidth);
-  }
+  }, [outerWidth]);
 
   const dispatch = useDispatch();
 
-  const inCssMode = courseUrl === "css";
+  const htmlEditorRequired = courseUrl === "html" || courseUrl === "css";
+  const cssEditorRequired = courseUrl === "css";
+  const jsEditorRequired = courseUrl === "js";
+  const editorSplitRequired = cssEditorRequired;
 
   const options: monacoEditor.editor.IEditorOptions = {
     minimap: { enabled: false },
@@ -54,45 +59,52 @@ const Editor: React.FC<IEditor> = ({ initValues, outerWidth }) => {
     },
   };
 
-  const handleHtmlValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, html: string) => {
-    dispatch(setEditorValue("html", html));
+  const handleValueChange = (editor: string) => (ev: monacoEditor.editor.IModelContentChangedEvent, value: string) => {
+    dispatch(setEditorValue(editor, value));
   };
 
-  const handleCssValueChange = (ev: monacoEditor.editor.IModelContentChangedEvent, css: string) => {
-    dispatch(setEditorValue("css", css));
-  };
-
-  const onHtmlEditorMount = (getEditorValue: () => string, editor: monacoEditor.editor.IStandaloneCodeEditor) => {
-    htmlEditorRef.current = editor;
-    dispatch(setEditorValues(initValues));
-  };
-
-  const onCssEditorMount = (getEditorValue: () => string, editor: monacoEditor.editor.IStandaloneCodeEditor) => {
-    cssEditorRef.current = editor;
+  const handleEditorMount = (ref: React.MutableRefObject<any>) => (
+    getEditorValue: () => string,
+    editor: monacoEditor.editor.IStandaloneCodeEditor
+  ) => {
+    ref.current = editor;
     dispatch(setEditorValues(initValues));
   };
 
   return (
     <div className="editor">
       <ReflexContainer orientation="horizontal">
-        <ReflexElement>
-          <ControlledEditor
-            options={options}
-            onChange={handleHtmlValueChange}
-            editorDidMount={onHtmlEditorMount}
-            language="html"
-            value={html}
-          />
-        </ReflexElement>
-        {inCssMode && <ReflexSplitter />}
-        {inCssMode && (
+        {htmlEditorRequired && (
           <ReflexElement>
             <ControlledEditor
               options={options}
-              onChange={handleCssValueChange}
-              editorDidMount={onCssEditorMount}
+              onChange={handleValueChange("html")}
+              editorDidMount={handleEditorMount(htmlEditorRef)}
+              language="html"
+              value={html}
+            />
+          </ReflexElement>
+        )}
+        {editorSplitRequired && <ReflexSplitter />}
+        {cssEditorRequired && (
+          <ReflexElement>
+            <ControlledEditor
+              options={options}
+              onChange={handleValueChange("css")}
+              editorDidMount={handleEditorMount(cssEditorRef)}
               language="css"
               value={css}
+            />
+          </ReflexElement>
+        )}
+        {jsEditorRequired && (
+          <ReflexElement>
+            <ControlledEditor
+              options={options}
+              onChange={handleValueChange("js")}
+              editorDidMount={handleEditorMount(jsEditorRef)}
+              language="js"
+              value={js}
             />
           </ReflexElement>
         )}

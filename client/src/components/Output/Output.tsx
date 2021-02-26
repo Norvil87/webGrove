@@ -4,6 +4,7 @@ import Iframe from "react-iframe";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../store/types";
 import { IEditorValues } from "../../../../shared/types";
+import { logger } from "../../helpers";
 
 const Output = () => {
   const { html, css, js, passed, message } = useSelector((state: IRootState) => {
@@ -22,20 +23,17 @@ const Output = () => {
       return URL.createObjectURL(blob);
     };
 
-    const jsURL = getBlobURL(js, "text/javscript");
-
     const source = `
       <!DOCTYPE html>
       <html>
         <head>
-        <style>
-          ${css || ''}
-        </style>
-          
-          ${js ? `<script type="text/javascript" src="${jsURL}" />` : ""}
+          <style>
+            ${css || ""}
+          </style>
         </head>
         <body>
           ${html || ""}
+           <script>${js ? logger +  js : ''}</script>
         </body>
       </html>
     `;
@@ -68,10 +66,11 @@ const Output = () => {
 
   return (
     <div className="output">
-      <div className="iframe-output">
+      <div className="iframe">
         <Iframe title="iframe-output" width="100%" height="100%" className="iframe" url={url} />
       </div>
-      <div className="console-output">{renderMessage()}</div>
+      {/* <pre className="console" id="console"></pre> */}
+      <div className="test">{renderMessage()}</div>
     </div>
   );
 };
