@@ -103,7 +103,7 @@ const Editor: React.FC<IEditor> = ({ initValues, outerWidth }) => {
               options={options}
               onChange={handleValueChange("js")}
               editorDidMount={handleEditorMount(jsEditorRef)}
-              language="js"
+              language="javascript"
               value={js}
             />
           </ReflexElement>

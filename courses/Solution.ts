@@ -995,6 +995,44 @@ const Solution = {
         }`,
         js: ``,
       },
-    }
+    },
+  },
+  JS: {
+    JSIntro: {
+      1: {
+        html: ``,
+        css: ``,
+        js: `console.log("Мое любимое число: ");
+        console.log(77)`,
+      },
+      2: {
+        html: ``,
+        css: ``,
+        js: `console.log('dv ffg');
+        console.log(-111);
+        console.log(false);
+        console.log(undefined);`,
+      },
+      3: {
+        html: ``,
+        css: ``,
+        js: `console.log(-4 + 1);
+        console.log(400 - 399);
+        console.log(40 * 0);
+        console.log(250 / 45);
+        console.log(13 % 3);`,
+      },
+      4: {
+        html: ``,
+        css: ``,
+        js: `console.log("Мне" + " " + "определенно" + " " + "нравится" + " " + "JavaScript" + "!");`,
+      },
+      5: {
+        html: ``,
+        css: ``,
+        js: `console.log("Я узнал(a) о том, как использовать свойства в JavaScript.".length);
+        console.log("".length);`,
+      },
+    },
   },
 };

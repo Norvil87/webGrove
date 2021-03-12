@@ -33,7 +33,8 @@ const Output = () => {
         </head>
         <body>
           ${html || ""}
-           <script>${js ? logger +  js : ''}</script>
+          ${js ? `<script>${logger}</script>` : ""}
+          ${js ? `<script id="userScript">${js}</script>` : ""}
         </body>
       </html>
     `;
@@ -69,7 +70,6 @@ const Output = () => {
       <div className="iframe">
         <Iframe title="iframe-output" width="100%" height="100%" className="iframe" url={url} />
       </div>
-      {/* <pre className="console" id="console"></pre> */}
       <div className="test">{renderMessage()}</div>
     </div>
   );

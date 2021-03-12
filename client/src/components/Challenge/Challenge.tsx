@@ -32,6 +32,8 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
   const [resetModalVisible, setResetModalVisible] = useState(false);
   const dispatch = useDispatch();
 
+  const iframe = document.body.querySelector("iframe");
+
   const updateUserProgress = (lessonUrl: string, excerciseUrl: string) => {
     const { id, progress } = user;
     const updatedProgress = JSON.parse(JSON.stringify(progress));
@@ -47,25 +49,39 @@ const Challenge: React.FC<IChallengeProps> = ({ header, theory, goal, initValues
     post("http://localhost:8081/userProgress", { id, updatedProgress });
   };
 
+  const checkTaskPassed = (task: ICurrentTask): boolean => {
+    let taskPassed;
+    let textContent = "";
+    const userScript = iframe.contentDocument.getElementById("userScript");
+
+    if (userScript) {
+      textContent += userScript.textContent;
+    }
+
+    if (task.testRegExp) {
+      const userStyle = iframe.contentDocument.querySelector("style").textContent;
+      textContent += userStyle;
+
+      taskPassed = task.testRegExp.every(expression => {
+        const noGlobalFlags = typeof expression === "string";
+        const regExp = noGlobalFlags ? new RegExp(expression as string) : new RegExp(expression[0], expression[1]);
+
+        return regExp.test(textContent);
+      });
+    } else {
+      textContent += task.testFn;
+      taskPassed = new Function("iframe", textContent)(iframe);
+    }
+
+    return taskPassed;
+  };
+
   const handleRunButtonClick = () => {
     let excercisePassed = true;
     let excerciseMessage = [];
-    const iframe = document.body.querySelector("iframe");
 
     currentExercise.tasks.map((task: ICurrentTask) => {
-      let taskPassed;
-
-      if (task.testRegExp) {
-        const textContent = iframe.contentDocument.querySelector("style").textContent;
-        taskPassed = task.testRegExp.every(expression => {
-          const noGlobalFlags = typeof expression === "string";
-          const regExp = noGlobalFlags ? new RegExp(expression as string) : new RegExp(expression[0], expression[1]);
-
-          return regExp.test(textContent);
-        });
-      } else {
-        taskPassed = new Function("iframe", task.testFn)(iframe);
-      }
+      const taskPassed = checkTaskPassed(task);
 
       if (taskPassed) {
         task.passed = true;

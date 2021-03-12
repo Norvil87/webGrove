@@ -3,6 +3,7 @@ export const logger = `
 const old = console.log;
 const logger = document.createElement("pre");
 document.body.prepend(logger);
+logger.innerHTML += "<span style='opacity: 0.5;'>Console: </span>"
 console.log = function () {
   for (let i = 0; i < arguments.length; i++) {
     if (typeof arguments[i] == "object") {
