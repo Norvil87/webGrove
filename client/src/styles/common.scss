@@ -96,8 +96,13 @@ code {
     color: #0f6bcf;
   }
 
-  .comment {
+  .comment,
+  .comment * {
     color: #4d7598;
+  }
+
+  .var {
+    color: #541bb8;
   }
 }
 

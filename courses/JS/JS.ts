@@ -1,5 +1,6 @@
 import { ICourse } from "../../shared/types";
 import { JsIntro } from "./JSIntro";
+import { JsVariables } from "./JSVariables";
 
 const Js: ICourse = {
   id: 1,
@@ -13,6 +14,7 @@ const Js: ICourse = {
   },
   lessons: {
     "js-intro": JsIntro,
+    "js-variables": JsVariables,
   },
 };
 

@@ -1030,9 +1030,58 @@ const Solution = {
       5: {
         html: ``,
         css: ``,
+        js: `cconsole.log("3" * 3);
+        console.log("3" / 3);`,
+      },
+      6: {
+        html: ``,
+        css: ``,
         js: `console.log("Я узнал(a) о том, как использовать свойства в JavaScript.".length);
         console.log("".length);`,
       },
+      7: {
+        html: ``,
+        css: ``,
+        js: `console.log("СТРОКА В НИЖНЕМ РЕГИСТРЕ".toLowerCase());
+        console.log("Понедельник начинается в субботу".includes("Понедельник"));
+        console.log("Понедельник начинается в субботу".includes("Вторник"));`,
+      },
+      8: {
+        html: ``,
+        css: ``,
+        js: `console.log(Math.ceil(Math.random() * 30));
+        console.log(Math.PI);
+        console.log(Number.isInteger(30));`,
+      },
+      9: {
+        html: ``,
+        css: ``,
+        js: `// Раскомментировать код, когда смогу его понять
+        /* const postfix = idParamName.substr(idParamName.lastIndexOf("$") + 1);
+        let resolver = state.filters[filterClientId].idResolvers[idParamName];
+        
+        if (["MO", "MI", "LOWERDIVERT", "UPPERDIVERT"].includes(postfix)) {
+          resolver = state.filters[filterClientId].idResolvers[idParamName.substr(0, idParamName.lastIndexOf("$"))];
+          if (resolver) {
+            resolver = {
+              ...resolver,
+              idParamName: resolver.idParamName,
+              mcParamName: resolver.mcParamName,
+              hlParamName: resolver.hlParamName
+            };
+          }
+        } */`,
+      },
     },
+    JSVariables: {
+      1: {
+        html: ``,
+        css: ``,
+        js: `var myFavoriteFood = "Potato";
+        console.log(myFavoriteFood);
+        var myAge = 33;
+        console.log(myAge);`,
+      }
+    }
   },
 };
