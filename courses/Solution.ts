@@ -1077,10 +1077,40 @@ const Solution = {
       1: {
         html: ``,
         css: ``,
-        js: `var myFavoriteFood = "Potato";
+        js: `let myFavoriteFood = "Potato";
         console.log(myFavoriteFood);
-        var myAge = 33;
+        let myAge = 33;
         console.log(myAge);`,
+      },
+      2: {
+        html: ``,
+        css: ``,
+        js: `let anyNumber = 44;
+        anyNumber = 33;
+        console.log(anyNumber);
+        const constantNumber = 77;
+        console.log(constantNumber);`,
+      },
+      3: {
+        html: ``,
+        css: ``,
+        js: `var myHomeTown;
+        console.log(myHomeTown);
+        myHomeTown = 'Москва';
+        console.log(myHomeTown);`,
+      },
+      4: {
+        html: ``,
+        css: ``,
+        js: `let strangeNumber = 500100;
+        strangeNumber -= 500100;
+        strangeNumber += 100500;
+console.log("Значение strangeNumber: ", strangeNumber);
+  
+let numMonths = 730;
+        numMonths /= 365;
+        numMonths *= 12;
+console.log("730 дней это ", numMonths, " месяцев");`,
       }
     }
   },
