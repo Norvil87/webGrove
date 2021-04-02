@@ -1,7 +1,7 @@
 import { ICourseLesson } from "../../shared/types";
 
 export const JsVariables: ICourseLesson = {
-  id: 1,
+  id: 2,
   title: "Переменные",
   url: "js-variables",
   excercises: [
@@ -49,7 +49,8 @@ export const JsVariables: ICourseLesson = {
         },
         {
           id: 2,
-          label: "Создайте переменную, в которой будет храниться ваш возраст. Дайте переменной описательное имя и выведите ее в консоль",
+          label:
+            "Создайте переменную, в которой будет храниться ваш возраст. Дайте переменной описательное имя и выведите ее в консоль",
           testRegExp: [`let [a-zA-Z]+ = [0-9]{1,2};`, `\console\\.log\\([a-zA-Z]+\\);`],
           failMsg: "Убедитесь, что вы присвоили число в качестве значения переменной",
         },
@@ -102,19 +103,20 @@ export const JsVariables: ICourseLesson = {
         },
         {
           id: 3,
-          label: "Создайте переменную под названием <code>constantNumber</code> со значением <code>77</code>. Значение переменной должно оставаться неизменным.",
+          label:
+            "Создайте переменную под названием <code>constantNumber</code> со значением <code>77</code>. Значение переменной должно оставаться неизменным.",
           testRegExp: [`const constantNumber = 77;`],
           failMsg: "Убедитесь, что вы использовали правильное ключевое слово",
         },
         {
           id: 4,
-          label: "Попробуйте присвоить переменной <code>constantNumber</code> другое числовое значение. Для проверки выведите переменную в консоль. Убедитесь, что новое значение не вывелось в консоль, так как на этапе присвоения нового значения возникла ошибка",
+          label:
+            "Попробуйте присвоить переменной <code>constantNumber</code> другое числовое значение. Для проверки выведите переменную в консоль. Убедитесь, что новое значение не вывелось в консоль, так как на этапе присвоения нового значения возникла ошибка",
           testRegExp: [`\console\\.log\\(constantNumber\\);`],
           failMsg: "Убедитесь, что вы вывели переменную в консоль после присвоения нового значения",
         },
       ],
     },
-
 
     {
       id: 3,
@@ -158,7 +160,8 @@ export const JsVariables: ICourseLesson = {
         },
         {
           id: 2,
-          label: "Присвойте переменной <code>myHomeTown</code> значение с названием вашего родного города. Еще раз выведите переменную в консоль.",
+          label:
+            "Присвойте переменной <code>myHomeTown</code> значение с названием вашего родного города. Еще раз выведите переменную в консоль.",
           testRegExp: [`myHomeTown = ("|'|\`).+("|'|\`);`, `\console\\.log\\(myHomeTown\\);`],
           failMsg: "Убедитесь, что вы не использовали ключевое слово при присвоении значения переменной",
         },
@@ -238,67 +241,185 @@ console.log("730 дней это ", numMonths, " месяцев");`,
       id: 5,
       header: "Инкремент и декремент",
       url: "js-increment-decrement",
-      theory: `<p>Есть группа операторов <em>математического присваивания</em>, которые помогают комбинировать арифметические операции и операцию присваивания. Пусть, например, нам нужно увеличить значение какой-то переменной на 10:</p>
+      theory: `<p>В программировании очень часто приходится увеличивать или уменьшать значение переменной на 1. Настольео часто, что для этого введены 2 специальных оператора. Оператор инкремента <code>++</code> увеличивает значение переменной на 1 и присваивает ей увеличенное значение, оператор декремента <code>--</code>, соответственно, уменьшает значение переменной на 1:</p>
       
-      <pre><code><span class="keyword">let</span> <span class="var">x</span> = <span class="number">10</span>;
-<span class="var">x</span> = <span class="var">x</span> + <span class="number">10</span>;
-<span class="keyword">console</span>.<span class="function">log</span>(<span class="var">x</span>); <span class="comment">// выведет 20</span></pre></code>
+      <pre><code><span class="keyword">let</span> <span class="var">x</span> = <span class="number">1</span>;
+<span class="var">x</span>++;
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="var">x</span>); <span class="comment">// выведет 2</span>
 
-<p>Строку, в которой происходит увеличение переменной <code>x</code> на 10, можно переписать удобнее:</p>
-
-<pre><code><span class="keyword">let</span> <span class="var">x</span> = <span class="number">10</span>;
-<span class="var">x</span> += <span class="number">10</span>;
-<span class="keyword">console</span>.<span class="function">log</span>(<span class="var">x</span>); <span class="comment">// выведет 20</span></pre></code>
-
-<p>Оператор <code>+=</code> сначала увеличит значение переменной на 10, затем присвоит переменной новое значение. Аналогичные операторы математического присваивания есть для всех других арифметических операций:</p>
-
-<pre><code><span class="keyword">let</span> <span class="var">abstracted</span> = <span class="number">10</span>;
-<span class="var">abstracted</span> -= <span class="number">20</span>; <span class="comment">// иначе abstracted = abstracted - 20</span>
-<span class="keyword">console</span>.<span class="function">log</span>(<span class="var">abstracted</span>); <span class="comment">// выведет -10</span>
-
-<span class="keyword">let</span> <span class="var">multiplied</span> = <span class="number">5</span>;
-<span class="var">multiplied</span> *= <span class="number">5</span>; <span class="comment">// иначе multiplied = multiplied * 5</span>
-<span class="keyword">console</span>.<span class="function">log</span>(<span class="var">multiplied</span>); <span class="comment">// выведет 25</span>
-
-<span class="keyword">let</span> <span class="var">divided</span> = <span class="number">100</span>;
-<span class="var">divided</span> /= <span class="number">100</span>; <span class="comment">// иначе divided = divided / 100</span>
-<span class="keyword">console</span>.<span class="function">log</span>(<span class="var">divided</span>); <span class="comment">// выведет 1</span></pre></code>`,
-      goal: `Используйте операторы математического присваивания`,
+<span class="keyword">let</span> <span class="var">y</span> = <span class="number">2</span>;
+<span class="var">y</span>--;
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="var">y</span>); <span class="comment">// выведет 1</span>
+</pre></code>`,
+      goal: `Используйте операторы инкремента и декремента.`,
       initValues: {
         html: "",
         css: "",
-        js: `let strangeNumber = 500100;
-          
-console.log("Значение strangeNumber: ", strangeNumber);
-  
-let numMonths = 730;
+        js: `let scoreGained = 19;
 
-console.log("730 дней это ", numMonths, " месяцев");`,
+console.log(scoreGained);
+  
+let scoreLost = 21;
+
+console.log(scoreLost);`,
       },
       tasks: [
         {
           id: 1,
-          label: `С помощью операции математического присваивания вычтите из переменной <code>strangeNumber</code> значение <code>500100</code>.`,
-          testRegExp: [`strangeNumber -= 500100;`],
-          failMsg: "Убедитесь, что вы использовали оператор -=",
+          label: `Увеличьте значение переменной <code>scoreGained</code> с помощью оператора инкремента.`,
+          testRegExp: [`scoreGained\\+\\+;`],
+          failMsg: "Убедитесь, что вы использовали оператор ++",
         },
         {
           id: 2,
-          label: "К этой  же переменной прибавьте число <code>100500</code>.",
-          testRegExp: [`strangeNumber \\+= 100500;`],
-          failMsg: "Убедитесь, что вы использовали оператор +=",
+          label: "Уменьшите значение переменной <code>scoreLost</code> с помощью оператора декремента.",
+          testRegExp: [`scoreLost--;`],
+          failMsg: "Убедитесь, что вы использовали оператор --",
+        },
+      ],
+    },
+
+    {
+      id: 6,
+      header: "Сложение строк и переменных",
+      url: "js-string-vars-concatenation",
+      theory: `<p>Помимо обычной конкатенации (сложения) строк, вы можете складывать обычные строки со строками, хранящимися в переменной:</p>
+      
+      <pre><code><span class="keyword">const</span> <span class="var">language</span> = <span class="string">"JavaScript"</span>;
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="string">"My first programming language is: "</span> + <span class="var">language</span> + <span class="string">"."</span>);
+<span class="comment">// выведет "My first programming language is: JavaScript."</span></pre></code>
+
+<p>В данном случае значение переменной и значение строки, с которой происходит сложение имеют одинаковый тип <code>String</code>, поэтому действует уже известное вам правило конкатенации строк. Точно так же можно было бы сложить 2 переменные строкового типа.</p>`,
+      goal: `Сложите переменные со строками.`,
+      initValues: {
+        html: "",
+        css: "",
+        js: ``,
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Создайте переменную <code>favoriteCity</code> с названием вашего любимого города.`,
+          testRegExp: [`const favoriteCity = ("|'|\`).+("|'|\`);`],
+          failMsg: "Убедитесь, что вы использовали const при создании переменной",
+        },
+        {
+          id: 2,
+          label: "Cоздайте переменную <code>country</code> с названием страны, в которой расположен этот город.",
+          testRegExp: [`const country = ("|'|\`).+("|'|\`);`],
+          failMsg: "Убедитесь, что вы использовали const при создании переменной",
         },
         {
           id: 3,
-          label: "Узнайте сколько лет в 730 днях, разделив переменную <code>numMonths</code> на <code>365</code>.",
-          testRegExp: [`numMonths \/= 365;`],
-          failMsg: "Убедитесь, что вы использовали оператор /=",
+          label: `Используя сложение строк и переменных, выведите в консоль такую строку: <code>Мой любимый город favoriteCity, который расположен в country.</code>. Не делайте пробелы отдельными строками.`,
+          testRegExp: [
+            `\console\\.log\\(("|'|\`)Мой любимый город ("|'|\`) \\+ favoriteCity \\+ ("|'|\`), который расположен в ("|'|\`) \\+ country \\+ ("|'|\`)\\.("|'|\`)\\);`,
+          ],
+          failMsg: "Убедитесь, что вы правильно расставили пробелы",
+        },
+      ],
+    },
+
+    {
+      id: 7,
+      header: "Интерполяция строк",
+      url: "js-string-interpolation",
+      theory: `<p>Использовать переменные совместно со строками приходится настолько часто, что начиная со стандарта ES6 у нас появилась возможность вставлять (<em>interpolate</em>) переменные в строки. Такая форма записи называется <em>шаблонные строки</em> (<em>template literals</em>). Давайте попробуем пример из предыдущего упражнения переписать с использованием шаблонных строк:</p>
+      
+      <pre><code><span class="keyword">const</span> <span class="var">language</span> = <span class="string">"JavaScript"</span>;
+
+<span class="comment">// пример со сложением строк</span>
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="string">"My first programming language is: "</span> + <span class="var">language</span> + <span class="string">"."</span>);
+
+<span class="comment">// пример с шаблонными строками</span>
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="string">\`My first programming language is: </span>\${<span class="var">language</span>}<span class="string">.</span>\`</span>);
+
+<span class="comment">// оба варианта выведут</span>
+<span class="comment">// "My first programming language is: JavaScript."</span></pre></code>
+
+<p>Для того, чтобы использовать шаблонные литералы, вам нужно:</p>
+<ul>
+  <li>Всю строку, в которую будут включены переменные, заключить в обратные кавычки <code>\`...\`</code>. Обратные кавычки на клавиатурах с поддержкой кириллицы расположены, как правило, на одной клавише с буквой Ё и знаком тильда <code>~</code>. Шаблонные строки не будут работать с обычными одинарными и двойными кавычками!</li>
+  <li>В месте вставки переменной необходимо поместить набор символов <code>\${ }</code>. Между фигурными скобками необходимо написать название переменной. Теперь переменная встроена в строку.</li>
+</ul>
+<p>Поначалу использование такой записи может показаться сложнее конкатенации строк из-за использования большего количества знаков, но на самом деле использование шаблонных литералов компактнее и код становится чище, особенно для более сложных строк.</p>`,
+      goal: `Используйте шаблонные литералы.`,
+      initValues: {
+        html: "",
+        css: "",
+        js: `const favoriteCity = "Москва";
+const country = "Россия";
+
+console.log("Мой любимый город " + favoriteCity + ", который расположен в " + country + ".");
+`,
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Перепишите строку из предыдущего задания, используя шаблонные литералы.`,
+          testRegExp: [
+            '\console\\.log\\(\`Мой любимый город \\${favoriteCity}, который расположен в \\${country}\\.\`\\);',
+          ],
+          failMsg: "Убедитесь, что обе переменные заключены в ${}",
+        },
+      ],
+    },
+
+    {
+      id: 8,
+      header: "Оператор typeof",
+      url: "js-typeof",
+      theory: `<p>Бывает полезно узнать тип переменной, с которой вы работаете. В предыдущих упражнениях вы узнали, что JavaScript - слаботипизированный язык, а это значит, что тип каждой из переменных может меняться в ходе выполнения программы. Чтобы отследить текущий тип переменной можно использовать оператор <code>typeof</code>:</p>
+      
+      <pre><code><span class="keyword">const</span> <span class="var">x</span> = <span class="string">"some string"</span>;
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="keyword">typeof</span> <span class="var">x</span>);<span class="comment">// выведет string</span>
+
+<span class="keyword">const</span> <span class="var">y</span> = <span class="number">0</span>;
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="keyword">typeof</span> <span class="var">y</span>);<span class="comment">// выведет number</span></pre></code>
+
+<p>Переменной <code>x</code> в качестве значения мы присвоили строку, поэтому <code>typeof x</code> вернет <code>string</code>, переменной <code>y</code> мы присвоили число, поэтому <code>typeof y</code> вернет <code>number</code>.</p>`,
+      goal: `Узнайте тип переменной.`,
+      initValues: {
+        html: "",
+        css: "",
+        js: `const unknownVariable1 = false;
+let unknownVariable2;
+const unknownVariable3 = () => {};
+const unknownVariable4 = {};
+`,
+      },
+      tasks: [
+        {
+          id: 1,
+          label: `Выведите в консоль тип переменной <code>unknownVariable1</code>.`,
+          testRegExp: [
+            '\console\\.log\\(typeof unknownVariable1\\);',
+          ],
+          failMsg: "Убедитесь, что вы используете оператор typeof",
+        },
+        {
+          id: 2,
+          label: `Выведите в консоль тип переменной <code>unknownVariable2</code>.`,
+          testRegExp: [
+            '\console\\.log\\(typeof unknownVariable2\\);',
+          ],
+          failMsg: "Убедитесь, что вы используете оператор typeof",
+        },
+        {
+          id: 3,
+          label: `Выведите в консоль тип переменной <code>unknownVariable3</code>.`,
+          testRegExp: [
+            '\console\\.log\\(typeof unknownVariable3\\);',
+          ],
+          failMsg: "Убедитесь, что вы используете оператор typeof",
         },
         {
           id: 4,
-          label: "Теперь узнайте, сколько это месяцев, умножив эту же переменную на <code>12</code>.",
-          testRegExp: [`numMonths \\*= 12;`],
-          failMsg: "Убедитесь, что вы использовали оператор *=",
+          label: `Выведите в консоль тип переменной <code>unknownVariable4</code>. Последние два типа будут изучены позже.`,
+          testRegExp: [
+            '\console\\.log\\(typeof unknownVariable4\\);',
+          ],
+          failMsg: "Убедитесь, что вы используете оператор typeof",
         },
       ],
     },

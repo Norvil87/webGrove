@@ -1111,7 +1111,112 @@ let numMonths = 730;
         numMonths /= 365;
         numMonths *= 12;
 console.log("730 дней это ", numMonths, " месяцев");`,
-      }
-    }
+      },
+      5: {
+        html: ``,
+        css: ``,
+        js: `let scoreGained = 19;
+        scoreGained++;
+console.log(scoreGained);
+  
+let scoreLost = 21;
+scoreLost--;
+console.log(scoreLost);`,
+      },
+      6: {
+        html: ``,
+        css: ``,
+        js: `const favoriteCity = "Москва";
+        const country = "Россия";
+        console.log("Мой любимый город " + favoriteCity + ", который расположен в " + country + ".");`,
+      },
+      7: {
+        html: ``,
+        css: ``,
+        js: `сonst favoriteCity = "Москва";
+        const country = "Россия";
+
+        console.log(\`Мой любимый город \${favoriteCity}, который расположен в \${country}.\`);`,
+      },
+      8: {
+        html: ``,
+        css: ``,
+        js: `const unknownVariable1 = false;
+        let unknownVariable2;
+        const unknownVariable3 = () => {};
+        const unknownVariable4 = {};
+        
+        console.log(typeof unknownVariable1);
+        console.log(typeof unknownVariable2);
+        console.log(typeof unknownVariable3);
+        console.log(typeof unknownVariable4);`,
+      },
+    },
+    JSConditions: {
+      1: {
+        html: ``,
+        css: ``,
+        js: `let male = true;
+        if (male) {
+         console.log("Вы - мужчина.");
+        };`,
+      },
+      2: {
+        html: ``,
+        css: ``,
+        js: `let male = true;
+
+        if (male) {
+          console.log("Вы - мужчина.");
+        } else {
+          console.log("Вы - женщина.");
+        };`,
+      },
+      3: {
+        html: ``,
+        css: ``,
+        js: `const myAge = 33;
+
+        if (myAge >= 18) {
+          console.log("Мне можно покупать алкоголь.");
+        } else {
+          console.log("Алкоголь мне еще нельзя.");
+        };
+        
+        const nativeCity = "Москва";
+        const currentCity = "Москва";
+        
+        if (nativeCity === currentCity) {
+          console.log("Я никуда не переезжал.");
+        };`,
+      },
+      4: {
+        html: ``,
+        css: ``,
+        js: `const myAge = 20;
+        const hasDrivingLicense = false;
+        const category = "B";
+
+        if (myAge >= 18 && hasDrivingLicense) {
+        console.log("Мне можно за руль.");
+        };
+
+        if (category === "A" || category === "B") {
+        console.log("Управляю легковым транспортом.");
+          };
+
+        console.log(!hasDrivingLicense);`,
+      },
+      5: {
+        html: ``,
+        css: ``,
+        js: `const myDeposit = 50000;
+        const myBank = "Подсолнух";
+        
+        if (myDeposit && myBank) {
+          console.log(\`У меня есть вклад в размере \${myDeposit} рублей в банке \${myBank}\`);
+        };`,
+      },
+    },
   },
 };

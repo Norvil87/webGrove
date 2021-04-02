@@ -76,23 +76,30 @@ code {
   border-radius: 3px;
   font-style: italic;
 
-  .tag, .number {
+  .tag,
+  .number {
     color: #905;
   }
 
-  .attr-name, .string {
+  .attr-name {
     color: #690;
   }
 
-  .attr-value  {
+  .attr-value {
     color: #07a;
   }
 
-  .selector, .keyword {
+  .selector,
+  .keyword {
     color: #669a16;
   }
 
-  .rule, .function {
+  .string {
+    color: #db8f00;
+  }
+
+  .rule,
+  .function {
     color: #0f6bcf;
   }
 
@@ -103,6 +110,10 @@ code {
 
   .var {
     color: #541bb8;
+  }
+
+  .boolean {
+    color: #9a6cc2;
   }
 }
 
